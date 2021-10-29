@@ -33,7 +33,7 @@ p{
     display:flex;
     flex-direction: row;
     padding: 0 60px 0 60px;
-    background-color: cornflowerblue;
+    background-color: rgb(10, 29, 65);
     justify-content: space-between;
     align-items: center;
     align-content: center;
@@ -44,6 +44,11 @@ p{
     display: flex;
     justify-content: space-between;
 
+}
+.navbar .sign a{
+    color: cornsilk;
+
+    text-decoration: none
 }
 
 

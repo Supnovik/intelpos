@@ -9,13 +9,13 @@
     <title>Главная</title>
 </head>
     <body>
-        <nav class="navbar">
-            <div class="logo">logo</div>
+        <div class="navbar">
+            <a class="logo" href="/"></a>
             <ul class="sign">
-                <div class="sign-in">sign-in</div>
-                <div class="sign-up">sign-out</div>
+                <a href="/login" class="sign-in">sign-in</a>
+                <a href="/registration" class="sign-up">sign-up</a>
             </ul>
-        </nav>
+        </div>  
 
         <header class="container main-header">
             <div class="main-header-text">
