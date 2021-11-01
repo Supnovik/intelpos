@@ -4,8 +4,9 @@ body{
     width: 100%;
     font-family: 'Zen Kaku Gothic Antique', sans-serif;
 }
-h1,p{
+h1,p,a{
     color: rgb(52, 58, 61);
+    text-decoration: none;
     margin: 0;
     padding: 0;
 }
@@ -29,25 +30,29 @@ p{
 
 .navbar{
     
-    height: 100px;
+    height: 80px;
     display:flex;
     flex-direction: row;
     padding: 0 60px 0 60px;
     background-color: rgb(10, 29, 65);
     justify-content: space-between;
     align-items: center;
-    align-content: center;
 }
 
 .navbar .sign{
-    width: 150px;
+    margin: 0 40px 0 0;
+    width: 250px;
     display: flex;
     justify-content: space-between;
+    
 
 }
 .navbar .sign a{
-    color: cornsilk;
-
+    color: rgb(255, 255, 255);
+    padding: 10px 20px 10px 20px;
     text-decoration: none
+}.navbar .sign .sign-up{
+    color: rgb(81, 108, 158);
+    background-color: rgb(0, 197, 199);
+    border-radius: 10px;
 }
-

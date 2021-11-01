@@ -4,6 +4,8 @@ var background = document.querySelector(".ip-slideshow")
 
 var currentPicture = 1;
 
+background.style.backgroundImage = `url(src/imgs/mainPage_slider/${currentPicture}.jpg)`
+
 const buttonsVisibility = () =>
 {
     if (currentPicture <= 1)
@@ -23,7 +25,7 @@ const setLeftImg = () =>{
     if (currentPicture > 1)
     {
         currentPicture --;
-        background.style.backgroundImage = `url(src/imgs/mainPage_slider/${currentPicture}.jpeg)`
+        background.style.backgroundImage = `url(src/imgs/mainPage_slider/${currentPicture}.jpg)`
     }
     buttonsVisibility()
 }
@@ -34,7 +36,7 @@ const setRightImg = () =>{
     if (currentPicture < 4)
     {
         currentPicture ++;
-        background.style.backgroundImage = `url(src/imgs/mainPage_slider/${currentPicture}.jpeg)`
+        background.style.backgroundImage = `url(src/imgs/mainPage_slider/${currentPicture}.jpg)`
     }
     buttonsVisibility()
 }
