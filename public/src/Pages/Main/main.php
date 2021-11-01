@@ -39,11 +39,25 @@
         </header>
                 
         <main class="container">
-            <h2> Преимущества</h2>
+            <div class="description">
+                <h2> Преимущества</h2>
+                
+            </div>
+            <div class="slider">
+                <div class="ip-slideshow-wrapper">
+                    <div>
+                        <span class="ip-nav-left"></span>
+                        <span class="ip-nav-right"></span>
+                    </div>
+                    <div class="ip-slideshow"></div>
+                </div>
+            </div>
         </main>
 
         <footer class="container">
 
         </footer>
+
+        <script src="src/Pages/Main/main.js"></script>
     </body>
 </html>
