@@ -1,10 +1,11 @@
 const leftButton = document.querySelector(".ip-nav-left")
 const rightButton = document.querySelector(".ip-nav-right")
 var background = document.querySelector(".ip-slideshow")
+const navbar = document.querySelector(".navbar")
 
 var currentPicture = 1;
-
-background.style.backgroundImage = `url(src/imgs/mainPage_slider/${currentPicture}.jpg)`
+ 
+background.style.backgroundImage = `url(app/views/Main/slider_imgs/${currentPicture}.jpg)`
 
 const buttonsVisibility = () =>
 {
@@ -18,14 +19,13 @@ const buttonsVisibility = () =>
         leftButton.style.display = "block";
         rightButton.style.display = "block";
     }
-        
 }
 
 const setLeftImg = () =>{
     if (currentPicture > 1)
     {
         currentPicture --;
-        background.style.backgroundImage = `url(src/imgs/mainPage_slider/${currentPicture}.jpg)`
+        background.style.backgroundImage = `url(app/views/Main/slider_imgs/${currentPicture}.jpg)`
     }
     buttonsVisibility()
 }
@@ -36,10 +36,12 @@ const setRightImg = () =>{
     if (currentPicture < 4)
     {
         currentPicture ++;
-        background.style.backgroundImage = `url(src/imgs/mainPage_slider/${currentPicture}.jpg)`
+        background.style.backgroundImage = `url(app/views/Main/slider_imgs/${currentPicture}.jpg)`
     }
     buttonsVisibility()
 }
+
+
 
 
 buttonsVisibility()

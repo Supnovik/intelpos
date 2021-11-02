@@ -1,13 +1,4 @@
-.logo{
-    display: block;
-    width: 150px;
-    height: 70px;
-    box-sizing: border-box;
-    background-image: url(src/imgs/logo.png);
-    background-position:center;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
+
 
 .main-header{
     height: 660px;
@@ -139,7 +130,7 @@
 	height: 100%;
 	color: rgba(255, 255, 255, 0.5);	
 	font-size: 70px;
-	line-height: 62px;
+	
 	text-align: center;
 	position: absolute;
 	top: 0;

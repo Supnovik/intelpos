@@ -1,0 +1,6 @@
+<footer class="main-footer">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias mollitia doloremque earum quia voluptas veritatis. Dolorem quibusdam aliquid cupiditate. Aliquam impedit sunt ab aut voluptates nesciunt necessitatibus incidunt aperiam dicta?
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias mollitia doloremque earum quia voluptas veritatis. Dolorem quibusdam aliquid cupiditate. Aliquam impedit sunt ab aut voluptates nesciunt necessitatibus incidunt aperiam dicta?
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias mollitia doloremque earum quia voluptas veritatis. Dolorem quibusdam aliquid cupiditate. Aliquam impedit sunt ab aut voluptates nesciunt necessitatibus incidunt aperiam dicta?
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias mollitia doloremque earum quia voluptas veritatis. Dolorem quibusdam aliquid cupiditate. Aliquam impedit sunt ab aut voluptates nesciunt necessitatibus incidunt aperiam dicta?
+</footer>

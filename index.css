@@ -28,6 +28,17 @@ p{
     margin:0 15% 0 15%;
 }
 
+.logo{
+    display: block;
+    width: 150px;
+    height: 70px;
+    box-sizing: border-box;
+    background-image: url(imgs/logo.png);
+    background-position:center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .navbar{
     
     height: 80px;
@@ -51,8 +62,15 @@ p{
     color: rgb(255, 255, 255);
     padding: 10px 20px 10px 20px;
     text-decoration: none
-}.navbar .sign .sign-up{
-    color: rgb(81, 108, 158);
+
+}
+
+.navbar .sign .sign-up{
+    color: #fff;
     background-color: rgb(0, 197, 199);
     border-radius: 10px;
+}
+.navbar .sign .sign-in{
+    border: 1px solid #fff;
+    border-radius: 5px;
 }
