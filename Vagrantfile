@@ -9,7 +9,7 @@ Vagrant.configure(2) do |config|
 			config.vm.define "vag" do|vag|
 
 				vag.vm.hostname = "vag" 
-				vag.vm.network "private_network", ip: "174.138.40.104"
+				vag.vm.network "private_network", ip: "192.168.205.10"
 				
 				
 				#vag.vm.provision :shell, path: "/home/dotwrk_internship/vagrant/install.sh" 
