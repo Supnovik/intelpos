@@ -3,8 +3,8 @@
 class Controller_database extends Controller{
     private $user = "user";
     private $password = "password";
-    private $database = "users";
-    private $table = "todo_list";
+    private $database = "data";
+    private $table = "users";
 
 
     public function __construct(){
@@ -36,7 +36,7 @@ class Controller_database extends Controller{
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
              
             // SQL-выражение для создания таблицы
-            $sql = "create table $table (id integer auto_increment primary key, name varchar(30), age integer);";
+            $sql = "create table $table (id integer auto_increment primary key, nickname varchar(30), mail varchar(30), password varchar(30));";
             // выполняем SQL-выражение
             $conn->exec($sql);
             echo "Table $table has been created";
@@ -52,7 +52,7 @@ class Controller_database extends Controller{
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
 
             // SQL-выражение для добавления данных
-            $sql = "INSERT INTO $this->table (name, mail ,password) VALUES ($nickname,$mail,$password)";
+            $sql = "INSERT INTO $this->table (nickname, mail ,password) VALUES ($nickname,$mail,$password)";
              
             $affectedRowsNumber = $conn->exec($sql);
             echo "В таблицу $this->table добавлено строк: $affectedRowsNumber";
@@ -65,13 +65,13 @@ class Controller_database extends Controller{
     public function getContent(){
         try {
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
-            $sql = "SELECT * FROM $this->database";
+            $sql = "SELECT * FROM $this->table";
             $result = $conn->query($sql);
-            echo "<table><tr><th>Id</th><th>Name</th><th>Age</th></tr>";
+            echo "<table><tr><th>Nickname</th><th>Mail</th><th>Password</th></tr>";
             while($row = $result->fetch()){
                 echo "<tr>";
-                    echo "<td>" . $row["email"] . "</td>";
                     echo "<td>" . $row["nickname"] . "</td>";
+                    echo "<td>" . $row["mail"] . "</td>";
                     echo "<td>" . $row["password"] . "</td>";
                 echo "</tr>";
             }
@@ -82,10 +82,10 @@ class Controller_database extends Controller{
         }
     }
 
-    public function deleteContent($id){
+    public function deleteContent($mail){
         try {
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
-            $sql = "DELETE FROM $this->database WHERE id = $id";
+            $sql = "DELETE FROM $this->table WHERE mail = $mail";
             $affectedRowsNumber = $conn->exec($sql);
             echo "Удалено строк: $affectedRowsNumber";
         }
