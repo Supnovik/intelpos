@@ -7,7 +7,7 @@ Vagrant.configure(2) do |config|
 	config.ssh.password = "vagrant"
 
 			config.vm.define "vag" do|vag|
-
+				vag.gui = true
 				vag.vm.hostname = "vag" 
 				vag.vm.network "private_network", ip: "192.168.205.10"
 				
