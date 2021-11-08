@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
 			
 			config.vm.network "forwarded_port", guest: 80, host: 8080, id: "nginx"
 			
-			vag.vm.provision :shell, path: "vagrant/rewrite.sh" changes vagrantfile test 
+			vag.vm.provision :shell, path: "vagrant/rewrite.sh"
 		end
 end
 
