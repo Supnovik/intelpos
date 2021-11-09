@@ -21,9 +21,37 @@
 </header>
     
 <main class="container">
+    
     <div class="description">
-        <h2> Advantages</h2>
-    </div>
+        <h2>Advantages</h2>
+        <div class="description-block">
+          <div class="description-block-text text-left">
+            <h3>Ваш ум, наше – все остальное.</h3>
+            <p>
+              От карточек, удобных для изучения иностранных языков, до игр на
+              любую тему – в Quzlet есть множество средств, которые подойдут
+              именно вам.
+            </p>
+          </div>
+          <div class="description-block-img">
+            <img src="app/views/Main/1.png" />
+          </div>
+        </div>
+
+        <div class="description-block">
+          <div class="description-block-img">
+            <img src="app/views/Main/1.png" />
+          </div>
+          <div class="description-block-text text-right">
+            <h3>Ваш ум, наше – все остальное.</h3>
+            <p>
+              От карточек, удобных для изучения иностранных языков, до игр на
+              любую тему – в Quzlet есть множество средств, которые подойдут
+              именно вам.
+            </p>
+          </div>
+        </div>
+      </div>
     <div class="main-slider">
         <div class="ip-slideshow-wrapper">
             <div>
