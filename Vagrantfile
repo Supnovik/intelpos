@@ -12,13 +12,13 @@ Vagrant.configure(2) do |config|
 			vag.vm.network "private_network", ip: "192.168.205.10"
 			
 			
-			vag.vm.provision :shell, path: "/home/dotwrk_internship/vagrant/install.sh" 
-			vag.vm.provision :shell, path: "/home/dotwrk_internship/vagrant/creatingFolder.sh"
+			vag.vm.provision :shell, path: "vagrant/install.sh" 
+			vag.vm.provision :shell, path: "vagrant/creatingFolder.sh"
 			
-			vag.vm.synced_folder "/home/dotwrk_internship", "/var/www/intelpos.test/public_html"
+			vag.vm.synced_folder "", "/var/www/intelpos.test/public_html"
 			
-			vag.vm.synced_folder "/home/dotwrk_internship/config/conf_nginx", "/etc/nginx/sites-available"
-			vag.vm.synced_folder "config/conf_varnish", "/etc/varnish"
+			vag.vm.synced_folder "config/conf_nginx", "/etc/nginx/sites-available"
+			#vag.vm.synced_folder "config/conf_varnish", "/etc/varnish"
 			
 			config.vm.network "forwarded_port", guest: 80, host: 8080, id: "nginx"
 			
