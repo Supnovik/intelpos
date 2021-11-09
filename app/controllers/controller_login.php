@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Main extends Controller
+class Controller_Login extends Controller
 {
 	function action_index()
 	{	
