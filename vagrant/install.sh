@@ -1,22 +1,16 @@
 #!/bin/bash
 
-sudo apt-get update -y
-sudo apt-get upgrade -y
+
+sudo apt -y update
 
 
-sudo apt install nginx -y
+sudo apt -y install apache2
 
-sudo systemctl start nginx
-sudo systemctl enable nginx
+sudo apt -y install mysql-server
 
 sudo apt install software-properties-common
 sudo add-apt-repository ppa:ondrej/php
 sudo apt update
-sudo apt install php7.4-fpm php7.4-cli php7.4-mysql php7.4-curl php7.4-json -y
+sudo apt  -y install php7.4
 
-#sudo apt install varnish -y
-
-#sudo systemctl start varnish
-#sudo systemctl enable varnish
-
-
+sudo apt -y install php7.4 php7.4-mysql php-common php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-readline
