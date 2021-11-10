@@ -30,16 +30,16 @@ class Controller_database extends Controller{
 
 
 
-    public function createTable($table){
+    public function createTable(){
         try {
             
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
              
             
-            $sql = "create table $table (id integer auto_increment primary key, nickname varchar(30), mail varchar(30), password varchar(30));";
+            $sql = "create table $this->table (id integer auto_increment primary key, nickname VARCHAR(30), mail VARCHAR(30), password VARCHAR(30));";
             
             $conn->exec($sql);
-            echo "Table $table has been created";
+            echo "Table $this->table has been created";
         }
         catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
@@ -48,11 +48,12 @@ class Controller_database extends Controller{
     }
 
     public function addContent($nickname,$mail,$password){
+        echo $nickname;
         try {
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
 
             
-            $sql = "INSERT INTO $this->table (nickname, mail ,password) VALUES ($nickname,$mail,$password)";
+            $sql = "INSERT INTO $this->table (nickname, mail ,password) VALUES ('$nickname','$mail','$password')";
              
             $affectedRowsNumber = $conn->exec($sql);
             echo "В таблицу $this->table добавлено строк: $affectedRowsNumber";
@@ -85,7 +86,7 @@ class Controller_database extends Controller{
     public function deleteContent($mail){
         try {
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
-            $sql = "DELETE FROM $this->table WHERE mail = $mail";
+            $sql = "DELETE FROM $this->table WHERE mail = '$mail'";
             $affectedRowsNumber = $conn->exec($sql);
             echo "Удалено строк: $affectedRowsNumber";
         }

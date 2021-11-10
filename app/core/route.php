@@ -31,6 +31,22 @@ class Route
 				$controller->action_index();
 				}
 			
+		}elseif ('/registration' === $uri ) {
+			
+			{
+				include 'app/controllers/controller_registration.php';
+				$controller = new Controller_Registration;
+				$controller->action_index();
+				}
+			
+		} elseif ('/admin' === $uri ) {
+			
+			{
+				include 'app/controllers/controller_admin.php';
+				$controller = new Controller_Admin;
+				$controller->action_index();
+				}
+			
 		} else {
 			echo '<html><body><h1>Page Not Found</h1></body></html>';
 			echo $uri;

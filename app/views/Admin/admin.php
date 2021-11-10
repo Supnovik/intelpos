@@ -1,24 +1,18 @@
-<div class="login-page">       
-        <form class="login-block">
-            <div class="login-container">
-                <h1>Welcome</h1>
-                    <div class="textField">
-                        <input type="email" placeholder="Email" class="input-box">
-                    </div>
-
-                    <div class="textField">
-                        <input type="password" placeholder="Пароль" class="input-box">
-                    </div>
-
-                    <button class="button-long">sign in</button>
-
-                    <div class="login-footer">
-                        <p>No account on Intelpos?</p>
-                        <a href="/registration" class="button-short">create</a>
-                    </div>
-            </div>
-        </form>
-</div>
+<form method="post">
+    <input  name="mail" id="test" value="" /><br/>
+    <input  name="nickname" id="test" value="" /><br/>
+    <input  name="password" id="test" value="" /><br/>
+    <input type="submit" name="button3"
+            class="button" value="createDatabase" />
+    <input type="submit" name="button4"
+            class="button" value="createTable" />
+    <input type="submit" name="button1"
+            class="button" value="addContent" />
+    <input type="submit" name="button2"
+            class="button" value="getContent" />
+    <input type="submit" name="button5"
+            class="button" value="delete" />
+</form>
 
 <?php
         require_once( "app/controllers/controller_database.php" );
@@ -54,7 +48,7 @@
         function button4() {
             $database = new Controller_database;
 
-            $database->createTable("users");
+            $database->createTable();
         }
         function button5() {
             $database = new Controller_database;
@@ -62,5 +56,3 @@
             $database->deleteContent(filter_var(trim($_POST['mail']),FILTER_SANITIZE_STRING));
         }
     ?>
-  
-  
