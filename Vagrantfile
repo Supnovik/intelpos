@@ -14,6 +14,6 @@ Vagrant.configure(2) do |config|
 		vag.vm.provision :shell, path: "vagrant/creatingFolder.sh" 
 		vag.vm.synced_folder "./", "/var/www/intelpos.test/public_html"
 		vag.vm.synced_folder "config/conf_apache", "/etc/apache2/sites-available"
-		vag.vm.provision :shell, path: "vagrant/loadingServer.sh"
+		#vag.vm.provision :shell, path: "vagrant/loadingServer.sh"
 	end
 end
