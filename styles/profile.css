@@ -1,0 +1,83 @@
+.profile_page {
+  height: 90vh;
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.user-infomation {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-infomation img {
+  width: 80%;
+  border-radius: 50%;
+  box-shadow: 0 0 25px rgb(0 0 0 / 20%);
+}
+
+.user-content-list {
+  width: 50%;
+}
+
+.user-content-list-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  height: 44px;
+  width: 100%;
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 40px;
+}
+.user-content-list-block:hover {
+  border: 1px solid rgba(31, 32, 65, 0.75);
+}
+.user-content-list-block-setofcards,
+.user-content-list-block-backdrop,
+.user-content-list-block-button {
+  cursor: pointer;
+  display: inline-block;
+  height: 100%;
+  border: none;
+}
+
+.user-content-list-block-setofcards,
+.user-content-list-block-backdrop {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.user-content-list-block-setofcards {
+  background-color: rgba(126, 252, 0, 0.75);
+}
+.user-content-list-block-backdrop {
+  background-color: rgba(173, 216, 230, 0.75);
+}
+.user-content-list-block-setofcards:hover {
+  background-color: rgba(126, 252, 0, 1);
+}
+.user-content-list-block-backdrop:hover {
+  background-color: rgba(173, 216, 230, 1);
+}
+.user-content-list-block-button#edit {
+  background-color: rgba(255, 255, 0, 0.75);
+}
+.user-content-list-block-button#edit:hover {
+  background-color: yellow;
+}
+.user-content-list-block-button#delete {
+  background-color: rgba(255, 0, 0, 0.75);
+}
+.user-content-list-block-button#delete:hover {
+  background-color: red;
+}
+.user-content-list-block#addnew {
+  cursor: pointer;
+}

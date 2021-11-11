@@ -4,18 +4,17 @@ class Model_database extends Controller{
     private $user = "supnovik";
     private $password = "qwe123";
     private $database = "data";
-    private $table = "userss";
+    private $table = "users";
 
 
-    public function __construct(){
-
+    public function __construct($database,$table){
+        $this->database=$database;
+        $this->table =$table;
     }
 
     public function createDatabase(){
         try {
             $conn = new PDO("mysql:host=localhost", $this->user, $this->password);
-             
-            
             $sql = "CREATE DATABASE $this->database";
             
             $conn->exec($sql);
@@ -70,9 +69,8 @@ class Model_database extends Controller{
             $sql = "SELECT * FROM $this->table";
             $result = $conn->query($sql);
             while($row = $result->fetch()){
-                $content[] = array('nickname' => $row["nickname"],'mail' =>$row["mail"]);
+                $content[] = array('nickname' => (string)$row["nickname"],'mail' =>(string)$row["mail"]);
             }
-            
         }
         catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();

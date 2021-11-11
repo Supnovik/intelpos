@@ -4,7 +4,7 @@ class Controller_database extends Controller{
     private $user = "supnovik";
     private $password = "qwe123";
     private $database = "data";
-    private $table = "userss";
+    private $table = "Supnovik";
 
 
   
@@ -27,16 +27,13 @@ class Controller_database extends Controller{
 
 
 
-    public function createTable(){
+    public function createTable($table){
         try {
-            
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
-             
-            
-            $sql = "create table $this->table (id integer auto_increment primary key, nickname VARCHAR(30), mail VARCHAR(30), password VARCHAR(30));";
+            $sql = "create table $table (id integer auto_increment primary key, nickname VARCHAR(30), mail VARCHAR(30), password VARCHAR(30));";
             
             $conn->exec($sql);
-            echo "Table $this->table has been created";
+            echo "Table $table has been created";
         }
         catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
@@ -60,10 +57,10 @@ class Controller_database extends Controller{
         }
     }
 
-    public function getContent(){
+    public function getContent($table){
         try {
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
-            $sql = "SELECT * FROM $this->table";
+            $sql = "SELECT * FROM $table";
             $result = $conn->query($sql);
             echo "<table><tr><th>Nickname</th><th>Mail</th><th>Password</th></tr>";
             while($row = $result->fetch()){

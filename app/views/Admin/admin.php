@@ -37,18 +37,17 @@
         function button2() {
             $database = new Controller_database;
 
-            $database->getContent();
+            $database->getContent(filter_var(trim($_POST['mail']),FILTER_SANITIZE_STRING));
         }
 
         function button3() {
             $database = new Controller_database;
 
-            $database->createDatabase("data");
+            $database->createDatabase(filter_var(trim($_POST['mail']),FILTER_SANITIZE_STRING));
         }
         function button4() {
             $database = new Controller_database;
-
-            $database->createTable();
+            $database->createTable(filter_var(trim($_POST['mail']),FILTER_SANITIZE_STRING));
         }
         function button5() {
             $database = new Controller_database;

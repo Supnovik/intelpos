@@ -6,8 +6,8 @@ class Route
 	static function start()
 	{
 		
-		$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-		switch ($uri) {
+		$uri = explode('/', $_SERVER['REQUEST_URI']);
+		switch ("/".$uri[1]) {
 			case '/':
 				include 'app/controllers/controller_main.php';
 				$controller = new Controller_Main;
@@ -33,14 +33,19 @@ class Route
 				$controller = new Controller_List_of_users;
 				$controller->action_index();
 				break;
+			case '/users':
+				include 'app/controllers/controller_profile_page.php';
+				$controller = new Controller_ProfilePage;
+				$controller->action_index();
+				break;
 			case '/admin':
 				include 'app/controllers/controller_admin.php';
 				$controller = new Controller_Admin;
 				$controller->action_index();
 				break;
-				default:
+			default:
 				echo '<html><body><h1>Page Not Found</h1></body></html>';
-				echo $uri;
+				echo $uri[1];
 				break;
 		  }
 	}
