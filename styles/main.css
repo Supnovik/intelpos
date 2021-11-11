@@ -18,6 +18,9 @@
 .main-header .main-header-text p {
   margin-bottom: 40px;
 }
+.main-header .main-header-text h1 {
+  font-size: 50px;
+}
 
 .main-header .main-header-text h1 span {
   color: rgb(0, 197, 199);

@@ -63,7 +63,7 @@
     </div>
     <div class="main-get-start">
         <h2>Ready to start?</h2>
-        <a href="/registration" class="get-start-button">
+        <a href="/list_of_users" class="get-start-button">
             Get started
         </a>
     </div>

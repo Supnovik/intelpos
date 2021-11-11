@@ -7,50 +7,41 @@ class Route
 	{
 		
 		$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-		if ('/' === $uri) {
-			{
+		switch ($uri) {
+			case '/':
 				include 'app/controllers/controller_main.php';
 				$controller = new Controller_Main;
 				$controller->action_index();
-							}
-			
-			
-		} elseif ('/main' === $uri ) {
-			
-			{
+			  break;
+			case '/main':
 				include 'app/controllers/controller_main.php';
 				$controller = new Controller_Main;
 				$controller->action_index();
-							}
-			
-		} elseif ('/login' === $uri ) {
-			
-			{
+			break;
+			case '/login':
 				include 'app/controllers/controller_login.php';
 				$controller = new Controller_Login;
 				$controller->action_index();
-				}
-			
-		}elseif ('/registration' === $uri ) {
-			
-			{
+				break;
+			case '/registration':
 				include 'app/controllers/controller_registration.php';
 				$controller = new Controller_Registration;
 				$controller->action_index();
-				}
-			
-		} elseif ('/admin' === $uri ) {
-			
-			{
+				break;
+			case '/list_of_users':
+				include 'app/controllers/controller_list_of_users.php';
+				$controller = new Controller_List_of_users;
+				$controller->action_index();
+				break;
+			case '/admin':
 				include 'app/controllers/controller_admin.php';
 				$controller = new Controller_Admin;
 				$controller->action_index();
-				}
-			
-		} else {
-			echo '<html><body><h1>Page Not Found</h1></body></html>';
-			echo $uri;
-		}
-
+				break;
+				default:
+				echo '<html><body><h1>Page Not Found</h1></body></html>';
+				echo $uri;
+				break;
+		  }
 	}
 }

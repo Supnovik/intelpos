@@ -82,20 +82,3 @@
   justify-content: space-between;
   align-items: center;
 }
-
-.input-box {
-  height: 44px;
-  width: 100%;
-  border: 1px solid rgba(31, 32, 65, 0.25);
-  box-sizing: border-box;
-  border-radius: 4px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  color: rgba(31, 32, 65, 0.75);
-  padding-left: 12px;
-  padding-right: 14px;
-}
-.input-box:hover {
-  border: 1px solid rgba(31, 32, 65, 0.75);
-}

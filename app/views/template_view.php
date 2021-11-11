@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <link rel="stylesheet" type="text/css" href="styles/login.css">
     <link rel="stylesheet" type="text/css" href="styles/registration.css">
+    <link rel="stylesheet" type="text/css" href="styles/list_of_users.css">
     <title>Main</title>
 </head>
     <body>

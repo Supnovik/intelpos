@@ -3,7 +3,7 @@
             <div class="login-container">
                 <h1>Welcome</h1>
                     <div class="textField">
-                        <input type="email" placeholder="Nickname" class="input-box">
+                        <input type="text" placeholder="Nickname" class="input-box">
                     </div>
 
                     <div class="textField">

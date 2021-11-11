@@ -1,0 +1,77 @@
+.page_of_users {
+  margin-top: 50px;
+  height: 100vh;
+}
+
+.our_users h1 {
+  text-align: center;
+  margin: 0 10% 0 10%;
+}
+
+.our_users-list {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.our_users-block {
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  width: 26%;
+  text-align: center;
+  padding: 60px 0 60px 0;
+  color: black;
+  border-radius: 20px;
+}
+
+.our_users-block.mathematic {
+  background-color: rgba(151, 224, 40, 0.75);
+}
+.our_users-block.mathematic:hover {
+  box-shadow: 0 0 25px rgb(0 0 0 / 20%);
+  background-color: rgba(151, 224, 40, 1);
+}
+.our_users-block.russian_language {
+  background-color: rgba(153, 50, 204, 0.75);
+}
+.our_users-block.russian_language:hover {
+  box-shadow: 0 0 25px rgb(0 0 0 / 20%);
+  background-color: rgba(153, 50, 204, 1);
+}
+.our_users-block.english_language {
+  background-color: rgba(255, 127, 80, 0.75);
+}
+.our_users-block.english_language:hover {
+  box-shadow: 0 0 25px rgb(0 0 0 / 20%);
+  background-color: rgba(255, 127, 80, 1);
+}
+
+.all_users {
+  margin-top: 50px;
+}
+
+.all_users-search {
+  margin-bottom: 30px;
+}
+
+.all_users-user {
+  display: block;
+  cursor: pointer;
+  margin-top: 10px;
+  height: 44px;
+  width: 100%;
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 40px;
+  padding-left: 12px;
+  padding-right: 14px;
+}
+.all_users-user:hover {
+  border: 1px solid rgba(31, 32, 65, 0.75);
+}

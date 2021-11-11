@@ -1,23 +1,25 @@
 <?php 
         
-class Controller_database extends Controller{
+class Model_database extends Controller{
     private $user = "supnovik";
     private $password = "qwe123";
     private $database = "data";
     private $table = "userss";
 
 
-  
-    public function createDatabase($database){
+    public function __construct(){
+
+    }
+
+    public function createDatabase(){
         try {
-            
             $conn = new PDO("mysql:host=localhost", $this->user, $this->password);
              
             
-            $sql = "CREATE DATABASE $database";
+            $sql = "CREATE DATABASE $this->database";
             
             $conn->exec($sql);
-            echo "Database $database has been created";
+            echo "Database $this->database has been created";
         }
         catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
@@ -61,23 +63,21 @@ class Controller_database extends Controller{
     }
 
     public function getContent(){
+        
+        $content = array(array('nickname'=> 'Supnovik','mail'=>'Sup'));
         try {
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
             $sql = "SELECT * FROM $this->table";
             $result = $conn->query($sql);
-            echo "<table><tr><th>Nickname</th><th>Mail</th><th>Password</th></tr>";
             while($row = $result->fetch()){
-                echo "<tr>";
-                    echo "<td>" . $row["nickname"] . "</td>";
-                    echo "<td>" . $row["mail"] . "</td>";
-                    echo "<td>" . $row["password"] . "</td>";
-                echo "</tr>";
+                $content = array_merge($content,array('nickname' => $row["nickname"],'mail' =>$row["mail"]));
             }
-            echo "</table>";
+            
         }
         catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
         }
+        return $content;
     }
 
     public function deleteContent($mail){
