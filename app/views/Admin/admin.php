@@ -1,7 +1,7 @@
 <form method="post">
-    <input  name="mail" id="test" value="" /><br/>
-    <input  name="nickname" id="test" value="" /><br/>
-    <input  name="password" id="test" value="" /><br/>
+    <input  name="mail" id="test" placeholder="mail" /><br/>
+    <input  name="nickname" id="test" placeholder="nickname" /><br/>
+    <input  name="password" id="test" placeholder="password" /><br/>
     <input type="submit" name="button3"
             class="button" value="createDatabase" />
     <input type="submit" name="button4"

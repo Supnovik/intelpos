@@ -70,7 +70,7 @@ class Model_database extends Controller{
             $sql = "SELECT * FROM $this->table";
             $result = $conn->query($sql);
             while($row = $result->fetch()){
-                $content = array_merge($content,array('nickname' => $row["nickname"],'mail' =>$row["mail"]));
+                $content[] = array('nickname' => $row["nickname"],'mail' =>$row["mail"]);
             }
             
         }
