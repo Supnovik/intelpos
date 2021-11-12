@@ -1,5 +1,10 @@
 <?php
 
+
+spl_autoload_register(function ($class_name) {
+    include 'app/controllers/'.$class_name . '.php';
+});
+
 class Route
 {
 
@@ -9,38 +14,31 @@ class Route
 		$uri = explode('/', $_SERVER['REQUEST_URI']);
 		switch ("/".$uri[1]) {
 			case '/':
-				include 'app/controllers/controller_main.php';
-				$controller = new Controller_Main;
+				$controller = new Controller_MainPage;
 				$controller->action_index();
 			  break;
 			case '/main':
-				include 'app/controllers/controller_main.php';
-				$controller = new Controller_Main;
+				$controller = new Controller_MainPage;
 				$controller->action_index();
 			break;
 			case '/login':
-				include 'app/controllers/controller_login.php';
-				$controller = new Controller_Login;
+				$controller = new Controller_LoginPage;
 				$controller->action_index();
 				break;
 			case '/registration':
-				include 'app/controllers/controller_registration.php';
-				$controller = new Controller_Registration;
+				$controller = new Controller_RegistrationPage;
 				$controller->action_index();
 				break;
 			case '/list_of_users':
-				include 'app/controllers/controller_list_of_users.php';
-				$controller = new Controller_List_of_users;
+				$controller = new Controller_List_of_usersPage;
 				$controller->action_index();
 				break;
 			case '/users':
-				include 'app/controllers/controller_profile_page.php';
 				$controller = new Controller_ProfilePage;
 				$controller->action_index();
 				break;
 			case '/admin':
-				include 'app/controllers/controller_admin.php';
-				$controller = new Controller_Admin;
+				$controller = new Controller_AdminPage;
 				$controller->action_index();
 				break;
 			default:

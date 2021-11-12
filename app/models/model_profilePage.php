@@ -1,6 +1,6 @@
 <?php
-include 'app\models\model_database.php';
-class Model_profilePage extends Model
+include 'app\models\Model_Database.php';
+class Model_ProfilePage extends Model
 {
     public function get_data($data=null)
 	{	

@@ -1,6 +1,6 @@
 <?php
-include 'app\models\model_database.php';
-class Model_List_of_users extends Model
+include 'app\models\Model_Database.php';
+class Model_List_of_usersPage extends Model
 {
 	
 	public function get_data($data=null)

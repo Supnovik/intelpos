@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Registration extends Controller
+class Controller_RegistrationPage extends Controller
 {
 	function action_index()
 	{	
