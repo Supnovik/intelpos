@@ -10,7 +10,7 @@
                         <input type="password" placeholder="Пароль" class="input-box">
                     </div>
 
-                    <button class="button-long">sign in</button>
+                    <input type="submit" name="button1" class="button-long" value="sign in" />
 
                     <div class="login-footer">
                         <p>No account on Intelpos?</p>
@@ -38,12 +38,6 @@
         function button1() {
             $database = new Controller_database;
             $database->addContent(filter_var(trim($_POST['nickname']),FILTER_SANITIZE_STRING),filter_var(trim($_POST['mail']),FILTER_SANITIZE_STRING),filter_var(trim($_POST['password']),FILTER_SANITIZE_STRING));
-        }
-
-        function button2() {
-            $database = new Controller_database;
-
-            $database->getContent();
         }
 
         function button3() {

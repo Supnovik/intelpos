@@ -1,7 +1,7 @@
 <?php 
         
 class Controller_database extends Controller{
-    private $user = "supnovik";
+    private $user = "Supnovik";
     private $password = "qwe123";
     private $database = "Supnovik";
     private $table = "Supnovik";
@@ -35,7 +35,7 @@ class Controller_database extends Controller{
         }
 
     }*/
-
+    
     public function createTable(){
         try {
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
@@ -84,7 +84,7 @@ class Controller_database extends Controller{
     public function deleteContent($mail){
         try {
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
-            $sql = "DELETE FROM $this->table WHERE mail = '$mail'";
+            $sql = "DELETE FROM $this->table WHERE mail = '$mail';";
             $affectedRowsNumber = $conn->exec($sql);
             echo "Удалено строк: $affectedRowsNumber";
         }

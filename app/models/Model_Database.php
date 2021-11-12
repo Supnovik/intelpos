@@ -1,7 +1,6 @@
 <?php 
-        
 class Model_Database{
-    protected $user = "supnovik";
+    protected $user = "Supnovik";
     protected $password = "qwe123";
     protected $database = "data";
     protected $table = "users";
@@ -11,6 +10,7 @@ class Model_Database{
         $this->database=$database;
         $this->table =$table;
     }
+
 
     public function createDatabase(){
         try {
@@ -26,6 +26,38 @@ class Model_Database{
 
     }
 
+    public function addUser($nickname,$mail,$password){
+        echo $nickname;
+        try {
+            $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+            $sql = "INSERT INTO $this->table (nickname, mail ,password) VALUES ('$nickname','$mail','$password')";
+            $affectedRowsNumber = $conn->exec($sql);
+            echo "В таблицу $this->table добавлено строк: $affectedRowsNumber";
+        }
+        catch (PDOException $e) {
+            echo "Database error: " . $e->getMessage();
+        }
+    }
+
+    public function getUsers(){
+        $content = array(array('nickname'=> 'Supnovik','mail'=>'Sup'));
+        try {
+            $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+            $sql = "SELECT * FROM $this->table";
+            $result = $conn->query($sql);
+            while($row = $result->fetch()){
+                $content[] = array('nickname' => (string)$row["nickname"],'mail' =>(string)$row["mail"]);
+            }
+        }
+        catch (PDOException $e) {
+            echo "Database error: " . $e->getMessage();
+        }
+        return $content;
+    }
+      
+    
+   
+/*
 
     public function createTable(){
         try {
@@ -66,6 +98,7 @@ class Model_Database{
             echo "Database error: " . $e->getMessage();
         }
     }
+    */
 }
 
         

@@ -1,5 +1,4 @@
 <?php
-include 'app\models\Model_List_of_usersPage.php';
 class Controller_List_of_usersPage extends Controller
 {
 	function action_index()

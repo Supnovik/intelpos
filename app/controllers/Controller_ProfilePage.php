@@ -1,5 +1,4 @@
 <?php
-include 'app\models\Model_ProfilePage.php';
 class Controller_ProfilePage extends Controller
 {
 	function action_index()

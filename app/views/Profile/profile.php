@@ -12,16 +12,15 @@
     </div>
     <div class="user-content-list">
                 <?php 
-                    $data = array(1,1,1,1,1);
                     foreach ($data as $value) {
                         echo '<div class="user-content-list-block">
                         <div>
-                            <a href="/set_of_cards" class="user-content-list-block-setofcards">
-                                Set of cards name
-                            </a>
-                            <a href="/backdrops" class="user-content-list-block-backdrop">
-                                Backdrop name
-                            </a>
+                            <a href="/set_of_cards" class="user-content-list-block-setofcards">'
+                                . $value['setofcardsName'] .
+                            '</a>
+                            <a href="/backdrops" class="user-content-list-block-backdrop">'
+                                . $value['backdropName'] .
+                            '</a>
                         </div>';
                         $isLogin =  true;
                         if ($isLogin)

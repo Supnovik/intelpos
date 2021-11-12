@@ -2,12 +2,14 @@
 
 
 spl_autoload_register(function ($class_name) {
-    include 'app/controllers/'.$class_name . '.php';
+	if (file_exists('app/controllers/'.$class_name . '.php'))
+    	require 'app/controllers/'.$class_name . '.php';
+	if (file_exists('app/models/'.$class_name . '.php'))
+		require 'app/models/'.$class_name . '.php';
 });
 
 class Route
 {
-
 	static function start()
 	{
 		
