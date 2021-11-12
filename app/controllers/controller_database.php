@@ -3,19 +3,14 @@
 class Controller_database extends Controller{
     private $user = "supnovik";
     private $password = "qwe123";
-    private $database = "data";
+    private $database = "Supnovik";
     private $table = "Supnovik";
 
-
-  
     public function createDatabase($database){
         try {
             
             $conn = new PDO("mysql:host=localhost", $this->user, $this->password);
-             
-            
             $sql = "CREATE DATABASE $database";
-            
             $conn->exec($sql);
             echo "Database $database has been created";
         }
@@ -27,28 +22,37 @@ class Controller_database extends Controller{
 
 
 
-    public function createTable($table){
+    /*public function createTable(){
         try {
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
-            $sql = "create table $table (id integer auto_increment primary key, nickname VARCHAR(30), mail VARCHAR(30), password VARCHAR(30));";
+            $sql = "create table $this->table (id integer auto_increment primary key, nickname VARCHAR(30), mail VARCHAR(30), password VARCHAR(30));";
             
             $conn->exec($sql);
-            echo "Table $table has been created";
+            echo "Table $this->table has been created";
         }
         catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
         }
 
+    }*/
+
+    public function createTable(){
+        try {
+            $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+            $sql = "create table $this->table (id integer auto_increment primary key, setofcardsName VARCHAR(30), backdropName VARCHAR(30));";
+            $conn->exec($sql);
+            echo "Table $this->table has been created";
+        }
+        catch (PDOException $e) {
+            echo "Database error: " . $e->getMessage();
+        }
     }
 
     public function addContent($nickname,$mail,$password){
         echo $nickname;
         try {
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
-
-            
             $sql = "INSERT INTO $this->table (nickname, mail ,password) VALUES ('$nickname','$mail','$password')";
-             
             $affectedRowsNumber = $conn->exec($sql);
             echo "В таблицу $this->table добавлено строк: $affectedRowsNumber";
         }
