@@ -9,7 +9,9 @@ class Model_ProfilePage extends Model
 	}
 
     public function create_set_of_cards($user,$set_of_cards_name){
-        $db = new Model_User($user,$set_of_cards_name);
+        $database = new Model_User($user,$user);
+        $database->addContent($set_of_cards_name,$set_of_cards_name);
+        $db = new Model_Setofcards($user,$set_of_cards_name);
         $db->createTable();
     }
 

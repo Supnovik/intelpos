@@ -36,10 +36,35 @@
                     }
                     if ($isLogin)
                         echo'
-                             <button id="addnew" class="user-content-list-block">
+                             <button id="addnew" class="button-long user-content-open-modal">
                                 Add new set of cards
                              </button>';
                 ?>
                 
     </div>
+
+    <div class="user-content-modal">
+        <div class="modal">
+        <button class="user-content-close-modal close">×</button>
+            <form method="post">
+                <h2>Create new SET OF CARDS and BACKDROP</h2>
+                <input name="setofcardsName" class="user-content-list-block" placeholder="Set of cards name" />
+                <input name="backdropName" class="user-content-list-block"  placeholder="Backdrop name" />
+                <input type="submit" name="createSetofcards" class="button-long user-content-close-modal" value="Create"/>
+            </form>
+        </div>
+    </div>
 </div>
+<script src="/app/views/Profile/profile.js"></script>
+
+<?php
+        if(array_key_exists('createSetofcards', $_POST)) {
+            createUser();
+        }
+        
+        function createUser() {
+            $uri = explode('/', $_SERVER['REQUEST_URI']);
+            $db = new Model_ProfilePage();
+            $db->create_set_of_cards($uri[2],filter_var(trim($_POST['setofcardsName']),FILTER_SANITIZE_STRING));
+        }
+    ?>
