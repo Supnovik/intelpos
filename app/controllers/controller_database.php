@@ -3,8 +3,8 @@
 class Controller_database extends Controller{
     private $user = "Supnovik";
     private $password = "qwe123";
-    private $database = "Supnovik";
-    private $table = "Supnovik";
+    private $database = "data";
+    private $table = "users";
 
     public function createDatabase($database){
         try {
@@ -22,7 +22,7 @@ class Controller_database extends Controller{
 
 
 
-    /*public function createTable(){
+    public function createUsersTable(){
         try {
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
             $sql = "create table $this->table (id integer auto_increment primary key, nickname VARCHAR(30), mail VARCHAR(30), password VARCHAR(30));";
@@ -34,7 +34,7 @@ class Controller_database extends Controller{
             echo "Database error: " . $e->getMessage();
         }
 
-    }*/
+    }
     
     public function createTable(){
         try {

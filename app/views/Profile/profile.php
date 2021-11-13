@@ -16,10 +16,10 @@
                         echo '<div class="user-content-list-block">
                         <div>
                             <a href="/set_of_cards" class="user-content-list-block-setofcards">'
-                                . $value['setofcardsName'] .
+                                . $value['setofcards'] .
                             '</a>
                             <a href="/backdrops" class="user-content-list-block-backdrop">'
-                                . $value['backdropName'] .
+                                . $value['backdrop'] .
                             '</a>
                         </div>';
                         $isLogin =  true;

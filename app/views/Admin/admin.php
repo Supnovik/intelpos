@@ -5,7 +5,7 @@
     <input type="submit" name="button3"
             class="button" value="createDatabase" />
     <input type="submit" name="button4"
-            class="button" value="createTable" />
+            class="button" value="createUsersTable" />
     <input type="submit" name="button1"
             class="button" value="addContent" />
     <input type="submit" name="button2"
@@ -47,7 +47,7 @@
         }
         function button4() {
             $database = new Controller_database;
-            $database->createTable(filter_var(trim($_POST['mail']),FILTER_SANITIZE_STRING));
+            $database->createUsersTable();
         }
         function button5() {
             $database = new Controller_database;
