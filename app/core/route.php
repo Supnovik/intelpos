@@ -43,6 +43,8 @@ class Route
 				$controller = new Controller_AdminPage;
 				$controller->action_index();
 				break;
+			case '/phpmyadmin':
+				break;
 			default:
 				echo '<html><body><h1>Page Not Found</h1></body></html>';
 				echo $uri[1];
