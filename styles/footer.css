@@ -1,9 +1,61 @@
-.registration-block {
-  width: 400px;
-  height: 480px;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  box-sizing: border-box;
-  box-shadow: 0 0 25px rgb(0 0 0 / 20%);
-  border-radius: 4px;
+.footer {
+  background-color: rgb(10, 29, 65);
+}
+.footer .description {
+  padding-top: 100px;
+  height: 262px;
+  display: flex;
+  justify-content: space-between;
+}
+.footer .description .company-name {
+  display: flex;
+  align-items: center;
+  height: 70px;
+}
+.footer .description .company-name img {
+  margin-right: 13px;
+}
+
+.footer .description > :nth-child(1),
+.footer .description > :nth-child(5) {
+  width: 260px;
+}
+.footer p {
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #fff;
+}
+.footer h3 {
+  margin: 0 0 25px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.content-container {
+  padding: 0 5%;
+}
+
+.footer .description > :nth-child(2) p,
+.footer .description > :nth-child(3) p,
+.footer .description > :nth-child(4) p {
+  color: #fff;
+}
+.footer .description > :nth-child(2) > div p,
+.footer .description > :nth-child(3) > div p,
+.footer .description > :nth-child(4) > div p {
+  margin-top: 20px;
+}
+.policy {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.policy img {
+  margin: 10px;
 }

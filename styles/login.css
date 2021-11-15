@@ -40,42 +40,6 @@
   margin-bottom: 10px;
 }
 
-.button-long {
-  margin-top: 20px;
-  position: relative;
-  height: 44px;
-  width: 100%;
-  display: block;
-  color: #fff;
-  background: rgb(0, 197, 199);
-  border-radius: 22px;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 15px;
-  text-transform: uppercase;
-}
-
-.button-short {
-  background: #fff;
-
-  width: 99px;
-  color: rgb(0, 197, 199);
-  border: 2px solid rgb(0, 197, 199);
-  border-radius: 22px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 15px;
-  text-transform: uppercase;
-  text-align: center;
-  text-decoration: none;
-  padding-top: 13px;
-  box-sizing: border-box;
-  height: 44px;
-}
-
 .login-footer {
   margin-top: 40px;
   display: flex;

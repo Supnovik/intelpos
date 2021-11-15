@@ -5,13 +5,12 @@
             Users created by our team and possibly interesting sets of cards for you
         </h1>
         <div class="our_users-list">
-            <a href='/users/mathematic' class="our_users-block mathematic">Mathematic</a>
-            <a href='/users/russian_language' class="our_users-block russian_language">Rules of the Russian language</a>
-            <a href='/users/english_language' class="our_users-block english_language">Rules of the English language</a>
+            <a href='/users/Mathematic' class="our_users-block mathematic">Mathematic</a>
+            <a href='/users/Rules of the Russian language' class="our_users-block russian_language">Rules of the Russian language</a>
+            <a href='/users/Rules of the English language' class="our_users-block english_language">Rules of the English language</a>
         </div>
         <div class="all_users">
             <div class="all_users-search">
-               
                     <input type="text" placeholder="Search users by nickname" class="input-box">
             </div>
             <div class="all_users-list">

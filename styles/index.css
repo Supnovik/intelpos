@@ -27,6 +27,40 @@ p {
   flex-direction: column;
   margin: 0 15% 0 15%;
 }
+.button-long {
+  margin-top: 20px;
+  position: relative;
+  height: 44px;
+  width: 100%;
+  display: block;
+  color: #fff;
+  background: rgb(0, 197, 199);
+  border-radius: 22px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+}
+
+.button-short {
+  background: #fff;
+  width: 99px;
+  color: rgb(0, 197, 199);
+  border: 2px solid rgb(0, 197, 199);
+  border-radius: 22px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  padding-top: 13px;
+  box-sizing: border-box;
+  height: 44px;
+}
 
 .input-box {
   height: 44px;
@@ -43,4 +77,24 @@ p {
 }
 .input-box:hover {
   border: 1px solid rgba(31, 32, 65, 0.75);
+}
+.email-support {
+  position: relative;
+}
+.email-support-text {
+  height: 44px;
+  width: 100%;
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(31, 32, 65, 0.75);
+  padding-left: 12px;
+  padding-right: 14px;
+}
+
+.email-support-button {
+  padding-top: 8px;
 }

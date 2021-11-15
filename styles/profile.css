@@ -128,7 +128,6 @@
   background: none;
   border: none;
 }
-/* свойства для кнопки "Закрыть" при нахождении её в фокусе или наведении */
 .user-content-modal .close:focus,
 .user-content-modal .close:hover {
   color: #000;

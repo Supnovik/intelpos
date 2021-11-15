@@ -2,8 +2,8 @@
 
 class Controller_LoginPage extends Controller
 {
-	function action_index()
-	{	
-		$this->view->generate('Login/login.php', 'template_view.php');
-	}
+    function action_index()
+    {
+        $this->view->generate('Login/login.php', 'template_view.php');
+    }
 }
