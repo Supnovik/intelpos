@@ -3,11 +3,11 @@
             <div class="login-container">
                 <h1>Welcome</h1>
                     <div class="textField">
-                        <input type="email" placeholder="Email" class="input-box">
+                        <input type="email" required placeholder="Email" class="input-box">
                     </div>
 
                     <div class="textField">
-                        <input type="password" placeholder="Пароль" class="input-box">
+                        <input type="password" required placeholder="Пароль" class="input-box">
                     </div>
 
                     <input type="submit" name="button1" class="button-long" value="sign in" />

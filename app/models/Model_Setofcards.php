@@ -43,13 +43,13 @@ class Model_Setofcards extends Model_Database
         return $content;
     }
 
-    public function deleteContent($termin)
+    public function deleteSetofcards()
     {
         try {
             $conn = new PDO('mysql:host=localhost;dbname=' . $this->database, $this->user, $this->password);
-            $sql = "DELETE FROM $this->table WHERE termin = '$termin'";
+            $sql = "Drop TABLE $this->table";
             $affectedRowsNumber = $conn->exec($sql);
-            echo "Удалено строк: $affectedRowsNumber";
+            echo "Удалена таблица: $this->table";
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
         }

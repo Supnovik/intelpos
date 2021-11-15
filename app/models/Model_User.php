@@ -11,6 +11,7 @@ class Model_User extends Model_Database
             $sql = "CREATE DATABASE $this->database";
             $conn->exec($sql);
             echo "Database $this->database has been created";
+            $conn = null;
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
         }
@@ -24,6 +25,7 @@ class Model_User extends Model_Database
             $sql = "create table $this->table (id integer auto_increment primary key, setofcards VARCHAR(30), backdrop VARCHAR(30));";
             $conn->exec($sql);
             echo "Table $this->table has been created";
+            $conn = null;
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
         }
@@ -36,6 +38,7 @@ class Model_User extends Model_Database
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
             $sql = "INSERT INTO $this->table (setofcards, backdrop) VALUES ('$setofcards','$backdrop')";
             $affectedRowsNumber = $conn->exec($sql);
+            $conn = null;
             echo "В таблицу $this->table добавлено строк: $affectedRowsNumber";
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
@@ -44,12 +47,12 @@ class Model_User extends Model_Database
 
     public function getContent()
     {
-
         $content = array();
         try {
             $conn = new PDO('mysql:host=localhost;dbname=' . $this->database, $this->user, $this->password);
             $sql = 'SELECT * FROM ' . $this->table;
             $result = $conn->query($sql);
+            $conn = null;
             while ($row = $result->fetch()) {
                 $content[] = array('setofcards' => $row['setofcards'], 'backdrop' => $row['backdrop']);
             }
@@ -65,6 +68,7 @@ class Model_User extends Model_Database
             $conn = new PDO('mysql:host=localhost;dbname=' . $this->database, $this->user, $this->password);
             $sql = "DELETE FROM $this->table WHERE setofcards = '$setofcards'";
             $affectedRowsNumber = $conn->exec($sql);
+            $conn = null;
             echo "Удалено строк: $affectedRowsNumber";
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();

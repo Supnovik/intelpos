@@ -8,13 +8,12 @@
         A service that will help you make the process of memorization and learning as effective as possible.
         </p>
         <div class="buttons" >
-            <button id="begin" >Start</button>
-            <button id="more" >More about IntelPos &nbsp;
+            <a href="#main-get-start" id="begin" >Start</a>
+            <a href="#description" id="more" >More about IntelPos &nbsp;
                 <img width="20px" src="https://thumb.tildacdn.com/tild6232-6262-4831-b462-333336373038/-/format/webp/image.png">
-            </button>
+            </a>
         </div>
     </div>
-
 
     <img width="50%" height="70%" src="https://euroroaming.ru/wp-content/uploads/2018/01/obuch-za-rubezh.jpg" />
 
@@ -22,7 +21,7 @@
     
 <main class="container">
     
-    <div class="description">
+    <div id="description" class="description">
         <h2>Advantages</h2>
         <div class="description-block">
           <div class="description-block-text text-left">
@@ -61,7 +60,7 @@
             <div class="ip-slideshow"></div>
         </div>
     </div>
-    <div class="main-get-start">
+    <div id="main-get-start" class="main-get-start">
         <h2>Ready to start?</h2>
         <a href="/list_of_users" class="get-start-button">
             Get started

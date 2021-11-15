@@ -32,8 +32,8 @@
   justify-content: space-between;
 }
 
-.main-header .main-header-text button#begin,
-.main-header .main-header-text button#more {
+.main-header .main-header-text a#begin,
+.main-header .main-header-text a#more {
   width: 45%;
   height: 50px;
   cursor: pointer;
@@ -41,9 +41,13 @@
   font-family: "Gilroy", Arial, sans-serif;
   line-height: 1.55;
   font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.main-header .main-header-text button#begin {
+.main-header .main-header-text a#begin {
   color: #ffffff;
   border-width: 1px;
   border-radius: 30px;
@@ -52,16 +56,12 @@
   border-color: transparent;
   border-style: solid;
 }
-.main-header .main-header-text button#more {
+.main-header .main-header-text a#more {
   color: #70c5c7;
   background-color: #fff;
   background-position: center center;
   border-color: transparent;
   border-style: solid;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 
 .main-slider {

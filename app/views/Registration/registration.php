@@ -3,19 +3,19 @@
             <div class="login-container">
                 <h1>Welcome</h1>
                     <div class="textField">
-                        <input type="text" name=nickname placeholder="Nickname" class="input-box">
+                        <input required type="text" name=nickname placeholder="Nickname" class="input-box">
                     </div>
 
                     <div class="textField">
-                        <input type="email" name=mail placeholder="Email" class="input-box">
+                        <input required type="email" name=mail placeholder="Email" class="input-box">
                     </div>
 
                     <div class="textField">
-                        <input type="password" name=password placeholder="Password" class="input-box">
+                        <input required type="password" name=password placeholder="Password" class="input-box">
                     </div>
 
                     <div class="textField">
-                        <input type="password" name=password1 placeholder="Password" class="input-box">
+                        <input required type="password" name=password1 placeholder="Password" class="input-box">
                     </div>
 
                     <input type="submit" name="createUser" class="button-long" value="create" />

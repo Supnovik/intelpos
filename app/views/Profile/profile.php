@@ -12,26 +12,31 @@
     </div>
     <div class="user-content-list">
                 <?php 
+                $isLogin =  true;
                     foreach ($data as $value) {
-                        echo '<div class="user-content-list-block">
-                        <div>
-                            <a href="/set_of_cards" class="user-content-list-block-setofcards">'
-                                . $value['setofcards'] .
-                            '</a>
-                            <a href="/backdrops" class="user-content-list-block-backdrop">'
-                                . $value['backdrop'] .
-                            '</a>
-                        </div>';
-                        $isLogin =  true;
+                        echo '<form method="post" class="user-content-list-block">
+                            
+                                <div>
+                                    <a href="/set_of_cards" class="user-content-list-block-setofcards">   
+                                    <input type="text" name="setofcardsName" class="noEvents" value="'.$value['setofcards'].'" />
+                                    </a>
+                                    <a href="/backdrops" class="user-content-list-block-backdrop">'
+                                        . $value['backdrop'] .
+                                    '</a>
+                                </div>';
+                        
                         if ($isLogin)
-                        echo'<form method="post">
+                        echo'   
+                            <div>
                                 <input type="submit" name="add" id="edit" class="user-content-list-block-button" value="edit" />
-                                <input type="submit" name="add" id="delete" class="user-content-list-block-button" value="delete" />
-                             </form></div>';
+                                <input type="submit" name="delete" id="delete" class="user-content-list-block-button" value="delete" />
+                             </div>
+                                </form>';
                         else
-                        echo'<form method="post">
+                        echo'
+                        
                                 <input type="submit" name="add" id="edit" class="user-content-list-block-button" value="add" />
-                             </form></div>';
+                             </form>';
                         
                     }
                     if ($isLogin)
@@ -47,10 +52,9 @@
         <div class="modal">
         <button class="user-content-close-modal close">×</button>
             <form method="post">
-                <h2>Create new SET OF CARDS and BACKDROP</h2>
-                <input name="setofcardsName" class="user-content-list-block" placeholder="Set of cards name" />
-                <input name="backdropName" class="user-content-list-block"  placeholder="Backdrop name" />
-                <input type="submit" name="createSetofcards" class="button-long user-content-close-modal" value="Create"/>
+                <h2>Enter the name of the set of cards</h2>
+                <input name="setofcardsName" class="user-content-list-block" required autocomplete="off" placeholder="Set of cards name" />
+                <input type="submit" name="createSetofcards" class="button-long user-content-close-modal"  value="Create"/>
             </form>
         </div>
     </div>
@@ -58,13 +62,27 @@
 <script src="/app/views/Profile/profile.js"></script>
 
 <?php
+        
         if(array_key_exists('createSetofcards', $_POST)) {
-            createUser();
+            createSetofcards();
+            updateState();
+        }
+        if(array_key_exists('delete', $_POST)) {
+            deleteSetofcards();
+            updateState();
         }
         
-        function createUser() {
+        function createSetofcards() {
             $uri = explode('/', $_SERVER['REQUEST_URI']);
             $db = new Model_ProfilePage();
             $db->create_set_of_cards($uri[2],filter_var(trim($_POST['setofcardsName']),FILTER_SANITIZE_STRING));
+        }
+        function deleteSetofcards() {
+            $uri = explode('/', $_SERVER['REQUEST_URI']);
+            $db = new Model_ProfilePage();
+            $db->delete_set_of_cards($uri[2],filter_var(trim($_POST['setofcardsName']),FILTER_SANITIZE_STRING));
+        }
+        function updateState(){
+            echo "<meta http-equiv='refresh' content='0'>";
         }
     ?>

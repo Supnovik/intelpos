@@ -135,3 +135,9 @@
   cursor: pointer;
   opacity: 0.75;
 }
+
+.noEvents {
+  pointer-events: none;
+  border: none;
+  background-color: inherit;
+}
