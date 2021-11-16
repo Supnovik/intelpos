@@ -58,6 +58,27 @@ class Model_Database
         return $content;
     }
 
+    public function checking_for_existence($nickname,$password=null)
+    {
+        try {
+            $content = array();
+            $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+            if ($password == null)
+                $sql = "SELECT * FROM $this->table WHERE nickname = '$nickname'";
+            else
+                $sql = "SELECT * FROM $this->table WHERE nickname = '$nickname' AND password = '$password'";
+            $result = $conn->query($sql);
+            while ($row = $result->fetch()) {
+                $content[] = array('nickname' => (string)$row["nickname"], 'mail' => (string)$row["mail"]);
+            }
+            if (count($content)!=0)
+                return true;
+            else
+                return false;
+        } catch (PDOException $e) {
+            echo "Database error: " . $e->getMessage();
+        }
+    }
 
     /*
 

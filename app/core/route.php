@@ -1,21 +1,26 @@
 <?php
 
+include 'app/core/autoloading.php';
 
-spl_autoload_register(function ($class_name) {
-	if (file_exists('app/controllers/'.$class_name . '.php'))
-    	require 'app/controllers/'.$class_name . '.php';
-	if (file_exists('app/models/'.$class_name . '.php'))
-		require 'app/models/'.$class_name . '.php';
-});
+global $isLogin;
+global $user;
 
 class Route
 {
+	
 	static function start()
 	{
-		
+		$GLOBALS["isLogin"] = false;
+		if (isset($_COOKIE['user']))
+			{
+				
+				$GLOBALS["isLogin"] = true;
+				$GLOBALS["user"] = $_COOKIE['user'];
+			}
 		$uri = explode('/', $_SERVER['REQUEST_URI']);
 		switch ("/".$uri[1]) {
 			case '/':
+				
 				$controller = new Controller_MainPage;
 				$controller->action_index();
 			  break;

@@ -22,17 +22,4 @@ class Model_ProfilePage extends Model
         $db = new Model_Setofcards($user, $set_of_cards_name);
         $db->deleteSetofcards();
     }
-
-    public function checking_for_existence($data)
-    {
-
-        $data = (string)$data;
-        $db = new Model_Database("data", "users");
-        $flag = false;
-        foreach ($db->getUsers() as $value) {
-            if (array_search($data, $value))
-                $flag = true;
-        }
-        return $flag;
-    }
 }

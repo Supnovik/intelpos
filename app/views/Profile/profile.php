@@ -11,41 +11,36 @@
         </div>
     </div>
     <div class="user-content-list">
-                <?php 
-                $isLogin =  true;
-                    foreach ($data as $value) {
-                        echo '<form method="post" class="user-content-list-block">
+                <?php
+                    foreach ($data as $value):?>
+                        <form method="post" class="user-content-list-block">
                             
                                 <div>
                                     <a href="/set_of_cards" class="user-content-list-block-setofcards">   
-                                    <input type="text" name="setofcardsName" class="noEvents" value="'.$value['setofcards'].'" />
+                                    <input type="text" name="setofcardsName" class="noEvents" value="<?=$value['setofcards'] ?>" />
                                     </a>
-                                    <a href="/backdrops" class="user-content-list-block-backdrop">'
-                                        . $value['backdrop'] .
-                                    '</a>
-                                </div>';
+                                    <a href="/backdrops" class="user-content-list-block-backdrop">
+                                        <?=$value['backdrop'] ?>
+                                    </a>
+                                </div>
                         
-                        if ($isLogin)
-                        echo'   
+                        
+                        <?php
+                        $uri = explode('/', $_SERVER['REQUEST_URI']);
+                        if ($GLOBALS["user"] == $uri[2]):?>
                             <div>
                                 <input type="submit" name="add" id="edit" class="user-content-list-block-button" value="edit" />
                                 <input type="submit" name="delete" id="delete" class="user-content-list-block-button" value="delete" />
                              </div>
-                                </form>';
-                        else
-                        echo'
-                        
+                                </form>
+                        <?php else: if ($GLOBALS["isLogin"]):?>
                                 <input type="submit" name="add" id="edit" class="user-content-list-block-button" value="add" />
-                             </form>';
-                        
-                    }
-                    if ($isLogin)
-                        echo'
+                             </form>
+                        <?php endif; endif; endforeach; if ($GLOBALS["isLogin"]):?>
                              <button id="addnew" class="button-long user-content-open-modal">
                                 Add new set of cards
-                             </button>';
-                ?>
-                
+                             </button>
+                             <?php endif; ?>
     </div>
 
     <div class="user-content-modal">

@@ -27,20 +27,3 @@
             </div>
         </form>
 </div>
-
-<?php
-        if(array_key_exists('createUser', $_POST)) {
-            createUser();
-        }
-        
-        function createUser() {
-            $nickname = filter_var(trim($_POST['nickname']),FILTER_SANITIZE_STRING);
-            $mail = filter_var(trim($_POST['mail']),FILTER_SANITIZE_STRING);
-            $password = filter_var(trim($_POST['password']),FILTER_SANITIZE_STRING);
-            $databaseOfUsers = new Model_Database('data','users');
-            $databaseOfUsers->addUser($nickname,$mail,$password);
-            $Usersdatabase = new Model_User($nickname,$nickname);
-            $Usersdatabase->createDatabase();
-            $Usersdatabase->createTable();
-        }
-    ?>
