@@ -10,33 +10,102 @@
 }
 
 .navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1100;
   height: 80px;
   display: flex;
   flex-direction: row;
-  padding: 0 60px 0 60px;
+  padding: 0 30px 0 30px;
   background-color: rgb(10, 29, 65);
   justify-content: space-between;
   align-items: center;
 }
 
-.navbar .sign {
-  margin: 0 40px 0 0;
-  width: 250px;
+.navbar .sign-user {
+  position: relative;
+  height: 90%;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar .sign-user .sign-user-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+}
+.navbar .sign-user .sign-user-img img {
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.navbar .sign-user .sign-user-img img:hover {
+  border: 2px solid #fff;
+}
+
+.navbar .sign-user a {
+  font-size: 16px;
+
+  color: rgba(255, 255, 255, 0.65);
+  padding: 10px 20px 10px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  border-radius: 10px;
+}
+
+.navbar .sign-user a:hover {
+  color: rgba(255, 255, 255, 1);
+  border: 2px solid #fff;
+}
+
+.navbar .sign-user button {
+  font-size: 16px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.65);
+  padding: 10px 20px 10px 20px;
+  background-color: rgb(255, 0, 0, 0.65);
+  border: none;
+  border-radius: 10px;
+}
+
+.navbar .sign-user button:hover {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgb(255, 0, 0, 1);
+}
+
+.navbar .sign-user .my-profile,
+.navbar .sign-user .sign-out {
+  display: none;
+}
+
+.navbar .active {
+  width: 300px;
   justify-content: space-between;
 }
-.navbar .sign a {
+
+.sign-buttons {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .sign-buttons a {
   color: rgb(255, 255, 255);
   padding: 10px 20px 10px 20px;
+  text-align: center;
   text-decoration: none;
 }
 
-.navbar .sign .sign-up {
+.navbar .sign-buttons .sign-up {
   color: #fff;
   background-color: rgb(0, 197, 199);
   border-radius: 10px;
 }
-.navbar .sign .sign-in {
+.navbar .sign-buttons .sign-in {
   border: 1px solid #fff;
   border-radius: 5px;
 }

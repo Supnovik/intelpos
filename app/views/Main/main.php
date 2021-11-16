@@ -21,10 +21,10 @@
     
 <main class="container">
     
-    <div id="description" class="description">
+    <div id="description" class="main-description">
         <h2>Advantages</h2>
-        <div class="description-block">
-          <div class="description-block-text text-left">
+        <div class="main-description-block">
+          <div class="main-description-block-text text-left">
             <h3>Ваш ум, наше – все остальное.</h3>
             <p>
               От карточек, удобных для изучения иностранных языков, до игр на
@@ -32,16 +32,16 @@
               именно вам.
             </p>
           </div>
-          <div class="description-block-img">
+          <div class="main-description-block-img">
             <img src="app/views/Main/1.png" />
           </div>
         </div>
 
-        <div class="description-block">
-          <div class="description-block-img">
+        <div class="main-description-block">
+          <div class="main-description-block-img">
             <img src="app/views/Main/1.png" />
           </div>
-          <div class="description-block-text text-right">
+          <div class="main-description-block-text text-right">
             <h3>Ваш ум, наше – все остальное.</h3>
             <p>
               От карточек, удобных для изучения иностранных языков, до игр на

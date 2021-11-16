@@ -16,11 +16,12 @@
     <title>Main</title>
 </head>
     <body>
-        <?php include 'app/views/sections/navbar.php' ?>
-
-        <?php include 'app/views/'.$content_view; ?>
-
-        <?php include 'app/views/sections/footer.php' ?>
+        
+            <?php include 'app/views/sections/navbar.php' ?>
+            <div class="content">
+                <?php include 'app/views/'.$content_view; ?>
+            </div>
+            <?php include 'app/views/sections/footer.php' ?>
         
     </body>
 </html>

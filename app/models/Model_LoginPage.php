@@ -7,7 +7,7 @@
                 $db = new Model_Database('data','users');
                 if ($db->checking_for_existence($nickname,$password))
                 {
-                    setcookie('user',$nickname,time()+120,'/');
+                    setcookie('user',$nickname,time()+1200,'/');
                     header('Location: /users/'.$nickname);
                 }
                 

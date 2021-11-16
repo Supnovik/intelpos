@@ -13,7 +13,6 @@ class Route
 		$GLOBALS["isLogin"] = false;
 		if (isset($_COOKIE['user']))
 			{
-				
 				$GLOBALS["isLogin"] = true;
 				$GLOBALS["user"] = $_COOKIE['user'];
 			}
