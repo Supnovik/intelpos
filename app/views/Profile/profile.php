@@ -12,31 +12,27 @@
     </div>
     <div class="user-content-list">
                 <?php
+                    $uri = explode('/', $_SERVER['REQUEST_URI']);
                     foreach ($data as $value):?>
                         <form method="post" class="user-content-list-block">
-                            
-                                <div>
-                                    <a href="/set_of_cards" class="user-content-list-block-setofcards">   
-                                    <input type="text" name="setofcardsName" class="noEvents" value="<?=$value['setofcards'] ?>" />
-                                    </a>
-                                    <a href="/backdrops" class="user-content-list-block-backdrop">
-                                        <?=$value['backdrop'] ?>
-                                    </a>
-                                </div>
-                        
-                        
-                        <?php
-                        $uri = explode('/', $_SERVER['REQUEST_URI']);
-                        if ($GLOBALS["user"] == $uri[2]):?>
+                            <h2><?=$value['setofcards'] ?></h2>
+                            <input type="text" style="display: none" name="setofcardsName" value="<?=$value['setofcards'] ?>"></input>
                             <div>
-                                <input type="submit" name="add" id="edit" class="user-content-list-block-button" value="edit" />
+                                <a href="/users/<?=$uri[2]?>/setofcards/<?=$value['setofcards']?>" class="user-content-list-block-setofcards">Set of cards</a>
+                                <a href="/users/<?=$uri[2]?>/backdrops/<?=$value['setofcards']?>" class="user-content-list-block-backdrop">
+                                    Backdrops
+                                </a>
+                        <?php
+                        if ($GLOBALS["user"] == $uri[2]):?>
+                                <input type="submit" name="edit" id="edit" class="user-content-list-block-button" value="edit" />
                                 <input type="submit" name="delete" id="delete" class="user-content-list-block-button" value="delete" />
-                             </div>
-                                </form>
+                            </div>
+                        </form>
                         <?php else: if ($GLOBALS["isLogin"]):?>
                                 <input type="submit" name="add" id="edit" class="user-content-list-block-button" value="add" />
-                             </form>
-                        <?php endif; endif; endforeach; if ($GLOBALS["isLogin"]):?>
+                            </div>
+                        </form>
+                        <?php endif; endif; endforeach; if ($GLOBALS["user"] == $uri[2]):?>
                              <button id="addnew" class="button-long user-content-open-modal">
                                 Add new set of cards
                              </button>
@@ -48,7 +44,7 @@
         <button class="user-content-close-modal close">×</button>
             <form method="post">
                 <h2>Enter the name of the set of cards</h2>
-                <input name="setofcardsName" class="user-content-list-block" required autocomplete="off" placeholder="Set of cards name" />
+                <input maxlength="12" name="setofcardsName" class="user-content-list-block" required autocomplete="off" placeholder="Set of cards name" />
                 <input type="submit" name="createSetofcards" class="button-long user-content-close-modal"  value="Create"/>
             </form>
         </div>
@@ -62,20 +58,25 @@
             createSetofcards();
             updateState();
         }
+
         if(array_key_exists('delete', $_POST)) {
             deleteSetofcards();
             updateState();
         }
-        
+
+        if(array_key_exists('add', $_POST)) {
+            createSetofcards();
+            updateState();
+        }
         function createSetofcards() {
-            $uri = explode('/', $_SERVER['REQUEST_URI']);
+            
             $db = new Model_ProfilePage();
-            $db->create_set_of_cards($uri[2],filter_var(trim($_POST['setofcardsName']),FILTER_SANITIZE_STRING));
+            $db->create_set_of_cards($GLOBALS["user"],filter_var(trim($_POST['setofcardsName']),FILTER_SANITIZE_STRING));
         }
         function deleteSetofcards() {
-            $uri = explode('/', $_SERVER['REQUEST_URI']);
+           
             $db = new Model_ProfilePage();
-            $db->delete_set_of_cards($uri[2],filter_var(trim($_POST['setofcardsName']),FILTER_SANITIZE_STRING));
+            $db->delete_set_of_cards($GLOBALS["user"],filter_var(trim($_POST['setofcardsName']),FILTER_SANITIZE_STRING));
         }
         function updateState(){
             echo "<meta http-equiv='refresh' content='0'>";

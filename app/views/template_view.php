@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/profile.css">
     <link rel="stylesheet" type="text/css" href="/styles/registration.css">
     <link rel="stylesheet" type="text/css" href="/styles/list_of_users.css">
+    <link rel="stylesheet" type="text/css" href="/styles/setofcards.css">
     <title>Main</title>
 </head>
     <body>

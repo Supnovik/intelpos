@@ -1,7 +1,7 @@
 .logo {
   display: block;
-  width: 150px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   box-sizing: border-box;
   background-image: url(../imgs/logo.png);
   background-position: center;
@@ -12,42 +12,46 @@
 .navbar {
   position: -webkit-sticky;
   position: sticky;
+  width: 100%;
   top: 0;
   z-index: 1100;
-  height: 80px;
+  height: 50px;
+  background-color: rgb(10, 29, 65);
+}
+
+.navbar-content {
+  padding-top: 5px;
   display: flex;
   flex-direction: row;
-  padding: 0 30px 0 30px;
-  background-color: rgb(10, 29, 65);
+  height: 40px;
   justify-content: space-between;
   align-items: center;
 }
 
-.navbar .sign-user {
+.navbar-content .sign-user {
   position: relative;
   height: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.navbar .sign-user .sign-user-img {
+.navbar-content .sign-user .sign-user-img {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
 }
-.navbar .sign-user .sign-user-img img {
+.navbar-content .sign-user .sign-user-img img {
   cursor: pointer;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
-.navbar .sign-user .sign-user-img img:hover {
+.navbar-content .sign-user .sign-user-img img:hover {
   border: 2px solid #fff;
 }
 
-.navbar .sign-user a {
+.navbar-content .sign-user a {
   font-size: 16px;
 
   color: rgba(255, 255, 255, 0.65);
@@ -56,12 +60,12 @@
   border-radius: 10px;
 }
 
-.navbar .sign-user a:hover {
+.navbar-content .sign-user a:hover {
   color: rgba(255, 255, 255, 1);
   border: 2px solid #fff;
 }
 
-.navbar .sign-user button {
+.navbar-content .sign-user button {
   font-size: 16px;
   cursor: pointer;
   color: rgba(255, 255, 255, 0.65);
@@ -71,17 +75,17 @@
   border-radius: 10px;
 }
 
-.navbar .sign-user button:hover {
+.navbar-content .sign-user button:hover {
   color: rgba(255, 255, 255, 1);
   background-color: rgb(255, 0, 0, 1);
 }
 
-.navbar .sign-user .my-profile,
-.navbar .sign-user .sign-out {
+.navbar-content .sign-user .my-profile,
+.navbar-content .sign-user .sign-out {
   display: none;
 }
 
-.navbar .active {
+.navbar-content .active {
   width: 300px;
   justify-content: space-between;
 }
@@ -93,19 +97,19 @@
   align-items: center;
 }
 
-.navbar .sign-buttons a {
+.navbar-content .sign-buttons a {
   color: rgb(255, 255, 255);
   padding: 10px 20px 10px 20px;
   text-align: center;
   text-decoration: none;
 }
 
-.navbar .sign-buttons .sign-up {
+.navbar-content .sign-buttons .sign-up {
   color: #fff;
   background-color: rgb(0, 197, 199);
   border-radius: 10px;
 }
-.navbar .sign-buttons .sign-in {
+.navbar-content .sign-buttons .sign-in {
   border: 1px solid #fff;
   border-radius: 5px;
 }

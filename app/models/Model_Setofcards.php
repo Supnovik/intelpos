@@ -1,8 +1,13 @@
 <?php
 
-class Model_Setofcards extends Model_Database
+class Model_SetOfCards extends Model_Database
 {
-
+    public function get_data($user = null, $data = null)
+    {
+        
+        return $this->getContent();
+    }
+    
     public function createTable()
     {
         try {
@@ -29,7 +34,7 @@ class Model_Setofcards extends Model_Database
 
     public function getContent()
     {
-        $content = array();
+        $content = array('termin' => 'Supnovik', 'definition' => 'Matan', 'level' => 10);
         try {
             $conn = new PDO('mysql:host=localhost;dbname=' . $this->database, $this->user, $this->password);
             $sql = 'SELECT * FROM ' . $this->table;
@@ -43,7 +48,7 @@ class Model_Setofcards extends Model_Database
         return $content;
     }
 
-    public function deleteSetofcards()
+    public function deleteSetOfCards()
     {
         try {
             $conn = new PDO('mysql:host=localhost;dbname=' . $this->database, $this->user, $this->password);

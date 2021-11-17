@@ -1,4 +1,7 @@
 <div class="navbar">
+    <div class="navbar-content container">
+
+    
     <a class="logo" href="/"></a>
     <?php if($GLOBALS["isLogin"]):?>
     <div class="sign-user">
@@ -14,6 +17,7 @@
         <a href="/registration" class="sign-up">Sign up</a>
     </div>
     <?php endif;?>
+    </div>
 </div>
 <script src="/app/views/sections/navbar.js"></script>
 <?php 

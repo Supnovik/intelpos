@@ -40,6 +40,16 @@
 .user-content-list-block:hover {
   border: 1px solid rgba(31, 32, 65, 0.75);
 }
+
+.user-content-list-block div {
+  display: flex;
+}
+
+.user-content-list-block h2 {
+  text-align: center;
+  width: 40%;
+}
+
 .user-content-list-block-setofcards,
 .user-content-list-block-backdrop,
 .user-content-list-block-button {

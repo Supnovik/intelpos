@@ -1,0 +1,16 @@
+.setofcards {
+  height: 90vh;
+
+  display: grid;
+  grid-template-columns: 0.5fr 2fr;
+}
+.setofcards-sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: cadetblue;
+}
+.setofcards-content {
+  display: flex;
+  padding: 40px 60px;
+}

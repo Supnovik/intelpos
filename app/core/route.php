@@ -40,8 +40,35 @@ class Route
 				$controller->action_index();
 				break;
 			case '/users':
-				$controller = new Controller_ProfilePage;
-				$controller->action_index();
+				$db = new Model_Database('data','users');
+				$uri = explode('/', $_SERVER['REQUEST_URI']);
+				$flag = false;
+				if ($db->checking_for_existence($uri[2]) && !isset($uri[3])){
+					$flag = true;
+					$controller = new Controller_ProfilePage;
+					$controller->action_index();
+				}
+				if ($db->checking_for_existence($uri[2]) && isset($uri[3]) && isset($uri[4])){
+					$db = new Model_User($uri[2],$uri[2]);
+					if($db->checking_setofcards_for_existence($uri[4]) && $uri[3] == 'setofcards')
+					{
+						$flag = true;
+						$controller = new Controller_SetOfCards;
+						$controller->action_index();
+					}
+					elseif($db->checking_setofcards_for_existence($uri[4]) && $uri[3] == 'backdrops')
+					{
+						$flag = true;
+						$controller = new Controller_ProfilePage;
+						$controller->action_index();
+					}
+				}
+				if (!$flag)
+				{
+					echo '<html><body><h1>Page Not Found</h1></body></html>';
+					print_r($uri) ;
+				}
+				
 				break;
 			case '/admin':
 				$controller = new Controller_AdminPage;
