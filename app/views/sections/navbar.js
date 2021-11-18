@@ -15,4 +15,3 @@ var signUserImg = document
       signOut.style.display = "block";
     }
   });
-console.log(1);

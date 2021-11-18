@@ -10,7 +10,44 @@
   padding: 10px;
   background-color: cadetblue;
 }
+
+.setofcards-sidebar-input {
+  display: none;
+}
+
+.setofcards-sidebar-input-termin {
+  margin-bottom: 10px;
+}
+
 .setofcards-content {
   display: flex;
+  flex-direction: column;
   padding: 40px 60px;
+  overflow-y: scroll;
+}
+
+.setofcards-header {
+  width: 100%;
+}
+
+.setofcards-table {
+  margin-top: 40px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(100, 10vw);
+  grid-gap: 2vw;
+}
+
+.setofcards-table .setofcards-table-card {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(240, 60, 96);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
 }

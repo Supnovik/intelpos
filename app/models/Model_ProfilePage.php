@@ -2,8 +2,29 @@
 
 class Model_ProfilePage extends Model
 {
+    
+    
+    public function updateState(){
+        echo "<meta http-equiv='refresh' content='0'>";
+    }
     public function get_data($user = null, $data = null)
     {
+        if(array_key_exists('createSetofcards', $_POST)) {
+            
+            $this->create_set_of_cards($GLOBALS["user"],filter_var(trim($_POST['setofcardsName']),FILTER_SANITIZE_STRING));
+            $this->updateState();
+        }
+
+        if(array_key_exists('delete', $_POST)) {
+            $this->delete_set_of_cards($GLOBALS["user"],filter_var(trim($_POST['setofcardsName']),FILTER_SANITIZE_STRING));
+            $this->updateState();
+        }
+
+        if(array_key_exists('add', $_POST)) {
+            $this->create_set_of_cards($GLOBALS["user"],filter_var(trim($_POST['setofcardsName']),FILTER_SANITIZE_STRING));
+            $this->updateState();
+        }
+        
         $db = new Model_User($user, $user);
         return $db->getContent();
     }

@@ -12,7 +12,7 @@
     </div>
     <div class="user-content-list">
                 <?php
-                    $uri = explode('/', $_SERVER['REQUEST_URI']);
+                    
                     foreach ($data as $value):?>
                         <form method="post" class="user-content-list-block">
                             <h2><?=$value['setofcards'] ?></h2>
@@ -51,34 +51,3 @@
     </div>
 </div>
 <script src="/app/views/Profile/profile.js"></script>
-
-<?php
-        
-        if(array_key_exists('createSetofcards', $_POST)) {
-            createSetofcards();
-            updateState();
-        }
-
-        if(array_key_exists('delete', $_POST)) {
-            deleteSetofcards();
-            updateState();
-        }
-
-        if(array_key_exists('add', $_POST)) {
-            createSetofcards();
-            updateState();
-        }
-        function createSetofcards() {
-            
-            $db = new Model_ProfilePage();
-            $db->create_set_of_cards($GLOBALS["user"],filter_var(trim($_POST['setofcardsName']),FILTER_SANITIZE_STRING));
-        }
-        function deleteSetofcards() {
-           
-            $db = new Model_ProfilePage();
-            $db->delete_set_of_cards($GLOBALS["user"],filter_var(trim($_POST['setofcardsName']),FILTER_SANITIZE_STRING));
-        }
-        function updateState(){
-            echo "<meta http-equiv='refresh' content='0'>";
-        }
-    ?>
