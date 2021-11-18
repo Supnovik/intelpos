@@ -33,10 +33,10 @@
                             </div>
                         </form>
                         <?php endif; endif; endforeach; if ($GLOBALS["user"] == $uri[2]):?>
-                             <button id="addnew" class="button-long user-content-open-modal">
-                                Add new set of cards
-                             </button>
-                             <?php endif; ?>
+                        <button id="addnew" class="button-long user-content-open-modal">
+                        Add new set of cards
+                        </button>
+                        <?php endif; ?>
     </div>
 
     <div class="user-content-modal">
