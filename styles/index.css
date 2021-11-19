@@ -54,6 +54,9 @@ p {
   background: rgb(0, 197, 199);
 }
 .button-short {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #fff;
   width: 99px;
   color: rgb(0, 197, 199);
@@ -67,7 +70,7 @@ p {
   text-transform: uppercase;
   text-align: center;
   text-decoration: none;
-  padding-top: 13px;
+  padding-top: 5px;
   box-sizing: border-box;
   height: 44px;
 }

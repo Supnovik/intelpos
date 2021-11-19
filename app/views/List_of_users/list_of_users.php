@@ -10,9 +10,10 @@
             <a href='/users/Rules of the English language' class="our_users-block english_language">Rules of the English language</a>
         </div>
         <div class="all_users">
-            <div class="all_users-search">
-                    <input type="text" placeholder="Search users by nickname" class="input-box">
-            </div>
+            <form method="post"  class="all_users-search">
+                    <input type="text" name="search-user" placeholder="Search users by nickname" class="input-box">
+                    <button type="submit" name="search-user-button" class="button-short">Search</button>
+            </form>
             <div class="all_users-list">
                 <?php 
                     foreach ($data as $value) {

@@ -151,3 +151,10 @@
   border: none;
   background-color: inherit;
 }
+
+.create-card {
+  display: none;
+}
+.save-delete-card {
+  display: none;
+}

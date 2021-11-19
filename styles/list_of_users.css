@@ -55,6 +55,7 @@
 
 .all_users-search {
   margin-bottom: 30px;
+  display: flex;
 }
 
 .all_users-user {

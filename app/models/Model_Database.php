@@ -7,7 +7,6 @@ class Model_Database
     protected $database = "data";
     protected $table = "users";
 
-
     public function __construct($database, $table)
     {
         $this->database = $database;
@@ -44,13 +43,13 @@ class Model_Database
 
     public function getUsers()
     {
-        $content = array();
+        $content = [];
         try {
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
             $sql = "SELECT * FROM $this->table";
             $result = $conn->query($sql);
             while ($row = $result->fetch()) {
-                $content[] = array('nickname' => (string)$row["nickname"], 'mail' => (string)$row["mail"]);
+                $content[] = ['nickname' => (string)$row["nickname"], 'mail' => (string)$row["mail"]];
             }
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
@@ -58,10 +57,27 @@ class Model_Database
         return $content;
     }
 
+    public function serchUsers($uset)
+    {
+        $content = [];
+        try {
+            $conn = new PDO('mysql:host=localhost;dbname=' . $this->database, $this->user, $this->password);
+            $sql = 'SELECT * FROM ' . $this->table . ' WHERE nickname like "'. $uset .'%"' ;
+            $result = $conn->query($sql);
+            while ($row = $result->fetch()) {
+                $content[] = ['nickname' => (string)$row["nickname"], 'mail' => (string)$row["mail"]];
+            }
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+        }
+        return $content;
+    }
+
+
     public function checking_for_existence($nickname,$password=null)
     {
         try {
-            $content = array();
+            $content = [];
             $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
             if ($password == null)
                 $sql = "SELECT * FROM $this->table WHERE nickname = '$nickname'";
@@ -69,7 +85,7 @@ class Model_Database
                 $sql = "SELECT * FROM $this->table WHERE nickname = '$nickname' AND password = '$password'";
             $result = $conn->query($sql);
             while ($row = $result->fetch()) {
-                $content[] = array('nickname' => (string)$row["nickname"], 'mail' => (string)$row["mail"]);
+                $content[] = ['nickname' => (string)$row["nickname"], 'mail' => (string)$row["mail"]];
             }
             if (count($content)!=0)
                 return true;

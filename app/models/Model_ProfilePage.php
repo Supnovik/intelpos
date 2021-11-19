@@ -34,7 +34,7 @@ class Model_ProfilePage extends Model
         $database = new Model_User($user, $user);
         $database->addContent($set_of_cards_name, $set_of_cards_name);
         $db = new Model_SetOfCards($user, $set_of_cards_name);
-        $db->createTable();
+        $db->create_SetOfCards_Table();
     }
     public function delete_set_of_cards($user, $set_of_cards_name)
     {
