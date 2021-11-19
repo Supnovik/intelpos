@@ -6,21 +6,34 @@ class Model_Database
     protected $password = "qwe123";
     protected $database = "data";
     protected $table = "users";
+    protected $isConnected = false;
+    protected $databaseConnection;
+    
 
     public function __construct($database, $table)
     {
         $this->database = $database;
         $this->table = $table;
+        try{
+            $connection = new PDO('mysql:host=localhost;dbname=' . $this->database, $this->user, $this->password);
+            if ($connection)
+            {
+                $this->databaseConnection = $connection;
+                $this->isConnected = true;
+            }
+            else
+                $this->isConnected = false;
+        }catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+        }
     }
 
 
     public function createDatabase()
     {
         try {
-            $conn = new PDO("mysql:host=localhost", $this->user, $this->password);
             $sql = "CREATE DATABASE $this->database";
-
-            $conn->exec($sql);
+            $this->databaseConnection->exec($sql);
             echo "Database $this->database has been created";
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
@@ -30,11 +43,10 @@ class Model_Database
 
     public function addUser($nickname, $mail, $password)
     {
-
         try {
-            $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+            
             $sql = "INSERT INTO $this->table (nickname, mail ,password) VALUES ('$nickname','$mail','$password')";
-            $affectedRowsNumber = $conn->exec($sql);
+            $affectedRowsNumber = $this->databaseConnection->exec($sql);
             echo "В таблицу $this->table добавлено строк: $affectedRowsNumber";
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
@@ -45,9 +57,9 @@ class Model_Database
     {
         $content = [];
         try {
-            $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+            
             $sql = "SELECT * FROM $this->table";
-            $result = $conn->query($sql);
+            $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['nickname' => (string)$row["nickname"], 'mail' => (string)$row["mail"]];
             }
@@ -61,9 +73,9 @@ class Model_Database
     {
         $content = [];
         try {
-            $conn = new PDO('mysql:host=localhost;dbname=' . $this->database, $this->user, $this->password);
+            
             $sql = 'SELECT * FROM ' . $this->table . ' WHERE nickname like "'. $uset .'%"' ;
-            $result = $conn->query($sql);
+            $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['nickname' => (string)$row["nickname"], 'mail' => (string)$row["mail"]];
             }
@@ -78,12 +90,12 @@ class Model_Database
     {
         try {
             $content = [];
-            $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+            
             if ($password == null)
                 $sql = "SELECT * FROM $this->table WHERE nickname = '$nickname'";
             else
                 $sql = "SELECT * FROM $this->table WHERE nickname = '$nickname' AND password = '$password'";
-            $result = $conn->query($sql);
+            $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['nickname' => (string)$row["nickname"], 'mail' => (string)$row["mail"]];
             }
@@ -100,7 +112,7 @@ class Model_Database
 
         public function createTable(){
             try {
-                $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+                
                 $sql = "create table $this->table (id integer auto_increment primary key, nickname VARCHAR(30), mail VARCHAR(30), password VARCHAR(30));";
                 $conn->exec($sql);
                 echo "Table $this->table has been created";
@@ -113,7 +125,7 @@ class Model_Database
         public function getContent(){
             $content = array(array('nickname'=> 'Supnovik','mail'=>'Sup'));
             try {
-                $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+                
                 $sql = "SELECT * FROM $this->table";
                 $result = $conn->query($sql);
                 while($row = $result->fetch()){
@@ -128,7 +140,7 @@ class Model_Database
 
         public function deleteContent($mail){
             try {
-                $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+                
                 $sql = "DELETE FROM $this->table WHERE mail = '$mail'";
                 $affectedRowsNumber = $conn->exec($sql);
                 echo "Удалено строк: $affectedRowsNumber";

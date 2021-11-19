@@ -17,9 +17,10 @@ class Model_SetOfCards extends Model_Database
             echo "<meta http-equiv='refresh' content='0'>";
         }
         if(array_key_exists('search-card-button', $_POST)) {
-            return $this->serchCards(filter_var(trim($_POST['search-card']),FILTER_SANITIZE_STRING));
-
-            //echo "<meta http-equiv='refresh' content='0'>";
+            return $this->searchCards(filter_var(trim($_POST['search-card']),FILTER_SANITIZE_STRING));
+        }
+        if(array_key_exists('sortByAlphabet', $_POST)) {
+            return $this->sortByAlphabet();
         }
         return $this->getCards();
     }
@@ -27,9 +28,9 @@ class Model_SetOfCards extends Model_Database
     public function create_SetOfCards_Table()
     {
         try {
-            $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+
             $sql = "create table $this->table (id integer auto_increment primary key, termin VARCHAR(30), definition VARCHAR(30), level INT DEFAULT 0);";
-            $conn->exec($sql);
+            $this->databaseConnection->exec($sql);
             echo "Table $this->table has been created";
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
@@ -39,9 +40,9 @@ class Model_SetOfCards extends Model_Database
     public function addCard($termin, $definition)
     {
         try {
-            $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+
             $sql = "INSERT INTO $this->table (termin, definition) VALUES ('$termin','$definition')";
-            $affectedRowsNumber = $conn->exec($sql);
+            $affectedRowsNumber = $this->databaseConnection->exec($sql);
             echo "В таблицу $this->table добавлено строк: $affectedRowsNumber";
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
@@ -52,9 +53,9 @@ class Model_SetOfCards extends Model_Database
     {
         $content = [];
         try {
-            $conn = new PDO('mysql:host=localhost;dbname=' . $this->database, $this->user, $this->password);
+            
             $sql = 'SELECT * FROM ' . $this->table;
-            $result = $conn->query($sql);
+            $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['termin' => $row['termin'], 'definition' => $row['definition'], 'level' => $row['level']];
             }
@@ -64,13 +65,29 @@ class Model_SetOfCards extends Model_Database
         return $content;
     }
 
-    public function serchCards($card)
+    public function sortByAlphabet()
     {
         $content = [];
         try {
-            $conn = new PDO('mysql:host=localhost;dbname=' . $this->database, $this->user, $this->password);
+            
+            $sql = 'SELECT * FROM ' . $this->table . ' ORDER BY termin DESC';
+            $result = $this->databaseConnection->query($sql);
+            while ($row = $result->fetch()) {
+                $content[] = ['termin' => $row['termin'], 'definition' => $row['definition'], 'level' => $row['level']];
+            }
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+        }
+        return $content;
+    }
+
+    public function searchCards($card)
+    {
+        $content = [];
+        try {
+            
             $sql = 'SELECT * FROM ' . $this->table . ' WHERE termin like "'. $card .'%"' ;
-            $result = $conn->query($sql);
+            $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['termin' => $row['termin'], 'definition' => $row['definition'], 'level' => $row['level']];
             }
@@ -83,10 +100,10 @@ class Model_SetOfCards extends Model_Database
     public function updateCard($oldtermin,$termin,$defition)
     {
         try {
-            $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+
             $sql = "UPDATE $this->table SET defition = '$defition' WHERE termin = '$oldtermin'";
             $sql = "UPDATE $this->table SET termin = '$termin' WHERE termin = '$oldtermin'";
-            $affectedRowsNumber = $conn->exec($sql);
+            $affectedRowsNumber = $this->databaseConnection->exec($sql);
             echo "Удалено строк: $affectedRowsNumber";
         }
         catch (PDOException $e) {
@@ -97,9 +114,9 @@ class Model_SetOfCards extends Model_Database
     public function deleteCard($termin)
     {
         try {
-            $conn = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+
             $sql = "DELETE FROM $this->table WHERE termin = '$termin'";
-            $affectedRowsNumber = $conn->exec($sql);
+            $affectedRowsNumber = $this->databaseConnection->exec($sql);
             echo "Удалено строк: $affectedRowsNumber";
         }
         catch (PDOException $e) {
@@ -111,9 +128,9 @@ class Model_SetOfCards extends Model_Database
     public function deleteSetOfCards()
     {
         try {
-            $conn = new PDO('mysql:host=localhost;dbname=' . $this->database, $this->user, $this->password);
+            
             $sql = "Drop TABLE $this->table";
-            $affectedRowsNumber = $conn->exec($sql);
+            $affectedRowsNumber = $this->databaseConnection->exec($sql);
             echo "Удалена таблица: $this->table";
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();

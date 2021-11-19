@@ -25,6 +25,7 @@
             <form method="post" class="setofcards-search">
                     <input type="text" name="search-card" placeholder="Search cards by term" class="input-box">
                     <button type="submit" name="search-card-button" class="button-short">Search</button>
+                    <button type="submit" name="sortByAlphabet" class="button-short">Sort by alphabet</button>
             </form>
         </div>
         <div class="setofcards-table">
