@@ -2,47 +2,30 @@
 
 class Model_User extends Model_Database
 {
-
-    public function createDatabase()
-    {
-        try {
-            $sql = "CREATE DATABASE $this->database";
-            $this->databaseConnection->exec($sql);
-            echo "Database $this->database has been created";
-        } catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
-        }
-    }
-
     public function createTable()
     {
         try {
             $sql = "create table $this->table (id integer auto_increment primary key, setofcards VARCHAR(30));";
             $this->databaseConnection->exec($sql);
-            echo "Table $this->table has been created";
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
         }
     }
 
-    public function addContent($setofcards)
+    public function addSetOfCards($setofcards)
     {
-
         try {
-            
             $sql = "INSERT INTO $this->table (setofcards) VALUES ('$setofcards')";
-            $affectedRowsNumber = $this->databaseConnection->exec($sql);
-            echo "В таблицу $this->table добавлено строк: $affectedRowsNumber";
+             $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
         }
     }
 
-    public function getContent()
+    public function getSetOfCardsList()
     {
         $content = array();
         try {
-            
             $sql = 'SELECT * FROM ' . $this->table;
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
@@ -73,13 +56,11 @@ class Model_User extends Model_Database
         }
     }
 
-    public function deleteContent($setofcards)
+    public function deleteSetOfCards($setofcards)
     {
         try {
-            
             $sql = "DELETE FROM $this->table WHERE setofcards = '$setofcards'";
-            $affectedRowsNumber = $this->databaseConnection->exec($sql);
-            echo "Удалено строк: $affectedRowsNumber";
+             $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
         }

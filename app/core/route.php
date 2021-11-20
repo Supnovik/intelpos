@@ -53,13 +53,15 @@ class Route
 					if($db->checking_setofcards_for_existence($uri[4]) && $uri[3] == 'setofcards')
 					{
 						$flag = true;
-						$controller = new Controller_SetOfCards;
+						$controller = new Controller_SetOfCardsPage();
+						$controller->setData($uri[2],$uri[4]);
 						$controller->action_index();
 					}
 					elseif($db->checking_setofcards_for_existence($uri[4]) && $uri[3] == 'backdrops')
 					{
 						$flag = true;
-						$controller = new Controller_ProfilePage;
+						$controller = new Controller_BackdropsListPage();
+						$controller->setData($uri[2],$uri[4]);
 						$controller->action_index();
 					}
 				}

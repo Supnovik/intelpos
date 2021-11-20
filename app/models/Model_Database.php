@@ -29,12 +29,12 @@ class Model_Database
     }
 
 
-    public function createDatabase()
+    public function createDatabase($databaseName)
     {
         try {
-            $sql = "CREATE DATABASE $this->database";
+            $sql = "CREATE DATABASE $databaseName";
             $this->databaseConnection->exec($sql);
-            echo "Database $this->database has been created";
+             
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
         }
@@ -46,8 +46,8 @@ class Model_Database
         try {
             
             $sql = "INSERT INTO $this->table (nickname, mail ,password) VALUES ('$nickname','$mail','$password')";
-            $affectedRowsNumber = $this->databaseConnection->exec($sql);
-            echo "В таблицу $this->table добавлено строк: $affectedRowsNumber";
+             $this->databaseConnection->exec($sql);
+            
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
         }
@@ -115,7 +115,7 @@ class Model_Database
                 
                 $sql = "create table $this->table (id integer auto_increment primary key, nickname VARCHAR(30), mail VARCHAR(30), password VARCHAR(30));";
                 $conn->exec($sql);
-                echo "Table $this->table has been created";
+                 
             }
             catch (PDOException $e) {
                 echo "Database error: " . $e->getMessage();
@@ -142,8 +142,8 @@ class Model_Database
             try {
                 
                 $sql = "DELETE FROM $this->table WHERE mail = '$mail'";
-                $affectedRowsNumber = $conn->exec($sql);
-                echo "Удалено строк: $affectedRowsNumber";
+                 $conn->exec($sql);
+                 
             }
             catch (PDOException $e) {
                 echo "Database error: " . $e->getMessage();

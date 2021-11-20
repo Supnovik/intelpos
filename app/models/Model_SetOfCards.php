@@ -22,16 +22,17 @@ class Model_SetOfCards extends Model_Database
         if(array_key_exists('sortByAlphabet', $_POST)) {
             return $this->sortByAlphabet();
         }
+        
         return $this->getCards();
     }
     
-    public function create_SetOfCards_Table()
+    public function create_SetOfCards()
     {
         try {
-
-            $sql = "create table $this->table (id integer auto_increment primary key, termin VARCHAR(30), definition VARCHAR(30), level INT DEFAULT 0);";
+            $sql = 'create table '.$this->table.' (id integer auto_increment primary key, termin VARCHAR(30), definition VARCHAR(30), level INT DEFAULT 0);';
             $this->databaseConnection->exec($sql);
-            echo "Table $this->table has been created";
+            $sql = 'create table '.$this->table.'_BackdropsList (id integer auto_increment primary key, backdrop VARCHAR(30), image BLOB);';
+            $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
         }
@@ -42,8 +43,8 @@ class Model_SetOfCards extends Model_Database
         try {
 
             $sql = "INSERT INTO $this->table (termin, definition) VALUES ('$termin','$definition')";
-            $affectedRowsNumber = $this->databaseConnection->exec($sql);
-            echo "В таблицу $this->table добавлено строк: $affectedRowsNumber";
+            $this->databaseConnection->exec($sql);
+            
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
         }
@@ -103,8 +104,8 @@ class Model_SetOfCards extends Model_Database
 
             $sql = "UPDATE $this->table SET defition = '$defition' WHERE termin = '$oldtermin'";
             $sql = "UPDATE $this->table SET termin = '$termin' WHERE termin = '$oldtermin'";
-            $affectedRowsNumber = $this->databaseConnection->exec($sql);
-            echo "Удалено строк: $affectedRowsNumber";
+             $this->databaseConnection->exec($sql);
+             
         }
         catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
@@ -116,8 +117,8 @@ class Model_SetOfCards extends Model_Database
         try {
 
             $sql = "DELETE FROM $this->table WHERE termin = '$termin'";
-            $affectedRowsNumber = $this->databaseConnection->exec($sql);
-            echo "Удалено строк: $affectedRowsNumber";
+             $this->databaseConnection->exec($sql);
+             
         }
         catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
@@ -128,13 +129,42 @@ class Model_SetOfCards extends Model_Database
     public function deleteSetOfCards()
     {
         try {
+            $sql = 'Drop TABLE '.$this->table.'_BackdropsList';
+            $this->databaseConnection->exec($sql);
+            $sql =  'Drop TABLE '.$this->table;
+            $this->databaseConnection->exec($sql);
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+        }
+    }
+
+    public function getBackdrops()
+    {
+        $content = [];
+        try {
+            $sql = 'SELECT * FROM ' . $this->table;
+            $result = $this->databaseConnection->query($sql);
+            while ($row = $result->fetch()) {
+                $content[] = ['backdrop' => $row['backdrop']];
+            }
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+        }
+        return $content;
+    }
+
+
+    public function deleteAllBackdrops()
+    {
+        try {
+            $backdrops = $this->getBackdrops();
+            foreach($backdrops as $backdrop){
+                $sql = "Drop TABLE $backdrop";
+                $this->databaseConnection->exec($sql);
+            }
             
-            $sql = "Drop TABLE $this->table";
-            $affectedRowsNumber = $this->databaseConnection->exec($sql);
-            echo "Удалена таблица: $this->table";
         } catch (PDOException $e) {
             echo "Database error: " . $e->getMessage();
         }
     }
-
 }
