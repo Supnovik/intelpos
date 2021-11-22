@@ -42,7 +42,7 @@ class Model_SetOfCards extends Model_Database
     {
         try {
 
-            $sql = 'INSERT INTO '.$this->table.' (termin, definition) VALUES ('.$termin.','.$definition.')';
+            $sql = 'INSERT INTO '.$this->table.' (termin, definition) VALUES ("'.$termin.'","'.$definition.'")';
             $this->databaseConnection->exec($sql);
             
         } catch (PDOException $e) {
@@ -102,8 +102,8 @@ class Model_SetOfCards extends Model_Database
     {
         try {
 
-            $sql = 'UPDATE '.$this->table.' SET defition = '.$defition.' WHERE termin = "'.$oldtermin.'"';
-            $sql = 'UPDATE '.$this->table.' SET defition = '.$termin.' WHERE termin = "'.$oldtermin.'"';
+            $sql = 'UPDATE '.$this->table.' SET defition = "'.$defition.'" WHERE termin = "'.$oldtermin.'"';
+            $sql = 'UPDATE '.$this->table.' SET defition = "'.$termin.'" WHERE termin = "'.$oldtermin.'"';
              $this->databaseConnection->exec($sql);
              
         }

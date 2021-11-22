@@ -31,6 +31,8 @@
                         <?php else: if ($GLOBALS["isLogin"]):?>
                                 <input type="submit" name="add" id="edit" class="user-content-list-block-button" value="add" />
                             </div>
+                            <?php else:?>
+                                </div>
                         </form>
                         <?php endif; endif; endforeach; if ($GLOBALS["user"] == $uri[2]):?>
                         <button id="addnew" class="button-long user-content-open-modal">

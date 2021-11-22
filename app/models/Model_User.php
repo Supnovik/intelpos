@@ -24,12 +24,12 @@ class Model_User extends Model_Database
 
     public function getSetOfCardsList()
     {
-        $content = array();
+        $content = [];
         try {
             $sql = 'SELECT * FROM ' . $this->table;
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
-                $content[] = array('setofcards' => $row['setofcards']);
+                $content[] = ['setofcards' => $row['setofcards']];
             }
         } catch (PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
@@ -40,12 +40,12 @@ class Model_User extends Model_Database
     public function checking_setofcards_for_existence($setofcards)
     {
         try {
-            $content = array();
+            $content = [];
             
             $sql = 'SELECT * FROM '.$this->table.' WHERE setofcards = "'.$setofcards.'"';
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
-                $content[] = array('setofcards' => (string)$row['setofcards']);
+                $content[] = ['setofcards' => (string)$row['setofcards']];
             }
             if (count($content) != 0)
                 return true;

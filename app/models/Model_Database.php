@@ -32,7 +32,7 @@ class Model_Database
     public function createDatabase($databaseName)
     {
         try {
-            $sql = "CREATE DATABASE $databaseName";
+            $sql = 'CREATE DATABASE '.$databaseName;
             $this->databaseConnection->exec($sql);
              
         } catch (PDOException $e) {
@@ -45,7 +45,7 @@ class Model_Database
     {
         try {
             
-            $sql = 'INSERT INTO '.$this->table.' (nickname, mail ,password) VALUES ('.$nickname.','.$mail.','.$password.')';
+            $sql = 'INSERT INTO '.$this->table.' (nickname, mail ,password) VALUES ("'.$nickname.'","'.$mail.'","'.$password.'")';
              $this->databaseConnection->exec($sql);
             
         } catch (PDOException $e) {
@@ -94,7 +94,7 @@ class Model_Database
             if ($password == null)
                 $sql = 'SELECT * FROM '.$this->table.' WHERE nickname = "'.$nickname.'"';
             else
-                $sql = 'SELECT * FROM '.$this->table.' WHERE nickname = "'.$nickname.'" AND password = '.$password;
+                $sql = 'SELECT * FROM '.$this->table.' WHERE nickname = "'.$nickname.'" AND password = "'.$password.'"';
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['nickname' => $row['nickname'], 'mail' => $row['mail']];

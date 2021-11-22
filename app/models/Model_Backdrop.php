@@ -16,7 +16,7 @@ class Model_Backdrop extends Model_Database
     public function addCard($termin, $definition,$x_coordinate,$y_coordinate)
     {
         try {
-            $sql = 'INSERT INTO '.$this->table.' (termin, definition,x_coordinate,y_coordinate) VALUES ('.$termin.','.$definition.','.$x_coordinate.','.$y_coordinate.')';
+            $sql = 'INSERT INTO '.$this->table.' (termin, definition,x_coordinate,y_coordinate) VALUES ("'.$termin.'","'.$definition.'","'.$x_coordinate.'","'.$y_coordinate.'")';
              $this->databaseConnection->exec($sql);
              
         } catch (PDOException $e) {
@@ -43,7 +43,7 @@ class Model_Backdrop extends Model_Database
     public function deleteCard($termin)
     {
         try {
-            $sql = 'DELETE FROM '.$this->table.' WHERE termin = '.$termin;
+            $sql = 'DELETE FROM '.$this->table.' WHERE termin = "'.$termin.'"';
              $this->databaseConnection->exec($sql);
         }
         catch (PDOException $e) {
