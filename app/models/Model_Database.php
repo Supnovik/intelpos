@@ -107,6 +107,17 @@ class Model_Database
             echo 'Database error: ' . $e->getMessage();
         }
     }
+    public function deleteUser($user)
+    {
+        try {
+            $sql = 'DELETE FROM '.$this->table.' WHERE nickname = "'.$user.'"';
+            $this->databaseConnection->exec($sql);
+            $sql = 'DROP DATABASE '.$user;
+             $this->databaseConnection->exec($sql);
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+        }
+    }
 }
 
         

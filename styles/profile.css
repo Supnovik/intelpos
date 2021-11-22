@@ -158,3 +158,23 @@
 .save-delete-card {
   display: none;
 }
+
+.delete-user {
+  margin-top: 20px;
+  position: relative;
+  height: 44px;
+  width: 100%;
+  display: block;
+  color: #fff;
+  background: rgba(255, 0, 0, 0.75);
+  border-radius: 22px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+}
+.delete-user:hover {
+  background: rgba(255, 0, 0, 1);
+}

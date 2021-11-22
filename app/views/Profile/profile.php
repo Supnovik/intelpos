@@ -9,6 +9,9 @@
                 ?>
             </h2>
         </div>
+        <form method="post">
+                <input type="submit" name="delete-user" class="delete-user" value="Delete user" />
+        </form>
     </div>
     <div class="user-content-list">
                 <?php
@@ -24,12 +27,12 @@
                                 </a>
                         <?php
                         if ($GLOBALS["user"] == $uri[2]):?>
-                                <input type="submit" name="edit" id="edit" class="user-content-list-block-button" value="edit" />
-                                <input type="submit" name="delete" id="delete" class="user-content-list-block-button" value="delete" />
+                                <input type="submit" name="edit-card" id="edit" class="user-content-list-block-button" value="edit" />
+                                <input type="submit" name="delete-card" id="delete" class="user-content-list-block-button" value="delete" />
                             </div>
                         </form>
                         <?php else: if ($GLOBALS["isLogin"]):?>
-                                <input type="submit" name="add" id="edit" class="user-content-list-block-button" value="add" />
+                                <input type="submit" name="add-card" id="edit" class="user-content-list-block-button" value="add" />
                             </div>
                             <?php else:?>
                                 </div>

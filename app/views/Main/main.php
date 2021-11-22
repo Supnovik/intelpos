@@ -51,21 +51,11 @@
           </div>
         </div>
       </div>
-    <div class="main-slider">
-        <div class="ip-slideshow-wrapper">
-            <div>
-                <span class="ip-nav-left"></span>
-                <span class="ip-nav-right"></span>
-            </div>
-            <div class="ip-slideshow"></div>
-        </div>
-    </div>
+
     <div id="main-get-start" class="main-get-start">
         <h2>Ready to start?</h2>
-        <a href="/list_of_users" class="get-start-button">
+        <a href="/registration" class="get-start-button">
             Get started
         </a>
     </div>
-</main>
-
-<script src="app/views/Main/main.js"></script>
+  </main>

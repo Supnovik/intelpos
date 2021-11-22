@@ -65,5 +65,4 @@ class Model_User extends Model_Database
             echo 'Database error: ' . $e->getMessage();
         }
     }
-
 }
