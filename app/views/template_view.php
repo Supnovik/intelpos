@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-   
+
     <link rel="stylesheet" type="text/css" href="/styles/index.css">
     <link rel="stylesheet" type="text/css" href="/styles/navbar.css">
     <link rel="stylesheet" type="text/css" href="/styles/footer.css">
@@ -17,13 +17,13 @@
     <link rel="stylesheet" type="text/css" href="/styles/backdropsList.css">
     <title>Main</title>
 </head>
-    <body>
-        
-            <?php include 'app/views/sections/navbar.php' ?>
-            <div class="content">
-                <?php include 'app/views/'.$content_view; ?>
-            </div>
-            <?php include 'app/views/sections/footer.php' ?>
-        
-    </body>
+<body>
+
+<?php include 'app/views/sections/navbar.php' ?>
+<div class="content">
+    <?php include 'app/views/' . $content_view; ?>
+</div>
+<?php include 'app/views/sections/footer.php' ?>
+
+</body>
 </html>

@@ -8,22 +8,20 @@ class Model_Database
     protected $table = 'users';
     protected $isConnected = false;
     protected $databaseConnection;
-    
+
 
     public function __construct($database, $table)
     {
         $this->database = $database;
         $this->table = $table;
-        try{
+        try {
             $connection = new PDO('mysql:host=localhost;dbname=' . $this->database, $this->user, $this->password);
-            if ($connection)
-            {
+            if ($connection) {
                 $this->databaseConnection = $connection;
                 $this->isConnected = true;
-            }
-            else
+            } else
                 $this->isConnected = false;
-        }catch (PDOException $e) {
+        } catch (PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }
@@ -32,9 +30,9 @@ class Model_Database
     public function createDatabase($databaseName)
     {
         try {
-            $sql = 'CREATE DATABASE '.$databaseName;
+            $sql = 'CREATE DATABASE ' . $databaseName;
             $this->databaseConnection->exec($sql);
-             
+
         } catch (PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
@@ -44,10 +42,10 @@ class Model_Database
     public function addUser($nickname, $mail, $password)
     {
         try {
-            
-            $sql = 'INSERT INTO '.$this->table.' (nickname, mail ,password) VALUES ("'.$nickname.'","'.$mail.'","'.$password.'")';
-             $this->databaseConnection->exec($sql);
-            
+
+            $sql = 'INSERT INTO ' . $this->table . ' (nickname, mail ,password) VALUES ("' . $nickname . '","' . $mail . '","' . $password . '")';
+            $this->databaseConnection->exec($sql);
+
         } catch (PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
@@ -57,7 +55,7 @@ class Model_Database
     {
         $content = [];
         try {
-            
+
             $sql = "SELECT * FROM $this->table";
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
@@ -73,8 +71,8 @@ class Model_Database
     {
         $content = [];
         try {
-            
-            $sql = 'SELECT * FROM ' . $this->table . ' WHERE nickname like "'. $uset .'%"' ;
+
+            $sql = 'SELECT * FROM ' . $this->table . ' WHERE nickname like "' . $uset . '%"';
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['nickname' => $row['nickname'], 'mail' => $row['mail']];
@@ -86,20 +84,20 @@ class Model_Database
     }
 
 
-    public function checking_for_existence($nickname,$password=null)
+    public function checking_for_existence($nickname, $password = null)
     {
         try {
             $content = [];
-            
+
             if ($password == null)
-                $sql = 'SELECT * FROM '.$this->table.' WHERE nickname = "'.$nickname.'"';
+                $sql = 'SELECT * FROM ' . $this->table . ' WHERE nickname = "' . $nickname . '"';
             else
-                $sql = 'SELECT * FROM '.$this->table.' WHERE nickname = "'.$nickname.'" AND password = "'.$password.'"';
+                $sql = 'SELECT * FROM ' . $this->table . ' WHERE nickname = "' . $nickname . '" AND password = "' . $password . '"';
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['nickname' => $row['nickname'], 'mail' => $row['mail']];
             }
-            if (count($content)!=0)
+            if (count($content) != 0)
                 return true;
             else
                 return false;
@@ -107,13 +105,14 @@ class Model_Database
             echo 'Database error: ' . $e->getMessage();
         }
     }
+
     public function deleteUser($user)
     {
         try {
-            $sql = 'DELETE FROM '.$this->table.' WHERE nickname = "'.$user.'"';
+            $sql = 'DELETE FROM ' . $this->table . ' WHERE nickname = "' . $user . '"';
             $this->databaseConnection->exec($sql);
-            $sql = 'DROP DATABASE '.$user;
-             $this->databaseConnection->exec($sql);
+            $sql = 'DROP DATABASE ' . $user;
+            $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
