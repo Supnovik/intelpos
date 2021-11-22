@@ -2,10 +2,10 @@
 
 class Model_Database
 {
-    protected $user = "Supnovik";
-    protected $password = "qwe123";
-    protected $database = "data";
-    protected $table = "users";
+    protected $user = 'Supnovik';
+    protected $password = 'qwe123';
+    protected $database = 'data';
+    protected $table = 'users';
     protected $isConnected = false;
     protected $databaseConnection;
     
@@ -36,7 +36,7 @@ class Model_Database
             $this->databaseConnection->exec($sql);
              
         } catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
 
     }
@@ -45,11 +45,11 @@ class Model_Database
     {
         try {
             
-            $sql = "INSERT INTO $this->table (nickname, mail ,password) VALUES ('$nickname','$mail','$password')";
+            $sql = 'INSERT INTO '.$this->table.' (nickname, mail ,password) VALUES ('.$nickname.','.$mail.','.$password.')';
              $this->databaseConnection->exec($sql);
             
         } catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
     }
 
@@ -61,10 +61,10 @@ class Model_Database
             $sql = "SELECT * FROM $this->table";
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
-                $content[] = ['nickname' => (string)$row["nickname"], 'mail' => (string)$row["mail"]];
+                $content[] = ['nickname' => $row['nickname'], 'mail' => $row['mail']];
             }
         } catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
         return $content;
     }
@@ -77,7 +77,7 @@ class Model_Database
             $sql = 'SELECT * FROM ' . $this->table . ' WHERE nickname like "'. $uset .'%"' ;
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
-                $content[] = ['nickname' => (string)$row["nickname"], 'mail' => (string)$row["mail"]];
+                $content[] = ['nickname' => $row['nickname'], 'mail' => $row['mail']];
             }
         } catch (PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
@@ -92,64 +92,21 @@ class Model_Database
             $content = [];
             
             if ($password == null)
-                $sql = "SELECT * FROM $this->table WHERE nickname = '$nickname'";
+                $sql = 'SELECT * FROM '.$this->table.' WHERE nickname = "'.$nickname.'"';
             else
-                $sql = "SELECT * FROM $this->table WHERE nickname = '$nickname' AND password = '$password'";
+                $sql = 'SELECT * FROM '.$this->table.' WHERE nickname = "'.$nickname.'" AND password = '.$password;
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
-                $content[] = ['nickname' => (string)$row["nickname"], 'mail' => (string)$row["mail"]];
+                $content[] = ['nickname' => $row['nickname'], 'mail' => $row['mail']];
             }
             if (count($content)!=0)
                 return true;
             else
                 return false;
         } catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
     }
-
-    /*
-
-        public function createTable(){
-            try {
-                
-                $sql = "create table $this->table (id integer auto_increment primary key, nickname VARCHAR(30), mail VARCHAR(30), password VARCHAR(30));";
-                $conn->exec($sql);
-                 
-            }
-            catch (PDOException $e) {
-                echo "Database error: " . $e->getMessage();
-            }
-        }
-
-        public function getContent(){
-            $content = array(array('nickname'=> 'Supnovik','mail'=>'Sup'));
-            try {
-                
-                $sql = "SELECT * FROM $this->table";
-                $result = $conn->query($sql);
-                while($row = $result->fetch()){
-                    $content[] = array('nickname' => (string)$row["nickname"],'mail' =>(string)$row["mail"]);
-                }
-            }
-            catch (PDOException $e) {
-                echo "Database error: " . $e->getMessage();
-            }
-            return $content;
-        }
-
-        public function deleteContent($mail){
-            try {
-                
-                $sql = "DELETE FROM $this->table WHERE mail = '$mail'";
-                 $conn->exec($sql);
-                 
-            }
-            catch (PDOException $e) {
-                echo "Database error: " . $e->getMessage();
-            }
-        }
-        */
 }
 
         

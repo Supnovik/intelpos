@@ -34,7 +34,7 @@ class Model_SetOfCards extends Model_Database
             $sql = 'create table '.$this->table.'_BackdropsList (id integer auto_increment primary key, backdrop VARCHAR(30), image BLOB);';
             $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
     }
 
@@ -42,11 +42,11 @@ class Model_SetOfCards extends Model_Database
     {
         try {
 
-            $sql = "INSERT INTO $this->table (termin, definition) VALUES ('$termin','$definition')";
+            $sql = 'INSERT INTO '.$this->table.' (termin, definition) VALUES ('.$termin.','.$definition.')';
             $this->databaseConnection->exec($sql);
             
         } catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
     }
 
@@ -102,13 +102,13 @@ class Model_SetOfCards extends Model_Database
     {
         try {
 
-            $sql = "UPDATE $this->table SET defition = '$defition' WHERE termin = '$oldtermin'";
-            $sql = "UPDATE $this->table SET termin = '$termin' WHERE termin = '$oldtermin'";
+            $sql = 'UPDATE '.$this->table.' SET defition = '.$defition.' WHERE termin = "'.$oldtermin.'"';
+            $sql = 'UPDATE '.$this->table.' SET defition = '.$termin.' WHERE termin = "'.$oldtermin.'"';
              $this->databaseConnection->exec($sql);
              
         }
         catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
     }
 
@@ -116,12 +116,12 @@ class Model_SetOfCards extends Model_Database
     {
         try {
 
-            $sql = "DELETE FROM $this->table WHERE termin = '$termin'";
+            $sql = 'DELETE FROM '.$this->table.' WHERE termin = "'.$termin.'"';
              $this->databaseConnection->exec($sql);
              
         }
         catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
     }
 
@@ -159,12 +159,12 @@ class Model_SetOfCards extends Model_Database
         try {
             $backdrops = $this->getBackdrops();
             foreach($backdrops as $backdrop){
-                $sql = "Drop TABLE $backdrop";
+                $sql = 'Drop TABLE '.$backdrop;
                 $this->databaseConnection->exec($sql);
             }
             
         } catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
     }
 }

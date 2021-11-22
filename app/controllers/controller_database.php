@@ -15,7 +15,7 @@ class Controller_database extends Controller{
             echo "Database $database has been created";
         }
         catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
 
     }
@@ -31,7 +31,7 @@ class Controller_database extends Controller{
              
         }
         catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
 
     }
@@ -44,7 +44,7 @@ class Controller_database extends Controller{
              
         }
         catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
     }
 
@@ -57,7 +57,7 @@ class Controller_database extends Controller{
             
         }
         catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
     }
 
@@ -77,7 +77,7 @@ class Controller_database extends Controller{
             echo "</table>";
         }
         catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
     }
 
@@ -89,7 +89,7 @@ class Controller_database extends Controller{
              
         }
         catch (PDOException $e) {
-            echo "Database error: " . $e->getMessage();
+            echo 'Database error: ' . $e->getMessage();
         }
     }
 }

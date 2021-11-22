@@ -10,14 +10,14 @@ class Route
 	
 	static function start()
 	{
-		$GLOBALS["isLogin"] = false;
+		$GLOBALS['isLogin'] = false;
 		if (isset($_COOKIE['user']))
 			{
-				$GLOBALS["isLogin"] = true;
-				$GLOBALS["user"] = $_COOKIE['user'];
+				$GLOBALS['isLogin'] = true;
+				$GLOBALS['user'] = $_COOKIE['user'];
 			}
 		$uri = explode('/', $_SERVER['REQUEST_URI']);
-		switch ("/".$uri[1]) {
+		switch ('/'.$uri[1]) {
 			case '/':
 				
 				$controller = new Controller_MainPage;
