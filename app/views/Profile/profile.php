@@ -9,9 +9,11 @@
                 ?>
             </h2>
         </div>
-        <form method="post">
-                <input type="submit" name="delete-user" class="delete-user" value="Delete user" />
-        </form>
+        <?php if($GLOBALS["user"] == $uri[2]):?>
+            <form method="post">
+                    <input type="submit" name="delete-user" class="delete-user" value="Delete user" />
+            </form> 
+        <?php endif;?>
     </div>
     <div class="user-content-list">
                 <?php

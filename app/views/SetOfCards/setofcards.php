@@ -1,7 +1,11 @@
 <div class="setofcards">
     <div class="setofcards-sidebar">
         <div class="setofcards-sidebar-buttons">
-            <button class="setofcards-sidebar-buttons-add button-long">Add new card</button>
+            <?php
+            $uri = explode('/', $_SERVER['REQUEST_URI']);
+            if($GLOBALS["user"] == $uri[2]):?>
+                <button class="setofcards-sidebar-buttons-add button-long">Add new card</button>
+            <?php endif;?>
             <button class="setofcards-sidebar-buttons-start button-long">Start learning</button>
             <button class="setofcards-sidebar-buttons-view button-long">View comments</button>
         </div>
