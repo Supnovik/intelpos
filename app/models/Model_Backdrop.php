@@ -3,7 +3,7 @@
 class Model_Backdrop extends Model_Database
 {
 
-    public function create_Backdrop_Table($table)
+    public function createBackdropTable($table)
     {
         try {
             $sql = 'create table ' . $table . ' (id integer auto_increment primary key, termin VARCHAR(30), definition VARCHAR(30), x_coordinate INT DEFAULT 0, y_coordinate INT DEFAULT 0);';

@@ -2,7 +2,7 @@
 
 class Model_SetOfCards extends Model_Database
 {
-    public function get_data($user = null, $data = null)
+    public function getData($user = null, $data = null)
     {
         if (array_key_exists('create-card', $_POST)) {
             $this->addCard(filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING), filter_var(trim($_POST['definition']), FILTER_SANITIZE_STRING));
@@ -26,7 +26,7 @@ class Model_SetOfCards extends Model_Database
         return $this->getCards();
     }
 
-    public function create_SetOfCards()
+    public function createSetOfCards()
     {
         try {
             $sql = 'create table ' . $this->table . ' (id integer auto_increment primary key, termin VARCHAR(30), definition VARCHAR(30), level INT DEFAULT 0);';

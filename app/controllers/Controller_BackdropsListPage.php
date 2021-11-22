@@ -11,9 +11,9 @@ class Controller_BackdropsListPage extends Controller
         $this->setofcards = $setofcards;
     }
 
-    function action_index()
+    function actionIndex()
     {
         $this->model = new Model_BackdropsListPage();
-        $this->view->generate('BackdropsList/backdropsList.php', 'template_view.php', $this->model->get_data($this->user, $this->setofcards));
+        $this->view->generate('BackdropsList/backdropsList.php', 'template_view.php', $this->model->getData($this->user, $this->setofcards));
     }
 }

@@ -25,5 +25,5 @@
         <?php endif; ?>
     </div>
 </div>
-<script src="/app/views/sections/navbar.js"></script>
+<script src="/app/views/Sections/navbar.js"></script>
 

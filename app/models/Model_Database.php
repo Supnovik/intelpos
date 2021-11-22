@@ -84,7 +84,7 @@ class Model_Database
     }
 
 
-    public function checking_for_existence($nickname, $password = null)
+    public function checkingForExistence($nickname, $password = null)
     {
         try {
             $content = [];

@@ -12,7 +12,7 @@ class Controller
     }
 
 
-    function action_index()
+    function actionIndex()
     {
 
     }

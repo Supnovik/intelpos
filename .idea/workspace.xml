@@ -2,37 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="924d5d45-03c3-4990-bc5b-79183f86782d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/controllers/Controller_AdminPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Controller_AdminPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/Controller_BackdropsListPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Controller_BackdropsListPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/Controller_List_of_usersPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Controller_List_of_usersPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/Controller_MainPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Controller_MainPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/Controller_ProfilePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Controller_ProfilePage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/Controller_RegistrationPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Controller_RegistrationPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/Controller_SetOfCardsPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Controller_SetOfCardsPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/controller_database.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/controller_database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/autoloading.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/autoloading.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/route.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/route.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Model_Auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Model_Auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Model_Backdrop.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Model_Backdrop.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Model_BackdropsListPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Model_BackdropsListPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Model_Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Model_Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Model_List_of_usersPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Model_List_of_usersPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Model_LoginPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Model_LoginPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Model_ProfilePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Model_ProfilePage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Model_RegistrationPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Model_RegistrationPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Model_SetOfCards.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Model_SetOfCards.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Model_User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Model_User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/Admin/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Admin/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/BackdropsList/backdropsList.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/BackdropsList/backdropsList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/List_of_users/list_of_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/List_of_users/list_of_users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/Login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Login/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/Main/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Main/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/Profile/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Profile/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/Registration/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Registration/registration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/sections/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/sections/footer.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +26,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -68,7 +40,7 @@
       <workItem from="1635507353335" duration="599000" />
       <workItem from="1636448461749" duration="41000" />
       <workItem from="1636449149133" duration="2395000" />
-      <workItem from="1637578085424" duration="226000" />
+      <workItem from="1637578085424" duration="2975000" />
     </task>
     <servers />
   </component>

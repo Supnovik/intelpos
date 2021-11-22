@@ -12,9 +12,9 @@ class Controller_SetOfCardsPage extends Controller
     }
 
 
-    function action_index()
+    function actionIndex()
     {
         $this->model = new Model_SetOfCards($this->user, $this->setofcards);
-        $this->view->generate('SetOfCards/setofcards.php', 'template_view.php', $this->model->get_data());
+        $this->view->generate('SetOfCards/setofcards.php', 'template_view.php', $this->model->getData());
     }
 }

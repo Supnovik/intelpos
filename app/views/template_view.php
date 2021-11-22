@@ -12,18 +12,18 @@
     <link rel="stylesheet" type="text/css" href="/styles/login.css">
     <link rel="stylesheet" type="text/css" href="/styles/profile.css">
     <link rel="stylesheet" type="text/css" href="/styles/registration.css">
-    <link rel="stylesheet" type="text/css" href="/styles/list_of_users.css">
+    <link rel="stylesheet" type="text/css" href="/styles/listOfUsers.css">
     <link rel="stylesheet" type="text/css" href="/styles/setofcards.css">
     <link rel="stylesheet" type="text/css" href="/styles/backdropsList.css">
     <title>Main</title>
 </head>
 <body>
 
-<?php include 'app/views/sections/navbar.php' ?>
+<?php include 'app/views/Sections/navbar.php' ?>
 <div class="content">
     <?php include 'app/views/' . $content_view; ?>
 </div>
-<?php include 'app/views/sections/footer.php' ?>
+<?php include 'app/views/Sections/footer.php' ?>
 
 </body>
 </html>

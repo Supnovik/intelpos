@@ -20,45 +20,45 @@ class Route
             case '/':
 
                 $controller = new Controller_MainPage;
-                $controller->action_index();
+                $controller->actionIndex();
                 break;
             case '/main':
                 $controller = new Controller_MainPage;
-                $controller->action_index();
+                $controller->actionIndex();
                 break;
             case '/login':
                 $controller = new Controller_LoginPage;
-                $controller->action_index();
+                $controller->actionIndex();
                 break;
             case '/registration':
                 $controller = new Controller_RegistrationPage;
-                $controller->action_index();
+                $controller->actionIndex();
                 break;
             case '/list_of_users':
-                $controller = new Controller_List_of_usersPage;
-                $controller->action_index();
+                $controller = new Controller_ListOfUsersPage;
+                $controller->actionIndex();
                 break;
             case '/users':
                 $db = new Model_Database('data', 'users');
                 $uri = explode('/', $_SERVER['REQUEST_URI']);
                 $flag = false;
-                if ($db->checking_for_existence($uri[2]) && !isset($uri[3])) {
+                if ($db->checkingForExistence($uri[2]) && !isset($uri[3])) {
                     $flag = true;
                     $controller = new Controller_ProfilePage;
-                    $controller->action_index();
+                    $controller->actionIndex();
                 }
-                if ($db->checking_for_existence($uri[2]) && isset($uri[3]) && isset($uri[4])) {
+                if ($db->checkingForExistence($uri[2]) && isset($uri[3]) && isset($uri[4])) {
                     $db = new Model_User($uri[2], $uri[2]);
-                    if ($db->checking_setofcards_for_existence($uri[4]) && $uri[3] == 'setofcards') {
+                    if ($db->checkingSetofcardsForExistence($uri[4]) && $uri[3] == 'setofcards') {
                         $flag = true;
                         $controller = new Controller_SetOfCardsPage();
                         $controller->setData($uri[2], $uri[4]);
-                        $controller->action_index();
-                    } elseif ($db->checking_setofcards_for_existence($uri[4]) && $uri[3] == 'backdrops') {
+                        $controller->actionIndex();
+                    } elseif ($db->checkingSetofcardsForExistence($uri[4]) && $uri[3] == 'backdrops') {
                         $flag = true;
                         $controller = new Controller_BackdropsListPage();
                         $controller->setData($uri[2], $uri[4]);
-                        $controller->action_index();
+                        $controller->actionIndex();
                     }
                 }
                 if (!$flag) {
@@ -66,12 +66,6 @@ class Route
                     print_r($uri);
                 }
 
-                break;
-            case '/admin':
-                $controller = new Controller_AdminPage;
-                $controller->action_index();
-                break;
-            case '/phpmyadmin':
                 break;
             default:
                 echo '<html><body><h1>Page Not Found</h1></body></html>';

@@ -2,7 +2,7 @@
 
 class Controller_MainPage extends Controller
 {
-    function action_index()
+    function actionIndex()
     {
         $this->view->generate('Main/main.php', 'template_view.php');
     }

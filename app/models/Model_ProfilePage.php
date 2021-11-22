@@ -2,7 +2,7 @@
 
 class Model_ProfilePage extends Model
 {
-    public function get_data($user = null, $data = null)
+    public function getData($user = null, $data = null)
     {
         if (array_key_exists('createSetofcards', $_POST)) {
 
@@ -33,7 +33,7 @@ class Model_ProfilePage extends Model
         $User = new Model_User($user, $user);
         $User->addSetOfCards($set_of_cards_name, $set_of_cards_name);
         $SetOfCards = new Model_SetOfCards($user, $set_of_cards_name);
-        $SetOfCards->create_SetOfCards();
+        $SetOfCards->createSetOfCards();
     }
 
     public function deleteSetOfCard($user, $set_of_cards_name)
@@ -49,7 +49,7 @@ class Model_ProfilePage extends Model
     public function deleteUser($user)
     {
         $db = new Model_Database('data', 'users');
-        if ($db->checking_for_existence($user)) {
+        if ($db->checkingForExistence($user)) {
             $db->deleteUser($user);
         }
     }

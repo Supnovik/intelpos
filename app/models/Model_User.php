@@ -37,7 +37,7 @@ class Model_User extends Model_Database
         return $content;
     }
 
-    public function checking_setofcards_for_existence($setofcards)
+    public function checkingSetofcardsForExistence($setofcards)
     {
         try {
             $content = [];
