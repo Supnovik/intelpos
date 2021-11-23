@@ -84,11 +84,11 @@
 .setofcards-sidebar-comment-text {
   word-wrap: break-word;
 }
-.setofcards-sidebar button {
+.setofcards-sidebar .button-long {
   margin-top: 20px;
 }
 
-button.comment-button {
+.button-long.comment-button {
   margin-top: 0;
   width: 20%;
 }

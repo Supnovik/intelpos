@@ -58,7 +58,7 @@ class Route
         }, 'learn' => function ($user, $setofcards) {
             $db = new Model_User($user, $user);
             if ($db->checkingSetofcardsForExistence($setofcards)) {
-                $controller = new Controller_BackdropsListPage();
+                $controller = new Controller_LearnCardsPage();
                 $controller->setData($user, $setofcards);
                 $controller->actionIndex();
                 return true;
@@ -66,32 +66,25 @@ class Route
         }]];
 
         $uri = explode('/', $_SERVER['REQUEST_URI']);
-        
+
         if (array_key_exists($uri[1], $path) && !isset($uri[2])) {
             $func = $path[$uri[1]];
             $func();
         } else {
-            if (array_key_exists($uri[1], $path) && isset($uri[2])&& !isset($uri[3])) {
+            if (array_key_exists($uri[1], $path) && isset($uri[2]) && !isset($uri[3])) {
                 $func = $path[$uri[1]][''];
-                if ($func($uri[2]))
-                    return true;
-                else
-                {
+                if (!$func($uri[2])) {
                     echo '<html><body><h1>Page Not Found</h1></body></html>';
                     print_r($uri);
                 }
             }
             if (array_key_exists($uri[3], $path[$uri[1]]) && isset($uri[4])) {
                 $func = $path[$uri[1]][$uri[3]];
-                if ($func($uri[2], $uri[4]))
-                    return true;
-                else
-                {
+                if (!$func($uri[2], $uri[4])) {
                     echo '<html><body><h1>Page Not Found</h1></body></html>';
                     print_r($uri);
                 }
-            } 
-            else {
+            } else {
                 echo '<html><body><h1>Page Not Found</h1></body></html>';
                 print_r($uri);
             }

@@ -5,7 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/core/route.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/route.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/SetOfCards/setofcards.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/SetOfCards/setofcards.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/template_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/template_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/setofcards.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/setofcards.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +26,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -43,11 +45,14 @@
       <workItem from="1636448461749" duration="41000" />
       <workItem from="1636449149133" duration="2395000" />
       <workItem from="1637578085424" duration="5103000" />
-      <workItem from="1637652961409" duration="1590000" />
+      <workItem from="1637652961409" duration="3506000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

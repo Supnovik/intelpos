@@ -8,7 +8,7 @@
             <?php else: ?>
                 <button style="display: none" class="setofcards-sidebar-buttons-add button-long">Add new card</button>
             <?php endif; ?>
-            <a href='<?=$uri[4].'/learn'?>' class="setofcards-sidebar-buttons-start button-long">Start learning</a>
+            <a href='/users/<?= $uri[2] ?>/learn/<?=$uri[4]?>' class="setofcards-sidebar-buttons-start button-long">Start learning</a>
             <button class="setofcards-sidebar-buttons-comments button-long">View comments</button>
         </div>
         <div class="setofcards-sidebar-input">
@@ -20,10 +20,15 @@
                 <input required type="text" name="definition" placeholder="Definition"
                        class="setofcards-sidebar-input-definition input-box">
                 <button type="submit" name="create-card" class="create-card button-long">Create card</button>
-                <div class="save-delete-card">
-                    <button type="submit" name="save-card" class="save-card button-long">Save card</button>
-                    <button type="submit" name="delete-card" class="delete-card button-long">Delete card</button>
-                </div>
+                
+                    <div class="save-delete-card">
+                        <?php if ($GLOBALS["user"] == $uri[2]): ?>
+                            <button type="submit" name="save-card" class="save-card button-long">Save card</button>
+                            <button type="submit" name="delete-card" class="delete-card button-long">Delete card</button>
+                        <?php endif;?>
+                    </div>
+                
+
             </form>
             <button class="setofcards-sidebar-input-cancel button-long">Cancel</button>
         </div>
