@@ -67,11 +67,6 @@
 .setofcards-search {
   display: flex;
 }
-.setofcards-sidebar-comments {
-  background-color: white;
-  border: 1px solid;
-  height: 600px;
-}
 
 .setofcards-sidebar-comments-content {
   overflow-y: scroll;
@@ -88,4 +83,12 @@
 }
 .setofcards-sidebar-comment-text {
   word-wrap: break-word;
+}
+.setofcards-sidebar button {
+  margin-top: 20px;
+}
+
+button.comment-button {
+  margin-top: 0;
+  width: 20%;
 }

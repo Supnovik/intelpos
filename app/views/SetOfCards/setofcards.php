@@ -5,6 +5,8 @@
             $uri = explode('/', $_SERVER['REQUEST_URI']);
             if ($GLOBALS["user"] == $uri[2]):?>
                 <button class="setofcards-sidebar-buttons-add button-long">Add new card</button>
+            <?php else: ?>
+                <button style="display: none" class="setofcards-sidebar-buttons-add button-long">Add new card</button>
             <?php endif; ?>
             <button class="setofcards-sidebar-buttons-start button-long">Start learning</button>
             <button class="setofcards-sidebar-buttons-comments button-long">View comments</button>
@@ -37,10 +39,10 @@
             </div>
             <?php if ($GLOBALS["isLogin"]):?>
                 <form class="setofcards-sidebar-comments-input" method="post">
-                <input type="text" name="comment-nickname" style="display: none" value="<?=$GLOBALS["user"]?>" >
-                <input type="text" name="comment-text" class="input-box" >
-                <button type="submit" name="comment-button" class="button-short"> send</button>
-            </form>
+                    <input type="text" name="comment-nickname" style="display: none" value="<?=$GLOBALS["user"]?>" >
+                    <input type="text" name="comment-text" class="comment-text input-box" >
+                    <button type="submit" name="comment-button" class="comment-button button-long"> send</button>
+                </form>
             <?php endif; ?>
             <button class="setofcards-sidebar-input-cancel button-long">Cancel</button>
         </div>
