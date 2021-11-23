@@ -3,8 +3,8 @@
 class Controller
 {
 
-    protected $model;
-    protected $view;
+    public $model;
+    public $view;
 
     function __construct()
     {

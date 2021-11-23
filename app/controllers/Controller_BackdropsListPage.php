@@ -2,8 +2,8 @@
 
 class Controller_BackdropsListPage extends Controller
 {
-    protected $user;
-    protected $setofcards;
+    public $user;
+    public $setofcards;
 
     function setData($user, $setofcards)
     {

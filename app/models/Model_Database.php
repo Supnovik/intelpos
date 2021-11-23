@@ -2,15 +2,15 @@
 
 class Model_Database
 {
-    protected $user = 'Supnovik';
-    protected $password = 'qwe123';
-    protected $database = 'data';
-    protected $table = 'users';
-    protected $isConnected = false;
-    protected $databaseConnection;
+    public $user = 'Supnovik';
+    public $password = 'qwe123';
+    public $database = 'data';
+    public $table = 'users';
+    public $isConnected = false;
+    public $databaseConnection;
 
 
-    protected function __construct($database, $table)
+    public function __construct($database, $table)
     {
         $this->database = $database;
         $this->table = $table;
@@ -27,7 +27,7 @@ class Model_Database
     }
 
 
-    protected function createDatabase($databaseName)
+    public function createDatabase($databaseName)
     {
         try {
             $sql = 'CREATE DATABASE ' . $databaseName;
@@ -39,7 +39,7 @@ class Model_Database
 
     }
 
-    protected function addUser($nickname, $mail, $password)
+    public function addUser($nickname, $mail, $password)
     {
         try {
 
@@ -51,7 +51,7 @@ class Model_Database
         }
     }
 
-    protected function getUsers()
+    public function getUsers()
     {
         $content = [];
         try {
@@ -67,7 +67,7 @@ class Model_Database
         return $content;
     }
 
-    protected function serchUsers($uset)
+    public function serchUsers($uset)
     {
         $content = [];
         try {
@@ -84,7 +84,7 @@ class Model_Database
     }
 
 
-    protected function checkingForExistence($nickname, $password = null)
+    public function checkingForExistence($nickname, $password = null)
     {
         try {
             $content = [];
@@ -106,7 +106,7 @@ class Model_Database
         }
     }
 
-    protected function deleteUser($user)
+    public function deleteUser($user)
     {
         try {
             $sql = 'DELETE FROM ' . $this->table . ' WHERE nickname = "' . $user . '"';

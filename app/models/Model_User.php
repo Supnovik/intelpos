@@ -2,7 +2,7 @@
 
 class Model_User extends Model_Database
 {
-    protected function createTable()
+    public function createTable()
     {
         try {
             $sql = 'CREATE TABLE ' . $this->table . ' (id integer auto_increment primary key, setofcards VARCHAR(30))';
@@ -12,7 +12,7 @@ class Model_User extends Model_Database
         }
     }
 
-    protected function addSetOfCards($setofcards)
+    public function addSetOfCards($setofcards)
     {
         try {
             $sql = 'INSERT INTO ' . $this->table . ' (setofcards) VALUES ("' . $setofcards . '")';
@@ -22,7 +22,7 @@ class Model_User extends Model_Database
         }
     }
 
-    protected function getSetOfCardsList()
+    public function getSetOfCardsList()
     {
         $content = [];
         try {
@@ -37,7 +37,7 @@ class Model_User extends Model_Database
         return $content;
     }
 
-    protected function checkingSetofcardsForExistence($setofcards)
+    public function checkingSetofcardsForExistence($setofcards)
     {
         try {
             $content = [];
@@ -56,7 +56,7 @@ class Model_User extends Model_Database
         }
     }
 
-    protected function deleteSetOfCards($setofcards)
+    public function deleteSetOfCards($setofcards)
     {
         try {
             $sql = 'DELETE FROM ' . $this->table . ' WHERE setofcards = "' . $setofcards . '"';
