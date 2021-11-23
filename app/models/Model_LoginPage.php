@@ -2,7 +2,7 @@
 
 class Model_LoginPage
 {
-    public function __construct()
+    protected function __construct()
     {
         if (array_key_exists('login', $_POST)) {
             $nickname = filter_var(trim($_POST['nickname']), FILTER_SANITIZE_STRING);

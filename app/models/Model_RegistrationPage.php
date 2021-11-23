@@ -2,7 +2,7 @@
 
 class Model_RegistrationPage
 {
-    public function __construct()
+    protected function __construct()
     {
         if (array_key_exists('createUser', $_POST)) {
             $nickname = filter_var(trim($_POST['nickname']), FILTER_SANITIZE_STRING);

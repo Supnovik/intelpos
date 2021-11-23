@@ -10,7 +10,7 @@ class Model_Database
     protected $databaseConnection;
 
 
-    public function __construct($database, $table)
+    protected function __construct($database, $table)
     {
         $this->database = $database;
         $this->table = $table;
@@ -27,7 +27,7 @@ class Model_Database
     }
 
 
-    public function createDatabase($databaseName)
+    protected function createDatabase($databaseName)
     {
         try {
             $sql = 'CREATE DATABASE ' . $databaseName;
@@ -39,7 +39,7 @@ class Model_Database
 
     }
 
-    public function addUser($nickname, $mail, $password)
+    protected function addUser($nickname, $mail, $password)
     {
         try {
 
@@ -51,7 +51,7 @@ class Model_Database
         }
     }
 
-    public function getUsers()
+    protected function getUsers()
     {
         $content = [];
         try {
@@ -67,7 +67,7 @@ class Model_Database
         return $content;
     }
 
-    public function serchUsers($uset)
+    protected function serchUsers($uset)
     {
         $content = [];
         try {
@@ -84,7 +84,7 @@ class Model_Database
     }
 
 
-    public function checkingForExistence($nickname, $password = null)
+    protected function checkingForExistence($nickname, $password = null)
     {
         try {
             $content = [];
@@ -106,7 +106,7 @@ class Model_Database
         }
     }
 
-    public function deleteUser($user)
+    protected function deleteUser($user)
     {
         try {
             $sql = 'DELETE FROM ' . $this->table . ' WHERE nickname = "' . $user . '"';

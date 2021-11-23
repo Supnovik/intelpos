@@ -2,7 +2,7 @@
 
 class Model
 {
-    public function getData($user = null, $data = null)
+    protected function getData($user = null, $data = null)
     {
 
     }

@@ -2,7 +2,7 @@
 
 class Model_SetOfCards extends Model_Database
 {
-    public function getData($user = null, $data = null)
+    protected function getData($user = null, $data = null)
     {
         if (array_key_exists('create-card', $_POST)) {
             $this->addCard(filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING), filter_var(trim($_POST['definition']), FILTER_SANITIZE_STRING));
@@ -31,7 +31,7 @@ class Model_SetOfCards extends Model_Database
         return $this->getCards();
     }
 
-    public function createSetOfCards()
+    protected function createSetOfCards()
     {
         try {
             $sql = 'create table ' . $this->table . ' (id integer auto_increment primary key, termin VARCHAR(30), definition VARCHAR(30), level INT DEFAULT 0);';
@@ -45,7 +45,7 @@ class Model_SetOfCards extends Model_Database
         }
     }
 
-    public function addCard($termin, $definition)
+    protected function addCard($termin, $definition)
     {
         try {
             $sql = 'INSERT INTO ' . $this->table . ' (termin, definition) VALUES ("' . $termin . '","' . $definition . '")';
@@ -56,7 +56,7 @@ class Model_SetOfCards extends Model_Database
         }
     }
 
-    public function addComment($nickname, $text)
+    protected function addComment($nickname, $text)
     {
         try {
             $sql = 'INSERT INTO ' . $this->table . '_Comments (nickname, text) VALUES ("' . $nickname . '","' . $text . '")';
@@ -66,7 +66,7 @@ class Model_SetOfCards extends Model_Database
         }
     }
 
-    public function getCards()
+    protected function getCards()
     {
         $content = [];
         try {
@@ -80,7 +80,7 @@ class Model_SetOfCards extends Model_Database
         }
         return $content;
     }
-    public function getComments()
+    protected function getComments()
     {
         $content = [];
         try {
@@ -95,7 +95,7 @@ class Model_SetOfCards extends Model_Database
         return $content;
     }
 
-    public function sortByAlphabet()
+    protected function sortByAlphabet()
     {
         $content = [];
         try {
@@ -111,7 +111,7 @@ class Model_SetOfCards extends Model_Database
         return $content;
     }
 
-    public function searchCards($card)
+    protected function searchCards($card)
     {
         $content = [];
         try {
@@ -127,7 +127,7 @@ class Model_SetOfCards extends Model_Database
         return $content;
     }
 
-    public function updateCard($oldtermin, $termin, $defition)
+    protected function updateCard($oldtermin, $termin, $defition)
     {
         try {
 
@@ -140,7 +140,7 @@ class Model_SetOfCards extends Model_Database
         }
     }
 
-    public function deleteCard($termin)
+    protected function deleteCard($termin)
     {
         try {
 
@@ -153,7 +153,7 @@ class Model_SetOfCards extends Model_Database
     }
 
 
-    public function deleteSetOfCards()
+    protected function deleteSetOfCards()
     {
         try {
             $sql = 'Drop TABLE ' . $this->table . '_BackdropsList';
@@ -165,7 +165,7 @@ class Model_SetOfCards extends Model_Database
         }
     }
 
-    public function getBackdrops()
+    protected function getBackdrops()
     {
         $content = [];
         try {
@@ -181,7 +181,7 @@ class Model_SetOfCards extends Model_Database
     }
 
 
-    public function deleteAllBackdrops()
+    protected function deleteAllBackdrops()
     {
         try {
             $backdrops = $this->getBackdrops();

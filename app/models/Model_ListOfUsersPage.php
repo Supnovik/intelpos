@@ -3,7 +3,7 @@
 class Model_ListOfUsersPage extends Model
 {
 
-    public function getData($user = null, $data = null)
+    protected function getData($user = null, $data = null)
     {
         $db = new Model_Database('data', 'users');
         if (array_key_exists('search-user-button', $_POST)) {

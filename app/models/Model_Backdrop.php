@@ -3,7 +3,7 @@
 class Model_Backdrop extends Model_Database
 {
 
-    public function createBackdropTable($table)
+    protected function createBackdropTable($table)
     {
         try {
             $sql = 'create table ' . $table . ' (id integer auto_increment primary key, termin VARCHAR(30), definition VARCHAR(30), x_coordinate INT DEFAULT 0, y_coordinate INT DEFAULT 0);';
@@ -13,7 +13,7 @@ class Model_Backdrop extends Model_Database
         }
     }
 
-    public function addCard($termin, $definition, $x_coordinate, $y_coordinate)
+    protected function addCard($termin, $definition, $x_coordinate, $y_coordinate)
     {
         try {
             $sql = 'INSERT INTO ' . $this->table . ' (termin, definition,x_coordinate,y_coordinate) VALUES ("' . $termin . '","' . $definition . '","' . $x_coordinate . '","' . $y_coordinate . '")';
@@ -24,7 +24,7 @@ class Model_Backdrop extends Model_Database
         }
     }
 
-    public function getCards()
+    protected function getCards()
     {
         $content = [];
         try {
@@ -40,7 +40,7 @@ class Model_Backdrop extends Model_Database
         return $content;
     }
 
-    public function deleteCard($termin)
+    protected function deleteCard($termin)
     {
         try {
             $sql = 'DELETE FROM ' . $this->table . ' WHERE termin = "' . $termin . '"';
@@ -50,7 +50,7 @@ class Model_Backdrop extends Model_Database
         }
     }
 
-    public function deleteBackdrop()
+    protected function deleteBackdrop()
     {
         try {
             $sql = 'Drop TABLE ' . $this->table;
