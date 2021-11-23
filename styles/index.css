@@ -35,10 +35,11 @@ p {
   margin: 0 15% 0 15%;
 }
 .button-long {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 44px;
   width: 100%;
-  display: block;
   color: #fff;
   background: rgb(0, 197, 199, 0.75);
   border-radius: 22px;

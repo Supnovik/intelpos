@@ -8,7 +8,7 @@
             <?php else: ?>
                 <button style="display: none" class="setofcards-sidebar-buttons-add button-long">Add new card</button>
             <?php endif; ?>
-            <button class="setofcards-sidebar-buttons-start button-long">Start learning</button>
+            <a href='<?=$uri[4].'/learn'?>' class="setofcards-sidebar-buttons-start button-long">Start learning</a>
             <button class="setofcards-sidebar-buttons-comments button-long">View comments</button>
         </div>
         <div class="setofcards-sidebar-input">
