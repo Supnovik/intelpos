@@ -16,11 +16,7 @@
         <?php endif; ?>
     </div>
     <div class="user-content-list">
-        <?php
-
-        foreach ($data
-
-        as $value): ?>
+        <?php foreach ($data as $value): ?>
         <form method="post" class="user-content-list-block">
             <h2><?= $value['setofcards'] ?></h2>
             <input type="text" style="display: none" name="setofcardsName" value="<?= $value['setofcards'] ?>"></input>

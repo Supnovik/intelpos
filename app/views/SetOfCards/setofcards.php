@@ -72,4 +72,7 @@
         </div>
     </div>
 </div>
-<script src="/app/views/SetOfCards/setofcards.js"></script>
+<script src="/app/views/SetOfCards/setofcards.js">
+    
+</script>
+
