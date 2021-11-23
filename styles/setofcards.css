@@ -60,9 +60,32 @@
   box-shadow: 0 0 25px rgb(61, 4, 4);
 }
 
-.setofcards-table-card-definition {
+.setofcards-table-card-definition,
+.setofcards-sidebar-comments {
   display: none;
 }
 .setofcards-search {
   display: flex;
+}
+.setofcards-sidebar-comments {
+  background-color: white;
+  border: 1px solid;
+  height: 600px;
+}
+
+.setofcards-sidebar-comments-content {
+  overflow-y: scroll;
+  background-color: dimgray;
+  height: 555px;
+}
+
+.setofcards-sidebar-comments-input {
+  display: flex;
+}
+
+.setofcards-sidebar-comment {
+  padding: 10px 5px;
+}
+.setofcards-sidebar-comment-text {
+  word-wrap: break-word;
 }

@@ -1,7 +1,9 @@
 var sidebarButtons = document.querySelector(".setofcards-sidebar-buttons");
 var sidebarInput = document.querySelector(".setofcards-sidebar-input");
+var sidebarComments = document.querySelector(".setofcards-sidebar-comments");
 var sidebarButtonSaveDelete = document.querySelector(".save-delete-card");
 var sidebarButtonCreate = document.querySelector(".create-card");
+
 var sidebarInputTermin = document.querySelector(
   ".setofcards-sidebar-input-termin"
 );
@@ -12,29 +14,36 @@ var sidebarInputDefinition = document.querySelector(
   ".setofcards-sidebar-input-definition"
 );
 
+function allDisplayNone() {
+  sidebarButtons.style.display = "none";
+  sidebarButtonCreate.style.display = "none";
+  sidebarButtonSaveDelete.style.display = "none";
+  sidebarInput.style.display = "none";
+  sidebarComments.style.display = "none";
+}
+
 var addNewCard = document
   .querySelector(".setofcards-sidebar-buttons-add")
   .addEventListener("click", function () {
-    sidebarButtons.style.display = "none";
-    sidebarButtonSaveDelete.style.display = "none";
+    allDisplayNone();
     sidebarInput.style.display = "block";
     sidebarButtonCreate.style.display = "block";
   });
 
-var cancel = document
-  .querySelector(".setofcards-sidebar-input-cancel")
-  .addEventListener("click", function () {
+var cancel = document.querySelectorAll(".setofcards-sidebar-input-cancel");
+cancel.forEach((element) => {
+  element.addEventListener("click", function () {
+    allDisplayNone();
     sidebarButtons.style.display = "block";
-    sidebarInput.style.display = "none";
     sidebarInputTermin.value = "";
     sidebarInputDefinition.value = "";
   });
+});
 
 var card = document.querySelectorAll(".setofcards-table-card");
 card.forEach((element) => {
   element.addEventListener("click", function () {
-    sidebarButtons.style.display = "none";
-    sidebarButtonCreate.style.display = "none";
+    allDisplayNone();
     sidebarInput.style.display = "block";
     sidebarButtonSaveDelete.style.display = "block";
     sidebarInputOldTermin.value = element.childNodes[1].innerHTML.toString();
@@ -42,3 +51,10 @@ card.forEach((element) => {
     sidebarInputDefinition.value = element.childNodes[3].innerHTML.toString();
   });
 });
+
+var comments = document
+  .querySelector(".setofcards-sidebar-buttons-comments")
+  .addEventListener("click", function () {
+    allDisplayNone();
+    sidebarComments.style.display = "block";
+  });

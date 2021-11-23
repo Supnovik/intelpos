@@ -15,6 +15,6 @@ class Controller_SetOfCardsPage extends Controller
     function actionIndex()
     {
         $this->model = new Model_SetOfCards($this->user, $this->setofcards);
-        $this->view->generate('SetOfCards/setofcards.php', 'template_view.php', $this->model->getData());
+        $this->view->generate('SetOfCards/setofcards.php', 'template_view.php', ['cards'=>$this->model->getData(),'comments'=>$this->model->getComments()]);
     }
 }

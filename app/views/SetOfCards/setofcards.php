@@ -7,7 +7,7 @@
                 <button class="setofcards-sidebar-buttons-add button-long">Add new card</button>
             <?php endif; ?>
             <button class="setofcards-sidebar-buttons-start button-long">Start learning</button>
-            <button class="setofcards-sidebar-buttons-view button-long">View comments</button>
+            <button class="setofcards-sidebar-buttons-comments button-long">View comments</button>
         </div>
         <div class="setofcards-sidebar-input">
             <form method="post">
@@ -26,6 +26,25 @@
             <button class="setofcards-sidebar-input-cancel button-long">Cancel</button>
         </div>
 
+        <div class="setofcards-sidebar-comments">
+            <div class="setofcards-sidebar-comments-content">
+                <?php foreach ($data['comments'] as $value):?>
+                    <div class="setofcards-sidebar-comment">
+                        <a class="setofcards-sidebar-comment-nickname"><?=$value['nickname']?></a>
+                        <div class="setofcards-sidebar-comment-text"><?=$value['text']?></div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <?php if ($GLOBALS["isLogin"]):?>
+                <form class="setofcards-sidebar-comments-input" method="post">
+                <input type="text" name="comment-nickname" style="display: none" value="<?=$GLOBALS["user"]?>" >
+                <input type="text" name="comment-text" class="input-box" >
+                <button type="submit" name="comment-button" class="button-short"> send</button>
+            </form>
+            <?php endif; ?>
+            <button class="setofcards-sidebar-input-cancel button-long">Cancel</button>
+        </div>
+        
     </div>
     <div class="setofcards-content">
         <div class="setofcards-header">
@@ -37,7 +56,7 @@
         </div>
         <div class="setofcards-table">
             <?php
-            foreach ($data as $value):?>
+            foreach ($data['cards'] as $value):?>
                 <button class="setofcards-table-card">
                     <div class="setofcards-table-card-termin"><?= $value['termin'] ?></div>
                     <div class="setofcards-table-card-definition"><?= $value['definition'] ?></div>

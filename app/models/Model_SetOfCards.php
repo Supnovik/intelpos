@@ -16,11 +16,16 @@ class Model_SetOfCards extends Model_Database
             $this->deleteCard(filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING));
             echo "<meta http-equiv='refresh' content='0'>";
         }
+        
         if (array_key_exists('search-card-button', $_POST)) {
             return $this->searchCards(filter_var(trim($_POST['search-card']), FILTER_SANITIZE_STRING));
         }
         if (array_key_exists('sortByAlphabet', $_POST)) {
             return $this->sortByAlphabet();
+        }
+
+        if (array_key_exists('comment-button', $_POST)) {
+            $this->addComment(filter_var(trim($_POST['comment-nickname']), FILTER_SANITIZE_STRING), filter_var(trim($_POST['comment-text']), FILTER_SANITIZE_STRING));
         }
 
         return $this->getCards();
@@ -33,6 +38,8 @@ class Model_SetOfCards extends Model_Database
             $this->databaseConnection->exec($sql);
             $sql = 'create table ' . $this->table . '_BackdropsList (id integer auto_increment primary key, backdrop VARCHAR(30), image BLOB);';
             $this->databaseConnection->exec($sql);
+            $sql = 'create table ' . $this->table . '_Comments (id integer auto_increment primary key, nickname VARCHAR(30), text VARCHAR(30));';
+            $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
@@ -41,10 +48,19 @@ class Model_SetOfCards extends Model_Database
     public function addCard($termin, $definition)
     {
         try {
-
             $sql = 'INSERT INTO ' . $this->table . ' (termin, definition) VALUES ("' . $termin . '","' . $definition . '")';
             $this->databaseConnection->exec($sql);
 
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+        }
+    }
+
+    public function addComment($nickname, $text)
+    {
+        try {
+            $sql = 'INSERT INTO ' . $this->table . '_Comments (nickname, text) VALUES ("' . $nickname . '","' . $text . '")';
+            $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
@@ -54,11 +70,24 @@ class Model_SetOfCards extends Model_Database
     {
         $content = [];
         try {
-
             $sql = 'SELECT * FROM ' . $this->table;
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['termin' => $row['termin'], 'definition' => $row['definition'], 'level' => $row['level']];
+            }
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+        }
+        return $content;
+    }
+    public function getComments()
+    {
+        $content = [];
+        try {
+            $sql = 'SELECT * FROM ' . $this->table.'_Comments';
+            $result = $this->databaseConnection->query($sql);
+            while ($row = $result->fetch()) {
+                $content[] = ['nickname' => $row['nickname'], 'text' => $row['text']];
             }
         } catch (PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
