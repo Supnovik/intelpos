@@ -12,7 +12,7 @@ class Model_ProfilePage extends Model
 
         if (array_key_exists('delete-cardsSet', $_POST)) {
             $this->deleteSetOfCard($GLOBALS['user'], filter_var(trim($_POST['setofcardsName']), FILTER_SANITIZE_STRING));
-            echo "<meta http-equiv='refresh' content='0'>";
+            //echo "<meta http-equiv='refresh' content='0'>";
         }
 
         if (array_key_exists('add-cardsSet', $_POST)) {
@@ -40,7 +40,7 @@ class Model_ProfilePage extends Model
     {
         $User = new Model_User($user, $user);
         $User->deleteSetOfCards($set_of_cards_name);
-        $SetOfCards = new Model_SetOfCards($user, $set_of_cards_name . '_BackdropsList');
+        $SetOfCards = new Model_SetOfCards($user, $set_of_cards_name);
         $SetOfCards->deleteAllBackdrops();
         $SetOfCards = new Model_SetOfCards($user, $set_of_cards_name);
         $SetOfCards->deleteSetOfCards();

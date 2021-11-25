@@ -3,10 +3,10 @@
 class Model_Backdrop extends Model_Database
 {
 
-    public function createBackdropTable($table)
+    public function createBackdropTable()
     {
         try {
-            $sql = 'create table ' . $table . ' (id integer auto_increment primary key, termin VARCHAR(30), definition VARCHAR(30), x_coordinate INT DEFAULT 0, y_coordinate INT DEFAULT 0);';
+            $sql = 'create table ' . $this->table . '_Backdrop (id integer auto_increment primary key, termin VARCHAR(30), definition VARCHAR(30), x_coordinate INT DEFAULT 0, y_coordinate INT DEFAULT 0,is_set BOOL DEFAULT FALSE);';
             $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
@@ -16,9 +16,8 @@ class Model_Backdrop extends Model_Database
     public function addCard($termin, $definition, $x_coordinate, $y_coordinate)
     {
         try {
-            $sql = 'INSERT INTO ' . $this->table . ' (termin, definition,x_coordinate,y_coordinate) VALUES ("' . $termin . '","' . $definition . '","' . $x_coordinate . '","' . $y_coordinate . '")';
+            $sql = 'INSERT INTO ' . $this->table . '_Backdrop (termin, definition,x_coordinate,y_coordinate) VALUES ("' . $termin . '","' . $definition . '","' . $x_coordinate . '","' . $y_coordinate . '")';
             $this->databaseConnection->exec($sql);
-
         } catch (PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
@@ -29,7 +28,7 @@ class Model_Backdrop extends Model_Database
         $content = [];
         try {
 
-            $sql = 'SELECT * FROM ' . $this->table;
+            $sql = 'SELECT * FROM ' . $this->table. '_Backdrop';
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['termin' => $row['termin'], 'definition' => $row['definition'], 'x_coordinate' => $row['x_coordinate'], 'y_coordinate' => $row['y_coordinate']];
@@ -43,7 +42,7 @@ class Model_Backdrop extends Model_Database
     public function deleteCard($termin)
     {
         try {
-            $sql = 'DELETE FROM ' . $this->table . ' WHERE termin = "' . $termin . '"';
+            $sql = 'DELETE FROM ' . $this->table . '_Backdrop WHERE termin = "' . $termin . '"';
             $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
@@ -53,7 +52,7 @@ class Model_Backdrop extends Model_Database
     public function deleteBackdrop()
     {
         try {
-            $sql = 'Drop TABLE ' . $this->table;
+            $sql = 'Drop TABLE ' . $this->table. '_Backdrop';
             $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo 'Database error: ' . $e->getMessage();

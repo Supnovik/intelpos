@@ -36,7 +36,7 @@ class Model_SetOfCards extends Model_Database
         try {
             $sql = 'create table ' . $this->table . ' (id integer auto_increment primary key, termin VARCHAR(30), definition VARCHAR(30), level INT DEFAULT 0);';
             $this->databaseConnection->exec($sql);
-            $sql = 'create table ' . $this->table . '_BackdropsList (id integer auto_increment primary key, backdrop VARCHAR(30), image BLOB);';
+            $sql = 'create table ' . $this->table . '_BackdropsList (id integer auto_increment primary key, backdrop VARCHAR(30), image BLOB DEFAULT null);';
             $this->databaseConnection->exec($sql);
             $sql = 'create table ' . $this->table . '_Comments (id integer auto_increment primary key, nickname VARCHAR(30), text VARCHAR(30));';
             $this->databaseConnection->exec($sql);
@@ -158,7 +158,19 @@ class Model_SetOfCards extends Model_Database
         try {
             $sql = 'Drop TABLE ' . $this->table . '_BackdropsList';
             $this->databaseConnection->exec($sql);
+            $sql = 'Drop TABLE ' . $this->table . '_Comments';
+            $this->databaseConnection->exec($sql);
             $sql = 'Drop TABLE ' . $this->table;
+            $this->databaseConnection->exec($sql);
+        } catch (PDOException $e) {
+            echo 'Database error: ' . $e->getMessage();
+        }
+    }
+
+    public function createBackdrop($backdrop)
+    {
+        try {
+            $sql = 'INSERT INTO ' . $this->table .  '_BackdropsList (backdrop) VALUES ("' . $backdrop . '")';
             $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
@@ -169,7 +181,7 @@ class Model_SetOfCards extends Model_Database
     {
         $content = [];
         try {
-            $sql = 'SELECT * FROM ' . $this->table;
+            $sql = 'SELECT * FROM ' . $this->table . '_BackdropsList';
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['backdrop' => $row['backdrop']];
@@ -180,13 +192,12 @@ class Model_SetOfCards extends Model_Database
         return $content;
     }
 
-
     public function deleteAllBackdrops()
     {
         try {
             $backdrops = $this->getBackdrops();
             foreach ($backdrops as $backdrop) {
-                $sql = 'Drop TABLE ' . $backdrop;
+                $sql = 'Drop TABLE ' . $backdrop['backdrop'].'_Backdrop';
                 $this->databaseConnection->exec($sql);
             }
 

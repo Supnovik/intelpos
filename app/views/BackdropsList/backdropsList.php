@@ -4,20 +4,29 @@
         <h1>
             Backdrops
         </h1>
-        <form method="post" class="all_backdrops-search">
-            <input type="text" name="search-backdrop" placeholder="Search backdrops by nickname" class="input-box">
-            <button type="submit" name="search-backdrop-button" class="button-short">Search</button>
-        </form>
-
+        <button class="page_of_backdrops-open-modal button-short">Create new backdrop</button>
     </div>
-    <div class="all_backdrops">
-
-        <div class="all_backdrops-list">
+    <div class="backdrops">
+        <div class="backdrops-list">
             <?php
-            foreach ($data as $value) {
-                echo "<a href='/backdrops/" . $value['backdrop'] . "' class='all_backdrops-backdrop'>" . $value['backdrop'] . "</a>";
-            }
-            ?>
+            $uri = explode('/', $_SERVER['REQUEST_URI']); foreach ($data as $value): ?>
+                <a href='/users/<?=$uri[2]?>/backdrops/<?=$value['backdrop']?>' class="backdrops-list-backdrop">
+                    <?=$value['backdrop']?>
+                </a>
+            <?php endforeach; ?>
+            
         </div>
     </div>
 </div>
+<div class="page_of_backdrops-modal">
+    <div class="modal">
+        <button class="page_of_backdrops-close-modal close">×</button>
+        <form method="post">
+            <h2>Enter the name of the Backdrop</h2>
+            <input maxlength="12" name="BackdropName" class="page_of_backdrops-modal-input input-box" required autocomplete="off"
+                   placeholder="Backdrop name"/>
+            <button type="submit" name="createBackdrop" class="button-long page_of_backdrops-close-modal">Create </button>
+        </form>
+    </div>
+</div>
+<script src="/app/views/BackdropsList/backdropsList.js" ></script>
