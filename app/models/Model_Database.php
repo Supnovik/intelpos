@@ -2,16 +2,19 @@
 
 class Model_Database
 {
-    public $user = 'Supnovik';
-    public $password = 'qwe123';
+    public $user = '';
+    public $password = '';
     public $database = 'data';
     public $table = 'users';
     public $isConnected = false;
     public $databaseConnection;
 
-
     public function __construct($database, $table)
     {
+        
+        $config = new Config;
+        $this->user = $config->user;
+        $this->password = $config->password;
         $this->database = $database;
         $this->table = $table;
         try {

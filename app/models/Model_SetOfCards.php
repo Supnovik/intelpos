@@ -9,8 +9,8 @@ class Model_SetOfCards extends Model_Database
             echo "<meta http-equiv='refresh' content='0'>";
         }
         if (array_key_exists('save-card', $_POST)) {
-            $this->updateCard(filter_var(trim($_POST['oldtermin']), FILTER_SANITIZE_STRING), filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING), filter_var(trim($_POST['newdefinition']), FILTER_SANITIZE_STRING));
-            echo "<meta http-equiv='refresh' content='0'>";
+            $this->updateCard(filter_var(trim($_POST['oldtermin']), FILTER_SANITIZE_STRING), filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING), filter_var(trim($_POST['definition']), FILTER_SANITIZE_STRING));
+            
         }
         if (array_key_exists('delete-card', $_POST)) {
             $this->deleteCard(filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING));
@@ -100,7 +100,7 @@ class Model_SetOfCards extends Model_Database
         $content = [];
         try {
 
-            $sql = 'SELECT * FROM ' . $this->table . ' ORDER BY termin DESC';
+            $sql = 'SELECT * FROM ' . $this->table . ' ORDER BY termin';
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['termin' => $row['termin'], 'definition' => $row['definition'], 'level' => $row['level']];
@@ -127,12 +127,12 @@ class Model_SetOfCards extends Model_Database
         return $content;
     }
 
-    public function updateCard($oldtermin, $termin, $defition)
+    public function updateCard($oldtermin, $termin, $definition)
     {
         try {
-
-            $sql = 'UPDATE ' . $this->table . ' SET defition = "' . $defition . '" WHERE termin = "' . $oldtermin . '"';
-            $sql = 'UPDATE ' . $this->table . ' SET defition = "' . $termin . '" WHERE termin = "' . $oldtermin . '"';
+            $sql = 'UPDATE ' . $this->table . ' SET definition = "' . $definition . '" WHERE termin = "' . $oldtermin . '"';
+            $this->databaseConnection->exec($sql);
+            $sql = 'UPDATE ' . $this->table . ' SET termin = "' . $termin . '" WHERE termin = "' . $oldtermin . '"';
             $this->databaseConnection->exec($sql);
 
         } catch (PDOException $e) {

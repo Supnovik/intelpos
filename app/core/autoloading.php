@@ -1,4 +1,6 @@
 <?php
+include '/home/test/Desktop/Workflow/project/config.php';
+
 spl_autoload_register(function ($class_name) {
     if (file_exists('app/controllers/' . $class_name . '.php'))
         require 'app/controllers/' . $class_name . '.php';

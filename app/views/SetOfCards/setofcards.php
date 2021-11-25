@@ -21,12 +21,12 @@
                        class="setofcards-sidebar-input-definition input-box">
                 <button type="submit" name="create-card" class="create-card button-long">Create card</button>
                 
-                    <div class="save-delete-card">
-                        <?php if ($GLOBALS["user"] == $uri[2]): ?>
-                            <button type="submit" name="save-card" class="save-card button-long">Save card</button>
-                            <button type="submit" name="delete-card" class="delete-card button-long">Delete card</button>
-                        <?php endif;?>
-                    </div>
+                <div class="save-delete-card">
+                    <?php if ($GLOBALS["user"] == $uri[2]): ?>
+                        <button type="submit" name="save-card" class="save-card button-long">Save card</button>
+                        <button type="submit" name="delete-card" class="delete-card button-long">Delete card</button>
+                    <?php endif;?>
+                </div>
                 
 
             </form>

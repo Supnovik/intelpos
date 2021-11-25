@@ -30,11 +30,11 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 30px;
-  height: 40%;
   width: 80%;
 }
-
+.learnCards-input {
+  margin-top: 40px;
+}
 .learnCards-input input {
   margin-top: 20px;
 }
@@ -43,6 +43,7 @@
 .learnCards-next-button,
 .learnCards-statistic-button,
 .learnCards-save-button,
+.learnCards-right-button,
 .learnCards-check-wrong,
 .learnCards-check-right {
   display: flex;
@@ -58,6 +59,7 @@
   text-decoration: none;
   color: #fff;
   border: none;
+  margin-right: 20px;
 }
 
 .learnCards-check-wrong {
@@ -74,4 +76,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+.learnCards-check-buttons {
+  display: flex;
+}
+.learnCards-userAnswer {
+  display: none;
+  margin-top: 30px;
 }

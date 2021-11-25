@@ -29,19 +29,19 @@
                 </a>
                 <?php
                 if ($GLOBALS["user"] == $uri[2]): ?>
-                <input type="submit" name="edit-card" id="edit" class="user-content-list-block-button" value="edit"/>
-                <input type="submit" name="delete-card" id="delete" class="user-content-list-block-button"
+                <input type="submit" name="edit-cardsSet" id="edit" class="user-content-list-block-button" value="edit"/>
+                <input type="submit" name="delete-cardsSet" id="delete" class="user-content-list-block-button"
                        value="delete"/>
-            </div>
-        </form>
+            
         <?php else: if ($GLOBALS["isLogin"]): ?>
-        <input type="submit" name="add-card" id="edit" class="user-content-list-block-button" value="add"/>
-    </div>
-    <?php else: ?>
-</div>
+        <input type="submit" name="add-cardsSet" id="edit" class="user-content-list-block-button" value="add"/>
+       
+    <?php endif; ?>
+    
+<?php 
+endif;?></div>
 </form>
-<?php endif;
-endif;
+<?php
 endforeach;
 if ($GLOBALS["user"] == $uri[2]): ?>
     <button id="addnew" class="button-long user-content-open-modal">

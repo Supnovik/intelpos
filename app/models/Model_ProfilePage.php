@@ -10,12 +10,12 @@ class Model_ProfilePage extends Model
             echo "<meta http-equiv='refresh' content='0'>";
         }
 
-        if (array_key_exists('delete-card', $_POST)) {
+        if (array_key_exists('delete-cardsSet', $_POST)) {
             $this->deleteSetOfCard($GLOBALS['user'], filter_var(trim($_POST['setofcardsName']), FILTER_SANITIZE_STRING));
             echo "<meta http-equiv='refresh' content='0'>";
         }
 
-        if (array_key_exists('add-card', $_POST)) {
+        if (array_key_exists('add-cardsSet', $_POST)) {
             $this->createSetOfCard($GLOBALS['user'], filter_var(trim($_POST['setofcardsName']), FILTER_SANITIZE_STRING));
             echo "<meta http-equiv='refresh' content='0'>";
         }
