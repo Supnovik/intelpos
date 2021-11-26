@@ -5,30 +5,6 @@ class setOfCards extends database
 {
     public function getData($user = null, $data = null)
     {
-        if (array_key_exists('create-card', $_POST)) {
-            $this->addCard(filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING), filter_var(trim($_POST['definition']), FILTER_SANITIZE_STRING));
-            echo "<meta http-equiv='refresh' content='0'>";
-        }
-        if (array_key_exists('save-card', $_POST)) {
-            $this->updateCard(filter_var(trim($_POST['oldtermin']), FILTER_SANITIZE_STRING), filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING), filter_var(trim($_POST['definition']), FILTER_SANITIZE_STRING));
-            
-        }
-        if (array_key_exists('delete-card', $_POST)) {
-            $this->deleteCard(filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING));
-            echo "<meta http-equiv='refresh' content='0'>";
-        }
-        
-        if (array_key_exists('search-card-button', $_POST)) {
-            return $this->searchCards(filter_var(trim($_POST['search-card']), FILTER_SANITIZE_STRING));
-        }
-        if (array_key_exists('sortByAlphabet', $_POST)) {
-            return $this->sortByAlphabet();
-        }
-
-        if (array_key_exists('comment-button', $_POST)) {
-            $this->addComment(filter_var(trim($_POST['comment-nickname']), FILTER_SANITIZE_STRING), filter_var(trim($_POST['comment-text']), FILTER_SANITIZE_STRING));
-        }
-
         return $this->getCards();
     }
 

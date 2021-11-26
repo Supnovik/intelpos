@@ -15,6 +15,12 @@ class BackdropsListPage extends \Intelpos\Controller
 
     function actionIndex()
     {
+        if (array_key_exists('createBackdrop', $_POST)) {
+            $dbSet = new Model\setOfCards($this->user, $this->setofcards);
+            $dbSet->createBackdrop(filter_var(trim($_POST['BackdropName']), FILTER_SANITIZE_STRING));
+            $dbBack = new Model\backdrop($this->user,filter_var(trim($_POST['BackdropName']), FILTER_SANITIZE_STRING));
+            $dbBack->createBackdropTable();
+        }
         $this->model = new Model\backdropsList();
         $this->view->generate('BackdropsList/backdropsList.php', 'template_view.php', $this->model->getData($this->user, $this->setofcards));
     }

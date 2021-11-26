@@ -59,7 +59,7 @@ class database
         $content = [];
         try {
 
-            $sql = "SELECT * FROM $this->table";
+            $sql = 'SELECT * FROM '.$this->table;
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['nickname' => $row['nickname'], 'mail' => $row['mail']];

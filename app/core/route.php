@@ -44,8 +44,7 @@ class Route
         }, 'setofcards' => function ($user, $setofcards) {
             $db = new Model\user($user, $user);
             if ($db->checkingSetofcardsForExistence($setofcards)) {
-                $controller = new Controller\SetOfCardsPage();
-                $controller->setData($user, $setofcards);
+                $controller = new Controller\SetOfCardsPage($user, $setofcards);
                 $controller->actionIndex();
                 return true;
             } else return false;
