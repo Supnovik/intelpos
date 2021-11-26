@@ -1,6 +1,7 @@
 <?php
+namespace Intelpos\Model;
 
-class Model_Backdrop extends Model_Database
+class backdrop extends database
 {
 
     public function createBackdropTable()
@@ -8,7 +9,7 @@ class Model_Backdrop extends Model_Database
         try {
             $sql = 'create table ' . $this->table . '_Backdrop (id integer auto_increment primary key, termin VARCHAR(30), definition VARCHAR(30), x_coordinate INT DEFAULT 0, y_coordinate INT DEFAULT 0,is_set BOOL DEFAULT FALSE);';
             $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }
@@ -18,7 +19,7 @@ class Model_Backdrop extends Model_Database
         try {
             $sql = 'INSERT INTO ' . $this->table . '_Backdrop (termin, definition,x_coordinate,y_coordinate) VALUES ("' . $termin . '","' . $definition . '","' . $x_coordinate . '","' . $y_coordinate . '")';
             $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }
@@ -33,7 +34,7 @@ class Model_Backdrop extends Model_Database
             while ($row = $result->fetch()) {
                 $content[] = ['termin' => $row['termin'], 'definition' => $row['definition'], 'x_coordinate' => $row['x_coordinate'], 'y_coordinate' => $row['y_coordinate']];
             }
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
         return $content;
@@ -44,7 +45,7 @@ class Model_Backdrop extends Model_Database
         try {
             $sql = 'DELETE FROM ' . $this->table . '_Backdrop WHERE termin = "' . $termin . '"';
             $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }
@@ -54,7 +55,7 @@ class Model_Backdrop extends Model_Database
         try {
             $sql = 'Drop TABLE ' . $this->table. '_Backdrop';
             $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }

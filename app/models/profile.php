@@ -1,6 +1,7 @@
 <?php
+namespace Intelpos\Model;
 
-class Model_ProfilePage extends Model
+class profile extends \Intelpos\Model
 {
     public function getData($user = null, $data = null)
     {
@@ -24,31 +25,31 @@ class Model_ProfilePage extends Model
             setcookie('user', $GLOBALS["user"], time() - 3600, '/');
             header('Location: /');
         }
-        $db = new Model_User($user, $user);
+        $db = new user($user, $user);
         return $db->getSetOfCardsList();
     }
 
     public function createSetOfCard($user, $set_of_cards_name)
     {
-        $User = new Model_User($user, $user);
+        $User = new user($user, $user);
         $User->addSetOfCards($set_of_cards_name, $set_of_cards_name);
-        $SetOfCards = new Model_SetOfCards($user, $set_of_cards_name);
+        $SetOfCards = new setOfCards($user, $set_of_cards_name);
         $SetOfCards->createSetOfCards();
     }
 
     public function deleteSetOfCard($user, $set_of_cards_name)
     {
-        $User = new Model_User($user, $user);
+        $User = new user($user, $user);
         $User->deleteSetOfCards($set_of_cards_name);
-        $SetOfCards = new Model_SetOfCards($user, $set_of_cards_name);
+        $SetOfCards = new setOfCards($user, $set_of_cards_name);
         $SetOfCards->deleteAllBackdrops();
-        $SetOfCards = new Model_SetOfCards($user, $set_of_cards_name);
+        $SetOfCards = new setOfCards($user, $set_of_cards_name);
         $SetOfCards->deleteSetOfCards();
     }
 
     public function deleteUser($user)
     {
-        $db = new Model_Database('data', 'users');
+        $db = new database('data', 'users');
         if ($db->checkingForExistence($user)) {
             $db->deleteUser($user);
         }

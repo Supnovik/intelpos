@@ -1,6 +1,7 @@
 <?php
+namespace Intelpos\Model;
 
-class Model_SetOfCards extends Model_Database
+class setOfCards extends database
 {
     public function getData($user = null, $data = null)
     {
@@ -40,7 +41,7 @@ class Model_SetOfCards extends Model_Database
             $this->databaseConnection->exec($sql);
             $sql = 'create table ' . $this->table . '_Comments (id integer auto_increment primary key, nickname VARCHAR(30), text VARCHAR(30));';
             $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }
@@ -51,7 +52,7 @@ class Model_SetOfCards extends Model_Database
             $sql = 'INSERT INTO ' . $this->table . ' (termin, definition) VALUES ("' . $termin . '","' . $definition . '")';
             $this->databaseConnection->exec($sql);
 
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }
@@ -61,7 +62,7 @@ class Model_SetOfCards extends Model_Database
         try {
             $sql = 'INSERT INTO ' . $this->table . '_Comments (nickname, text) VALUES ("' . $nickname . '","' . $text . '")';
             $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }
@@ -75,7 +76,7 @@ class Model_SetOfCards extends Model_Database
             while ($row = $result->fetch()) {
                 $content[] = ['termin' => $row['termin'], 'definition' => $row['definition'], 'level' => $row['level']];
             }
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
         return $content;
@@ -89,7 +90,7 @@ class Model_SetOfCards extends Model_Database
             while ($row = $result->fetch()) {
                 $content[] = ['nickname' => $row['nickname'], 'text' => $row['text']];
             }
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
         return $content;
@@ -105,7 +106,7 @@ class Model_SetOfCards extends Model_Database
             while ($row = $result->fetch()) {
                 $content[] = ['termin' => $row['termin'], 'definition' => $row['definition'], 'level' => $row['level']];
             }
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
         return $content;
@@ -121,7 +122,7 @@ class Model_SetOfCards extends Model_Database
             while ($row = $result->fetch()) {
                 $content[] = ['termin' => $row['termin'], 'definition' => $row['definition'], 'level' => $row['level']];
             }
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
         return $content;
@@ -135,7 +136,7 @@ class Model_SetOfCards extends Model_Database
             $sql = 'UPDATE ' . $this->table . ' SET termin = "' . $termin . '" WHERE termin = "' . $oldtermin . '"';
             $this->databaseConnection->exec($sql);
 
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }
@@ -147,7 +148,7 @@ class Model_SetOfCards extends Model_Database
             $sql = 'DELETE FROM ' . $this->table . ' WHERE termin = "' . $termin . '"';
             $this->databaseConnection->exec($sql);
 
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }
@@ -162,7 +163,7 @@ class Model_SetOfCards extends Model_Database
             $this->databaseConnection->exec($sql);
             $sql = 'Drop TABLE ' . $this->table;
             $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }
@@ -172,7 +173,7 @@ class Model_SetOfCards extends Model_Database
         try {
             $sql = 'INSERT INTO ' . $this->table .  '_BackdropsList (backdrop) VALUES ("' . $backdrop . '")';
             $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }
@@ -186,7 +187,7 @@ class Model_SetOfCards extends Model_Database
             while ($row = $result->fetch()) {
                 $content[] = ['backdrop' => $row['backdrop']];
             }
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
         return $content;
@@ -201,7 +202,7 @@ class Model_SetOfCards extends Model_Database
                 $this->databaseConnection->exec($sql);
             }
 
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }

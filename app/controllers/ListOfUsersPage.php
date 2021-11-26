@@ -1,10 +1,12 @@
 <?php
+namespace Intelpos\Controller;
+use Intelpos\Model;
 
-class Controller_ListOfUsersPage extends Controller
+class ListOfUsersPage extends \Intelpos\Controller
 {
     function actionIndex()
     {
-        $this->model = new Model_ListOfUsersPage();
+        $this->model = new Model\listOfUsers();
         $this->view->generate('ListOfUsers/listOfUsers.php', 'template_view.php', $this->model->getData());
     }
 }

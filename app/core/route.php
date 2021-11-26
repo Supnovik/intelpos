@@ -1,4 +1,6 @@
 <?php
+use Intelpos\Model;
+use Intelpos\Controller;
 
 include 'app/core/autoloading.php';
 
@@ -18,47 +20,47 @@ class Route
 
 
         $path = ['' => function () {
-            $controller = new Controller_MainPage;
+            $controller = new Controller\MainPage;
             $controller->actionIndex();
         }, 'main' => function () {
-            $controller = new Controller_MainPage;
+            $controller = new Controller\MainPage;
             $controller->actionIndex();
         }, 'login' => function () {
-            $controller = new Controller_LoginPage;
+            $controller = new Controller\LoginPage;
             $controller->actionIndex();
         }, 'registration' => function () {
-            $controller = new Controller_RegistrationPage;
+            $controller = new Controller\RegistrationPage;
             $controller->actionIndex();
         }, 'list_of_users' => function () {
-            $controller = new Controller_ListOfUsersPage;
+            $controller = new Controller\ListOfUsersPage;
             $controller->actionIndex();
         }, 'users' => ['' => function ($user) {
-            $db = new Model_Database('data', 'users');
+            $db = new Model\database('data', 'users');
             if ($db->checkingForExistence($user)) {
-                $controller = new Controller_ProfilePage;
+                $controller = new Controller\ProfilePage;
                 $controller->actionIndex();
                 return true;
             } else return false;
         }, 'setofcards' => function ($user, $setofcards) {
-            $db = new Model_User($user, $user);
+            $db = new Model\user($user, $user);
             if ($db->checkingSetofcardsForExistence($setofcards)) {
-                $controller = new Controller_SetOfCardsPage();
+                $controller = new Controller\SetOfCardsPage();
                 $controller->setData($user, $setofcards);
                 $controller->actionIndex();
                 return true;
             } else return false;
         }, 'backdrops' => function ($user, $setofcards) {
-            $db = new Model_User($user, $user);
+            $db = new Model\user($user, $user);
             if ($db->checkingSetofcardsForExistence($setofcards)) {
-                $controller = new Controller_BackdropsListPage();
+                $controller = new Controller\BackdropsListPage();
                 $controller->setData($user, $setofcards);
                 $controller->actionIndex();
                 return true;
             } else return false;
         }, 'learn' => function ($user, $setofcards) {
-            $db = new Model_User($user, $user);
+            $db = new Model\user($user, $user);
             if ($db->checkingSetofcardsForExistence($setofcards)) {
-                $controller = new Controller_LearnCardsPage();
+                $controller = new Controller\LearnCardsPage();
                 $controller->setData($user, $setofcards);
                 $controller->actionIndex();
                 return true;

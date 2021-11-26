@@ -1,13 +1,14 @@
 <?php
+namespace Intelpos\Model;
 
-class Model_User extends Model_Database
+class user extends database
 {
     public function createTable()
     {
         try {
             $sql = 'CREATE TABLE ' . $this->table . ' (id integer auto_increment primary key, setofcards VARCHAR(30))';
             $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }
@@ -17,7 +18,7 @@ class Model_User extends Model_Database
         try {
             $sql = 'INSERT INTO ' . $this->table . ' (setofcards) VALUES ("' . $setofcards . '")';
             $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }
@@ -31,7 +32,7 @@ class Model_User extends Model_Database
             while ($row = $result->fetch()) {
                 $content[] = ['setofcards' => $row['setofcards']];
             }
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
         return $content;
@@ -51,7 +52,7 @@ class Model_User extends Model_Database
                 return true;
             else
                 return false;
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }
@@ -61,7 +62,7 @@ class Model_User extends Model_Database
         try {
             $sql = 'DELETE FROM ' . $this->table . ' WHERE setofcards = "' . $setofcards . '"';
             $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo 'Database error: ' . $e->getMessage();
         }
     }

@@ -1,4 +1,5 @@
 <?php
+namespace Intelpos;
 
 class Controller
 {

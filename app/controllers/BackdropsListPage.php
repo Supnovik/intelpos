@@ -1,6 +1,8 @@
 <?php
+namespace Intelpos\Controller;
+use Intelpos\Model;
 
-class Controller_BackdropsListPage extends Controller
+class BackdropsListPage extends \Intelpos\Controller
 {
     public $user;
     public $setofcards;
@@ -13,7 +15,7 @@ class Controller_BackdropsListPage extends Controller
 
     function actionIndex()
     {
-        $this->model = new Model_BackdropsListPage();
+        $this->model = new Model\backdropsList();
         $this->view->generate('BackdropsList/backdropsList.php', 'template_view.php', $this->model->getData($this->user, $this->setofcards));
     }
 }

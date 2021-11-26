@@ -1,6 +1,8 @@
 <?php
+namespace Intelpos\Controller;
+use Intelpos\Model;
 
-class Controller_SetOfCardsPage extends Controller
+class SetOfCardsPage extends \Intelpos\Controller
 {
     public $user;
     public $setofcards;
@@ -14,7 +16,7 @@ class Controller_SetOfCardsPage extends Controller
 
     function actionIndex()
     {
-        $this->model = new Model_SetOfCards($this->user, $this->setofcards);
+        $this->model = new Model\setOfCards($this->user, $this->setofcards);
         $this->view->generate('SetOfCards/setofcards.php', 'template_view.php', ['cards'=>$this->model->getData(),'comments'=>$this->model->getComments()]);
     }
 }
