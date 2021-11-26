@@ -3,13 +3,10 @@
         <img src="http://user-life.com/uploads/posts/2018-08/1535608847_kak-udalit-avatarku-ubrat-postavit-sdelat-zagruzit-dobavit-foto-vkontakte-dlya-telegramma-skaypa-vayber-diskorda.jpg">
         <div class="user-nickname">
             <h2>
-                <?php
-                $uri = explode('/', $_SERVER['REQUEST_URI']);
-                echo $uri[2];
-                ?>
+                <?php echo $GLOBALS['uri'][2]; ?>
             </h2>
         </div>
-        <?php if ($GLOBALS["user"] == $uri[2]): ?>
+        <?php if ($GLOBALS["user"] == $GLOBALS['uri'][2]): ?>
             <form method="post">
                 <input type="submit" name="delete-user" class="delete-user" value="Delete user"/>
             </form>
@@ -22,14 +19,14 @@
                 <input type="text" style="display: none" name="setofcardsName"
                        value="<?= $value['setofcards'] ?>"></input>
                 <div>
-                    <a href="/users/<?= $uri[2] ?>/setofcards/<?= $value['setofcards'] ?>"
+                    <a href="/users/<?= $GLOBALS['uri'][2] ?>/setofcards/<?= $value['setofcards'] ?>"
                        class="user-content-list-block-setofcards">Set of cards</a>
-                    <a href="/users/<?= $uri[2] ?>/backdrops/<?= $value['setofcards'] ?>"
+                    <a href="/users/<?= $GLOBALS['uri'][2] ?>/backdrops/<?= $value['setofcards'] ?>"
                        class="user-content-list-block-backdrop">
                         Backdrops
                     </a>
                     <?php
-                    if ($GLOBALS["user"] == $uri[2]): ?>
+                    if ($GLOBALS["user"] == $GLOBALS['uri'][2]): ?>
                         <input type="submit" name="edit-cardsSet" id="edit" class="user-content-list-block-button"
                                value="edit"/>
                         <input type="submit" name="delete-cardsSet" id="delete" class="user-content-list-block-button"
@@ -46,7 +43,7 @@
             </form>
         <?php
         endforeach;
-        if ($GLOBALS["user"] == $uri[2]): ?>
+        if ($GLOBALS["user"] == $GLOBALS['uri'][2]): ?>
             <button id="addnew" class="button-long user-content-open-modal">
                 Add new set of cards
             </button>

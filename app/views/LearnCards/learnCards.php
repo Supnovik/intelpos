@@ -19,7 +19,7 @@
             <div class="learnCards-check-buttons" >
                 <button style="display: none" class="learnCards-right-button">It's right</button>
                 <button style="display: none" class="learnCards-next-button">Next card</button>
-                <?php $uri = explode('/', $_SERVER['REQUEST_URI']);?>
+                <?php ?>
                 <button style="display: none" class="learnCards-statistic-button">View statistic</button>
             </div>
     </div>
@@ -30,7 +30,7 @@
         <div class="learnCards-modal-content">
             <h2>Statistic</h2>
             <p class="learnCards-modal-content-text"></p>
-            <a href="/users/<?=$uri[2]?>/setofcards/<?=$uri[4]?>"  class="learnCards-save-button">Ok</a>
+            <a href="/users/<?=$GLOBALS['uri'][2]?>/setofcards/<?=$GLOBALS['uri'][4]?>"  class="learnCards-save-button">Ok</a>
         </div>
         
     </div>

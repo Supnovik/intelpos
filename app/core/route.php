@@ -6,12 +6,14 @@ include 'app/core/autoloading.php';
 
 global $isLogin;
 global $user;
+global $uri;
 
 class Route
 {
 
     static function start()
     {
+        $GLOBALS['uri'] = explode('/', $_SERVER['REQUEST_URI']);
         $GLOBALS['isLogin'] = false;
         if (isset($_COOKIE['user'])) {
             $GLOBALS['isLogin'] = true;
@@ -66,28 +68,28 @@ class Route
             } else return false;
         }]];
 
-        $uri = explode('/', $_SERVER['REQUEST_URI']);
+        
 
-        if (array_key_exists($uri[1], $path) && !isset($uri[2])) {
-            $func = $path[$uri[1]];
+        if (array_key_exists($GLOBALS['uri'][1], $path) && !isset($GLOBALS['uri'][2])) {
+            $func = $path[$GLOBALS['uri'][1]];
             $func();
         } else {
-            if (array_key_exists($uri[1], $path) && isset($uri[2]) && !isset($uri[3])) {
-                $func = $path[$uri[1]][''];
-                if (!$func($uri[2])) {
+            if (array_key_exists($GLOBALS['uri'][1], $path) && isset($GLOBALS['uri'][2]) && !isset($GLOBALS['uri'][3])) {
+                $func = $path[$GLOBALS['uri'][1]][''];
+                if (!$func($GLOBALS['uri'][2])) {
                     echo '<html><body><h1>Page Not Found</h1></body></html>';
-                    print_r($uri);
+                    print_r($GLOBALS['uri']);
                 }
             }
-            if (array_key_exists($uri[3], $path[$uri[1]]) && isset($uri[4])) {
-                $func = $path[$uri[1]][$uri[3]];
-                if (!$func($uri[2], $uri[4])) {
+            if (array_key_exists($GLOBALS['uri'][3], $path[$GLOBALS['uri'][1]]) && isset($GLOBALS['uri'][4])) {
+                $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]];
+                if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4])) {
                     echo '<html><body><h1>Page Not Found</h1></body></html>';
-                    print_r($uri);
+                    print_r($GLOBALS['uri']);
                 }
             } else {
                 echo '<html><body><h1>Page Not Found</h1></body></html>';
-                print_r($uri);
+                print_r($GLOBALS['uri']);
             }
         }
     }

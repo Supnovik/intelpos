@@ -1,14 +1,12 @@
 <div class="setofcards">
     <div class="setofcards-sidebar">
         <div class="setofcards-sidebar-buttons">
-            <?php
-            $uri = explode('/', $_SERVER['REQUEST_URI']);
-            if ($GLOBALS["user"] == $uri[2]):?>
+            <?php if ($GLOBALS["user"] == $GLOBALS['uri'][2]):?>
                 <button class="setofcards-sidebar-buttons-add button-long">Add new card</button>
             <?php else: ?>
                 <button style="display: none" class="setofcards-sidebar-buttons-add button-long">Add new card</button>
             <?php endif; ?>
-            <a href='/users/<?= $uri[2] ?>/learn/<?=$uri[4]?>' class="setofcards-sidebar-buttons-start button-long">Start learning</a>
+            <a href='/users/<?= $GLOBALS['uri'][2] ?>/learn/<?=$GLOBALS['uri'][4]?>' class="setofcards-sidebar-buttons-start button-long">Start learning</a>
             <button class="setofcards-sidebar-buttons-comments button-long">View comments</button>
         </div>
         <div class="setofcards-sidebar-input">
@@ -22,7 +20,7 @@
                 <button type="submit" name="create-card" class="create-card button-long">Create card</button>
                 
                 <div class="save-delete-card">
-                    <?php if ($GLOBALS["user"] == $uri[2]): ?>
+                    <?php if ($GLOBALS["user"] == $GLOBALS['uri'][2]): ?>
                         <button type="submit" name="save-card" class="save-card button-long">Save card</button>
                         <button type="submit" name="delete-card" class="delete-card button-long">Delete card</button>
                     <?php endif;?>

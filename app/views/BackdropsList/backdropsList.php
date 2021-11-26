@@ -8,9 +8,8 @@
     </div>
     <div class="backdrops">
         <div class="backdrops-list">
-            <?php
-            $uri = explode('/', $_SERVER['REQUEST_URI']); foreach ($data as $value): ?>
-                <a href='/users/<?=$uri[2]?>/backdrops/<?=$value['backdrop']?>' class="backdrops-list-backdrop">
+            <?php foreach ($data as $value): ?>
+                <a href='/users/<?=$GLOBALS['uri'][2]?>/backdrops/<?=$value['backdrop']?>' class="backdrops-list-backdrop">
                     <?=$value['backdrop']?>
                 </a>
             <?php endforeach; ?>

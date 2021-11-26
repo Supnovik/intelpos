@@ -26,7 +26,6 @@ class ProfilePage extends \Intelpos\Controller
             setcookie('user', $GLOBALS["user"], time() - 3600, '/');
             header('Location: /');
         }
-        $uri = explode('/', $_SERVER['REQUEST_URI']);
-        $this->view->generate('Profile/profile.php', 'template_view.php', $this->model->getData($uri[2]));
+        $this->view->generate('Profile/profile.php', 'template_view.php', $this->model->getData($GLOBALS['uri'][2]));
     }
 }
