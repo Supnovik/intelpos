@@ -1,4 +1,5 @@
 <?php
+
 namespace Intelpos;
 
 class Controller
@@ -15,6 +16,5 @@ class Controller
 
     function actionIndex()
     {
-
     }
 }

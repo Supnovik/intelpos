@@ -3,17 +3,21 @@
         <img src="http://user-life.com/uploads/posts/2018-08/1535608847_kak-udalit-avatarku-ubrat-postavit-sdelat-zagruzit-dobavit-foto-vkontakte-dlya-telegramma-skaypa-vayber-diskorda.jpg">
         <div class="user-nickname">
             <h2>
-                <?php echo $GLOBALS['uri'][2]; ?>
+                <?php
+                echo $GLOBALS['uri'][2]; ?>
             </h2>
         </div>
-        <?php if ($GLOBALS["user"] == $GLOBALS['uri'][2]): ?>
+        <?php
+        if ($GLOBALS["user"] == $GLOBALS['uri'][2]): ?>
             <form method="post">
                 <input type="submit" name="delete-user" class="delete-user" value="Delete user"/>
             </form>
-        <?php endif; ?>
+        <?php
+        endif; ?>
     </div>
     <div class="user-content-list">
-        <?php foreach ($data as $value): ?>
+        <?php
+        foreach ($data as $value): ?>
             <form method="post" class="user-content-list-block">
                 <h2><?= $value['setofcards'] ?></h2>
                 <input type="text" style="display: none" name="setofcardsName"
@@ -32,11 +36,13 @@
                         <input type="submit" name="delete-cardsSet" id="delete" class="user-content-list-block-button"
                                value="delete"/>
 
-                    <?php else: if ($GLOBALS["isLogin"]): ?>
+                    <?php
+                    else: if ($GLOBALS["isLogin"]): ?>
                         <input type="submit" name="add-cardsSet" id="edit" class="user-content-list-block-button"
                                value="add"/>
 
-                    <?php endif; ?>
+                    <?php
+                    endif; ?>
 
                     <?php
                     endif; ?></div>
@@ -47,7 +53,8 @@
             <button id="addnew" class="button-long user-content-open-modal">
                 Add new set of cards
             </button>
-        <?php endif; ?>
+        <?php
+        endif; ?>
     </div>
 
     <div class="user-content-modal">

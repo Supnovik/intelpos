@@ -1,24 +1,35 @@
 <?php
+
 namespace Intelpos\Controller;
+
+use Intelpos\Controller;
 use Intelpos\Model;
 
-class ProfilePage extends \Intelpos\Controller
+class ProfilePage extends Controller
 {
     function actionIndex()
     {
         $this->model = new Model\profile();
         if (array_key_exists('createSetofcards', $_POST)) {
-
-            $this->model->createSetOfCard($GLOBALS['user'], filter_var(trim($_POST['setofcardsName']), FILTER_SANITIZE_STRING));
+            $this->model->createSetOfCard(
+                $GLOBALS['user'],
+                filter_var(trim($_POST['setofcardsName']), FILTER_SANITIZE_STRING)
+            );
             echo "<meta http-equiv='refresh' content='0'>";
         }
 
         if (array_key_exists('delete-cardsSet', $_POST)) {
-            $this->model->deleteSetOfCard($GLOBALS['user'], filter_var(trim($_POST['setofcardsName']), FILTER_SANITIZE_STRING));
+            $this->model->deleteSetOfCard(
+                $GLOBALS['user'],
+                filter_var(trim($_POST['setofcardsName']), FILTER_SANITIZE_STRING)
+            );
         }
 
         if (array_key_exists('add-cardsSet', $_POST)) {
-            $this->model->createSetOfCard($GLOBALS['user'], filter_var(trim($_POST['setofcardsName']), FILTER_SANITIZE_STRING));
+            $this->model->createSetOfCard(
+                $GLOBALS['user'],
+                filter_var(trim($_POST['setofcardsName']), FILTER_SANITIZE_STRING)
+            );
             echo "<meta http-equiv='refresh' content='0'>";
         }
         if (array_key_exists('delete-user', $_POST)) {

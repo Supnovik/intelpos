@@ -7,7 +7,8 @@
                 <a href="/list_of_users" class="navbar-list_of_users_page">List of users</a>
             </div>
         </div>
-        <?php if ($GLOBALS["isLogin"]): ?>
+        <?php
+        if ($GLOBALS["isLogin"]): ?>
             <div class="sign-user">
                 <div class="sign-user-img">
                     <img src="http://user-life.com/uploads/posts/2018-08/1535608847_kak-udalit-avatarku-ubrat-postavit-sdelat-zagruzit-dobavit-foto-vkontakte-dlya-telegramma-skaypa-vayber-diskorda.jpg"/>
@@ -17,12 +18,14 @@
                     <button type="submit" class="sign-out" name="sign-out">Sign out</button>
                 </form>
             </div>
-        <?php else: ?>
+        <?php
+        else: ?>
             <div class="sign-buttons">
                 <a href="/login" class="sign-in">Log in</a>
                 <a href="/registration" class="sign-up">Sign up</a>
             </div>
-        <?php endif; ?>
+        <?php
+        endif; ?>
     </div>
 </div>
 <script src="/app/views/Sections/navbar.js"></script>

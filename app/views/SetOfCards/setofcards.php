@@ -1,12 +1,16 @@
 <div class="setofcards">
     <div class="setofcards-sidebar">
         <div class="setofcards-sidebar-buttons">
-            <?php if ($GLOBALS["user"] == $GLOBALS['uri'][2]):?>
+            <?php
+            if ($GLOBALS["user"] == $GLOBALS['uri'][2]): ?>
                 <button class="setofcards-sidebar-buttons-add button-long">Add new card</button>
-            <?php else: ?>
+            <?php
+            else: ?>
                 <button style="display: none" class="setofcards-sidebar-buttons-add button-long">Add new card</button>
-            <?php endif; ?>
-            <a href='/users/<?= $GLOBALS['uri'][2] ?>/learn/<?=$GLOBALS['uri'][4]?>' class="setofcards-sidebar-buttons-start button-long">Start learning</a>
+            <?php
+            endif; ?>
+            <a href='/users/<?= $GLOBALS['uri'][2] ?>/learn/<?= $GLOBALS['uri'][4] ?>'
+               class="setofcards-sidebar-buttons-start button-long">Start learning</a>
             <button class="setofcards-sidebar-buttons-comments button-long">View comments</button>
         </div>
         <div class="setofcards-sidebar-input">
@@ -18,14 +22,19 @@
                 <input required type="text" name="definition" placeholder="Definition"
                        class="setofcards-sidebar-input-definition input-box">
                 <button type="submit" name="create-card" class="create-card button-long">Create card</button>
-                
+
                 <div class="save-delete-card">
-                    <?php if ($GLOBALS["user"] == $GLOBALS['uri'][2]): ?>
-                        <button type="submit" name="save-card" class="save-card button-long">Save card</button>
-                        <button type="submit" name="delete-card" class="delete-card button-long">Delete card</button>
-                    <?php endif;?>
+                    <?php
+                    if ($GLOBALS["user"] == $GLOBALS['uri'][2]): ?>
+                        <div>
+                            <button type="submit" name="save-card" class="save-card button-long">Save card</button>
+                            <button type="submit" name="delete-card" class="delete-card button-long">Delete card
+                            </button>
+                        </div>
+                    <?php
+                    endif; ?>
                 </div>
-                
+
 
             </form>
             <button class="setofcards-sidebar-input-cancel button-long">Cancel</button>
@@ -33,23 +42,27 @@
 
         <div class="setofcards-sidebar-comments">
             <div class="setofcards-sidebar-comments-content">
-                <?php foreach ($data['comments'] as $value):?>
+                <?php
+                foreach ($data['comments'] as $value): ?>
                     <div class="setofcards-sidebar-comment">
-                        <a class="setofcards-sidebar-comment-nickname"><?=$value['nickname']?></a>
-                        <div class="setofcards-sidebar-comment-text"><?=$value['text']?></div>
+                        <a class="setofcards-sidebar-comment-nickname"><?= $value['nickname'] ?></a>
+                        <div class="setofcards-sidebar-comment-text"><?= $value['text'] ?></div>
                     </div>
-                <?php endforeach; ?>
+                <?php
+                endforeach; ?>
             </div>
-            <?php if ($GLOBALS["isLogin"]):?>
+            <?php
+            if ($GLOBALS["isLogin"]): ?>
                 <form class="setofcards-sidebar-comments-input" method="post">
-                    <input type="text" name="comment-nickname" style="display: none" value="<?=$GLOBALS["user"]?>" >
-                    <input type="text" name="comment-text" class="comment-text input-box" >
+                    <input type="text" name="comment-nickname" style="display: none" value="<?= $GLOBALS["user"] ?>">
+                    <input type="text" name="comment-text" class="comment-text input-box">
                     <button type="submit" name="comment-button" class="comment-button button-long"> send</button>
                 </form>
-            <?php endif; ?>
+            <?php
+            endif; ?>
             <button class="setofcards-sidebar-input-cancel button-long">Cancel</button>
         </div>
-        
+
     </div>
     <div class="setofcards-content">
         <div class="setofcards-header">
@@ -66,11 +79,12 @@
                     <div class="setofcards-table-card-termin"><?= $value['termin'] ?></div>
                     <div class="setofcards-table-card-definition"><?= $value['definition'] ?></div>
                 </button>
-            <?php endforeach; ?>
+            <?php
+            endforeach; ?>
         </div>
     </div>
 </div>
 <script src="/app/views/SetOfCards/setofcards.js">
-    
+
 </script>
 

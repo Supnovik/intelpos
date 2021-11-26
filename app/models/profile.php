@@ -1,11 +1,15 @@
 <?php
+
 namespace Intelpos\Model;
 
-class profile extends \Intelpos\Model
+use Intelpos\Model;
+
+class profile extends Model
 {
     public function getData($user = null, $data = null)
     {
         $db = new user($user, $user);
+
         return $db->getSetOfCardsList();
     }
 

@@ -20,11 +20,14 @@
 </head>
 <body>
 
-<?php include 'app/views/Sections/navbar.php' ?>
+<?php
+include 'app/views/Sections/navbar.php' ?>
 <div class="content">
-    <?php include 'app/views/' . $content_view; ?>
+    <?php
+    include 'app/views/'.$content_view; ?>
 </div>
-<?php include 'app/views/Sections/footer.php' ?>
+<?php
+include 'app/views/Sections/footer.php' ?>
 
 </body>
 </html>

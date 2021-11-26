@@ -1,8 +1,11 @@
 <?php
+
 namespace Intelpos\Controller;
+
+use Intelpos\Controller;
 use Intelpos\Model;
 
-class MainPage extends \Intelpos\Controller
+class MainPage extends Controller
 {
     function actionIndex()
     {

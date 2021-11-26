@@ -21,7 +21,7 @@
         <div class="all_users-list">
             <?php
             foreach ($data as $value) {
-                echo "<a href='/users/" . (string)$value['nickname'] . "' class='all_users-user'>" . (string)$value['nickname'] . "</a>";
+                echo "<a href='/users/".(string)$value['nickname']."' class='all_users-user'>".(string)$value['nickname']."</a>";
             }
             ?>
         </div>

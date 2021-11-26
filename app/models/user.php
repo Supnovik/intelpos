@@ -1,25 +1,28 @@
 <?php
+
 namespace Intelpos\Model;
+
+use PDOException;
 
 class user extends database
 {
     public function createTable()
     {
         try {
-            $sql = 'CREATE TABLE ' . $this->table . ' (id integer auto_increment primary key, setofcards VARCHAR(30))';
+            $sql = 'CREATE TABLE '.$this->table.' (id integer auto_increment primary key, setofcards VARCHAR(30))';
             $this->databaseConnection->exec($sql);
-        } catch (\PDOException $e) {
-            echo 'Database error: ' . $e->getMessage();
+        } catch (PDOException $e) {
+            echo 'Database error: '.$e->getMessage();
         }
     }
 
     public function addSetOfCards($setofcards)
     {
         try {
-            $sql = 'INSERT INTO ' . $this->table . ' (setofcards) VALUES ("' . $setofcards . '")';
+            $sql = 'INSERT INTO '.$this->table.' (setofcards) VALUES ("'.$setofcards.'")';
             $this->databaseConnection->exec($sql);
-        } catch (\PDOException $e) {
-            echo 'Database error: ' . $e->getMessage();
+        } catch (PDOException $e) {
+            echo 'Database error: '.$e->getMessage();
         }
     }
 
@@ -27,14 +30,15 @@ class user extends database
     {
         $content = [];
         try {
-            $sql = 'SELECT * FROM ' . $this->table;
+            $sql = 'SELECT * FROM '.$this->table;
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['setofcards' => $row['setofcards']];
             }
-        } catch (\PDOException $e) {
-            echo 'Database error: ' . $e->getMessage();
+        } catch (PDOException $e) {
+            echo 'Database error: '.$e->getMessage();
         }
+
         return $content;
     }
 
@@ -43,27 +47,28 @@ class user extends database
         try {
             $content = [];
 
-            $sql = 'SELECT * FROM ' . $this->table . ' WHERE setofcards = "' . $setofcards . '"';
+            $sql = 'SELECT * FROM '.$this->table.' WHERE setofcards = "'.$setofcards.'"';
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = ['setofcards' => (string)$row['setofcards']];
             }
-            if (count($content) != 0)
+            if (count($content) != 0) {
                 return true;
-            else
+            } else {
                 return false;
-        } catch (\PDOException $e) {
-            echo 'Database error: ' . $e->getMessage();
+            }
+        } catch (PDOException $e) {
+            echo 'Database error: '.$e->getMessage();
         }
     }
 
     public function deleteSetOfCards($setofcards)
     {
         try {
-            $sql = 'DELETE FROM ' . $this->table . ' WHERE setofcards = "' . $setofcards . '"';
+            $sql = 'DELETE FROM '.$this->table.' WHERE setofcards = "'.$setofcards.'"';
             $this->databaseConnection->exec($sql);
-        } catch (\PDOException $e) {
-            echo 'Database error: ' . $e->getMessage();
+        } catch (PDOException $e) {
+            echo 'Database error: '.$e->getMessage();
         }
     }
 }

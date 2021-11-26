@@ -8,12 +8,15 @@
     </div>
     <div class="backdrops">
         <div class="backdrops-list">
-            <?php foreach ($data as $value): ?>
-                <a href='/users/<?=$GLOBALS['uri'][2]?>/backdrops/<?=$value['backdrop']?>' class="backdrops-list-backdrop">
-                    <?=$value['backdrop']?>
+            <?php
+            foreach ($data as $value): ?>
+                <a href='/users/<?= $GLOBALS['uri'][2] ?>/backdrops/<?= $value['backdrop'] ?>'
+                   class="backdrops-list-backdrop">
+                    <?= $value['backdrop'] ?>
                 </a>
-            <?php endforeach; ?>
-            
+            <?php
+            endforeach; ?>
+
         </div>
     </div>
 </div>
@@ -22,10 +25,12 @@
         <button class="page_of_backdrops-close-modal close">×</button>
         <form method="post">
             <h2>Enter the name of the Backdrop</h2>
-            <input maxlength="12" name="BackdropName" class="page_of_backdrops-modal-input input-box" required autocomplete="off"
+            <input maxlength="12" name="BackdropName" class="page_of_backdrops-modal-input input-box" required
+                   autocomplete="off"
                    placeholder="Backdrop name"/>
-            <button type="submit" name="createBackdrop" class="button-long page_of_backdrops-close-modal">Create </button>
+            <button type="submit" name="createBackdrop" class="button-long page_of_backdrops-close-modal">Create
+            </button>
         </form>
     </div>
 </div>
-<script src="/app/views/BackdropsList/backdropsList.js" ></script>
+<script src="/app/views/BackdropsList/backdropsList.js"></script>
