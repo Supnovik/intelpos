@@ -20,7 +20,7 @@ class backdrop extends database
     public function addCard($termin, $definition, $x_coordinate, $y_coordinate)
     {
         try {
-            $sql = 'INSERT INTO '.$this->table.'_Backdrop (termin, definition,x_coordinate,y_coordinate) VALUES ("'.$termin.'","'.$definition.'","'.$x_coordinate.'","'.$y_coordinate.'")';
+            $sql = 'INSERT INTO '.$this->table.'_Backdrop (termin, definition, x_coordinate, y_coordinate) VALUES ("'.$termin.'","'.$definition.'","'.$x_coordinate.'","'.$y_coordinate.'")';
             $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo 'Database error: '.$e->getMessage();
@@ -39,6 +39,7 @@ class backdrop extends database
                     'definition' => $row['definition'],
                     'x_coordinate' => $row['x_coordinate'],
                     'y_coordinate' => $row['y_coordinate'],
+                    'is_set' => $row['is_set'],
                 ];
             }
         } catch (PDOException $e) {

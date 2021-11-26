@@ -4,16 +4,18 @@ namespace Intelpos\Controller;
 
 use Intelpos\Controller;
 use Intelpos\Model;
+use Intelpos\View;
 
 class LearnCardsPage extends Controller
 {
     public $user;
     public $setofcards;
 
-    function setData($user, $setofcards)
+    function __construct($user, $setofcards)
     {
         $this->user = $user;
         $this->setofcards = $setofcards;
+        $this->view = new View();
     }
 
     function actionIndex()

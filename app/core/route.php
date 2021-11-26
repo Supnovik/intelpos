@@ -66,13 +66,20 @@ class Route
                         return false;
                     }
                 },
-                'backdrops' => function ($user, $setofcards) {
+                'backdropsList' => function ($user, $setofcards) {
                     $db = new Model\user($user, $user);
                     if ($db->checkingSetofcardsForExistence($setofcards)) {
-                        $controller = new Controller\BackdropsListPage();
-                        $controller->setData($user, $setofcards);
+                        $controller = new Controller\BackdropsListPage($user, $setofcards);
                         $controller->actionIndex();
 
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },'backdrop' => function ($user, $backdrop) {
+                    if (true) {
+                        $controller = new Controller\BackdropPage($user, $backdrop);
+                        $controller->actionIndex();
                         return true;
                     } else {
                         return false;
@@ -81,8 +88,7 @@ class Route
                 'learn' => function ($user, $setofcards) {
                     $db = new Model\user($user, $user);
                     if ($db->checkingSetofcardsForExistence($setofcards)) {
-                        $controller = new Controller\LearnCardsPage();
-                        $controller->setData($user, $setofcards);
+                        $controller = new Controller\LearnCardsPage($user, $setofcards);
                         $controller->actionIndex();
 
                         return true;

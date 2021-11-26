@@ -10,7 +10,7 @@
         <div class="backdrops-list">
             <?php
             foreach ($data as $value): ?>
-                <a href='/users/<?= $GLOBALS['uri'][2] ?>/backdrops/<?= $value['backdrop'] ?>'
+                <a href='/users/<?= $GLOBALS['uri'][2] ?>/backdrop/<?= $value['backdrop'] ?>'
                    class="backdrops-list-backdrop">
                     <?= $value['backdrop'] ?>
                 </a>

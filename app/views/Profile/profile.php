@@ -25,7 +25,7 @@
                 <div>
                     <a href="/users/<?= $GLOBALS['uri'][2] ?>/setofcards/<?= $value['setofcards'] ?>"
                        class="user-content-list-block-setofcards">Set of cards</a>
-                    <a href="/users/<?= $GLOBALS['uri'][2] ?>/backdrops/<?= $value['setofcards'] ?>"
+                    <a href="/users/<?= $GLOBALS['uri'][2] ?>/backdropsList/<?= $value['setofcards'] ?>"
                        class="user-content-list-block-backdrop">
                         Backdrops
                     </a>
