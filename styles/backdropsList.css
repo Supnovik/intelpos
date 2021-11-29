@@ -12,25 +12,6 @@
   margin-top: 50px;
 }
 
-.backdrops-backdrop {
-  display: block;
-  cursor: pointer;
-  margin-top: 10px;
-  height: 44px;
-  width: 100%;
-  border: 1px solid rgba(31, 32, 65, 0.25);
-  box-sizing: border-box;
-  border-radius: 4px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 40px;
-  padding-left: 12px;
-  padding-right: 14px;
-}
-.backdrops-backdrop:hover {
-  border: 1px solid rgba(31, 32, 65, 0.75);
-}
-
 .page_of_backdrops-modal {
   position: fixed;
   top: 0;
@@ -94,13 +75,23 @@
   flex-direction: column;
   align-items: center;
 }
-.backdrops-list-backdrop {
+.backdrops-list-backdrop{
+  margin-top: 60px;
+  margin-bottom: 20px;
+  width: 60%;
+
+  display: flex;
+  justify-content: space-between;
+}
+.backdrops-list-backdrop-img {
   width: 60%;
   height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: aqua;
-  margin-bottom: 40px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 20px;
 }

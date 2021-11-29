@@ -76,10 +76,12 @@ class Route
                     } else {
                         return false;
                     }
-                },'backdrop' => function ($user, $backdrop) {
+                },
+                'backdrop' => function ($user, $backdrop) {
                     if (true) {
                         $controller = new Controller\BackdropPage($user, $backdrop);
                         $controller->actionIndex();
+
                         return true;
                     } else {
                         return false;

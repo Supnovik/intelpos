@@ -20,7 +20,7 @@ class BackdropPage extends Controller
 
         if (array_key_exists('backdrop-addCard',$_POST)){
             $this->model->addCard(filter_var(trim($_POST['backdrop-card']), FILTER_SANITIZE_STRING),'Def','100','100');
-        }   
+        }
     }
 
     function actionIndex()
