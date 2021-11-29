@@ -55,7 +55,7 @@ class Route
                         return false;
                     }
                 },
-                'setofcards' => function ($user, $setofcards) {
+                'setofcards' => [''=>function ($user, $setofcards) {
                     $db = new Model\user($user, $user);
                     if ($db->checkingSetofcardsForExistence($setofcards)) {
                         $controller = new Controller\SetOfCardsPage($user, $setofcards);
@@ -65,7 +65,7 @@ class Route
                     } else {
                         return false;
                     }
-                },
+                }],
                 'backdropsList' => [''=>function ($user, $setofcards) {
                     $db = new Model\user($user, $user);
                     if ($db->checkingSetofcardsForExistence($setofcards)) {
@@ -98,7 +98,6 @@ class Route
             ],
         ];
 
-        #/users/Nickname/backdropList/setofcardsName/backdrop/backdropName
         if (array_key_exists($GLOBALS['uri'][1], $path) && !isset($GLOBALS['uri'][2])) {
             $func = $path[$GLOBALS['uri'][1]];
             $func();
