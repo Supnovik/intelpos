@@ -17,7 +17,7 @@
                     <button type="submit" name="delete-backdrop" class="button-short">Delete</button>
                 </form>
 
-                <a href='/users/<?= $GLOBALS['uri'][2] ?>/backdrop/<?= $value['backdrop'] ?>'
+                <a href='/users/<?= $GLOBALS['uri'][2] ?>/backdropsList/<?= $GLOBALS['uri'][4] ?>/backdrop/<?= $value['backdrop'] ?>'
                    class="backdrops-list-backdrop-img" style="background-image: url(/<?= $value['imagePath'] ?>)">
 
                 </a>

@@ -10,11 +10,13 @@ class BackdropPage extends Controller
 {
     public $user;
     public $backdrop;
+    public $setofcards;
 
-    function __construct($user, $backdrop)
+    function __construct($user, $setofcards, $backdrop)
     {
         $this->user = $user;
         $this->backdrop = $backdrop;
+        $this->setofcards = $setofcards;
         $this->model = new Model\backdrop($this->user, $this->backdrop);
         $this->view = new View();
 
@@ -25,7 +27,7 @@ class BackdropPage extends Controller
 
     function actionIndex()
     {
-        $setOfCards = new Model\setOfCards($this->user,'qwe');
+        $setOfCards = new Model\setOfCards($this->user,$this->setofcards);
         $this->view->generate(
             'Backdrop/backdrop.php',
             'template_view.php',

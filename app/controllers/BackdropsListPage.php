@@ -63,7 +63,7 @@ class BackdropsListPage extends Controller
     function make_upload($file)
     {
         $backdropName = filter_var(trim($_POST['BackdropName']), FILTER_SANITIZE_STRING);
-        $name = mt_rand(0, 10000).$file['name'];
+        $name = $backdropName.$file['name'];
         copy($file['tmp_name'], "backdropsImg/$name");
         $dbSet = new Model\setOfCards($this->user, $this->setofcards);
         $dbSet->createBackdrop($backdropName, 'backdropsImg/'.$name);

@@ -175,8 +175,14 @@ class setOfCards extends database
     public function deleteBackdrop($backdrop)
     {
         try {
+            $sql = 'SELECT * FROM '.$this->table.'_BackdropsList WHERE backdrop like "'.$backdrop.'"';
+            $result = $this->databaseConnection->query($sql);
+            while ($row = $result->fetch()) {
+                $content[] = ['imagePath' => $row['imagePath']];
+            }
             $sql = 'DELETE FROM '.$this->table.'_BackdropsList WHERE backdrop = "'.$backdrop.'"';
             $this->databaseConnection->exec($sql);
+            unlink($content[0]['imagePath']);
         } catch (PDOException $e) {
             echo 'Database error: '.$e->getMessage();
         }
@@ -189,6 +195,7 @@ class setOfCards extends database
             foreach ($backdrops as $backdrop) {
                 $sql = 'Drop TABLE '.$backdrop['backdrop'].'_Backdrop';
                 $this->databaseConnection->exec($sql);
+                unlink($backdrop['imagePath']);
             }
         } catch (PDOException $e) {
             echo 'Database error: '.$e->getMessage();

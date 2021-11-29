@@ -66,27 +66,24 @@ class Route
                         return false;
                     }
                 },
-                'backdropsList' => function ($user, $setofcards) {
+                'backdropsList' => [''=>function ($user, $setofcards) {
                     $db = new Model\user($user, $user);
                     if ($db->checkingSetofcardsForExistence($setofcards)) {
                         $controller = new Controller\BackdropsListPage($user, $setofcards);
                         $controller->actionIndex();
-
                         return true;
                     } else {
                         return false;
                     }
-                },
-                'backdrop' => function ($user, $backdrop) {
+                },'backdrop' => function ($user, $setofcards, $backdrop) {
                     if (true) {
-                        $controller = new Controller\BackdropPage($user, $backdrop);
+                        $controller = new Controller\BackdropPage($user, $setofcards, $backdrop);
                         $controller->actionIndex();
-
                         return true;
                     } else {
                         return false;
                     }
-                },
+                },],
                 'learn' => function ($user, $setofcards) {
                     $db = new Model\user($user, $user);
                     if ($db->checkingSetofcardsForExistence($setofcards)) {
@@ -101,7 +98,7 @@ class Route
             ],
         ];
 
-
+        #/users/Nickname/backdropList/setofcardsName/backdrop/backdropName
         if (array_key_exists($GLOBALS['uri'][1], $path) && !isset($GLOBALS['uri'][2])) {
             $func = $path[$GLOBALS['uri'][1]];
             $func();
@@ -116,13 +113,21 @@ class Route
                     print_r($GLOBALS['uri']);
                 }
             }
-            if (array_key_exists($GLOBALS['uri'][3], $path[$GLOBALS['uri'][1]]) && isset($GLOBALS['uri'][4])) {
-                $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]];
+            if (array_key_exists($GLOBALS['uri'][3], $path[$GLOBALS['uri'][1]]) && isset($GLOBALS['uri'][4]) && !isset($GLOBALS['uri'][5])) {
+                $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][''];
                 if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4])) {
                     echo '<html><body><h1>Page Not Found</h1></body></html>';
                     print_r($GLOBALS['uri']);
                 }
-            } else {
+            } 
+            if (array_key_exists($GLOBALS['uri'][3], $path[$GLOBALS['uri'][1]])  && isset($GLOBALS['uri'][5])) {
+                $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][$GLOBALS['uri'][5]];
+                if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4], $GLOBALS['uri'][6])) {
+                    echo '<html><body><h1>Page Not Found</h1></body></html>';
+                    print_r($GLOBALS['uri']);
+                }
+            }
+            else {
                 echo '<html><body><h1>Page Not Found</h1></body></html>';
                 print_r($GLOBALS['uri']);
             }
