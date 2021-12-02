@@ -1,21 +1,22 @@
-<div class="backdrop">
-    <div class="backdrop-sidebar">
+<div class="backdropPage">
+    <div class="backdropPage-sidebar">
         <?php
         foreach ($data['allCards'] as $value):?>
-            <div class="backdrop-card">
-                <div class="backdrop-card-termin"><?= $value['termin'] ?></div>
-                <div style="display: none" class="backdrop-card-definition"><?= $value['definition'] ?></div>
+            <div class="backdropPage-card" draggable="true">
+                <div class="backdropPage-card-termin"><?= $value['termin'] ?></div>
+                <div style="display: none" class="backdropPage-card-definition"><?= $value['definition'] ?></div>
             </div>
         <?php
         endforeach; ?>
     </div>
-    <div class="backdrop-content">
+    <div class="backdropPage-content">
         <form method="post" class="">
-            <input name="backdrop-card" type="text">
-            <button name="backdrop-addCard" type="submit">create</button>
+            <input name="backdropPage-card" type="text">
+            <button name="backdropPage-addCard" type="submit">create</button>
         </form>
+        <div class="backdropPage-content-backdrop">
+
+        </div>
     </div>
 </div>
-
-<?php
-print_r($data);
+<script src="/app/views/Backdrop/backdrop.js"></script>

@@ -118,18 +118,19 @@ class Route
                     echo '<html><body><h1>Page Not Found</h1></body></html>';
                     print_r($GLOBALS['uri']);
                 }
-            } 
+                return;
+            }
             if (array_key_exists($GLOBALS['uri'][3], $path[$GLOBALS['uri'][1]])  && isset($GLOBALS['uri'][5])) {
                 $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][$GLOBALS['uri'][5]];
                 if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4], $GLOBALS['uri'][6])) {
                     echo '<html><body><h1>Page Not Found</h1></body></html>';
                     print_r($GLOBALS['uri']);
                 }
-            }
-            else {
-                echo '<html><body><h1>Page Not Found</h1></body></html>';
+            }else {
+                echo '<html><body><h1>Page Not Foundd</h1></body></html>';
                 print_r($GLOBALS['uri']);
             }
+            
         }
     }
 }

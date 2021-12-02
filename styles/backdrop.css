@@ -1,9 +1,9 @@
-.backdrop {
+.backdropPage {
   height: 90vh;
   display: grid;
   grid-template-columns: 0.5fr 2fr;
 }
-.backdrop-sidebar {
+.backdropPage-sidebar {
   display: grid;
   grid-gap: 2vw;
   grid-template-rows: repeat(50, 15vh);
@@ -12,7 +12,7 @@
   background-color: cadetblue;
 }
 
-.backdrop-card {
+.backdropPage-card {
   cursor: pointer;
   width: 100%;
   height: 100%;
@@ -21,12 +21,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: 200%;
   border: none;
 }
 
-.backdrop-content {
+.backdropPage-content {
   display: flex;
   flex-direction: column;
   padding: 40px 60px;
+}
+.backdropPage-content-backdrop {
+  position: relative;
+  margin-top: 40px;
+  background-color: #aaa;
+  width: 100%;
+  height: 100%;
+}
+.onBackdrop {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  cursor: pointer;
+  background-color: rgb(240, 60, 96);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  border: none;
 }
