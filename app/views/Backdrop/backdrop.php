@@ -14,8 +14,11 @@
             <input name="backdropPage-card" type="text">
             <button name="backdropPage-addCard" type="submit">create</button>
         </form>
-        <div class="backdropPage-content-backdrop">
-
+        <div  class="backdropPage-content-backdrop">
+            <div  style="top: 50%;left: 50%;" class="card-onBackdrop">
+                <div class="backdropPage-card-termin">termin</div>
+                <div style="display: none" class="backdropPage-card-definition">definition</div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,5 +1,6 @@
 var cards = document.querySelectorAll(".backdropPage-card");
 var backdrop = document.querySelector(".backdropPage-content-backdrop");
+var backdropCards = document.querySelectorAll(".card-onBackdrop");
 var sidebar = document.querySelector(".backdropPage-sidebar");
 
 function getCoords(elem) {
@@ -34,7 +35,7 @@ cards.forEach((card) => {
     ).innerHTML;
 
     var div = document.createElement("div");
-    div.className = "onBackdrop";
+    div.className = "card-onBackdrop";
     div.innerHTML = `<div class="backdropPage-card-termin">${termin}</div>
     <div style="display: none" class="backdropPage-card-definition">${definition}</div>`;
 
@@ -42,15 +43,14 @@ cards.forEach((card) => {
 
     div.style.left =
       ((e.x - relcoor.x - backdropPos.left) / backdropPos.width) * 100 + "%";
-
-    //div.style.setProperty("left", `calc(100% + 224px)`);
     div.style.top =
       ((e.y - relcoor.y - backdropPos.top) / backdropPos.height) * 100 + "%";
     backdrop.append(div);
+  });
+});
 
-    /*var xCord = e.clientX;
-    var yCord = e.clientY;
-    var xPercent = (xCord / window.innerWidth) * 100;
-    var yPercent = (yCord / window.innerHeight) * 100;*/
+backdropCards.forEach((card) => {
+  card.addEventListener("click", function () {
+    console.log(1);
   });
 });
