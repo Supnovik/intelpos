@@ -2,6 +2,20 @@ var cards = document.querySelectorAll(".backdropPage-card");
 var backdrop = document.querySelector(".backdropPage-content-backdrop");
 var backdropCards = document.querySelectorAll(".card-onBackdrop");
 var sidebar = document.querySelector(".backdropPage-sidebar");
+var cardsList = document.querySelector(".backdropPage-sidebar-cardsList");
+var cardInfo = document.querySelector(".backdropPage-sidebar-cardInfo");
+var cardInfoTermin = document.querySelector(
+  ".backdropPage-sidebar-cardInfo-termin"
+);
+var cardInfoDefinition = document.querySelector(
+  ".backdropPage-sidebar-cardInfo-definition"
+);
+var cardInfoClose = document.querySelector(
+  ".backdropPage-sidebar-cardInfo-close"
+);
+var cardInfoRemove = document.querySelector(
+  ".backdropPage-sidebar-cardInfo-remove"
+);
 
 function getCoords(elem) {
   var box = elem.getBoundingClientRect();
@@ -48,7 +62,7 @@ cards.forEach((card) => {
         <input type="text" style="display: none" name="definition" value="${definition}">
         <input type="text" style="display: none" name="x_coordinate" value="${left}">
         <input type="text" style="display: none" name="y_coordinate" value="${top}">
-        <button name="addCardToBackdrop">click to save</button>`;
+        <button name="addCardToBackdrop" class="addCardToBackdrop">Save card position</button>`;
       form.style.left = left + "%";
       form.style.top = top + "%";
       backdrop.append(form);
@@ -77,4 +91,23 @@ document.querySelectorAll(".card-onBackdrop").forEach((card) => {
       card.querySelector(".y_coordinate").value = top;
     }
   });
+  card.addEventListener(`click`, () => {
+    cardsList.style.display = "none";
+    cardInfo.style.display = "block";
+    cardInfo.querySelector("#id").value = card.querySelector("#id").value;
+    cardInfoTermin.innerHTML = card.querySelector("#termin").value;
+    cardInfoDefinition.innerHTML = card.querySelector("#definition").value;
+  });
+});
+cardInfoClose.addEventListener(`click`, () => {
+  cardsList.style.display = "grid";
+  cardInfo.style.display = "none";
+  cardInfoTermin.innerHTML = "";
+  cardInfoDefinition.innerHTML = "";
+});
+cardInfoRemove.addEventListener("click", () => {
+  cardsList.style.display = "grid";
+  cardInfo.style.display = "none";
+  cardInfoTermin.innerHTML = "";
+  cardInfoDefinition.innerHTML = "";
 });

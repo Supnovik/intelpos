@@ -35,6 +35,10 @@ class BackdropPage extends Controller
             $y_coordinate = filter_var(trim($_POST['y_coordinate']), FILTER_SANITIZE_STRING);
             $this->model->changeCardPos($id,$termin,$definition,$x_coordinate,$y_coordinate);
         }
+        if (array_key_exists('removeCard',$_POST)){
+            $id = filter_var(trim($_POST['id']), FILTER_SANITIZE_STRING);
+            $this->model->removeCard($id);
+        }
     }
 
     function actionIndex()
@@ -43,7 +47,7 @@ class BackdropPage extends Controller
         $this->view->generate(
             'Backdrop/backdrop.php',
             'template_view.php',
-            ['allCards' => $setOfCards->getCards(),'backdropCards' => $this->model->getCards(),'imagePath' => $setOfCards->getBackdropImage($this->backdrop)]
+            ['allCards' => $setOfCards->getCards(),'backdropCards' => $this->model->getCards(),'imagePath' => $setOfCards->getBackdropImage($this->backdrop)[0]['imagePath']]
         );
     }
 }

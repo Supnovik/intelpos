@@ -62,10 +62,10 @@ class backdrop extends database
         }
     }
 
-    public function deleteCard($termin)
+    public function removeCard($id)
     {
         try {
-            $sql = 'DELETE FROM '.$this->table.'_Backdrop WHERE termin = "'.$termin.'"';
+            $sql = 'DELETE FROM '.$this->table.'_Backdrop WHERE id = "'.$id.'"';
             $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo 'Database error: '.$e->getMessage();
