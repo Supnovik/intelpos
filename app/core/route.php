@@ -10,6 +10,12 @@ global $user;
 global $uri;
 global $title;
 
+
+function Error_404(){
+    $GLOBALS['title'] = 'Error404';
+    header("HTTP/1.1 404 Not Found");
+    echo '<html><body><h1>Page Not Found</h1></body></html>';
+}
 class Route
 {
 
@@ -65,7 +71,6 @@ class Route
                     $db = new Model\user($user, $user);
                     if ($db->checkingSetofcardsForExistence($setofcards)) {
                         $GLOBALS['title'] = 'Set of cards';
-
                         $controller = new Controller\SetOfCardsPage($user, $setofcards);
                         $controller->actionIndex();
                         return true;
@@ -101,7 +106,6 @@ class Route
                     $db = new Model\user($user, $user);
                     if ($db->checkingSetofcardsForExistence($setofcards)) {
                         $GLOBALS['title'] = 'Learn';
-
                         $controller = new Controller\LearnCardsPage($user, $setofcards);
                         $controller->actionIndex();
                         return true;
@@ -122,33 +126,26 @@ class Route
                 ) && isset($GLOBALS['uri'][2]) && !isset($GLOBALS['uri'][3])) {
                 $func = $path[$GLOBALS['uri'][1]][''];
                 if (!$func($GLOBALS['uri'][2])) {
-                    echo '<html><body><h1>Page Not Found</h1></body></html>';
-                    print_r($GLOBALS['uri']);
+                    Error_404();
+                    return;
                 }
-                return;
-
-            }
             if (array_key_exists($GLOBALS['uri'][3], $path[$GLOBALS['uri'][1]]) && isset($GLOBALS['uri'][4]) && !isset($GLOBALS['uri'][5])) {
                 $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][''];
-                if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4])) {
-                    echo '<html><body><h1>Page Not Found</h1></body></html>';
-                    print_r($GLOBALS['uri']);
-                }
+                if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4])) 
+                    Error_404();
                 return;
             }
             
             if (array_key_exists($GLOBALS['uri'][3], $path[$GLOBALS['uri'][1]])  && isset($GLOBALS['uri'][5])) {
                 $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][$GLOBALS['uri'][5]];
-                if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4], $GLOBALS['uri'][6])) {
-                    echo '<html><body><h1>Page Not Found</h1></body></html>';
-                    print_r($GLOBALS['uri']);
-                }
+                if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4], $GLOBALS['uri'][6])) 
+                    Error_404();
                 return;
             }else {
-                echo '<html><body><h1>Page Not Foundd</h1></body></html>';
-                print_r($GLOBALS['uri']);
+                Error_404();
+                
             }
             
         }
     }
-}
+    }}
