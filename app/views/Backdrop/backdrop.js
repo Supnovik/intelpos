@@ -36,13 +36,10 @@ function relativeCoords(e) {
 if (user == setOwner) {
   cards.forEach((card) => {
     var relcoor;
-    card.addEventListener(`dragstart`, (e) => {
-      e.target.classList.add(`selected`);
+    card.addEventListener("dragstart", (e) => {
       relcoor = relativeCoords(e);
     });
-    card.addEventListener(`dragend`, (e) => {
-      e.target.classList.remove(`selected`);
-
+    card.addEventListener("dragend", (e) => {
       var backdropPos = getCoords(backdrop);
       var left =
         ((e.x - relcoor.x - backdropPos.left) / backdropPos.width) * 100;
@@ -76,13 +73,10 @@ if (user == setOwner) {
 document.querySelectorAll(".card-onBackdrop").forEach((card) => {
   if (user == setOwner) {
     var relcoor;
-    card.addEventListener(`dragstart`, (e) => {
-      e.target.classList.add(`selected`);
+    card.addEventListener("dragstart", (e) => {
       relcoor = relativeCoords(e);
     });
-    card.addEventListener(`dragend`, (e) => {
-      e.target.classList.remove(`selected`);
-
+    card.addEventListener("dragend", (e) => {
       var backdropPos = getCoords(backdrop);
       var left =
         ((e.x - relcoor.x - backdropPos.left) / backdropPos.width) * 100;
@@ -98,7 +92,7 @@ document.querySelectorAll(".card-onBackdrop").forEach((card) => {
       }
     });
   }
-  card.addEventListener(`click`, () => {
+  card.addEventListener("click", () => {
     cardsList.style.display = "none";
     cardInfo.style.display = "block";
     cardInfo.querySelector("#id").value = card.querySelector("#id").value;
@@ -107,7 +101,7 @@ document.querySelectorAll(".card-onBackdrop").forEach((card) => {
   });
 });
 
-cardInfoClose.addEventListener(`click`, () => {
+cardInfoClose.addEventListener("click", () => {
   cardsList.style.display = "grid";
   cardInfo.style.display = "none";
   cardInfoTermin.innerHTML = "";

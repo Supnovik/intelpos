@@ -62,5 +62,6 @@
 <script> 
     var user = <?php echo json_encode($GLOBALS["user"]);?>;
     var setOwner = <?php echo json_encode($GLOBALS['uri'][2]);?>;
+
 </script>
 <script src="/app/views/Backdrop/backdrop.js"></script>

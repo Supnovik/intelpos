@@ -80,7 +80,8 @@
   font-size: 10px;
   color: white;
 }
-.addCardToBackdrop {
+.addCardToBackdrop,
+.changeCardPos {
   position: absolute;
   width: 100%;
   height: 100%;

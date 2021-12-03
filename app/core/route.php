@@ -11,11 +11,12 @@ global $uri;
 global $title;
 
 
-function Error_404(){
+function Error_404()
+{
     $GLOBALS['title'] = 'Error404';
-    header("HTTP/1.1 404 Not Found");
-    echo '<html><body><h1>Page Not Found</h1></body></html>';
+    echo '<html><body><h1>Page Not Foundd</h1></body></html>';
 }
+
 class Route
 {
 
@@ -27,8 +28,8 @@ class Route
             $GLOBALS['isLogin'] = true;
             $GLOBALS['user'] = $_COOKIE['user'];
         }
-        $GLOBALS['title'] ='ERROR';
-        
+        $GLOBALS['title'] = 'ERROR';
+
         $path = [
             '' => function () {
                 $GLOBALS['title'] = 'Main';
@@ -62,57 +63,67 @@ class Route
 
                         $controller = new Controller\ProfilePage;
                         $controller->actionIndex();
+
                         return true;
                     } else {
                         return false;
                     }
                 },
-                'setofcards' => [''=>function ($user, $setofcards) {
-                    $db = new Model\user($user, $user);
-                    if ($db->checkingSetofcardsForExistence($setofcards)) {
-                        $GLOBALS['title'] = 'Set of cards';
-                        $controller = new Controller\SetOfCardsPage($user, $setofcards);
-                        $controller->actionIndex();
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }],
-                'backdropsList' => [''=>function ($user, $setofcards) {
-                    $db = new Model\user($user, $user);
-                    if ($db->checkingSetofcardsForExistence($setofcards)) {
-                        $GLOBALS['title'] = 'Backdrop list';
+                'setofcards' => [
+                    '' => function ($user, $setofcards) {
+                        $db = new Model\user($user, $user);
+                        if ($db->checkingSetofcardsForExistence($setofcards)) {
+                            $GLOBALS['title'] = 'Set of cards';
+                            $controller = new Controller\SetOfCardsPage($user, $setofcards);
+                            $controller->actionIndex();
 
-                        $controller = new Controller\BackdropsListPage($user, $setofcards);
-                        $controller->actionIndex();
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    },
+                ],
+                'backdropsList' => [
+                    '' => function ($user, $setofcards) {
+                        $db = new Model\user($user, $user);
+                        if ($db->checkingSetofcardsForExistence($setofcards)) {
+                            $GLOBALS['title'] = 'Backdrop list';
 
-                        return true;
-                    } else {
-                        return false;
-                    }
-                },'backdrop' => function ($user, $setofcards, $backdrop) {
-                    if (true) {
-                        $GLOBALS['title'] = 'Backdrop';
+                            $controller = new Controller\BackdropsListPage($user, $setofcards);
+                            $controller->actionIndex();
 
-                        $controller = new Controller\BackdropPage($user, $setofcards, $backdrop);
-                        $controller->actionIndex();
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    },
+                    'backdrop' => function ($user, $setofcards, $backdrop) {
+                        if (true) {
+                            $GLOBALS['title'] = 'Backdrop';
 
-                        return true;
-                    } else {
-                        return false;
-                    }
-                },],
-                'learn' => [''=>function ($user, $setofcards) {
-                    $db = new Model\user($user, $user);
-                    if ($db->checkingSetofcardsForExistence($setofcards)) {
-                        $GLOBALS['title'] = 'Learn';
-                        $controller = new Controller\LearnCardsPage($user, $setofcards);
-                        $controller->actionIndex();
-                        return true;
-                    } else {
-                        return false;
-                    }
-                },]
+                            $controller = new Controller\BackdropPage($user, $setofcards, $backdrop);
+                            $controller->actionIndex();
+
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    },
+                ],
+                'learn' => [
+                    '' => function ($user, $setofcards) {
+                        $db = new Model\user($user, $user);
+                        if ($db->checkingSetofcardsForExistence($setofcards)) {
+                            $GLOBALS['title'] = 'Learn';
+                            $controller = new Controller\LearnCardsPage($user, $setofcards);
+                            $controller->actionIndex();
+
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    },
+                ],
             ],
         ];
 
@@ -127,25 +138,30 @@ class Route
                 $func = $path[$GLOBALS['uri'][1]][''];
                 if (!$func($GLOBALS['uri'][2])) {
                     Error_404();
+                }}
+                if (array_key_exists(
+                        $GLOBALS['uri'][3],
+                        $path[$GLOBALS['uri'][1]]
+                    ) && isset($GLOBALS['uri'][4]) && !isset($GLOBALS['uri'][5])) {
+                    $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][''];
+                    if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4])) {
+                        Error_404();
+                    }
+
                     return;
                 }
-            if (array_key_exists($GLOBALS['uri'][3], $path[$GLOBALS['uri'][1]]) && isset($GLOBALS['uri'][4]) && !isset($GLOBALS['uri'][5])) {
-                $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][''];
-                if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4])) 
+
+                if (array_key_exists($GLOBALS['uri'][3], $path[$GLOBALS['uri'][1]]) && isset($GLOBALS['uri'][5])) {
+                    $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][$GLOBALS['uri'][5]];
+                    if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4], $GLOBALS['uri'][6])) {
+                        Error_404();
+                    }
+
+                    return;
+                } else {
                     Error_404();
-                return;
-            }
-            
-            if (array_key_exists($GLOBALS['uri'][3], $path[$GLOBALS['uri'][1]])  && isset($GLOBALS['uri'][5])) {
-                $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][$GLOBALS['uri'][5]];
-                if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4], $GLOBALS['uri'][6])) 
-                    Error_404();
-                return;
-            }else {
-                Error_404();
-                
-            }
-            
+                }
+
         }
     }
-    }}
+}
