@@ -50,7 +50,7 @@ class backdrop extends database
         return $content;
     }
 
-    public function changeCardPos($id,$termin,$definition,$x_coordinate,$y_coordinate)
+    public function changeCardPos($id, $termin, $definition, $x_coordinate, $y_coordinate)
     {
         try {
             $sql = 'UPDATE '.$this->table.'_Backdrop SET x_coordinate = "'.$x_coordinate.'"  WHERE id = "'.$id.'"';

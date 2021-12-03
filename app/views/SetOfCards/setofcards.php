@@ -9,8 +9,10 @@
                 <button style="display: none" class="setofcards-sidebar-buttons-add button-long">Add new card</button>
             <?php
             endif; ?>
+            <?php if (count($data['cards']) !== 0 ):?>
             <a href='/users/<?= $GLOBALS['uri'][2] ?>/learn/<?= $GLOBALS['uri'][4] ?>'
                class="setofcards-sidebar-buttons-start button-long">Start learning</a>
+            <?php endif;?>
             <button class="setofcards-sidebar-buttons-comments button-long">View comments</button>
         </div>
         <div class="setofcards-sidebar-input">

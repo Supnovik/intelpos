@@ -84,7 +84,7 @@ class Route
                         return false;
                     }
                 },],
-                'learn' => function ($user, $setofcards) {
+                'learn' => [''=>function ($user, $setofcards) {
                     $db = new Model\user($user, $user);
                     if ($db->checkingSetofcardsForExistence($setofcards)) {
                         $controller = new Controller\LearnCardsPage($user, $setofcards);
@@ -94,7 +94,7 @@ class Route
                     } else {
                         return false;
                     }
-                },
+                },]
             ],
         ];
 
