@@ -1,5 +1,6 @@
+<?php if (count($data) !== 0):?>
 <div class="learnCards container">
-
+    
     <div class="learnCards-termin">
         termin
     </div>
@@ -37,9 +38,11 @@
 
     </div>
 </div>
+<?php else:
+header('Location: /');
+endif;?>
+
 <script>
     var data = <?php echo json_encode($data);?>;
 </script>
-<script src="/app/views/LearnCards/learnCard.js">
-
-</script>
+<script src="/app/views/LearnCards/learnCard.js"></script>
