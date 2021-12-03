@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/backdropsList.css">
     <link rel="stylesheet" type="text/css" href="/styles/backdrop.css">
     <link rel="stylesheet" type="text/css" href="/styles/learnCards.css">
-    <title>Main</title>
+    <title><?=$GLOBALS['title']?></title>
 </head>
 <body>
 
