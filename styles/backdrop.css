@@ -33,9 +33,11 @@
 .backdropPage-content-backdrop {
   position: relative;
   margin-top: 40px;
-  background-color: #aaa;
   width: 100%;
   height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 }
 .card-onBackdrop {
   position: absolute;
@@ -43,10 +45,14 @@
   height: 10%;
   cursor: pointer;
   background-color: rgb(240, 60, 96);
-  border-radius: 30px;
+  border-radius: 5%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 30px;
   border: none;
+}
+.card-onBackdrop span {
+  font-size: 10px;
+  color: white;
 }

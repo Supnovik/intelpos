@@ -20,8 +20,20 @@ class BackdropPage extends Controller
         $this->model = new Model\backdrop($this->user, $this->backdrop);
         $this->view = new View();
 
-        if (array_key_exists('backdrop-addCard',$_POST)){
-            $this->model->addCard(filter_var(trim($_POST['backdrop-card']), FILTER_SANITIZE_STRING),'Def','100','100');
+        if (array_key_exists('addCardToBackdrop',$_POST)){
+            $termin = filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING);
+            $definition = filter_var(trim($_POST['definition']), FILTER_SANITIZE_STRING);
+            $x_coordinate = filter_var(trim($_POST['x_coordinate']), FILTER_SANITIZE_STRING);
+            $y_coordinate = filter_var(trim($_POST['y_coordinate']), FILTER_SANITIZE_STRING);
+            $this->model->addCard($termin,$definition,$x_coordinate,$y_coordinate);
+        }
+        if (array_key_exists('changeCardPos',$_POST)){
+            $id = filter_var(trim($_POST['id']), FILTER_SANITIZE_STRING);
+            $termin = filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING);
+            $definition = filter_var(trim($_POST['definition']), FILTER_SANITIZE_STRING);
+            $x_coordinate = filter_var(trim($_POST['x_coordinate']), FILTER_SANITIZE_STRING);
+            $y_coordinate = filter_var(trim($_POST['y_coordinate']), FILTER_SANITIZE_STRING);
+            $this->model->changeCardPos($id,$termin,$definition,$x_coordinate,$y_coordinate);
         }
     }
 
@@ -31,7 +43,7 @@ class BackdropPage extends Controller
         $this->view->generate(
             'Backdrop/backdrop.php',
             'template_view.php',
-            ['allCards' => $setOfCards->getCards(),'backdropCards' => $this->model->getCards()]
+            ['allCards' => $setOfCards->getCards(),'backdropCards' => $this->model->getCards(),'imagePath' => $setOfCards->getBackdropImage($this->backdrop)]
         );
     }
 }

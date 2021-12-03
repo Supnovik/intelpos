@@ -25,32 +25,56 @@ cards.forEach((card) => {
   card.addEventListener(`dragstart`, (e) => {
     e.target.classList.add(`selected`);
     relcoor = relativeCoords(e);
-    console.log(window.innerWidth);
   });
   card.addEventListener(`dragend`, (e) => {
     e.target.classList.remove(`selected`);
-    var termin = card.querySelector(".backdropPage-card-termin").innerHTML;
-    var definition = card.querySelector(
-      ".backdropPage-card-definition"
-    ).innerHTML;
-
-    var div = document.createElement("div");
-    div.className = "card-onBackdrop";
-    div.innerHTML = `<div class="backdropPage-card-termin">${termin}</div>
-    <div style="display: none" class="backdropPage-card-definition">${definition}</div>`;
 
     var backdropPos = getCoords(backdrop);
+    var left = ((e.x - relcoor.x - backdropPos.left) / backdropPos.width) * 100;
+    var top = ((e.y - relcoor.y - backdropPos.top) / backdropPos.height) * 100;
 
-    div.style.left =
-      ((e.x - relcoor.x - backdropPos.left) / backdropPos.width) * 100 + "%";
-    div.style.top =
-      ((e.y - relcoor.y - backdropPos.top) / backdropPos.height) * 100 + "%";
-    backdrop.append(div);
+    if (left >= 0 && left <= 90 && top >= 0 && top <= 90) {
+      var termin = card.querySelector(".backdropPage-card-termin").innerHTML;
+      var definition = card.querySelector(
+        ".backdropPage-card-definition"
+      ).innerHTML;
+      var form = document.createElement("form");
+      form.method = "post";
+      form.draggable = "true";
+      form.className = "card-onBackdrop";
+      form.innerHTML = `
+        <div class="backdropPage-card-termin">${termin}</div>
+        <input type="text" style="display: none" name="termin" value="${termin}">
+        <input type="text" style="display: none" name="definition" value="${definition}">
+        <input type="text" style="display: none" name="x_coordinate" value="${left}">
+        <input type="text" style="display: none" name="y_coordinate" value="${top}">
+        <button name="addCardToBackdrop">click to save</button>`;
+      form.style.left = left + "%";
+      form.style.top = top + "%";
+      backdrop.append(form);
+    }
   });
 });
 
-backdropCards.forEach((card) => {
-  card.addEventListener("click", function () {
-    console.log(1);
+document.querySelectorAll(".card-onBackdrop").forEach((card) => {
+  var relcoor;
+  card.addEventListener(`dragstart`, (e) => {
+    e.target.classList.add(`selected`);
+    relcoor = relativeCoords(e);
+  });
+  card.addEventListener(`dragend`, (e) => {
+    e.target.classList.remove(`selected`);
+
+    var backdropPos = getCoords(backdrop);
+    var left = ((e.x - relcoor.x - backdropPos.left) / backdropPos.width) * 100;
+    var top = ((e.y - relcoor.y - backdropPos.top) / backdropPos.height) * 100;
+
+    if (left >= 0 && left <= 90 && top >= 0 && top <= 90) {
+      card.style.left = left + "%";
+      card.style.top = top + "%";
+      card.querySelector(".changeCardPos").style.display = "block";
+      card.querySelector(".x_coordinate").value = left;
+      card.querySelector(".y_coordinate").value = top;
+    }
   });
 });

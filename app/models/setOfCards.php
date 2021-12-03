@@ -109,6 +109,8 @@ class setOfCards extends database
         return $content;
     }
 
+    
+
     public function updateCard($oldtermin, $termin, $definition)
     {
         try {
@@ -154,6 +156,22 @@ class setOfCards extends database
         } catch (PDOException $e) {
             echo 'Database error: '.$e->getMessage();
         }
+    }
+
+    public function getBackdropImage($backdrop)
+    {
+        $content = [];
+        try {
+            $sql = 'SELECT * FROM '.$this->table.'_BackdropsList WHERE backdrop like "'.$backdrop.'%"';
+            $result = $this->databaseConnection->query($sql);
+            while ($row = $result->fetch()) {
+                $content[] = ['backdrop' => $row['backdrop'], 'imagePath' => $row['imagePath']];
+            }
+        } catch (PDOException $e) {
+            echo 'Database error: '.$e->getMessage();
+        }
+
+        return $content;
     }
 
     public function getBackdrops()

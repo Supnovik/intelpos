@@ -35,6 +35,7 @@ class backdrop extends database
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content[] = [
+                    'id' => $row['id'],
                     'termin' => $row['termin'],
                     'definition' => $row['definition'],
                     'x_coordinate' => $row['x_coordinate'],
@@ -47,6 +48,18 @@ class backdrop extends database
         }
 
         return $content;
+    }
+
+    public function changeCardPos($id,$termin,$definition,$x_coordinate,$y_coordinate)
+    {
+        try {
+            $sql = 'UPDATE '.$this->table.'_Backdrop SET x_coordinate = "'.$x_coordinate.'"  WHERE id = "'.$id.'"';
+            $this->databaseConnection->exec($sql);
+            $sql = 'UPDATE '.$this->table.'_Backdrop SET y_coordinate = "'.$y_coordinate.'"  WHERE id = "'.$id.'"';
+            $this->databaseConnection->exec($sql);
+        } catch (PDOException $e) {
+            echo 'Database error: '.$e->getMessage();
+        }
     }
 
     public function deleteCard($termin)
