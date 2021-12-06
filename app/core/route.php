@@ -138,30 +138,36 @@ class Route
                 $func = $path[$GLOBALS['uri'][1]][''];
                 if (!$func($GLOBALS['uri'][2])) {
                     Error_404();
-                }}
-                if (array_key_exists(
-                        $GLOBALS['uri'][3],
-                        $path[$GLOBALS['uri'][1]]
-                    ) && isset($GLOBALS['uri'][4]) && !isset($GLOBALS['uri'][5])) {
-                    $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][''];
-                    if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4])) {
-                        Error_404();
-                    }
-
                     return;
                 }
+                return;
 
-                if (array_key_exists($GLOBALS['uri'][3], $path[$GLOBALS['uri'][1]]) && isset($GLOBALS['uri'][5])) {
-                    $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][$GLOBALS['uri'][5]];
-                    if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4], $GLOBALS['uri'][6])) {
-                        Error_404();
-                    }
-
-                    return;
-                } else {
+            }
+            if (array_key_exists(
+                    $GLOBALS['uri'][3],
+                    $path[$GLOBALS['uri'][1]]
+                ) && isset($GLOBALS['uri'][4]) && !isset($GLOBALS['uri'][5])) {
+                $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][''];
+                if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4])) {
                     Error_404();
+                    return;
+
                 }
 
+                return;
+            }
+
+            if (array_key_exists($GLOBALS['uri'][3], $path[$GLOBALS['uri'][1]]) && isset($GLOBALS['uri'][5])) {
+                $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][$GLOBALS['uri'][5]];
+                if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4], $GLOBALS['uri'][6])) {
+                    Error_404();
+                    return;
+
+                }
+                return;
+            } else {
+                Error_404();
+            }
         }
     }
 }
