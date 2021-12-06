@@ -31,13 +31,13 @@
                 </p>
             </div>
             <div class="main-description-block-img">
-                <img src="app/views/Main/1.png"/>
+                <img src="app/views/Main/set.png"/>
             </div>
         </div>
 
         <div class="main-description-block">
             <div class="main-description-block-img">
-                <img src="app/views/Main/2.png"/>
+                <img src="app/views/Main/backdrop.png"/>
             </div>
             <div class="main-description-block-text text-right">
                 <h2>The "Memory Palace" method.</h2>
