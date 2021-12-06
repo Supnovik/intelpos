@@ -33,15 +33,16 @@
 }
 .backdropPage-card {
   cursor: pointer;
-  width: 100%;
+  width: 90%;
+  margin: auto;
   height: 100%;
-  background-color: rgb(240, 60, 96);
+  background-color: rgb(165, 165, 165);
   border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 200%;
-  border: none;
+  border: 1px solid black;
 }
 
 .backdropPage-content {
@@ -68,13 +69,13 @@
   width: 10%;
   height: 10%;
   cursor: pointer;
-  background-color: rgb(240, 60, 96);
+  background-color: rgb(18, 145, 145);
+  border: 2px solid black;
   border-radius: 5%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 30px;
-  border: none;
 }
 .card-onBackdrop span {
   font-size: 10px;

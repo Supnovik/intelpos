@@ -9,7 +9,7 @@ class user extends database
     public function createTable()
     {
         try {
-            $sql = 'CREATE TABLE '.$this->table.' (id integer auto_increment primary key, setofcards VARCHAR(30))';
+            $sql = 'CREATE TABLE '.$this->table.' (id integer auto_increment primary key, setofcards VARCHAR(90))';
             $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo 'Database error: '.$e->getMessage();

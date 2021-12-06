@@ -22,14 +22,12 @@
 <main class="container">
 
     <div id="description" class="main-description">
-        <h2>Advantages</h2>
+        <h2>You can use two methods to memorize:</h2>
         <div class="main-description-block">
             <div class="main-description-block-text text-left">
-                <h3>Ваш ум, наше – все остальное.</h3>
+                <h2>The Leitner method.</h2>
                 <p>
-                    От карточек, удобных для изучения иностранных языков, до игр на
-                    любую тему – в Quzlet есть множество средств, которые подойдут
-                    именно вам.
+                This is a method of effective memorization and repetition using flash cards, where the system consists of a set of cards with terms and their definitions that can be repeated at any time.
                 </p>
             </div>
             <div class="main-description-block-img">
@@ -39,14 +37,12 @@
 
         <div class="main-description-block">
             <div class="main-description-block-img">
-                <img src="app/views/Main/1.png"/>
+                <img src="app/views/Main/2.png"/>
             </div>
             <div class="main-description-block-text text-right">
-                <h3>Ваш ум, наше – все остальное.</h3>
+                <h2>The "Memory Palace" method.</h2>
                 <p>
-                    От карточек, удобных для изучения иностранных языков, до игр на
-                    любую тему – в Quzlet есть множество средств, которые подойдут
-                    именно вам.
+                This method is based on mental-spatial associations, the purpose of which is to create, organize and further use the entire contents of memory; for a more creative approach. On the service, this method will be implemented as attaching stickers, for example, to a photo of the user's workplace with the information that he needs to remember. 
                 </p>
             </div>
         </div>

@@ -62,7 +62,7 @@
             <button class="user-content-close-modal close">×</button>
             <form method="post">
                 <h2>Enter the name of the set of cards</h2>
-                <input maxlength="12" name="setofcardsName" class="user-content-list-block" required autocomplete="off"
+                <input maxlength="13" name="setofcardsName" class="user-content-list-block" required autocomplete="off"
                        placeholder="Set of cards name"/>
                 <input type="submit" name="createSetofcards" class="button-long user-content-close-modal"
                        value="Create"/>

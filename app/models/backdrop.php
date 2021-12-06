@@ -10,7 +10,7 @@ class backdrop extends database
     public function createBackdropTable()
     {
         try {
-            $sql = 'create table '.$this->table.'_Backdrop (id integer auto_increment primary key, termin VARCHAR(30), definition VARCHAR(30), x_coordinate INT DEFAULT 0, y_coordinate INT DEFAULT 0,is_set BOOL DEFAULT FALSE);';
+            $sql = 'create table '.$this->table.'_Backdrop (id integer auto_increment primary key, termin VARCHAR(90), definition VARCHAR(90), x_coordinate INT DEFAULT 0, y_coordinate INT DEFAULT 0,is_set BOOL DEFAULT FALSE);';
             $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo 'Database error: '.$e->getMessage();

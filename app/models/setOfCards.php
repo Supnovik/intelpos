@@ -14,11 +14,11 @@ class setOfCards extends database
     public function createSetOfCards()
     {
         try {
-            $sql = 'create table '.$this->table.' (id integer auto_increment primary key, termin VARCHAR(30), definition VARCHAR(30), level INT DEFAULT 0);';
+            $sql = 'create table '.$this->table.' (id integer auto_increment primary key, termin VARCHAR(90), definition VARCHAR(90), level INT DEFAULT 0);';
             $this->databaseConnection->exec($sql);
-            $sql = 'create table '.$this->table.'_BackdropsList (id integer auto_increment primary key, backdrop VARCHAR(30), imagePath VARCHAR(60));';
+            $sql = 'create table '.$this->table.'_BackdropsList (id integer auto_increment primary key, backdrop VARCHAR(90), imagePath VARCHAR(90));';
             $this->databaseConnection->exec($sql);
-            $sql = 'create table '.$this->table.'_Comments (id integer auto_increment primary key, nickname VARCHAR(30), text VARCHAR(30));';
+            $sql = 'create table '.$this->table.'_Comments (id integer auto_increment primary key, nickname VARCHAR(90), text VARCHAR(90));';
             $this->databaseConnection->exec($sql);
         } catch (PDOException $e) {
             echo 'Database error: '.$e->getMessage();
