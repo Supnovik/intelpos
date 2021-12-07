@@ -22,7 +22,7 @@ class LearnCardsPage extends Controller
         $this->view->generate(
             'LearnCards/learnCards.php',
             'template_view.php',
-            $this->model->getCards($this->user, $this->setofcards)
+            $this->model->getCards($this->setofcards)
         );
     }
 }

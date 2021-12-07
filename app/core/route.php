@@ -28,7 +28,6 @@ class Route
             $GLOBALS['isLogin'] = true;
             $db =  new Model\dbConstructor();
             $GLOBALS['user'] =  $db->getContent('users',['id','nickname'],[['type'=>'nickname','content'=>$_COOKIE['user']]],true)[0];
-           
         }
         $GLOBALS['title'] = 'ERROR';
         
