@@ -11,9 +11,8 @@ class BackdropsListPage extends Controller
     public $user;
     public $setofcards;
 
-    function __construct($user, $setofcards)
+    function __construct( $setofcards)
     {
-        $this->user = $user;
         $this->setofcards = $setofcards;
         $this->view = new View();
 
@@ -26,22 +25,20 @@ class BackdropsListPage extends Controller
             }
         }
         if (array_key_exists('delete-backdrop',$_POST)) {
-            $dbSet = new Model\setOfCards($this->user, $this->setofcards);
-            $dbSet->deleteBackdrop(filter_var(trim($_POST['backdropName']), FILTER_SANITIZE_STRING));
-            $dbBack = new Model\backdrop($this->user, filter_var(trim($_POST['backdropName']), FILTER_SANITIZE_STRING));
-            $dbBack->deleteBackdrop();
+            unlink(filter_var(trim($_POST['imagePath']), FILTER_SANITIZE_STRING));
+            $db = new Model\dbConstructor();
+            $db->deleteContent('backdrops',filter_var(trim($_POST['id']), FILTER_SANITIZE_STRING));
         }
     }
 
     function actionIndex()
     {
-        if (array_key_exists('createBackdrop', $_POST)) {
-        }
+        
         $this->model = new Model\backdropsList();
         $this->view->generate(
             'BackdropsList/backdropsList.php',
             'template_view.php',
-            $this->model->getData($this->user, $this->setofcards)
+            $this->model->getData($this->setofcards)
         );
     }
 
@@ -67,9 +64,8 @@ class BackdropsListPage extends Controller
         $mime = strtolower(end($getMime));
         $name = $backdropName.'.'.$mime;
         copy($file['tmp_name'], "backdropsImg/$name");
-        $dbSet = new Model\setOfCards($this->user, $this->setofcards);
-        $dbSet->createBackdrop($backdropName, 'backdropsImg/'.$name);
-        $dbBack = new Model\backdrop($this->user, $backdropName);
-        $dbBack->createBackdropTable();
+
+        $db = new Model\dbConstructor();
+        $db->addContent('backdrops',[['setofcardsId',$this->setofcards['id']],['name',$backdropName],['imagePath','backdropsImg/'.$name]]);
     }
 }

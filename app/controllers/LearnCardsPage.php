@@ -8,23 +8,21 @@ use Intelpos\View;
 
 class LearnCardsPage extends Controller
 {
-    public $user;
     public $setofcards;
 
-    function __construct($user, $setofcards)
+    function __construct($setofcards)
     {
-        $this->user = $user;
         $this->setofcards = $setofcards;
         $this->view = new View();
     }
 
     function actionIndex()
     {
-        $this->model = new Model\setOfCards($this->user, $this->setofcards);
+        $this->model = new Model\setOfCards($this->setofcards);
         $this->view->generate(
             'LearnCards/learnCards.php',
             'template_view.php',
-            $this->model->getData($this->user, $this->setofcards)
+            $this->model->getCards($this->user, $this->setofcards)
         );
     }
 }

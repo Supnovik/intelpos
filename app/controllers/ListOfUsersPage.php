@@ -12,11 +12,13 @@ class ListOfUsersPage extends Controller
     {
         $this->view = new View();
         if (array_key_exists('search-user-button', $_POST)) {
-            $db = new Model\database('data', 'users');
+            $db = new Model\dbConstructor();
+            $nickname = filter_var(trim($_POST['search-user']), FILTER_SANITIZE_STRING);
+            $content =  $db->getContent('users',['nickname'],[['type'=>'nickname','content'=>$nickname]]);
             $this->view->generate(
                 'ListOfUsers/listOfUsers.php',
                 'template_view.php',
-                $db->serchUsers(filter_var(trim($_POST['search-user']), FILTER_SANITIZE_STRING))
+                $content
             );
         }
     }

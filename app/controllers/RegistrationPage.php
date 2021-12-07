@@ -13,11 +13,10 @@ class RegistrationPage extends Controller
             $nickname = filter_var(trim($_POST['nickname']), FILTER_SANITIZE_STRING);
             $mail = filter_var(trim($_POST['mail']), FILTER_SANITIZE_STRING);
             $password = md5(filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING).'sol');
-            $databaseOfUsers = new Model\database('data', 'users');
-            $databaseOfUsers->addUser($nickname, $mail, $password);
-            $databaseOfUsers->createDatabase($nickname);
-            $Usersdatabase = new Model\user($nickname, $nickname);
-            $Usersdatabase->createTable();
+
+            $db = new Model\dbConstructor();
+            $db->addContent('users',[['nickname',$nickname],['mail',$mail],['password',$password]]);
+            
             setcookie('user', $nickname, time() + 120, '/');
             header('Location: /users/'.$nickname);
         }

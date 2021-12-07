@@ -13,7 +13,7 @@
                 <div class="sign-user-img">
                     <img src="http://user-life.com/uploads/posts/2018-08/1535608847_kak-udalit-avatarku-ubrat-postavit-sdelat-zagruzit-dobavit-foto-vkontakte-dlya-telegramma-skaypa-vayber-diskorda.jpg"/>
                 </div>
-                <a class="my-profile" href='/users/<?= $GLOBALS["user"]; ?>'>My profile</a>
+                <a class="my-profile" href='/users/<?= $GLOBALS['user']['nickname']; ?>'>My profile</a>
                 <form action="/app/models/auth.php" method="post">
                     <button type="submit" class="sign-out" name="sign-out">Sign out</button>
                 </form>

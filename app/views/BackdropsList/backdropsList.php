@@ -12,12 +12,13 @@
             <?php
             foreach ($data as $value): ?>
                 <form class="backdrops-list-backdrop" method="post">
-                    <input  style="display: none" type="text" name="backdropName" value="<?= $value['backdrop'] ?>"/>
-                    <h2><?= $value['backdrop'] ?></h2>
+                    <input  style="display: none" type="text" name="id" value="<?= $value['id'] ?>"/>
+                    <input  style="display: none" type="text" name="imagePath" value="<?= $value['imagePath'] ?>"/>
+                    <h2><?= $value['name'] ?></h2>
                     <button type="submit" name="delete-backdrop" class="button-short">Delete</button>
                 </form>
 
-                <a href='/users/<?= $GLOBALS['uri'][2] ?>/backdropsList/<?= $GLOBALS['uri'][4] ?>/backdrop/<?= $value['backdrop'] ?>'
+                <a href='/users/<?= $GLOBALS['uri'][2] ?>/backdropsList/<?= $GLOBALS['uri'][4] ?>/backdrop/<?= $value['name'] ?>'
                    class="backdrops-list-backdrop-img" style="background-image: url(/<?= $value['imagePath'] ?>)">
 
                 </a>

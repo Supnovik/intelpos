@@ -4,82 +4,44 @@ namespace Intelpos\Model;
 
 use PDOException;
 
-class backdrop extends database
+class backdrop
 {
+    public $setofcards;
+    public $backdrop;
 
-    public function createBackdropTable()
+    public function __construct($setofcards,$backdrop)
     {
-        try {
-            $sql = 'create table '.$this->table.'_Backdrop (id integer auto_increment primary key, termin VARCHAR(90), definition VARCHAR(90), x_coordinate INT DEFAULT 0, y_coordinate INT DEFAULT 0,is_set BOOL DEFAULT FALSE);';
-            $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
+        $this->setofcards =$setofcards;
+        $this->backdrop =$backdrop;
     }
 
     public function addCard($termin, $definition, $x_coordinate, $y_coordinate)
     {
-        try {
-            $sql = 'INSERT INTO '.$this->table.'_Backdrop (termin, definition, x_coordinate, y_coordinate) VALUES ("'.$termin.'","'.$definition.'","'.$x_coordinate.'","'.$y_coordinate.'")';
-            $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
+        $db = new dbConstructor();
+        $db->addContent('cardsOnBackdrop',[['backdropsId',$this->backdrop['id']],['termin',$termin],['definition',$definition],['x_coordinate',$x_coordinate],['y_coordinate',$y_coordinate]]);
     }
 
     public function getCards()
     {
-        $content = [];
-        try {
-            $sql = 'SELECT * FROM '.$this->table.'_Backdrop';
-            $result = $this->databaseConnection->query($sql);
-            while ($row = $result->fetch()) {
-                $content[] = [
-                    'id' => $row['id'],
-                    'termin' => $row['termin'],
-                    'definition' => $row['definition'],
-                    'x_coordinate' => $row['x_coordinate'],
-                    'y_coordinate' => $row['y_coordinate'],
-                    'is_set' => $row['is_set'],
-                ];
-            }
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
-
-        return $content;
+        $db = new dbConstructor();
+        return $db->getContent('cardsOnBackdrop',['id','backdropsId','termin','definition','x_coordinate','y_coordinate'],[['type'=>'backdropsId','content'=>$this->backdrop['id']]]);
     }
 
     public function changeCardPos($id, $termin, $definition, $x_coordinate, $y_coordinate)
     {
-        try {
-            $sql = 'UPDATE '.$this->table.'_Backdrop SET x_coordinate = "'.$x_coordinate.'"  WHERE id = "'.$id.'"';
-            $this->databaseConnection->exec($sql);
-            $sql = 'UPDATE '.$this->table.'_Backdrop SET y_coordinate = "'.$y_coordinate.'"  WHERE id = "'.$id.'"';
-            $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
+        $db = new dbConstructor();
+        $db->updateContent('cardsOnBackdrop',$id,['termin','definition','x_coordinate','y_coordinate'],['termin'=>$termin,'definition'=>$definition,'x_coordinate'=>$x_coordinate,'y_coordinate'=>$y_coordinate]);
     }
 
     public function removeCard($id)
     {
-        try {
-            $sql = 'DELETE FROM '.$this->table.'_Backdrop WHERE id = "'.$id.'"';
-            $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
+        $db = new dbConstructor();
+        $db->deleteContent('cardsOnBackdrop',$id);
     }
 
     public function deleteBackdrop()
     {
-        try {
-            $sql = 'Drop TABLE '.$this->table.'_Backdrop';
-            $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
+        
     }
 
 

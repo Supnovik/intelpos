@@ -2,7 +2,8 @@
     <div class="setofcards-sidebar">
         <div class="setofcards-sidebar-buttons">
             <?php
-            if ($GLOBALS["user"] == $GLOBALS['uri'][2]): ?>
+            if ($GLOBALS["isLogin"])
+            if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
                 <button class="setofcards-sidebar-buttons-add button-long">Add new card</button>
             <?php
             else: ?>
@@ -17,8 +18,8 @@
         </div>
         <div class="setofcards-sidebar-input">
             <form method="post">
-                <input style="display: none" type="text" name="oldtermin"
-                       class="setofcards-sidebar-input-oldtermin input-box">
+                <input style="display: none" type="text" name="id"
+                       class="setofcards-sidebar-input-oldId input-box">
                 <input required type="text" name="termin" placeholder="Termin"
                        class="setofcards-sidebar-input-termin input-box">
                 <input required type="text" name="definition" placeholder="Definition"
@@ -27,7 +28,8 @@
 
                 <div class="save-delete-card">
                     <?php
-                    if ($GLOBALS["user"] == $GLOBALS['uri'][2]): ?>
+                    if ($GLOBALS["isLogin"])
+                    if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
                         <div>
                             <button type="submit" name="save-card" class="save-card button-long">Save card</button>
                             <button type="submit" name="delete-card" class="delete-card button-long">Delete card
@@ -56,7 +58,7 @@
             <?php
             if ($GLOBALS["isLogin"]): ?>
                 <form class="setofcards-sidebar-comments-input" method="post">
-                    <input type="text" name="comment-nickname" style="display: none" value="<?= $GLOBALS["user"] ?>">
+                    <input type="text" name="comment-nickname" style="display: none" value="<?= $GLOBALS['user']['nickname'] ?>">
                     <input type="text" name="comment-text" class="comment-text input-box">
                     <button type="submit" name="comment-button" class="comment-button button-long"> send</button>
                 </form>
@@ -80,6 +82,7 @@
                 <button class="setofcards-table-card">
                     <div class="setofcards-table-card-termin"><?= $value['termin'] ?></div>
                     <div class="setofcards-table-card-definition"><?= $value['definition'] ?></div>
+                    <div style="display: none" class="setofcards-table-card-id"><?= $value['id'] ?></div>
                 </button>
             <?php
             endforeach; ?>

@@ -8,7 +8,8 @@
             </h2>
         </div>
         <?php
-        if ($GLOBALS["user"] == $GLOBALS['uri'][2]): ?>
+        if ($GLOBALS["isLogin"])
+        if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
             <form method="post">
                 <input type="submit" name="delete-user" class="delete-user" value="Delete user"/>
             </form>
@@ -16,21 +17,22 @@
         endif; ?>
     </div>
     <div class="user-content-list">
-        <?php
+        <?php 
         foreach ($data as $value): ?>
+
             <form method="post" class="user-content-list-block">
-                <h2><?= $value['setofcards'] ?></h2>
-                <input type="text" style="display: none" name="setofcardsName"
-                       value="<?= $value['setofcards'] ?>"></input>
+                <h2><?= $value['name'] ?></h2>
+                <input type="text" style="display: none" name="id"
+                       value="<?= $value['id'] ?>"></input>
                 <div>
-                    <a href="/users/<?= $GLOBALS['uri'][2] ?>/setofcards/<?= $value['setofcards'] ?>"
+                    <a href="/users/<?= $GLOBALS['uri'][2] ?>/setofcards/<?= $value['name'] ?>"
                        class="user-content-list-block-setofcards">Set of cards</a>
-                    <a href="/users/<?= $GLOBALS['uri'][2] ?>/backdropsList/<?= $value['setofcards'] ?>"
+                    <a href="/users/<?= $GLOBALS['uri'][2] ?>/backdropsList/<?= $value['name'] ?>"
                        class="user-content-list-block-backdrop">
                         Backdrops
                     </a>
-                    <?php
-                    if ($GLOBALS["user"] == $GLOBALS['uri'][2]): ?>
+                    <?php if ($GLOBALS["isLogin"])
+                    if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
                         <input type="submit" name="edit-cardsSet" id="edit" class="user-content-list-block-button"
                                value="edit"/>
                         <input type="submit" name="delete-cardsSet" id="delete" class="user-content-list-block-button"
@@ -49,7 +51,8 @@
             </form>
         <?php
         endforeach;
-        if ($GLOBALS["user"] == $GLOBALS['uri'][2]): ?>
+        if ($GLOBALS["isLogin"])
+        if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
             <button id="addnew" class="button-long user-content-open-modal">
                 Add new set of cards
             </button>

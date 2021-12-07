@@ -4,9 +4,9 @@ namespace Intelpos\Model;
 
 class backdropsList
 {
-    public function getData($user, $setofcards)
+    public function getData($setofcards)
     {
-        $dbSet = new setOfCards($user, $setofcards);
-        return $dbSet->getBackdrops();
+        $db = new dbConstructor();
+        return $db->getContent('backdrops',['id','setofcardsId','name','imagePath'],[['type'=>'setofcardsId','content'=>$setofcards['id']]]);
     }
 }

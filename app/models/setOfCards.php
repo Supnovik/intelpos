@@ -4,219 +4,97 @@ namespace Intelpos\Model;
 
 use PDOException;
 
-class setOfCards extends database
+class setOfCards
 {
+    public $setofcards;
+    function __construct($setofcards)
+    {
+        $this->setofcards=$setofcards;
+    }
     public function getData($user = null, $data = null)
     {
-        return $this->getCards();
+        
+        $cards = $this->getCards();
+        $comments = $this->getComments();
+        return ['cards' => $cards , 'comments' => $comments];
     }
-
-    public function createSetOfCards()
-    {
-        try {
-            $sql = 'create table '.$this->table.' (id integer auto_increment primary key, termin VARCHAR(90), definition VARCHAR(90), level INT DEFAULT 0);';
-            $this->databaseConnection->exec($sql);
-            $sql = 'create table '.$this->table.'_BackdropsList (id integer auto_increment primary key, backdrop VARCHAR(90), imagePath VARCHAR(90));';
-            $this->databaseConnection->exec($sql);
-            $sql = 'create table '.$this->table.'_Comments (id integer auto_increment primary key, nickname VARCHAR(90), text VARCHAR(90));';
-            $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
-    }
-
-    public function addCard($termin, $definition)
-    {
-        try {
-            $sql = 'INSERT INTO '.$this->table.' (termin, definition) VALUES ("'.$termin.'","'.$definition.'")';
-            $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
-    }
-
-    public function addComment($nickname, $text)
-    {
-        try {
-            $sql = 'INSERT INTO '.$this->table.'_Comments (nickname, text) VALUES ("'.$nickname.'","'.$text.'")';
-            $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
-    }
-
+    
     public function getCards()
     {
-        $content = [];
-        try {
-            $sql = 'SELECT * FROM '.$this->table;
-            $result = $this->databaseConnection->query($sql);
-            while ($row = $result->fetch()) {
-                $content[] = ['termin' => $row['termin'], 'definition' => $row['definition'], 'level' => $row['level']];
-            }
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
-
-        return $content;
+        $db = new dbConstructor();
+        return $db->getContent('cards',['id','setofcardsId','termin','definition'],[['type'=>'setofcardsId','content'=>$this->setofcards['id']]]);
     }
 
     public function getComments()
     {
-        $content = [];
-        try {
-            $sql = 'SELECT * FROM '.$this->table.'_Comments';
-            $result = $this->databaseConnection->query($sql);
-            while ($row = $result->fetch()) {
-                $content[] = ['nickname' => $row['nickname'], 'text' => $row['text']];
-            }
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
+        $db = new dbConstructor();
+        return $db->getContent('comments',['id','setofcardsId','userName','comment']);
+    }
 
-        return $content;
+    public function addCard($termin, $definition)
+    {
+        $setofcardsId = $this->setofcards['id'];
+        $db = new dbConstructor();
+        $db->addContent('cards',[['setofcardsId',$setofcardsId],['termin',$termin],['definition',$definition]]);
+    }
+
+    public function addComment($nickname, $text)
+    {
+        $db = new dbConstructor();
+        $db->addContent('cards',[['user',$nickname],['text',$text]]);
     }
 
     public function sortByAlphabet()
     {
-        $content = [];
-        try {
-            $sql = 'SELECT * FROM '.$this->table.' ORDER BY termin';
-            $result = $this->databaseConnection->query($sql);
-            while ($row = $result->fetch()) {
-                $content[] = ['termin' => $row['termin'], 'definition' => $row['definition'], 'level' => $row['level']];
-            }
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
-
-        return $content;
+        $db = new dbConstructor();
+        $sortObj = 'termin';
+        $pattern = ['id','setofcardsId','termin','definition'];
+        return $db->sortContent('cards',$pattern,$sortObj);
     }
 
-    public function searchCards($card)
+    public function searchCards($termin)
     {
-        $content = [];
-        try {
-            $sql = 'SELECT * FROM '.$this->table.' WHERE termin like "'.$card.'%"';
-            $result = $this->databaseConnection->query($sql);
-            while ($row = $result->fetch()) {
-                $content[] = ['termin' => $row['termin'], 'definition' => $row['definition'], 'level' => $row['level']];
-            }
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
-
-        return $content;
+        $db = new dbConstructor();
+        return $db->getContent('cards',['setofcardsId','termin','definition'],[['type'=>'termin','content'=>$termin]]);
     }
-
     
-
-    public function updateCard($oldtermin, $termin, $definition)
+    public function updateCard($id,$pattern, $newValue)
     {
-        try {
-            $sql = 'UPDATE '.$this->table.' SET definition = "'.$definition.'" WHERE termin = "'.$oldtermin.'"';
-            $this->databaseConnection->exec($sql);
-            $sql = 'UPDATE '.$this->table.' SET termin = "'.$termin.'" WHERE termin = "'.$oldtermin.'"';
-            $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
+        $db = new dbConstructor();
+        $db->updateContent('cards',$id,$pattern, $newValue);
     }
 
-    public function deleteCard($termin)
+    public function deleteCard($id)
     {
-        try {
-            $sql = 'DELETE FROM '.$this->table.' WHERE termin = "'.$termin.'"';
-            $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
+        $db = new dbConstructor();
+        $db->deleteContent('cards',$id);
     }
 
 
     public function deleteSetOfCards()
     {
-        try {
-            $sql = 'Drop TABLE '.$this->table.'_BackdropsList';
-            $this->databaseConnection->exec($sql);
-            $sql = 'Drop TABLE '.$this->table.'_Comments';
-            $this->databaseConnection->exec($sql);
-            $sql = 'Drop TABLE '.$this->table;
-            $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
+        
     }
 
     public function createBackdrop($backdrop, $imagePath)
     {
-        try {
-            $sql = 'INSERT INTO '.$this->table.'_BackdropsList (backdrop,imagePath) VALUES ("'.$backdrop.'","'.$imagePath.'")';
-            $this->databaseConnection->exec($sql);
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
+        
     }
 
     public function getBackdropImage($backdrop)
     {
-        $content = [];
-        try {
-            $sql = 'SELECT * FROM '.$this->table.'_BackdropsList WHERE backdrop like "'.$backdrop.'%"';
-            $result = $this->databaseConnection->query($sql);
-            while ($row = $result->fetch()) {
-                $content[] = ['backdrop' => $row['backdrop'], 'imagePath' => $row['imagePath']];
-            }
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
-
-        return $content;
+        
     }
 
-    public function getBackdrops()
-    {
-        $content = [];
-        try {
-            $sql = 'SELECT * FROM '.$this->table.'_BackdropsList';
-            $result = $this->databaseConnection->query($sql);
-            while ($row = $result->fetch()) {
-                $content[] = ['backdrop' => $row['backdrop'], 'imagePath' => $row['imagePath']];
-            }
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
-
-        return $content;
-    }
+    
 
     public function deleteBackdrop($backdrop)
     {
-        try {
-            $sql = 'SELECT * FROM '.$this->table.'_BackdropsList WHERE backdrop like "'.$backdrop.'"';
-            $result = $this->databaseConnection->query($sql);
-            while ($row = $result->fetch()) {
-                $content[] = ['imagePath' => $row['imagePath']];
-            }
-            $sql = 'DELETE FROM '.$this->table.'_BackdropsList WHERE backdrop = "'.$backdrop.'"';
-            $this->databaseConnection->exec($sql);
-            unlink($content[0]['imagePath']);
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
+       
     }
 
     public function deleteAllBackdrops()
     {
-        try {
-            $backdrops = $this->getBackdrops();
-            foreach ($backdrops as $backdrop) {
-                $sql = 'Drop TABLE '.$backdrop['backdrop'].'_Backdrop';
-                $this->databaseConnection->exec($sql);
-                unlink($backdrop['imagePath']);
-            }
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
-        }
+        
     }
 }

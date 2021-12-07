@@ -26,10 +26,12 @@ class Route
         $GLOBALS['isLogin'] = false;
         if (isset($_COOKIE['user'])) {
             $GLOBALS['isLogin'] = true;
-            $GLOBALS['user'] = $_COOKIE['user'];
+            $db =  new Model\dbConstructor();
+            $GLOBALS['user'] =  $db->getContent('users',['id','nickname'],[['type'=>'nickname','content'=>$_COOKIE['user']]],true)[0];
+           
         }
         $GLOBALS['title'] = 'ERROR';
-
+        
         $path = [
             '' => function () {
                 $GLOBALS['title'] = 'Main';
@@ -39,7 +41,6 @@ class Route
             },
             'login' => function () {
                 $GLOBALS['title'] = 'Login';
-
                 $controller = new Controller\LoginPage;
                 $controller->actionIndex();
             },
@@ -56,10 +57,11 @@ class Route
                 $controller->actionIndex();
             },
             'users' => [
-                '' => function ($user) {
-                    $db = new Model\database('data', 'users');
-                    if ($db->checkingForExistence($user)) {
-                        $GLOBALS['title'] = $user;
+                '' => function ($nickname) {
+                    $db = new Model\dbConstructor();
+                    $len = $db->getContent('users',['nickname'],[['type'=>'nickname','content'=>$nickname]],true);
+                    if ($len !== 0) {
+                        $GLOBALS['title'] = $nickname;
 
                         $controller = new Controller\ProfilePage;
                         $controller->actionIndex();
@@ -71,12 +73,12 @@ class Route
                 },
                 'setofcards' => [
                     '' => function ($user, $setofcards) {
-                        $db = new Model\user($user, $user);
-                        if ($db->checkingSetofcardsForExistence($setofcards)) {
+                        $db = new Model\dbConstructor();
+                        $setofcards = $db->getContent('setofcards',['id','name'],[['type'=>'name','content'=>$setofcards]],true)[0];
+                        if (count($setofcards) !== 0) {
                             $GLOBALS['title'] = 'Set of cards';
                             $controller = new Controller\SetOfCardsPage($user, $setofcards);
                             $controller->actionIndex();
-
                             return true;
                         } else {
                             return false;
@@ -85,11 +87,12 @@ class Route
                 ],
                 'backdropsList' => [
                     '' => function ($user, $setofcards) {
-                        $db = new Model\user($user, $user);
-                        if ($db->checkingSetofcardsForExistence($setofcards)) {
+                        $db = new Model\dbConstructor();
+                        $setofcards = $db->getContent('setofcards',['id','name'],[['type'=>'name','content'=>$setofcards]],true)[0];
+                        if (count($setofcards) !== 0) {
                             $GLOBALS['title'] = 'Backdrop list';
 
-                            $controller = new Controller\BackdropsListPage($user, $setofcards);
+                            $controller = new Controller\BackdropsListPage($setofcards);
                             $controller->actionIndex();
 
                             return true;
@@ -98,9 +101,11 @@ class Route
                         }
                     },
                     'backdrop' => function ($user, $setofcards, $backdrop) {
-                        if (true) {
+                        $db = new Model\dbConstructor();
+                        $setofcards = $db->getContent('setofcards',['id','name'],[['type'=>'name','content'=>$setofcards]],true)[0];
+                        $backdrop = $db->getContent('backdrops',['id','name','imagePath'],[['type'=>'name','content'=>$backdrop],['type'=>'setofcardsId','content'=>$setofcards['id']]],true)[0];
+                        if (count($backdrop) !== 0) {
                             $GLOBALS['title'] = 'Backdrop';
-
                             $controller = new Controller\BackdropPage($user, $setofcards, $backdrop);
                             $controller->actionIndex();
 
@@ -112,10 +117,11 @@ class Route
                 ],
                 'learn' => [
                     '' => function ($user, $setofcards) {
-                        $db = new Model\user($user, $user);
-                        if ($db->checkingSetofcardsForExistence($setofcards)) {
+                        $db = new Model\dbConstructor();
+                        $setofcards = $db->getContent('setofcards',['id','name'],[['type'=>'name','content'=>$setofcards]],true)[0];
+                        if (count($setofcards) !== 0) {
                             $GLOBALS['title'] = 'Learn';
-                            $controller = new Controller\LearnCardsPage($user, $setofcards);
+                            $controller = new Controller\LearnCardsPage($setofcards);
                             $controller->actionIndex();
 
                             return true;
