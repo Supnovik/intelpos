@@ -8,9 +8,7 @@
         </p>
         <div class="buttons">
             <a href="#main-get-start" id="begin">Start</a>
-            <a href="#description" id="more">More about IntelPos &nbsp;
-                <img width="20px"
-                     src="https://thumb.tildacdn.com/tild6232-6262-4831-b462-333336373038/-/format/webp/image.png">
+            <a href="#description" id="more">More about IntelPos
             </a>
         </div>
     </div>

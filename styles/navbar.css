@@ -16,7 +16,7 @@
   top: 0;
   z-index: 1100;
   height: 50px;
-  background-color: rgb(10, 29, 65);
+  background-color: lightcoral;
 }
 
 .navbar-content {
@@ -28,21 +28,18 @@
   align-items: center;
 }
 .navbar-left {
-  width: 250px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .navbar-hrefs {
-  width: 150px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .navbar-hrefs a {
-  color: white;
+  margin-left: 20px;
+  color: black;
 }
 .navbar-hrefs a:hover {
   text-decoration: underline;

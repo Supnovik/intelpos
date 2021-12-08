@@ -6,6 +6,7 @@
   justify-content: space-between;
   flex-direction: row;
 }
+
 .user-infomation {
   width: 40%;
   display: flex;
@@ -24,18 +25,14 @@
 }
 
 .user-content-list-block {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   margin-bottom: 10px;
   height: 44px;
   width: 100%;
   border: 1px solid rgba(31, 32, 65, 0.25);
   box-sizing: border-box;
   border-radius: 4px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 40px;
 }
 .user-content-list-block:hover {
   border: 1px solid rgba(31, 32, 65, 0.75);
@@ -47,7 +44,9 @@
 
 .user-content-list-block h2 {
   text-align: center;
-  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-content-list-block-setofcards,
@@ -61,8 +60,11 @@
 
 .user-content-list-block-setofcards,
 .user-content-list-block-backdrop {
-  padding-left: 10px;
-  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  white-space: nowrap;
 }
 
 .user-content-list-block-setofcards {
@@ -84,7 +86,7 @@
   background-color: yellow;
 }
 .user-content-list-block-button#delete {
-  background-color: rgba(255, 0, 0, 0.75);
+  background-color: rgba(255, 0, 0, 0.7);
 }
 .user-content-list-block-button#delete:hover {
   background-color: red;
@@ -166,7 +168,7 @@
   width: 100%;
   display: block;
   color: #fff;
-  background: rgba(255, 0, 0, 0.75);
+  background: rgba(255, 0, 0, 0.5);
   border-radius: 22px;
   border: none;
   cursor: pointer;
@@ -177,4 +179,20 @@
 }
 .delete-user:hover {
   background: rgba(255, 0, 0, 1);
+}
+
+@media (max-width: 1024px) {
+  .profile_page {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+  }
+  .user-infomation {
+    width: 60%;
+    margin-bottom: 50px;
+  }
+  .user-content-list {
+    width: 80%;
+  }
 }

@@ -14,7 +14,9 @@ global $title;
 function Error_404()
 {
     $GLOBALS['title'] = 'Error404';
-    echo '<html><body><h1>Page Not Foundd</h1></body></html>';
+    http_response_code(404);
+    echo '<html><body><h1>Page Not Found</h1></body></html>';
+    die();
 }
 
 class Route
@@ -34,7 +36,6 @@ class Route
         $path = [
             '' => function () {
                 $GLOBALS['title'] = 'Main';
-
                 $controller = new Controller\MainPage;
                 $controller->actionIndex();
             },
@@ -58,7 +59,8 @@ class Route
             'users' => [
                 '' => function ($nickname) {
                     $db = new Model\dbConstructor();
-                    $len = $db->getContent('users',['nickname'],[['type'=>'nickname','content'=>$nickname]],true);
+                    $len = count($db->getContent('users',['nickname'],[['type'=>'nickname','content'=>$nickname]],true));
+
                     if ($len !== 0) {
                         $GLOBALS['title'] = $nickname;
 
@@ -171,8 +173,9 @@ class Route
                 }
                 return;
             } else {
-                Error_404();
+                
             }
+            Error_404();
         }
     }
 }

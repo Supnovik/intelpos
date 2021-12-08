@@ -6,7 +6,7 @@
 .backdropPage-sidebar {
   padding: 2vh 0;
   overflow-y: scroll;
-  background-color: cadetblue;
+  border-right: 1px solid rgb(0, 0, 0, 0.4);
 }
 .backdropPage-sidebar-cardsList {
   height: 100%;
@@ -36,7 +36,7 @@
   width: 90%;
   margin: auto;
   height: 100%;
-  background-color: rgb(165, 165, 165);
+  background-color: #fbec5d;
   border-radius: 30px;
   display: flex;
   align-items: center;
@@ -69,7 +69,7 @@
   width: 10%;
   height: 10%;
   cursor: pointer;
-  background-color: rgb(18, 145, 145);
+  background-color: #fbec5d;
   border: 2px solid black;
   border-radius: 5%;
   display: flex;

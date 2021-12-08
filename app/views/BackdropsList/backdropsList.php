@@ -4,7 +4,10 @@
         <h1>
             Backdrops
         </h1>
-        <button class="page_of_backdrops-open-modal button-short">Create new backdrop</button>
+        <?php if ($GLOBALS["isLogin"]) if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]):?>
+            <button class="page_of_backdrops-open-modal button-short">Create new backdrop</button>
+        <?php endif;?>
+
     </div>
     <div class="backdrops">
         <div class="backdrops-list">

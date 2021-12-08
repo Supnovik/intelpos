@@ -1,5 +1,6 @@
 .footer {
-  background-color: rgb(10, 29, 65);
+  background-color: lightcoral;
+
   display: flex;
   justify-content: center;
 }

@@ -1,6 +1,10 @@
 html {
   scroll-behavior: smooth;
 }
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
 
 body {
   padding: 0;
@@ -16,15 +20,23 @@ p,
 a {
   color: rgb(52, 58, 61);
   text-decoration: none;
+  font-size: 1.8vmin;
+
   margin: 0;
   padding: 0;
 }
 h1 {
+  font-size: 6vmin;
   font-weight: 500;
-  line-height: 0.95;
+  line-height: 1;
+}
+h2 {
+  font-size: 3vmin;
+  font-weight: 600;
+  line-height: 1;
 }
 p {
-  font-size: 22px;
+  font-size: 2.5vmin;
   line-height: 1.55;
   font-weight: 500;
 }

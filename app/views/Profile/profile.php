@@ -33,8 +33,7 @@
                     </a>
                     <?php if ($GLOBALS["isLogin"])
                     if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
-                        <input type="submit" name="edit-cardsSet" id="edit" class="user-content-list-block-button"
-                               value="edit"/>
+                        
                         <input type="submit" name="delete-cardsSet" id="delete" class="user-content-list-block-button"
                                value="delete"/>
 
