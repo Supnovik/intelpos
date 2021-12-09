@@ -7,7 +7,8 @@ use PDO;
 use PDOException;
 
 
-class dbConstructor{
+class dbConstructor
+{
     public $user = '';
     public $password = '';
     public $database = 'data';
@@ -42,12 +43,12 @@ class dbConstructor{
             echo 'Database error: '.$e->getMessage();
         }
     }
-    
-    public function createTable($tableName,$array)
+
+    public function createTable($tableName, $array)
     {
         $array = ['setofcards VARCHAR(90)'];
         $string = '';
-        foreach($array as $value){
+        foreach ($array as $value) {
             $string = "$string, $value";
         }
         try {
@@ -58,14 +59,13 @@ class dbConstructor{
         }
     }
 
-    public function addContent($tableName,$content)
+    public function addContent($tableName, $content)
     {
-        
-        $type ='';
+        $type = '';
         $value = '';
-        foreach($content as $val){
-            $type ="$type,". $val[0];
-            $value = "$value,'". $val[1]."'";
+        foreach ($content as $val) {
+            $type = "$type,".$val[0];
+            $value = "$value,'".$val[1]."'";
         }
         $type = substr($type, 1);
         $value = substr($value, 1);
@@ -77,24 +77,23 @@ class dbConstructor{
         }
     }
 
-    public function getContent($tableName,$pattern,$search=null,$isStrongSearch = false,$byId = false)
+    public function getContent($tableName, $pattern, $search = null, $isStrongSearch = false, $byId = false)
     {
         $output = [];
 
-        if ($search==null){
+        if ($search == null) {
             $sql = "SELECT * FROM $tableName";
-        }
-        else{
-            if($byId)
+        } else {
+            if ($byId) {
                 $sql = "SELECT * FROM $tableName WHERE id = '$search'";
-            else
-            {
-                $string='';
-                foreach($search as $val){
-                    if ($isStrongSearch)
-                        $string = $string . $val['type']." like '".$val['content']."' AND ";
-                    else
-                        $string = $string . $val['type']." like '".$val['content']."%' AND ";
+            } else {
+                $string = '';
+                foreach ($search as $val) {
+                    if ($isStrongSearch) {
+                        $string = $string.$val['type']." like '".$val['content']."' AND ";
+                    } else {
+                        $string = $string.$val['type']." like '".$val['content']."%' AND ";
+                    }
                 }
                 $string = rtrim($string, "AND ");
                 $sql = "SELECT * FROM $tableName WHERE $string";
@@ -104,7 +103,7 @@ class dbConstructor{
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content = [];
-                foreach($pattern as $type){
+                foreach ($pattern as $type) {
                     $content[$type] = $row[$type];
                 }
                 $output[] = $content;
@@ -112,10 +111,11 @@ class dbConstructor{
         } catch (PDOException $e) {
             echo 'Database error: '.$e->getMessage();
         }
+
         return $output;
     }
 
-    public function sortContent($tableName,$pattern,$sortObj)
+    public function sortContent($tableName, $pattern, $sortObj)
     {
         $output = [];
         try {
@@ -123,7 +123,7 @@ class dbConstructor{
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
                 $content = [];
-                foreach($pattern as $type){
+                foreach ($pattern as $type) {
                     $content[$type] = $row[$type];
                 }
                 $output[] = $content;
@@ -131,13 +131,14 @@ class dbConstructor{
         } catch (PDOException $e) {
             echo 'Database error: '.$e->getMessage();
         }
+
         return $output;
     }
 
-    public function updateContent($tableName,$id,$pattern, $newValue)
+    public function updateContent($tableName, $id, $pattern, $newValue)
     {
         try {
-            foreach($pattern as $value){
+            foreach ($pattern as $value) {
                 $sql = "UPDATE $tableName SET $value = '".$newValue[$value]."' WHERE id = '".$id."'";
                 $this->databaseConnection->exec($sql);
             }
@@ -146,7 +147,7 @@ class dbConstructor{
         }
     }
 
-    public function deleteContent($tableName,$id)
+    public function deleteContent($tableName, $id)
     {
         try {
             $sql = 'DELETE FROM '.$tableName.' WHERE id = "'.$id.'"';
@@ -157,4 +158,5 @@ class dbConstructor{
     }
 
 }
+
 ?>

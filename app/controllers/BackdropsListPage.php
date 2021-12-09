@@ -11,7 +11,7 @@ class BackdropsListPage extends Controller
     public $user;
     public $setofcards;
 
-    function __construct( $setofcards)
+    function __construct($setofcards)
     {
         $this->setofcards = $setofcards;
         $this->view = new View();
@@ -24,16 +24,15 @@ class BackdropsListPage extends Controller
                 echo $check;
             }
         }
-        if (array_key_exists('delete-backdrop',$_POST)) {
+        if (array_key_exists('delete-backdrop', $_POST)) {
             unlink(filter_var(trim($_POST['imagePath']), FILTER_SANITIZE_STRING));
             $db = new Model\dbConstructor();
-            $db->deleteContent('backdrops',filter_var(trim($_POST['id']), FILTER_SANITIZE_STRING));
+            $db->deleteContent('backdrops', filter_var(trim($_POST['id']), FILTER_SANITIZE_STRING));
         }
     }
 
     function actionIndex()
     {
-        
         $this->model = new Model\backdropsList();
         $this->view->generate(
             'BackdropsList/backdropsList.php',
@@ -66,6 +65,9 @@ class BackdropsListPage extends Controller
         copy($file['tmp_name'], "backdropsImg/$name");
 
         $db = new Model\dbConstructor();
-        $db->addContent('backdrops',[['setofcardsId',$this->setofcards['id']],['name',$backdropName],['imagePath','backdropsImg/'.$name]]);
+        $db->addContent(
+            'backdrops',
+            [['setofcardsId', $this->setofcards['id']], ['name', $backdropName], ['imagePath', 'backdropsImg/'.$name]]
+        );
     }
 }

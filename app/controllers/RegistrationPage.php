@@ -15,8 +15,8 @@ class RegistrationPage extends Controller
             $password = md5(filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING).'sol');
 
             $db = new Model\dbConstructor();
-            $db->addContent('users',[['nickname',$nickname],['mail',$mail],['password',$password]]);
-            
+            $db->addContent('users', [['nickname', $nickname], ['mail', $mail], ['password', $password]]);
+
             setcookie('user', $nickname, time() + 120, '/');
             header('Location: /users/'.$nickname);
         }

@@ -1,92 +1,102 @@
 .backdropPage {
-  height: 90vh;
-  display: grid;
-  grid-template-columns: 0.5fr 2fr;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 0.5fr 2fr;
 }
+
 .backdropPage-sidebar {
-  padding: 2vh 0;
-  overflow-y: scroll;
-  border-right: 1px solid rgb(0, 0, 0, 0.4);
+    padding: 2vh 0;
+    overflow-y: scroll;
+    border-right: 1px solid rgb(0, 0, 0, 0.4);
 }
+
 .backdropPage-sidebar-cardsList {
-  height: 100%;
-  display: grid;
-  grid-gap: 2vh;
-  grid-template-rows: repeat(50, 15vh);
+    height: 100%;
+    display: grid;
+    grid-gap: 2vh;
+    grid-template-rows: repeat(50, 15vh);
 }
 
 .backdropPage-sidebar-cardInfo {
-  width: 100%;
-  text-align: center;
-  padding-top: 40px;
+    width: 100%;
+    text-align: center;
+    padding-top: 40px;
 }
+
 .backdropPage-sidebar-cardInfo-close {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .backdropPage-sidebar-cardInfo div {
-  margin: 20px;
+    margin: 20px;
 }
+
 .backdropPage-sidebar-cardInfo div h2 {
-  background-color: lightcoral;
-  padding: 20px;
+    background-color: lightcoral;
+    padding: 20px;
 }
+
 .backdropPage-card {
-  cursor: pointer;
-  width: 90%;
-  margin: auto;
-  height: 100%;
-  background-color: #fbec5d;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 200%;
-  border: 1px solid black;
+    cursor: pointer;
+    width: 90%;
+    margin: auto;
+    height: 100%;
+    background-color: #fbec5d;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 200%;
+    border: 1px solid black;
 }
 
 .backdropPage-content {
-  display: flex;
-  flex-direction: column;
-  padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 60px;
 }
+
 .backdropPage-content-backdrop {
-  position: relative;
-  margin-top: 40px;
-  width: 100%;
-  height: 100%;
+    position: relative;
+    margin-top: 40px;
+    width: 100%;
+    height: 100%;
 }
+
 .backdropPage-content-backdrop img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  object-fit: fill;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
 }
+
 .card-onBackdrop {
-  position: absolute;
-  width: 10%;
-  height: 10%;
-  cursor: pointer;
-  background-color: #fbec5d;
-  border: 2px solid black;
-  border-radius: 5%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    cursor: pointer;
+    background-color: #fbec5d;
+    border: 2px solid black;
+    border-radius: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
 }
+
 .card-onBackdrop span {
-  font-size: 10px;
-  color: white;
+    font-size: 10px;
+    color: white;
 }
+
 .addCardToBackdrop,
 .changeCardPos {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: inherit;
-  border: none;
-  cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
 }

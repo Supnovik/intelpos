@@ -4,9 +4,13 @@
         <h1>
             Backdrops
         </h1>
-        <?php if ($GLOBALS["isLogin"]) if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]):?>
-            <button class="page_of_backdrops-open-modal button-short">Create new backdrop</button>
-        <?php endif;?>
+        <?php
+        if ($GLOBALS["isLogin"]) {
+            if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
+                <button class="page_of_backdrops-open-modal button-short">Create new backdrop</button>
+            <?php
+            endif;
+        } ?>
 
     </div>
     <div class="backdrops">
@@ -15,8 +19,8 @@
             <?php
             foreach ($data as $value): ?>
                 <form class="backdrops-list-backdrop" method="post">
-                    <input  style="display: none" type="text" name="id" value="<?= $value['id'] ?>"/>
-                    <input  style="display: none" type="text" name="imagePath" value="<?= $value['imagePath'] ?>"/>
+                    <input style="display: none" type="text" name="id" value="<?= $value['id'] ?>"/>
+                    <input style="display: none" type="text" name="imagePath" value="<?= $value['imagePath'] ?>"/>
                     <h2><?= $value['name'] ?></h2>
                     <button type="submit" name="delete-backdrop" class="button-short">Delete</button>
                 </form>

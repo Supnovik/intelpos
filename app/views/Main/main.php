@@ -25,7 +25,8 @@
             <div class="main-description-block-text text-left">
                 <h2>The Leitner method.</h2>
                 <p>
-                This is a method of effective memorization and repetition using flash cards, where the system consists of a set of cards with terms and their definitions that can be repeated at any time.
+                    This is a method of effective memorization and repetition using flash cards, where the system
+                    consists of a set of cards with terms and their definitions that can be repeated at any time.
                 </p>
             </div>
             <div class="main-description-block-img">
@@ -40,7 +41,10 @@
             <div class="main-description-block-text text-right">
                 <h2>The "Memory Palace" method.</h2>
                 <p>
-                This method is based on mental-spatial associations, the purpose of which is to create, organize and further use the entire contents of memory; for a more creative approach. On the service, this method will be implemented as attaching stickers, for example, to a photo of the user's workplace with the information that he needs to remember. 
+                    This method is based on mental-spatial associations, the purpose of which is to create, organize and
+                    further use the entire contents of memory; for a more creative approach. On the service, this method
+                    will be implemented as attaching stickers, for example, to a photo of the user's workplace with the
+                    information that he needs to remember.
                 </p>
             </div>
         </div>

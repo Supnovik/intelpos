@@ -2,18 +2,22 @@
     <div class="setofcards-sidebar">
         <div class="setofcards-sidebar-buttons">
             <?php
-            if ($GLOBALS["isLogin"])
-            if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
-                <button class="setofcards-sidebar-buttons-add button-long">Add new card</button>
+            if ($GLOBALS["isLogin"]) {
+                if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
+                    <button class="setofcards-sidebar-buttons-add button-long">Add new card</button>
+                <?php
+                else: ?>
+                    <button style="display: none" class="setofcards-sidebar-buttons-add button-long">Add new card
+                    </button>
+                <?php
+                endif;
+            } ?>
             <?php
-            else: ?>
-                <button style="display: none" class="setofcards-sidebar-buttons-add button-long">Add new card</button>
+            if (count($data['cards']) !== 0): ?>
+                <a href='/users/<?= $GLOBALS['uri'][2] ?>/learn/<?= $GLOBALS['uri'][4] ?>'
+                   class="setofcards-sidebar-buttons-start button-long">Start learning</a>
             <?php
             endif; ?>
-            <?php if (count($data['cards']) !== 0 ):?>
-            <a href='/users/<?= $GLOBALS['uri'][2] ?>/learn/<?= $GLOBALS['uri'][4] ?>'
-               class="setofcards-sidebar-buttons-start button-long">Start learning</a>
-            <?php endif;?>
             <button class="setofcards-sidebar-buttons-comments button-long">View comments</button>
         </div>
         <div class="setofcards-sidebar-input">
@@ -28,15 +32,16 @@
 
                 <div class="save-delete-card">
                     <?php
-                    if ($GLOBALS["isLogin"])
-                    if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
-                        <div>
-                            <button type="submit" name="save-card" class="save-card button-long">Save card</button>
-                            <button type="submit" name="delete-card" class="delete-card button-long">Delete card
-                            </button>
-                        </div>
-                    <?php
-                    endif; ?>
+                    if ($GLOBALS["isLogin"]) {
+                        if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
+                            <div>
+                                <button type="submit" name="save-card" class="save-card button-long">Save card</button>
+                                <button type="submit" name="delete-card" class="delete-card button-long">Delete card
+                                </button>
+                            </div>
+                        <?php
+                        endif;
+                    } ?>
                 </div>
 
 
@@ -58,7 +63,8 @@
             <?php
             if ($GLOBALS["isLogin"]): ?>
                 <form class="setofcards-sidebar-comments-input" method="post">
-                    <input type="text" name="comment-nickname" style="display: none" value="<?= $GLOBALS['user']['nickname'] ?>">
+                    <input type="text" name="comment-nickname" style="display: none"
+                           value="<?= $GLOBALS['user']['nickname'] ?>">
                     <input type="text" name="comment-text" class="comment-text input-box">
                     <button type="submit" name="comment-button" class="comment-button button-long"> send</button>
                 </form>

@@ -8,16 +8,17 @@
             </h2>
         </div>
         <?php
-        if ($GLOBALS["isLogin"])
-        if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
-            <form method="post">
-                <input type="submit" name="delete-user" class="delete-user" value="Delete user"/>
-            </form>
-        <?php
-        endif; ?>
+        if ($GLOBALS["isLogin"]) {
+            if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
+                <form method="post">
+                    <input type="submit" name="delete-user" class="delete-user" value="Delete user"/>
+                </form>
+            <?php
+            endif;
+        } ?>
     </div>
     <div class="user-content-list">
-        <?php 
+        <?php
         foreach ($data as $value): ?>
 
             <form method="post" class="user-content-list-block">
@@ -31,32 +32,36 @@
                        class="user-content-list-block-backdrop">
                         Backdrops
                     </a>
-                    <?php if ($GLOBALS["isLogin"])
-                    if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
-                        
-                        <input type="submit" name="delete-cardsSet" id="delete" class="user-content-list-block-button"
-                               value="delete"/>
-
                     <?php
-                    else: if ($GLOBALS["isLogin"]): ?>
-                        <input type="submit" name="add-cardsSet" id="edit" class="user-content-list-block-button"
-                               value="add"/>
+                    if ($GLOBALS["isLogin"]) {
+                        if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
 
-                    <?php
-                    endif; ?>
+                            <input type="submit" name="delete-cardsSet" id="delete"
+                                   class="user-content-list-block-button"
+                                   value="delete"/>
 
-                    <?php
-                    endif; ?></div>
+                        <?php
+                        else: if ($GLOBALS["isLogin"]): ?>
+                            <input type="submit" name="add-cardsSet" id="edit" class="user-content-list-block-button"
+                                   value="add"/>
+
+                        <?php
+                        endif; ?>
+
+                        <?php
+                        endif;
+                    } ?></div>
             </form>
         <?php
         endforeach;
-        if ($GLOBALS["isLogin"])
-        if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
-            <button id="addnew" class="button-long user-content-open-modal">
-                Add new set of cards
-            </button>
-        <?php
-        endif; ?>
+        if ($GLOBALS["isLogin"]) {
+            if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
+                <button id="addnew" class="button-long user-content-open-modal">
+                    Add new set of cards
+                </button>
+            <?php
+            endif;
+        } ?>
     </div>
 
     <div class="user-content-modal">

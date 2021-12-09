@@ -1,134 +1,139 @@
 .logo {
-  display: block;
-  width: 60px;
-  height: 60px;
-  box-sizing: border-box;
-  background-image: url(../imgs/logo.png);
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+    display: block;
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    background-image: url(../imgs/logo.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .navbar {
-  position: -webkit-sticky;
-  position: sticky;
-  width: 100%;
-  top: 0;
-  z-index: 1100;
-  height: 50px;
-  background-color: lightcoral;
+    position: -webkit-sticky;
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 1100;
+    height: 50px;
+    background-color: lightcoral;
 }
 
 .navbar-content {
-  padding-top: 5px;
-  display: flex;
-  flex-direction: row;
-  height: 40px;
-  justify-content: space-between;
-  align-items: center;
+    padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
 }
+
 .navbar-left {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .navbar-hrefs {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .navbar-hrefs a {
-  margin-left: 20px;
-  color: black;
+    margin-left: 20px;
+    color: black;
 }
+
 .navbar-hrefs a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .navbar-content .sign-user {
-  position: relative;
-  height: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: relative;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .navbar-content .sign-user .sign-user-img {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .navbar-content .sign-user .sign-user-img img {
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 .navbar-content .sign-user .sign-user-img img:hover {
-  border: 2px solid #fff;
+    border: 2px solid #fff;
 }
 
 .navbar-content .sign-user a {
-  font-size: 16px;
+    font-size: 16px;
 
-  color: rgba(255, 255, 255, 0.65);
-  padding: 10px 20px 10px 20px;
-  border: 2px solid rgba(255, 255, 255, 0.65);
-  border-radius: 10px;
+    color: rgba(255, 255, 255, 0.65);
+    padding: 10px 20px 10px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.65);
+    border-radius: 10px;
 }
 
 .navbar-content .sign-user a:hover {
-  color: rgba(255, 255, 255, 1);
-  border: 2px solid #fff;
+    color: rgba(255, 255, 255, 1);
+    border: 2px solid #fff;
 }
 
 .navbar-content .sign-user button {
-  font-size: 16px;
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.65);
-  padding: 10px 20px 10px 20px;
-  background-color: rgb(255, 0, 0, 0.65);
-  border: none;
-  border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.65);
+    padding: 10px 20px 10px 20px;
+    background-color: rgb(255, 0, 0, 0.65);
+    border: none;
+    border-radius: 10px;
 }
 
 .navbar-content .sign-user button:hover {
-  color: rgba(255, 255, 255, 1);
-  background-color: rgb(255, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    background-color: rgb(255, 0, 0, 1);
 }
 
 .navbar-content .sign-user .my-profile,
 .navbar-content .sign-user .sign-out {
-  display: none;
+    display: none;
 }
 
 .navbar-content .active {
-  width: 300px;
-  justify-content: space-between;
+    width: 300px;
+    justify-content: space-between;
 }
 
 .sign-buttons {
-  width: 200px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar-content .sign-buttons a {
-  color: rgb(255, 255, 255);
-  padding: 10px 20px 10px 20px;
-  text-align: center;
-  text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px 10px 20px;
+    text-align: center;
+    text-decoration: none;
 }
 
 .navbar-content .sign-buttons .sign-up {
-  color: #fff;
-  background-color: rgb(0, 197, 199);
-  border-radius: 10px;
+    color: #fff;
+    background-color: rgb(0, 197, 199);
+    border-radius: 10px;
 }
+
 .navbar-content .sign-buttons .sign-in {
-  border: 1px solid #fff;
-  border-radius: 5px;
+    border: 1px solid #fff;
+    border-radius: 5px;
 }

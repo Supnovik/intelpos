@@ -11,7 +11,12 @@ class ProfilePage extends Controller
     {
         $this->model = new Model\profile();
         $db = new Model\dbConstructor();
-        $getId = $db->getContent('users',['id','nickname'],[['type'=>'nickname','content'=>$GLOBALS['uri'][2]]],true)[0];
+        $getId = $db->getContent(
+            'users',
+            ['id', 'nickname'],
+            [['type' => 'nickname', 'content' => $GLOBALS['uri'][2]]],
+            true
+        )[0];
         if (array_key_exists('createSetofcards', $_POST)) {
             $this->model->createSetOfCard(
                 $GLOBALS['user']['id'],

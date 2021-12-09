@@ -1,198 +1,213 @@
 .profile_page {
-  position: relative;
-  height: 90vh;
-  margin-top: 80px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+    position: relative;
+    height: 90vh;
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
 }
 
 .user-infomation {
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .user-infomation img {
-  width: 80%;
-  border-radius: 50%;
-  box-shadow: 0 0 25px rgb(0 0 0 / 20%);
+    width: 80%;
+    border-radius: 50%;
+    box-shadow: 0 0 25px rgb(0 0 0 / 20%);
 }
 
 .user-content-list {
-  width: 50%;
+    width: 50%;
 }
 
 .user-content-list-block {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  margin-bottom: 10px;
-  height: 44px;
-  width: 100%;
-  border: 1px solid rgba(31, 32, 65, 0.25);
-  box-sizing: border-box;
-  border-radius: 4px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-bottom: 10px;
+    height: 44px;
+    width: 100%;
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    box-sizing: border-box;
+    border-radius: 4px;
 }
+
 .user-content-list-block:hover {
-  border: 1px solid rgba(31, 32, 65, 0.75);
+    border: 1px solid rgba(31, 32, 65, 0.75);
 }
 
 .user-content-list-block div {
-  display: flex;
+    display: flex;
 }
 
 .user-content-list-block h2 {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .user-content-list-block-setofcards,
 .user-content-list-block-backdrop,
 .user-content-list-block-button {
-  cursor: pointer;
-  display: inline-block;
-  height: 100%;
-  border: none;
+    cursor: pointer;
+    display: inline-block;
+    height: 100%;
+    border: none;
 }
 
 .user-content-list-block-setofcards,
 .user-content-list-block-backdrop {
-  display: flex;
-  align-items: center;
-  padding-left: 5px;
-  padding-right: 5px;
-  white-space: nowrap;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    white-space: nowrap;
 }
 
 .user-content-list-block-setofcards {
-  background-color: rgba(126, 252, 0, 0.75);
+    background-color: rgba(126, 252, 0, 0.75);
 }
+
 .user-content-list-block-backdrop {
-  background-color: rgba(173, 216, 230, 0.75);
+    background-color: rgba(173, 216, 230, 0.75);
 }
+
 .user-content-list-block-setofcards:hover {
-  background-color: rgba(126, 252, 0, 1);
+    background-color: rgba(126, 252, 0, 1);
 }
+
 .user-content-list-block-backdrop:hover {
-  background-color: rgba(173, 216, 230, 1);
+    background-color: rgba(173, 216, 230, 1);
 }
+
 .user-content-list-block-button#edit {
-  background-color: rgba(255, 255, 0, 0.75);
+    background-color: rgba(255, 255, 0, 0.75);
 }
+
 .user-content-list-block-button#edit:hover {
-  background-color: yellow;
+    background-color: yellow;
 }
+
 .user-content-list-block-button#delete {
-  background-color: rgba(255, 0, 0, 0.7);
+    background-color: rgba(255, 0, 0, 0.7);
 }
+
 .user-content-list-block-button#delete:hover {
-  background-color: red;
+    background-color: red;
 }
+
 .user-content-list-block#addnew {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .user-content-modal {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1050;
-  transition: opacity 200ms ease-in;
-  pointer-events: none;
-  margin: 0;
-  padding: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    transition: opacity 200ms ease-in;
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
 }
 
 .user-content-modal .modal {
-  position: relative;
-  z-index: 1050;
-  width: 40%;
-  background-color: rgb(255, 255, 255);
-  text-align: center;
+    position: relative;
+    z-index: 1050;
+    width: 40%;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
 }
+
 .user-content-modal .modal form {
-  margin: 40px;
+    margin: 40px;
 }
 
 .user-content-modal .close {
-  float: right;
-  margin: 10px;
-  font-family: sans-serif;
-  font-size: 34px;
-  font-weight: 700;
-  line-height: 1;
-  color: #000;
-  text-shadow: 0 1px 0 #fff;
-  opacity: 0.5;
-  text-decoration: none;
-  background: none;
-  border: none;
+    float: right;
+    margin: 10px;
+    font-family: sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 0.5;
+    text-decoration: none;
+    background: none;
+    border: none;
 }
+
 .user-content-modal .close:focus,
 .user-content-modal .close:hover {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-  opacity: 0.75;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.75;
 }
 
 .noEvents {
-  pointer-events: none;
-  border: none;
-  background-color: inherit;
+    pointer-events: none;
+    border: none;
+    background-color: inherit;
 }
 
 .create-card {
-  display: none;
+    display: none;
 }
+
 .save-delete-card {
-  display: none;
+    display: none;
 }
 
 .delete-user {
-  margin-top: 20px;
-  position: relative;
-  height: 44px;
-  width: 100%;
-  display: block;
-  color: #fff;
-  background: rgba(255, 0, 0, 0.5);
-  border-radius: 22px;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 15px;
-  text-transform: uppercase;
+    margin-top: 20px;
+    position: relative;
+    height: 44px;
+    width: 100%;
+    display: block;
+    color: #fff;
+    background: rgba(255, 0, 0, 0.5);
+    border-radius: 22px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
 }
+
 .delete-user:hover {
-  background: rgba(255, 0, 0, 1);
+    background: rgba(255, 0, 0, 1);
 }
 
 @media (max-width: 1024px) {
-  .profile_page {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
-  }
-  .user-infomation {
-    width: 60%;
-    margin-bottom: 50px;
-  }
-  .user-content-list {
-    width: 80%;
-  }
+    .profile_page {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .user-infomation {
+        width: 60%;
+        margin-bottom: 50px;
+    }
+
+    .user-content-list {
+        width: 80%;
+    }
 }

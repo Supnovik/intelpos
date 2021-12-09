@@ -11,7 +11,7 @@ class user extends database
     {
         $array = ['setofcards VARCHAR(90)'];
         $string = '';
-        foreach($array as $value){
+        foreach ($array as $value) {
             $string = "$string, $value";
         }
         try {
@@ -24,12 +24,12 @@ class user extends database
 
     public function addSetOfCards($setofcards)
     {
-        $content = [['setofcards',$setofcards]];
-        $type ='';
+        $content = [['setofcards', $setofcards]];
+        $type = '';
         $value = '';
-        foreach($content as $val){
-            $type ="$type,". $val[0];
-            $value = "$value,". $val[1].'"';
+        foreach ($content as $val) {
+            $type = "$type,".$val[0];
+            $value = "$value,".$val[1].'"';
         }
         $type = substr($type, 1);
         $value = substr($value, 1);

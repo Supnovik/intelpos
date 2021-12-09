@@ -15,21 +15,23 @@ class SetOfCardsPage extends Controller
     {
         $this->user = $user;
         $this->setofcards = $setofcards;
-        
+
         $this->view = new View();
         $this->model = new Model\setOfCards($this->setofcards);
         if (array_key_exists('create-card', $_POST)) {
-            
             $this->model->addCard(
                 filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING),
                 filter_var(trim($_POST['definition']), FILTER_SANITIZE_STRING)
             );
         }
         if (array_key_exists('save-card', $_POST)) {
-            $pattern = ['termin','definition'];
-            $newValue = ['termin'=>filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING),'definition'=> filter_var(trim($_POST['definition']), FILTER_SANITIZE_STRING)];
+            $pattern = ['termin', 'definition'];
+            $newValue = [
+                'termin' => filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING),
+                'definition' => filter_var(trim($_POST['definition']), FILTER_SANITIZE_STRING),
+            ];
             $id = filter_var(trim($_POST['id']), FILTER_SANITIZE_STRING);
-            $this->model->updateCard($id,$pattern, $newValue);
+            $this->model->updateCard($id, $pattern, $newValue);
         }
         if (array_key_exists('delete-card', $_POST)) {
             $this->model->deleteCard(filter_var(trim($_POST['id']), FILTER_SANITIZE_STRING));
@@ -40,7 +42,9 @@ class SetOfCardsPage extends Controller
                 'SetOfCards/setofcards.php',
                 'template_view.php',
                 [
-                    'cards' => $this->model->searchCards(filter_var(trim($_POST['search-card']), FILTER_SANITIZE_STRING)),
+                    'cards' => $this->model->searchCards(
+                        filter_var(trim($_POST['search-card']), FILTER_SANITIZE_STRING)
+                    ),
                     'comments' => $this->model->getComments(),
                 ]
             );

@@ -24,7 +24,8 @@
                 <input type="text" style="display: none" id="id" name="id">
 
                 <?php
-                if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
+                if ($GLOBALS["isLogin"])
+                    if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
                     <button type="submit" name="removeCard"
                             class="removeCard backdropPage-sidebar-cardInfo-remove button-long">Remove card
                     </button>
@@ -59,8 +60,12 @@
         </div>
     </div>
 </div>
-<script> 
-    var user = <?php echo json_encode($GLOBALS['user']['nickname']);?>;
+<script>
+    var user = <?php if (isset($GLOBALS['user']['nickname'])) {
+        echo json_encode($GLOBALS['user']['nickname']);
+    } else {
+        echo 0;
+    }?>;
     var setOwner = <?php echo json_encode($GLOBALS['uri'][2]);?>;
 
 </script>

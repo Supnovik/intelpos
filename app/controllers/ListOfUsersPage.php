@@ -14,7 +14,7 @@ class ListOfUsersPage extends Controller
         if (array_key_exists('search-user-button', $_POST)) {
             $db = new Model\dbConstructor();
             $nickname = filter_var(trim($_POST['search-user']), FILTER_SANITIZE_STRING);
-            $content =  $db->getContent('users',['nickname'],[['type'=>'nickname','content'=>$nickname]]);
+            $content = $db->getContent('users', ['nickname'], [['type' => 'nickname', 'content' => $nickname]]);
             $this->view->generate(
                 'ListOfUsers/listOfUsers.php',
                 'template_view.php',
