@@ -95,7 +95,4 @@
         </div>
     </div>
 </div>
-<script src="/app/views/Pages/SetOfCardsfCards/setofcards.js">
-
-</script>
 

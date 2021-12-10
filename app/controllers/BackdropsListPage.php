@@ -34,8 +34,7 @@ class BackdropsListPage extends Controller
     function actionIndex()
     {
         $this->view->generate(
-            'BackdropsList/backdropsList.php',
-            'default.php',
+            'default',
             $this->model->getData($this->setofcards)
         );
     }

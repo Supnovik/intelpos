@@ -44,8 +44,3 @@ if (count($data) !== 0): ?>
 else:
     header('Location: /');
 endif; ?>
-
-<script>
-    var data = <?php echo json_encode($data);?>;
-</script>
-<script src="/app/views/Pages/LearnCardsnCards/learnCard.js"></script>

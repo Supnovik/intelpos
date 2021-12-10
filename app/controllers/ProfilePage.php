@@ -4,12 +4,13 @@ namespace Intelpos\Controller;
 
 use Intelpos\Controller;
 use Intelpos\Model;
+use Intelpos\View;
 
 class ProfilePage extends Controller
 {
     public function __construct()
     {
-        $this->view = new \Intelpos\View();
+        $this->view = new View();
         $this->model = new Model\Profile();
 
         $isOwner = false;
@@ -47,6 +48,6 @@ class ProfilePage extends Controller
     function actionIndex()
     {
         $userNickname = $GLOBALS['uri'][2];
-        $this->view->generate('Profile/profile.php', 'default.php', $this->model->getData($userNickname));
+        $this->view->generate('default', $this->model->getData($userNickname));
     }
 }

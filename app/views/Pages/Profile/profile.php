@@ -77,4 +77,3 @@
         </div>
     </div>
 </div>
-<script src="/app/views/Pages/Profilerofile/profile.js"></script>

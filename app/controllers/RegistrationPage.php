@@ -4,12 +4,13 @@ namespace Intelpos\Controller;
 
 use Intelpos\Controller;
 use Intelpos\Model;
+use Intelpos\View;
 
 class RegistrationPage extends Controller
 {
     public function __construct()
     {
-        $this->view = new \Intelpos\View();
+        $this->view = new View();
         if (array_key_exists('createUser', $_POST)) {
             $nickname = filter_var(trim($_POST['nickname']), FILTER_SANITIZE_STRING);
             $mail = filter_var(trim($_POST['mail']), FILTER_SANITIZE_STRING);
@@ -21,6 +22,6 @@ class RegistrationPage extends Controller
 
     function actionIndex()
     {
-        $this->view->generate('Registration/registration.php', 'default.php');
+        $this->view->generate('default');
     }
 }

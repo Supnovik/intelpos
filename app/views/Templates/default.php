@@ -25,13 +25,18 @@
 include 'app/views/Sections/navbar.php' ?>
 <div class="content">
     <?php
-    include 'app/views/Pages/'.$content_view; ?>
+    include 'app/views/'.$content_view; ?>
 </div>
 <?php
 include 'app/views/Sections/footer.php' ?>
 
 <?php
 foreach ($scripts as $script): ?>
+    <script>
+        var data = <?=json_encode($data);?>;
+    </script>
+    <script src="/app/views/<?=$script?>"></script>
+
 <?php
 endforeach; ?>
 </body>

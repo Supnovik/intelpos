@@ -20,8 +20,7 @@ class LearnCardsPage extends Controller
     function actionIndex()
     {
         $this->view->generate(
-            'LearnCards/learnCards.php',
-            'default.php',
+            'default',
             $this->model->getCards($this->setofcards)
         );
     }

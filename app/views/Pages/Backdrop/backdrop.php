@@ -67,7 +67,5 @@
     } else {
         echo 0;
     }?>;
-    var setOwner = <?php echo json_encode($GLOBALS['uri'][2]);?>;
-
+    var setOwner = <?=json_encode($GLOBALS['uri'][2]);?>;
 </script>
-<script src="/app/views/Pages/Backdropckdrop/backdrop.js"></script>

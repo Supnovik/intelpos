@@ -22,6 +22,6 @@ class ListOfUsersPage extends Controller
 
     function actionIndex()
     {
-        $this->view->generate('ListOfUsers/listOfUsers.php', 'default.php', $this->model->getListofUsers());
+        $this->view->generate('default', $this->model->getListofUsers());
     }
 }
