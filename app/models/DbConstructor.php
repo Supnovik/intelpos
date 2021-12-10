@@ -114,7 +114,7 @@ class DbConstructor
         return $this->get($pattern, $sql);
     }
 
-    public function sortContent($tableName, $pattern, $sortObj)
+    public function getSortedContent($tableName, $pattern, $sortObj)
     {
         $sql = "SELECT * FROM $tableName ORDER BY $sortObj";
 

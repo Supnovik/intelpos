@@ -58,7 +58,7 @@ class SetOfCards
         $sortObj = 'termin';
         $pattern = ['id', 'setofcardsId', 'termin', 'definition'];
 
-        return $db->sortContent('cards', $pattern, $sortObj);
+        return $db->getSortedContent('cards', $pattern, $sortObj);
     }
 
     public function searchCards($setofcardsId, $termin)
