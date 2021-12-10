@@ -70,4 +70,4 @@
     var setOwner = <?php echo json_encode($GLOBALS['uri'][2]);?>;
 
 </script>
-<script src="/app/views/Backdrop/backdrop.js"></script>
+<script src="/app/views/Pages/Backdropckdrop/backdrop.js"></script>

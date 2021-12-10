@@ -30,13 +30,13 @@
                 </p>
             </div>
             <div class="home-description-block-img">
-                <img src="app/views/Home/set.png"/>
+                <img src="/app/views/Pages/Home/set.png"/>
             </div>
         </div>
 
         <div class="home-description-block">
             <div class="home-description-block-img">
-                <img src="app/views/Home/backdrop.png"/>
+                <img src="/app/views/Pages/Home/backdrop.png"/>
             </div>
             <div class="home-description-block-text text-right">
                 <h2>The "Memory Palace" method.</h2>
@@ -52,7 +52,7 @@
 
     <div id="home-get-start" class="home-get-start">
         <h2>Ready to start?</h2>
-        <a href="/registration" class="get-start-button">
+        <a href="../../../../index.php" class="get-start-button">
             Get started
         </a>
     </div>

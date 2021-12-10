@@ -22,7 +22,7 @@
 
             <div class="login-footer">
                 <p>Already have account on Intelpos?</p>
-                <a href="/login" class="button-short">sign in</a>
+                <a href="../../../../index.php" class="button-short">sign in</a>
             </div>
         </div>
     </form>

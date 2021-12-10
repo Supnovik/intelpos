@@ -1,6 +1,6 @@
 <div class="page_of_backdrops container">
 
-    <div class="page_of_backdrops-title">
+    <div class="page_of_backdrops-title">Pages
         <h1>
             Backdrops
         </h1>
@@ -51,4 +51,4 @@
         </form>
     </div>
 </div>
-<script src="/app/views/BackdropsList/backdropsList.js"></script>
+<script src="/app/views/Pages/BackdropsListpsList/backdropsList.js"></script>
