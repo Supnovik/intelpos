@@ -117,6 +117,7 @@ class DbConstructor
     public function sortContent($tableName, $pattern, $sortObj)
     {
         $sql = "SELECT * FROM $tableName ORDER BY $sortObj";
+
         return $this->get($pattern, $sql);
     }
 
@@ -141,13 +142,6 @@ class DbConstructor
             echo 'Database error: '.$e->getMessage();
         }
     }
-    public function a(){
-        echo 1;
-    }
-    public function b(){
-        echo 2;
-    }
-
 }
 
 ?>

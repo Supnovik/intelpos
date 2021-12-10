@@ -51,4 +51,4 @@
         </form>
     </div>
 </div>
-<script src="/app/views/Pages/BackdropsListpsList/backdropsList.js"></script>
+<script src="/app/views/Pages/BackdropsList/backdropsList.js"></script>

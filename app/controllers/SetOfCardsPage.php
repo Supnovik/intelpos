@@ -13,7 +13,6 @@ class SetOfCardsPage extends Controller
 
     function __construct($userNickname, $setofcards)
     {
-
         $this->user = $userNickname;
         $this->setofcards = $setofcards;
 

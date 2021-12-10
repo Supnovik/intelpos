@@ -6,9 +6,9 @@ use Intelpos\Model;
 
 class Profile extends Model
 {
-    public function getData($user = null, $data = null)
+    public function getData($nickname = null, $data = null)
     {
-        $userInfo =$this->getUserInfo($user);
+        $userInfo = $this->getUsers($nickname)[0];
         $db = new DbConstructor();
         $content = $db->getContent(
             'setofcards',
@@ -19,14 +19,17 @@ class Profile extends Model
 
         return $content;
     }
-    public function getUserInfo($user){
+
+    public function getUsers($nickname)
+    {
         $db = new DbConstructor();
         $userInfo = $db->getContent(
             'users',
             ['id', 'nickname'],
-            [['type' => 'nickname', 'content' => $user]],
+            [['type' => 'nickname', 'content' => $nickname]],
             true
-        )[0];
+        );
+
         return $userInfo;
     }
 

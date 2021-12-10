@@ -61,13 +61,14 @@ class SetOfCards
         return $db->sortContent('cards', $pattern, $sortObj);
     }
 
-    public function searchCards($setofcardsId,$termin)
+    public function searchCards($setofcardsId, $termin)
     {
         $db = new DbConstructor();
+
         return $db->getContent(
             'cards',
             ['setofcardsId', 'termin', 'definition'],
-            [['type' => 'termin', 'content' => $termin],['type'=>'setofcardsId','content'=>$setofcardsId]]
+            [['type' => 'termin', 'content' => $termin], ['type' => 'setofcardsId', 'content' => $setofcardsId]]
         );
     }
 

@@ -10,6 +10,8 @@ class ProfilePage extends Controller
     public function __construct()
     {
         $this->view = new \Intelpos\View();
+        $this->model = new Model\Profile();
+
         $isOwner = false;
         if ($GLOBALS['uri'][2] == $GLOBALS['user']) {
             $isOwner = true;
@@ -44,7 +46,6 @@ class ProfilePage extends Controller
 
     function actionIndex()
     {
-        $this->model = new Model\Profile();
         $userNickname = $GLOBALS['uri'][2];
         $this->view->generate('Profile/profile.php', 'template_view.php', $this->model->getData($userNickname));
     }

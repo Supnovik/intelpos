@@ -11,21 +11,17 @@ class ListOfUsersPage extends Controller
     function __construct()
     {
         $this->view = new View();
+        $this->model = new Model\Profile();
+
         if (array_key_exists('search-user-button', $_POST)) {
-            $db = new Model\DbConstructor();
             $nickname = filter_var(trim($_POST['search-user']), FILTER_SANITIZE_STRING);
-            $content = $db->getContent('users', ['nickname'], [['type' => 'nickname', 'content' => $nickname]]);
-            $this->view->generate(
-                'ListOfUsers/listOfUsers.php',
-                'template_view.php',
-                $content
-            );
+            $content = $this->model->getUsers($nickname);
+            $this->view->data = $content;
         }
     }
 
     function actionIndex()
     {
-        $this->model = new Model\Profile();
         $this->view->generate('ListOfUsers/listOfUsers.php', 'template_view.php', $this->model->getListofUsers());
     }
 }

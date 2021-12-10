@@ -14,11 +14,11 @@ class LearnCardsPage extends Controller
     {
         $this->setofcards = $setofcards;
         $this->view = new View();
+        $this->model = new Model\SetOfCards($this->setofcards);
     }
 
     function actionIndex()
     {
-        $this->model = new Model\SetOfCards($this->setofcards);
         $this->view->generate(
             'LearnCards/learnCards.php',
             'template_view.php',

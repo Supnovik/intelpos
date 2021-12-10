@@ -14,4 +14,10 @@ class BackdropsList
             [['type' => 'setofcardsId', 'content' => $setofcards['id']]]
         );
     }
+
+    public function deleteBackdrop($backdropId)
+    {
+        $db = new Model\DbConstructor();
+        $db->deleteContent('backdrops', $backdropId);
+    }
 }

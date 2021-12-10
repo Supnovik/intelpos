@@ -23,7 +23,6 @@ class Authentication
             [['type' => 'nickname', 'content' => $nickname], ['type' => 'password', 'content' => $password]],
             true
         );
-        print_r($len);
         if ($len != 0) {
             setcookie('user', $nickname, time() + 1200, '/');
             header('Location: /users/'.$nickname);
