@@ -52,16 +52,11 @@ p {
 .container {
     display: flex;
     flex-direction: column;
+
     margin: 0 15% 0 15%;
 }
 
-@media (max-width: 1000px) {
-    .container {
-        display: flex;
-        flex-direction: column;
-        margin: 0 5% 0 5%;
-    }
-}
+
 
 .button-long {
     display: flex;
@@ -144,4 +139,40 @@ p {
 
 .email-support-button {
     padding-top: 8px;
+}
+@media (max-width: 1000px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin: 0 5% 0 5%;
+    }
+    h1 {
+        font-size: 7.5vmin;
+    }
+
+
+
+}
+@media (max-width: 700px) {
+    a{
+        font-size: 3.4vmin;
+    }
+    h2 {
+        font-size: 3vmin;
+    }
+
+    p {
+        font-size: 2.5vmin;
+    }
+}
+@media (max-width: 500px) {
+
+    h2 {
+        font-size: 5vmin;
+    }
+
+    p {
+        font-size: 4vmin;
+    }
+
 }

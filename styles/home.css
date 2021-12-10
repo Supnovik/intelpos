@@ -154,13 +154,15 @@
     }
 
     .home-header .home-header-text p {
-        font-size: 14px;
+        font-size: 19px;
         margin-bottom: 40px;
     }
 
     .home-description-block {
         flex-direction: column;
-
+    }
+    .home-description-block:nth-child(3){
+        flex-direction: column-reverse;
     }
 
     .home-description-block-text {
@@ -171,5 +173,11 @@
 
     .home-description-block-img {
         width: 90%;
+    }
+}
+@media (max-width: 500px) {
+
+    .get-start-button{
+        font-size: 6vw;
     }
 }

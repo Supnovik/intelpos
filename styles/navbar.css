@@ -1,13 +1,4 @@
-.logo {
-    display: block;
-    width: 60px;
-    height: 60px;
-    box-sizing: border-box;
-    background-image: url(../imgs/logo.png);
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
+
 
 .navbar {
     position: -webkit-sticky;
@@ -26,6 +17,16 @@
     height: 40px;
     justify-content: space-between;
     align-items: center;
+}
+.logo {
+    display: block;
+    width: 55px;
+    height: 55px;
+    box-sizing: border-box;
+    background-image: url(../imgs/logo.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .navbar-left {
@@ -78,7 +79,7 @@
     font-size: 16px;
 
     color: rgba(255, 255, 255, 0.65);
-    padding: 10px 20px 10px 20px;
+    padding: 10px 20px;
     border: 2px solid rgba(255, 255, 255, 0.65);
     border-radius: 10px;
 }
@@ -122,7 +123,7 @@
 
 .navbar-content .sign-buttons a {
     color: rgb(255, 255, 255);
-    padding: 10px 20px 10px 20px;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
 }
@@ -136,4 +137,19 @@
 .navbar-content .sign-buttons .sign-in {
     border: 1px solid #fff;
     border-radius: 5px;
+}
+@media (max-width: 1000px) {
+
+
+    .navbar-hrefs a {
+        margin-left: 10px;
+    }
+    .navbar-content .sign-buttons a {
+        padding: 5px 15px ;
+    }
+}
+@media (max-width: 700px) {
+    .sign-buttons{
+        width: 36vw;
+    }
 }
