@@ -40,8 +40,8 @@ class Route
 
         $path = [
             '' => function () {
-                $GLOBALS['title'] = 'Main';
-                $controller = new Controller\MainPage;
+                $GLOBALS['title'] = 'Home';
+                $controller = new Controller\HomePage;
                 $controller->actionIndex();
             },
             'login' => function () {

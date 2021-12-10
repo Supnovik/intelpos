@@ -5,10 +5,10 @@ namespace Intelpos\Controller;
 use Intelpos\Controller;
 use Intelpos\Model;
 
-class MainPage extends Controller
+class HomePage extends Controller
 {
     function actionIndex()
     {
-        $this->view->generate('Main/main.php', 'template_view.php');
+        $this->view->generate('Home/home.php', 'template_view.php');
     }
 }

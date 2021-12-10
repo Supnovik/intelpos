@@ -77,23 +77,9 @@ class DbConstructor
         }
     }
 
-    public function getContent($tableName, $pattern, $search = null, $isStrongSearch = false, $byId = false)
+    public function get($pattern, $sql)
     {
         $output = [];
-
-        if ($search == null) {
-            $sql = "SELECT * FROM $tableName ";
-        } elseif ($byId) {
-                $sql = "SELECT * FROM $tableName WHERE id = '$search'";
-            } else {
-                $string = '';
-                foreach ($search as $val) {
-                    $string = $string.$val['type']." like '".$val['content'].($isStrongSearch ? '' : '%')."' AND ";
-                }
-                $string = rtrim($string, "AND ");
-                $sql = "SELECT * FROM $tableName WHERE $string";
-            }
-
         try {
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {
@@ -110,24 +96,28 @@ class DbConstructor
         return $output;
     }
 
-    public function sortContent($tableName, $pattern, $sortObj)
+    public function getContent($tableName, $pattern, $search = null, $isStrongSearch = false, $byId = false)
     {
-        $output = [];
-        try {
-            $sql = "SELECT * FROM $tableName ORDER BY $sortObj";
-            $result = $this->databaseConnection->query($sql);
-            while ($row = $result->fetch()) {
-                $content = [];
-                foreach ($pattern as $type) {
-                    $content[$type] = $row[$type];
-                }
-                $output[] = $content;
+        if ($search == null) {
+            $sql = "SELECT * FROM $tableName ";
+        } elseif ($byId) {
+            $sql = "SELECT * FROM $tableName WHERE id = '$search'";
+        } else {
+            $string = '';
+            foreach ($search as $val) {
+                $string = $string.$val['type']." like '".$val['content'].($isStrongSearch ? '' : '%')."' AND ";
             }
-        } catch (PDOException $e) {
-            echo 'Database error: '.$e->getMessage();
+            $string = rtrim($string, "AND ");
+            $sql = "SELECT * FROM $tableName WHERE $string";
         }
 
-        return $output;
+        return $this->get($pattern, $sql);
+    }
+
+    public function sortContent($tableName, $pattern, $sortObj)
+    {
+        $sql = "SELECT * FROM $tableName ORDER BY $sortObj";
+        return $this->get($pattern, $sql);
     }
 
     public function updateContent($tableName, $id, $pattern, $newValue)
@@ -150,6 +140,12 @@ class DbConstructor
         } catch (PDOException $e) {
             echo 'Database error: '.$e->getMessage();
         }
+    }
+    public function a(){
+        echo 1;
+    }
+    public function b(){
+        echo 2;
     }
 
 }

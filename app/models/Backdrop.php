@@ -33,7 +33,6 @@ class Backdrop
     public function getCards()
     {
         $db = new DbConstructor();
-
         return $db->getContent(
             'cardsOnBackdrop',
             ['id', 'backdropsId', 'termin', 'definition', 'x_coordinate', 'y_coordinate'],

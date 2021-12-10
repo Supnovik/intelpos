@@ -1,5 +1,5 @@
-<header class="container main-header">
-    <div class="main-header-text">
+<header class="container home-header">
+    <div class="home-header-text">
         <h1>
             Learn information using the service <span>IntelPos</span>
         </h1>
@@ -7,7 +7,7 @@
             A service that will help you make the process of memorization and learning as effective as possible.
         </p>
         <div class="buttons">
-            <a href="#main-get-start" id="begin">Start</a>
+            <a href="#home-get-start" id="begin">Start</a>
             <a href="#description" id="more">More about IntelPos
             </a>
         </div>
@@ -19,26 +19,26 @@
 
 <main class="container">
 
-    <div id="description" class="main-description">
+    <div id="description" class="home-description">
         <h2>You can use two methods to memorize:</h2>
-        <div class="main-description-block">
-            <div class="main-description-block-text text-left">
+        <div class="home-description-block">
+            <div class="home-description-block-text text-left">
                 <h2>The Leitner method.</h2>
                 <p>
                     This is a method of effective memorization and repetition using flash cards, where the system
                     consists of a set of cards with terms and their definitions that can be repeated at any time.
                 </p>
             </div>
-            <div class="main-description-block-img">
-                <img src="app/views/Main/set.png"/>
+            <div class="home-description-block-img">
+                <img src="app/views/Home/set.png"/>
             </div>
         </div>
 
-        <div class="main-description-block">
-            <div class="main-description-block-img">
-                <img src="app/views/Main/backdrop.png"/>
+        <div class="home-description-block">
+            <div class="home-description-block-img">
+                <img src="app/views/Home/backdrop.png"/>
             </div>
-            <div class="main-description-block-text text-right">
+            <div class="home-description-block-text text-right">
                 <h2>The "Memory Palace" method.</h2>
                 <p>
                     This method is based on mental-spatial associations, the purpose of which is to create, organize and
@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <div id="main-get-start" class="main-get-start">
+    <div id="home-get-start" class="home-get-start">
         <h2>Ready to start?</h2>
         <a href="/registration" class="get-start-button">
             Get started
