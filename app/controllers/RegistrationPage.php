@@ -15,7 +15,7 @@ class RegistrationPage extends Controller
             $mail = filter_var(trim($_POST['mail']), FILTER_SANITIZE_STRING);
             $password = md5(filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING).'sol');
             $auth = new Authentication();
-            $auth->registration($nickname,$mail,$password);
+            $auth->registration($nickname, $mail, $password);
         }
     }
 

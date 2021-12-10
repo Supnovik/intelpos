@@ -24,7 +24,7 @@
             <form method="post" class="user-content-list-block">
                 <h2><?= $value['name'] ?></h2>
                 <input type="text" style="display: none" name="id"
-                       value="<?= $value['id'] ?>"></input>
+                       value="<?= $value['id'] ?>"> </input>
                 <div>
                     <a href="/users/<?= $GLOBALS['uri'][2] ?>/setofcards/<?= $value['name'] ?>"
                        class="user-content-list-block-setofcards">Set of cards</a>

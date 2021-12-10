@@ -24,13 +24,14 @@
                 <input type="text" style="display: none" id="id" name="id">
 
                 <?php
-                if ($GLOBALS["isLogin"])
+                if ($GLOBALS["isLogin"]) {
                     if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
-                    <button type="submit" name="removeCard"
-                            class="removeCard backdropPage-sidebar-cardInfo-remove button-long">Remove card
-                    </button>
-                <?php
-                endif; ?>
+                        <button type="submit" name="removeCard"
+                                class="removeCard backdropPage-sidebar-cardInfo-remove button-long">Remove card
+                        </button>
+                    <?php
+                    endif;
+                } ?>
 
             </form>
             <button class="backdropPage-sidebar-cardInfo-close button-long">Close</button>

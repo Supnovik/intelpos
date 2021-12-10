@@ -82,24 +82,18 @@ class DbConstructor
         $output = [];
 
         if ($search == null) {
-            $sql = "SELECT * FROM $tableName";
-        } else {
-            if ($byId) {
+            $sql = "SELECT * FROM $tableName ";
+        } elseif ($byId) {
                 $sql = "SELECT * FROM $tableName WHERE id = '$search'";
             } else {
                 $string = '';
                 foreach ($search as $val) {
                     $string = $string.$val['type']." like '".$val['content'].($isStrongSearch ? '' : '%')."' AND ";
-                    if ($isStrongSearch) {
-                        $string = $string.$val['type']." like '".$val['content']."' AND ";
-                    } else {
-                        $string = $string.$val['type']." like '".$val['content']."%' AND ";
-                    }
                 }
                 $string = rtrim($string, "AND ");
                 $sql = "SELECT * FROM $tableName WHERE $string";
             }
-        }
+
         try {
             $result = $this->databaseConnection->query($sql);
             while ($row = $result->fetch()) {

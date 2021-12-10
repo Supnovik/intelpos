@@ -14,7 +14,7 @@ class LoginPage extends Controller
             $nickname = filter_var(trim($_POST['nickname']), FILTER_SANITIZE_STRING);
             $password = md5(filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING).'sol');
             $auth = new Authentication();
-            $auth->login($nickname,$password);
+            $auth->login($nickname, $password);
         }
     }
 

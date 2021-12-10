@@ -80,7 +80,7 @@ class Route
                     }
                 },
                 'setofcards' => [
-                    '' => function ($user, $setofcards) {
+                    '' => function ($userNickname, $setofcards) {
                         $db = new Model\DbConstructor();
                         $setofcards = $db->getContent(
                             'setofcards',
@@ -90,7 +90,7 @@ class Route
                         )[0];
                         if (count($setofcards) !== 0) {
                             $GLOBALS['title'] = 'Set of cards';
-                            $controller = new Controller\SetOfCardsPage($user, $setofcards);
+                            $controller = new Controller\SetOfCardsPage($userNickname, $setofcards);
                             $controller->actionIndex();
 
                             return true;
@@ -100,7 +100,7 @@ class Route
                     },
                 ],
                 'backdropsList' => [
-                    '' => function ($user, $setofcards) {
+                    '' => function ($userNickname, $setofcards) {
                         $db = new Model\DbConstructor();
                         $setofcards = $db->getContent(
                             'setofcards',
@@ -119,7 +119,7 @@ class Route
                             return false;
                         }
                     },
-                    'backdrop' => function ($user, $setofcards, $backdrop) {
+                    'backdrop' => function ($userNickname, $setofcards, $backdrop) {
                         $db = new Model\DbConstructor();
                         $setofcards = $db->getContent(
                             'setofcards',
@@ -138,7 +138,7 @@ class Route
                         )[0];
                         if (count($backdrop) !== 0) {
                             $GLOBALS['title'] = 'Backdrop';
-                            $controller = new Controller\BackdropPage($user, $setofcards, $backdrop);
+                            $controller = new Controller\BackdropPage($userNickname, $setofcards, $backdrop);
                             $controller->actionIndex();
 
                             return true;
@@ -148,7 +148,7 @@ class Route
                     },
                 ],
                 'learn' => [
-                    '' => function ($user, $setofcards) {
+                    '' => function ($userNickname, $setofcards) {
                         $db = new Model\DbConstructor();
                         $setofcards = $db->getContent(
                             'setofcards',
@@ -192,7 +192,6 @@ class Route
                 $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][''];
                 if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4])) {
                     Error_404();
-
                 }
 
                 return;

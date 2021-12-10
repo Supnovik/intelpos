@@ -1,4 +1,5 @@
 <?php
+
 if (count($data) !== 0): ?>
     <div class="learnCards container">
 

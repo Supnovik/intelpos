@@ -11,9 +11,10 @@ class SetOfCardsPage extends Controller
     public $user;
     public $setofcards;
 
-    function __construct($user, $setofcards)
+    function __construct($userNickname, $setofcards)
     {
-        $this->user = $user;
+
+        $this->user = $userNickname;
         $this->setofcards = $setofcards;
 
         $this->view = new View();
@@ -43,6 +44,7 @@ class SetOfCardsPage extends Controller
                 'template_view.php',
                 [
                     'cards' => $this->model->searchCards(
+                        $setofcards['id'],
                         filter_var(trim($_POST['search-card']), FILTER_SANITIZE_STRING)
                     ),
                     'comments' => $this->model->getComments(),

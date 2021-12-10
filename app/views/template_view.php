@@ -30,7 +30,9 @@ include 'app/views/Sections/navbar.php' ?>
 <?php
 include 'app/views/Sections/footer.php' ?>
 
-<?php foreach ($scripts as $script): ?>
-<?php endforeach;?>
+<?php
+foreach ($scripts as $script): ?>
+<?php
+endforeach; ?>
 </body>
 </html>
