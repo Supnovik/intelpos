@@ -7,17 +7,16 @@ use Intelpos\Model;
 
 class ProfilePage extends Controller
 {
-    function actionIndex()
+    public function __construct()
     {
-        $this->model = new Model\Profile();
-        $db = new Model\DbConstructor();
-        $getId = $db->getContent(
-            'users',
-            ['id', 'nickname'],
-            [['type' => 'nickname', 'content' => $GLOBALS['uri'][2]]],
-            true
-        )[0];
-        if (array_key_exists('createSetofcards', $_POST)) {
+        $this->view = new \Intelpos\View();
+        $isOwner = false;
+        if ($GLOBALS['uri'][2] == $GLOBALS['user']) {
+            $isOwner = true;
+        } else {
+            $isOwner = false;
+        }
+        if (array_key_exists('createSetofcards', $_POST) && $isOwner) {
             $this->model->createSetOfCard(
                 $GLOBALS['user']['id'],
                 filter_var(trim($_POST['setofcardsName']), FILTER_SANITIZE_STRING)
@@ -25,22 +24,28 @@ class ProfilePage extends Controller
             echo "<meta http-equiv='refresh' content='0'>";
         }
 
-        if (array_key_exists('delete-cardsSet', $_POST)) {
+        if (array_key_exists('delete-cardsSet', $_POST) && $isOwner) {
             $this->model->deleteSetOfCard(filter_var(trim($_POST['id']), FILTER_SANITIZE_STRING));
         }
 
-        if (array_key_exists('add-cardsSet', $_POST)) {
+        if (array_key_exists('add-cardsSet', $_POST) && $isOwner) {
             $this->model->createSetOfCard(
                 $GLOBALS['user']['id'],
                 filter_var(trim($_POST['setofcardsName']), FILTER_SANITIZE_STRING)
             );
             echo "<meta http-equiv='refresh' content='0'>";
         }
-        if (array_key_exists('delete-user', $_POST)) {
+        if (array_key_exists('delete-user', $_POST) && $isOwner) {
             $this->model->deleteUser($GLOBALS['user']['id']);
             setcookie('user', $GLOBALS['user']['nickname'], time() - 3600, '/');
             header('Location: /');
         }
-        $this->view->generate('Profile/profile.php', 'template_view.php', $this->model->getData($getId));
+    }
+
+    function actionIndex()
+    {
+        $this->model = new Model\Profile();
+        $userNickname = $GLOBALS['uri'][2];
+        $this->view->generate('Profile/profile.php', 'template_view.php', $this->model->getData($userNickname));
     }
 }
