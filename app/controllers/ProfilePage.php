@@ -9,8 +9,8 @@ class ProfilePage extends Controller
 {
     function actionIndex()
     {
-        $this->model = new Model\profile();
-        $db = new Model\dbConstructor();
+        $this->model = new Model\Profile();
+        $db = new Model\DbConstructor();
         $getId = $db->getContent(
             'users',
             ['id', 'nickname'],

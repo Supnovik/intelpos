@@ -2,11 +2,11 @@
 
 namespace Intelpos\Model;
 
-class backdropsList
+class BackdropsList
 {
     public function getData($setofcards)
     {
-        $db = new dbConstructor();
+        $db = new DbConstructor();
 
         return $db->getContent(
             'backdrops',

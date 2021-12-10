@@ -26,14 +26,14 @@ class BackdropsListPage extends Controller
         }
         if (array_key_exists('delete-backdrop', $_POST)) {
             unlink(filter_var(trim($_POST['imagePath']), FILTER_SANITIZE_STRING));
-            $db = new Model\dbConstructor();
+            $db = new Model\DbConstructor();
             $db->deleteContent('backdrops', filter_var(trim($_POST['id']), FILTER_SANITIZE_STRING));
         }
     }
 
     function actionIndex()
     {
-        $this->model = new Model\backdropsList();
+        $this->model = new Model\BackdropsList();
         $this->view->generate(
             'BackdropsList/backdropsList.php',
             'template_view.php',
@@ -64,7 +64,7 @@ class BackdropsListPage extends Controller
         $name = $backdropName.'.'.$mime;
         copy($file['tmp_name'], "backdropsImg/$name");
 
-        $db = new Model\dbConstructor();
+        $db = new Model\DbConstructor();
         $db->addContent(
             'backdrops',
             [['setofcardsId', $this->setofcards['id']], ['name', $backdropName], ['imagePath', 'backdropsImg/'.$name]]

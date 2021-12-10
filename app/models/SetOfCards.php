@@ -4,7 +4,7 @@ namespace Intelpos\Model;
 
 use PDOException;
 
-class setOfCards
+class SetOfCards
 {
     public $setofcards;
 
@@ -23,7 +23,7 @@ class setOfCards
 
     public function getCards()
     {
-        $db = new dbConstructor();
+        $db = new DbConstructor();
 
         return $db->getContent(
             'cards',
@@ -34,7 +34,7 @@ class setOfCards
 
     public function getComments()
     {
-        $db = new dbConstructor();
+        $db = new DbConstructor();
 
         return $db->getContent('comments', ['id', 'setofcardsId', 'userName', 'comment']);
     }
@@ -42,19 +42,19 @@ class setOfCards
     public function addCard($termin, $definition)
     {
         $setofcardsId = $this->setofcards['id'];
-        $db = new dbConstructor();
+        $db = new DbConstructor();
         $db->addContent('cards', [['setofcardsId', $setofcardsId], ['termin', $termin], ['definition', $definition]]);
     }
 
     public function addComment($nickname, $text)
     {
-        $db = new dbConstructor();
+        $db = new DbConstructor();
         $db->addContent('cards', [['user', $nickname], ['text', $text]]);
     }
 
     public function sortByAlphabet()
     {
-        $db = new dbConstructor();
+        $db = new DbConstructor();
         $sortObj = 'termin';
         $pattern = ['id', 'setofcardsId', 'termin', 'definition'];
 
@@ -63,7 +63,7 @@ class setOfCards
 
     public function searchCards($termin)
     {
-        $db = new dbConstructor();
+        $db = new DbConstructor();
 
         return $db->getContent(
             'cards',
@@ -74,13 +74,13 @@ class setOfCards
 
     public function updateCard($id, $pattern, $newValue)
     {
-        $db = new dbConstructor();
+        $db = new DbConstructor();
         $db->updateContent('cards', $id, $pattern, $newValue);
     }
 
     public function deleteCard($id)
     {
-        $db = new dbConstructor();
+        $db = new DbConstructor();
         $db->deleteContent('cards', $id);
     }
 

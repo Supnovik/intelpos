@@ -7,7 +7,7 @@ use PDO;
 use PDOException;
 
 
-class dbConstructor
+class DbConstructor
 {
     public $user = '';
     public $password = '';
@@ -89,6 +89,7 @@ class dbConstructor
             } else {
                 $string = '';
                 foreach ($search as $val) {
+                    $string = $string.$val['type']." like '".$val['content'].($isStrongSearch ? '' : '%')."' AND ";
                     if ($isStrongSearch) {
                         $string = $string.$val['type']." like '".$val['content']."' AND ";
                     } else {

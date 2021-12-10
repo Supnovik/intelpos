@@ -14,7 +14,7 @@ class RegistrationPage extends Controller
             $mail = filter_var(trim($_POST['mail']), FILTER_SANITIZE_STRING);
             $password = md5(filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING).'sol');
 
-            $db = new Model\dbConstructor();
+            $db = new Model\DbConstructor();
             $db->addContent('users', [['nickname', $nickname], ['mail', $mail], ['password', $password]]);
 
             setcookie('user', $nickname, time() + 120, '/');

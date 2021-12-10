@@ -28,7 +28,7 @@ class Route
         $GLOBALS['isLogin'] = false;
         if (isset($_COOKIE['user'])) {
             $GLOBALS['isLogin'] = true;
-            $db = new Model\dbConstructor();
+            $db = new Model\DbConstructor();
             $GLOBALS['user'] = $db->getContent(
                 'users',
                 ['id', 'nickname'],
@@ -63,7 +63,7 @@ class Route
             },
             'users' => [
                 '' => function ($nickname) {
-                    $db = new Model\dbConstructor();
+                    $db = new Model\DbConstructor();
                     $len = count(
                         $db->getContent('users', ['nickname'], [['type' => 'nickname', 'content' => $nickname]], true)
                     );
@@ -81,7 +81,7 @@ class Route
                 },
                 'setofcards' => [
                     '' => function ($user, $setofcards) {
-                        $db = new Model\dbConstructor();
+                        $db = new Model\DbConstructor();
                         $setofcards = $db->getContent(
                             'setofcards',
                             ['id', 'name'],
@@ -101,7 +101,7 @@ class Route
                 ],
                 'backdropsList' => [
                     '' => function ($user, $setofcards) {
-                        $db = new Model\dbConstructor();
+                        $db = new Model\DbConstructor();
                         $setofcards = $db->getContent(
                             'setofcards',
                             ['id', 'name'],
@@ -120,7 +120,7 @@ class Route
                         }
                     },
                     'backdrop' => function ($user, $setofcards, $backdrop) {
-                        $db = new Model\dbConstructor();
+                        $db = new Model\DbConstructor();
                         $setofcards = $db->getContent(
                             'setofcards',
                             ['id', 'name'],
@@ -149,7 +149,7 @@ class Route
                 ],
                 'learn' => [
                     '' => function ($user, $setofcards) {
-                        $db = new Model\dbConstructor();
+                        $db = new Model\DbConstructor();
                         $setofcards = $db->getContent(
                             'setofcards',
                             ['id', 'name'],
@@ -181,8 +181,6 @@ class Route
                 $func = $path[$GLOBALS['uri'][1]][''];
                 if (!$func($GLOBALS['uri'][2])) {
                     Error_404();
-
-                    return;
                 }
 
                 return;
@@ -195,7 +193,6 @@ class Route
                 if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4])) {
                     Error_404();
 
-                    return;
                 }
 
                 return;
@@ -205,8 +202,6 @@ class Route
                 $func = $path[$GLOBALS['uri'][1]][$GLOBALS['uri'][3]][$GLOBALS['uri'][5]];
                 if (!$func($GLOBALS['uri'][2], $GLOBALS['uri'][4], $GLOBALS['uri'][6])) {
                     Error_404();
-
-                    return;
                 }
 
                 return;

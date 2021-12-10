@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <img width="50%" height="70%" src="https://euroroaming.ru/wp-content/uploads/2018/01/obuch-za-rubezh.jpg"/>
+    <img  src="https://euroroaming.ru/wp-content/uploads/2018/01/obuch-za-rubezh.jpg"/>
 
 </header>
 

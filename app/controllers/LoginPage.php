@@ -13,7 +13,7 @@ class LoginPage extends Controller
         if (array_key_exists('login', $_POST)) {
             $nickname = filter_var(trim($_POST['nickname']), FILTER_SANITIZE_STRING);
             $password = md5(filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING).'sol');
-            $db = new Model\dbConstructor();
+            $db = new Model\DbConstructor();
             $len = $db->getContent(
                 'users',
                 ['nickname'],

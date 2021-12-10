@@ -4,12 +4,12 @@ namespace Intelpos\Model;
 
 use Intelpos\Model;
 
-class listOfUsers extends Model
+class ListOfUsers extends Model
 {
 
     public function getData($user = null, $data = null)
     {
-        $db = new dbConstructor();
+        $db = new DbConstructor();
         return $db->getContent('users',['nickname']);
     }
 }

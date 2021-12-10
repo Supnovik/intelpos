@@ -4,7 +4,7 @@ namespace Intelpos\Model;
 
 use PDOException;
 
-class backdrop
+class Backdrop
 {
     public $setofcards;
     public $backdrop;
@@ -17,7 +17,7 @@ class backdrop
 
     public function addCard($termin, $definition, $x_coordinate, $y_coordinate)
     {
-        $db = new dbConstructor();
+        $db = new DbConstructor();
         $db->addContent(
             'cardsOnBackdrop',
             [
@@ -32,7 +32,7 @@ class backdrop
 
     public function getCards()
     {
-        $db = new dbConstructor();
+        $db = new DbConstructor();
 
         return $db->getContent(
             'cardsOnBackdrop',
@@ -43,7 +43,7 @@ class backdrop
 
     public function changeCardPos($id, $termin, $definition, $x_coordinate, $y_coordinate)
     {
-        $db = new dbConstructor();
+        $db = new DbConstructor();
         $db->updateContent(
             'cardsOnBackdrop',
             $id,
@@ -59,7 +59,7 @@ class backdrop
 
     public function removeCard($id)
     {
-        $db = new dbConstructor();
+        $db = new DbConstructor();
         $db->deleteContent('cardsOnBackdrop', $id);
     }
 

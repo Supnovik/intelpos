@@ -4,7 +4,7 @@ namespace Intelpos\Controller;
 
 use Intelpos\Controller;
 use Intelpos\Model;
-use Intelpos\Model\dbConstructor;
+use Intelpos\Model\DbConstructor;
 use Intelpos\View;
 
 class BackdropPage extends Controller
@@ -18,7 +18,7 @@ class BackdropPage extends Controller
         $this->user = $user;
         $this->backdrop = $backdrop;
         $this->setofcards = $setofcards;
-        $this->model = new Model\backdrop($setofcards, $this->backdrop);
+        $this->model = new Model\Backdrop($setofcards, $this->backdrop);
         $this->view = new View();
 
         if (array_key_exists('addCardToBackdrop', $_POST)) {
@@ -44,7 +44,7 @@ class BackdropPage extends Controller
 
     function actionIndex()
     {
-        $db = new Model\dbConstructor();
+        $db = new Model\DbConstructor();
 
         $cards = $db->getContent(
             'cards',

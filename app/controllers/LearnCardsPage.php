@@ -18,7 +18,7 @@ class LearnCardsPage extends Controller
 
     function actionIndex()
     {
-        $this->model = new Model\setOfCards($this->setofcards);
+        $this->model = new Model\SetOfCards($this->setofcards);
         $this->view->generate(
             'LearnCards/learnCards.php',
             'template_view.php',

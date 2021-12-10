@@ -17,7 +17,7 @@ class SetOfCardsPage extends Controller
         $this->setofcards = $setofcards;
 
         $this->view = new View();
-        $this->model = new Model\setOfCards($this->setofcards);
+        $this->model = new Model\SetOfCards($this->setofcards);
         if (array_key_exists('create-card', $_POST)) {
             $this->model->addCard(
                 filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING),
