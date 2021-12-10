@@ -20,6 +20,6 @@ class LoginPage extends Controller
 
     function actionIndex()
     {
-        $this->view->generate('Login/login.php', 'template_view.php');
+        $this->view->generate('Login/login.php', 'default.php');
     }
 }

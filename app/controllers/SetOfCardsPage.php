@@ -40,7 +40,7 @@ class SetOfCardsPage extends Controller
         if (array_key_exists('search-card-button', $_POST)) {
             $this->view->generate(
                 'SetOfCards/setofcards.php',
-                'template_view.php',
+                'default.php',
                 [
                     'cards' => $this->model->searchCards(
                         $setofcards['id'],
@@ -54,7 +54,7 @@ class SetOfCardsPage extends Controller
         if (array_key_exists('sortByAlphabet', $_POST)) {
             $this->view->generate(
                 'SetOfCards/setofcards.php',
-                'template_view.php',
+                'default.php',
                 ['cards' => $this->model->sortByAlphabet(), 'comments' => $this->model->getComments()]
             );
         }
@@ -71,7 +71,7 @@ class SetOfCardsPage extends Controller
     {
         $this->view->generate(
             'SetOfCards/setofcards.php',
-            'template_view.php',
+            'default.php',
             $this->model->getData()
         );
     }

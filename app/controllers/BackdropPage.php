@@ -49,7 +49,7 @@ class BackdropPage extends Controller
 
         $this->view->generate(
             'Backdrop/backdrop.php',
-            'template_view.php',
+            'default.php',
             [
                 'allCards' => $cards,
                 'backdropCards' => $this->model->getCards(),

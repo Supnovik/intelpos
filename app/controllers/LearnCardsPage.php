@@ -21,7 +21,7 @@ class LearnCardsPage extends Controller
     {
         $this->view->generate(
             'LearnCards/learnCards.php',
-            'template_view.php',
+            'default.php',
             $this->model->getCards($this->setofcards)
         );
     }

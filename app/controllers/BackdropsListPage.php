@@ -35,7 +35,7 @@ class BackdropsListPage extends Controller
     {
         $this->view->generate(
             'BackdropsList/backdropsList.php',
-            'template_view.php',
+            'default.php',
             $this->model->getData($this->setofcards)
         );
     }

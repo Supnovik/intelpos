@@ -47,6 +47,6 @@ class ProfilePage extends Controller
     function actionIndex()
     {
         $userNickname = $GLOBALS['uri'][2];
-        $this->view->generate('Profile/profile.php', 'template_view.php', $this->model->getData($userNickname));
+        $this->view->generate('Profile/profile.php', 'default.php', $this->model->getData($userNickname));
     }
 }

@@ -21,6 +21,6 @@ class RegistrationPage extends Controller
 
     function actionIndex()
     {
-        $this->view->generate('Registration/registration.php', 'template_view.php');
+        $this->view->generate('Registration/registration.php', 'default.php');
     }
 }
