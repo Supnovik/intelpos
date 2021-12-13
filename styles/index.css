@@ -25,8 +25,6 @@ p,
 a {
     color: rgb(52, 58, 61);
     text-decoration: none;
-    font-size: 1.8vmin;
-
     margin: 0;
     padding: 0;
 }
@@ -144,7 +142,7 @@ p {
     .container {
         display: flex;
         flex-direction: column;
-        margin: 0 5% 0 5%;
+        margin: 0 5%;
     }
     h1 {
         font-size: 7.5vmin;
@@ -155,7 +153,7 @@ p {
 }
 @media (max-width: 700px) {
     a{
-        font-size: 3.4vmin;
+        font-size: 18px;
     }
     h2 {
         font-size: 3vmin;
@@ -166,7 +164,9 @@ p {
     }
 }
 @media (max-width: 500px) {
-
+    .container {
+        margin: 0 3%;
+    }
     h2 {
         font-size: 5vmin;
     }
@@ -174,5 +174,4 @@ p {
     p {
         font-size: 4vmin;
     }
-
 }

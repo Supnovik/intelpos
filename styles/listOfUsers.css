@@ -62,6 +62,9 @@
     margin-bottom: 30px;
     display: flex;
 }
+.all_users-search button{
+    margin-left: 5px;
+}
 
 .all_users-user {
     display: block;

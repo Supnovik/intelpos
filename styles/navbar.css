@@ -1,5 +1,4 @@
 
-
 .navbar {
     position: -webkit-sticky;
     position: sticky;
@@ -18,6 +17,7 @@
     justify-content: space-between;
     align-items: center;
 }
+
 .logo {
     display: block;
     width: 55px;
@@ -124,6 +124,9 @@
 .navbar-content .sign-buttons a {
     color: rgb(255, 255, 255);
     padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     text-decoration: none;
 }
@@ -138,18 +141,69 @@
     border: 1px solid #fff;
     border-radius: 5px;
 }
+
 @media (max-width: 1000px) {
-
-
     .navbar-hrefs a {
         margin-left: 10px;
     }
+
     .navbar-content .sign-buttons a {
-        padding: 5px 15px ;
+        padding: 10px 15px;
     }
 }
+
 @media (max-width: 700px) {
-    .sign-buttons{
+    .sign-buttons {
         width: 36vw;
+    }
+
+    .navbar-content .active {
+        width: 200px;
+    }
+
+    .navbar-content .sign-user a {
+        font-size: 14px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .navbar-content .sign-buttons a,.navbar-content .sign-user a,.navbar-content .sign-user button {
+        padding: 10px 5px;
+    }
+
+    .navbar-content .sign-user button {
+        font-size: 14px;
+
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar-content .sign-buttons a,.navbar-content .sign-user a,.navbar-content .sign-user button {
+        padding: 10px 5px;
+    }
+
+
+    .navbar-hrefs a {
+        width: 60px;
+        margin-left: 5px;
+    }
+
+    .logo {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 400px) {
+    .navbar-content .sign-buttons a,.navbar-content .sign-user a,.navbar-content .sign-user button {
+        padding: 5px 2px;
+    }
+
+    .navbar-hrefs a {
+        width: 50px;
+        margin-left: 5px;
+    }
+
+    .navbar-content .active {
+        width: 172px;
     }
 }

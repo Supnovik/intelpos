@@ -41,6 +41,8 @@
 
 .user-content-list-block div {
     display: flex;
+    justify-content: flex-end;
+
 }
 
 .user-content-list-block h2 {
@@ -69,6 +71,7 @@
 }
 
 .user-content-list-block-setofcards {
+    padding: 0 10px;
     background-color: rgba(126, 252, 0, 0.75);
 }
 
@@ -194,7 +197,7 @@
     background: rgba(255, 0, 0, 1);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1000px) {
     .profile_page {
         display: flex;
         justify-content: flex-start;
@@ -209,5 +212,13 @@
 
     .user-content-list {
         width: 80%;
+    }
+    .user-content-modal .modal {
+        width: 60%;
+    }
+}
+@media (max-width: 500px) {
+    .user-content-modal .modal {
+        width: 85%;
     }
 }

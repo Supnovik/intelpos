@@ -1,17 +1,16 @@
 <div class="setofcards">
     <div class="setofcards-sidebar">
         <div class="setofcards-sidebar-buttons">
-            <?php
-            if ($GLOBALS["isLogin"]) {
-                if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
-                    <button class="setofcards-sidebar-buttons-add button-long">Add new card</button>
+            <div class="setofcards-sidebar-buttons-add">
                 <?php
-                else: ?>
-                    <button style="display: none" class="setofcards-sidebar-buttons-add button-long">Add new card
-                    </button>
-                <?php
-                endif;
-            } ?>
+                if ($GLOBALS["isLogin"]) {
+                    if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
+                        <button class="button-long">Add new card</button>
+                    <?php
+                    endif;
+                } ?>
+            </div>
+
             <?php
             if (count($data['cards']) !== 0): ?>
                 <a href='/users/<?= $GLOBALS['uri'][2] ?>/learn/<?= $GLOBALS['uri'][4] ?>'
@@ -78,8 +77,11 @@
         <div class="setofcards-header">
             <form method="post" class="setofcards-search">
                 <input type="text" name="search-card" placeholder="Search cards by term" class="input-box">
-                <button type="submit" name="search-card-button" class="button-short">Search</button>
-                <button type="submit" name="sortByAlphabet" class="button-short">Sort by alphabet</button>
+                <div class="setofcards-search-buttons">
+                    <button type="submit" name="search-card-button" class="search-card-button button-short">Search</button>
+                    <button type="submit" name="sortByAlphabet" class="sort-byAlphabet-button button-short">Sort by alphabet</button>
+                </div>
+
             </form>
         </div>
         <div class="setofcards-table">

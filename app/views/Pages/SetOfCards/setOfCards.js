@@ -22,8 +22,7 @@ function allDisplayNone() {
     sidebarComments.style.display = "none";
 }
 
-var addNewCard = document
-    .querySelector(".setofcards-sidebar-buttons-add")
+document.querySelector(".setofcards-sidebar-buttons-add")
     .addEventListener("click", function () {
         allDisplayNone();
         sidebarInput.style.display = "block";
@@ -52,8 +51,7 @@ card.forEach((element) => {
     });
 });
 
-var comments = document
-    .querySelector(".setofcards-sidebar-buttons-comments")
+document.querySelector(".setofcards-sidebar-buttons-comments")
     .addEventListener("click", function () {
         allDisplayNone();
         sidebarComments.style.display = "block";
