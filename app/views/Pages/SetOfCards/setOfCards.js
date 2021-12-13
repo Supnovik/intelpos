@@ -3,6 +3,8 @@ var sidebarInput = document.querySelector(".setofcards-sidebar-input");
 var sidebarComments = document.querySelector(".setofcards-sidebar-comments");
 var sidebarButtonSaveDelete = document.querySelector(".save-delete-card");
 var sidebarButtonCreate = document.querySelector(".create-card");
+var openSidebarButton = document.querySelector('.setofcards-sidebar-open');
+var sidebar = document.querySelector('.setofcards-sidebar');
 
 var sidebarInputTermin = document.querySelector(
     ".setofcards-sidebar-input-termin"
@@ -42,6 +44,8 @@ cancel.forEach((element) => {
 var card = document.querySelectorAll(".setofcards-table-card");
 card.forEach((element) => {
     element.addEventListener("click", function () {
+
+        setSidebar();
         allDisplayNone();
         sidebarInput.style.display = "block";
         sidebarButtonSaveDelete.style.display = "block";
@@ -56,3 +60,18 @@ document.querySelector(".setofcards-sidebar-buttons-comments")
         allDisplayNone();
         sidebarComments.style.display = "block";
     });
+
+openSidebarButton.addEventListener('click', setSidebar)
+
+function setSidebar(){
+    if (openSidebarButton.classList.contains('change')) {
+        openSidebarButton.classList.remove("change");
+    } else
+        openSidebarButton.classList.add("change");
+
+    if (sidebar.style.marginLeft === '0px') {
+        sidebar.style.marginLeft = '-30%';
+    } else
+        sidebar.style.marginLeft = '0';
+}
+
