@@ -14,18 +14,20 @@ class ProfilePage extends Controller
         $this->model = new Model\Profile();
 
         $isOwner = false;
-        if ($GLOBALS['uri'][2] == $GLOBALS['user']) {
+        if ($GLOBALS['uri'][2] == $GLOBALS['user']['nickname']) {
             $isOwner = true;
         } else {
             $isOwner = false;
         }
-        if (array_key_exists('createSetofcards', $_POST) && $isOwner) {
+        if (array_key_exists('create-setofcards', $_POST) && $isOwner) {
+
             $this->model->createSetOfCard(
                 $GLOBALS['user']['id'],
                 filter_var(trim($_POST['setofcardsName']), FILTER_SANITIZE_STRING)
             );
             echo "<meta http-equiv='refresh' content='0'>";
         }
+
 
         if (array_key_exists('delete-cardsSet', $_POST) && $isOwner) {
             $this->model->deleteSetOfCard(filter_var(trim($_POST['id']), FILTER_SANITIZE_STRING));
