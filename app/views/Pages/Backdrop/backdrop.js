@@ -53,19 +53,33 @@ if (user == setOwner) {
             }
 
         });
-
+        card.addEventListener('touchstart', function (e) {
+            relcoor = e.targetTouches[0];
+            console.log(relcoor.pageY);
+        })
         card.addEventListener('touchmove', function (e) {
+            var backdropPos = getCoords(backdrop);
 
-            disableScroll();
+            document.documentElement.style.overflow = 'hidden';
             var touchLocation = e.targetTouches[0];
-            card.classList.add('touchable');
+
             card.style.left = touchLocation.pageX + 'px';
             card.style.top = touchLocation.pageY + 'px';
+
+            var left =
+                ((card.style.left.substring(0, card.style.left.length - 2) - backdropPos.left) / backdropPos.width) * 100;
+            var top =
+                ((card.style.top.substring(0, card.style.top.length - 2) - backdropPos.top) / backdropPos.height) * 100;
+
+            if (left >= 0 && left <= 90 && top >= 0 && top <= 90) {
+                card.classList.add('touchable');
+            }
         })
 
         card.addEventListener('touchend', function (e) {
             var backdropPos = getCoords(backdrop);
-            enableScroll();
+            document.documentElement.style.overflow = 'auto';
+
             var left =
                 ((card.style.left.substring(0, card.style.left.length - 2) - backdropPos.left) / backdropPos.width) * 100;
             var top =
@@ -95,7 +109,7 @@ function addCardToBackdrop(card, left, top) {
         <input type="text" style="display: none" name="definition" value="${definition}">
         <input type="text" style="display: none" name="x_coordinate" value="${left}">
         <input type="text" style="display: none" name="y_coordinate" value="${top}">
-        <button name="addCardToBackdrop" class="addCardToBackdrop">Save card position</button>`;
+        <button name="addCardToBackdrop" class="addCardToBackdrop">Save</button>`;
     form.style.left = left + "%";
     form.style.top = top + "%";
     backdrop.append(form);
@@ -146,18 +160,4 @@ if (cardInfoRemove.length !== 0) {
         cardInfoTermin.innerHTML = "";
         cardInfoDefinition.innerHTML = "";
     });
-}
-
-function disableScroll() {
-    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-
-    window.onscroll = function () {
-        window.scrollTo(scrollLeft, scrollTop);
-    };
-}
-
-function enableScroll() {
-    window.onscroll = function () {
-    };
 }
