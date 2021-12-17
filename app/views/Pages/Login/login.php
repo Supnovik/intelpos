@@ -14,7 +14,7 @@
 
             <div class="login-footer">
                 <p>No account on Intelpos?</p>
-                <a href="../../../../index.php" class="button-short">create</a>
+                <a href="/registration" class="button-short">create</a>
             </div>
         </div>
     </form>

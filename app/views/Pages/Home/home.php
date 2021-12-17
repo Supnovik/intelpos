@@ -52,7 +52,7 @@
 
     <div id="home-get-start" class="home-get-start">
         <h2>Ready to start?</h2>
-        <a href="../../../../index.php" class="get-start-button">
+        <a href="/registration" class="get-start-button">
             Get started
         </a>
     </div>
