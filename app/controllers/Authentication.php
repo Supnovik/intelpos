@@ -16,6 +16,14 @@ class Authentication
 
     function login($nickname, $password)
     {
+        $dbOfUsers = new Model\Profile();
+        if (count($dbOfUsers->getUsers($nickname)) == 0) {
+            $message = "This user does not exist";
+            echo "<script type='text/javascript'> alert('$message');</script>";
+
+            return;
+        }
+
         $db = new Model\DbConstructor();
         $len = $db->getContent(
             'users',
@@ -31,6 +39,13 @@ class Authentication
 
     function registration($nickname, $mail, $password)
     {
+        $dbOfUsers = new Model\Profile();
+        if (count($dbOfUsers->getUsers($nickname)) !== 0) {
+            $message = "This is already exists";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+
+            return;
+        }
         $db = new Model\DbConstructor();
         $db->addContent('users', [['nickname', $nickname], ['mail', $mail], ['password', $password]]);
 

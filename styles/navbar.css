@@ -154,7 +154,7 @@
 
 @media (max-width: 700px) {
     .sign-buttons {
-        width: 36vw;
+        width: 150px;
     }
 
     .navbar-content .active {
@@ -166,7 +166,8 @@
         margin-left: 5px;
         margin-right: 5px;
     }
-    .navbar-content .sign-buttons a,.navbar-content .sign-user a,.navbar-content .sign-user button {
+
+    .navbar-content .sign-buttons a, .navbar-content .sign-user a, .navbar-content .sign-user button {
         padding: 10px 5px;
     }
 
@@ -177,7 +178,11 @@
 }
 
 @media (max-width: 500px) {
-    .navbar-content .sign-buttons a,.navbar-content .sign-user a,.navbar-content .sign-user button {
+    .sign-buttons {
+        width: 38vw;
+    }
+
+    .navbar-content .sign-buttons a, .navbar-content .sign-user a, .navbar-content .sign-user button {
         padding: 10px 5px;
     }
 
@@ -194,8 +199,8 @@
 }
 
 @media (max-width: 400px) {
-    .navbar-content .sign-buttons a,.navbar-content .sign-user a,.navbar-content .sign-user button {
-        padding: 5px 2px;
+    .navbar-content .sign-buttons a, .navbar-content .sign-user a, .navbar-content .sign-user button {
+        padding: 7px 0;
     }
 
     .navbar-hrefs a {

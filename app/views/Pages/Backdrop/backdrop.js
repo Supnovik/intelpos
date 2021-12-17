@@ -13,9 +13,10 @@ var cardInfoDefinition = document.querySelector(
 var cardInfoClose = document.querySelector(
     ".backdropPage-sidebar-cardInfo-close"
 );
-var cardInfoRemove = document.querySelector(
+var cardInfoRemove = document.querySelectorAll(
     ".backdropPage-sidebar-cardInfo-remove"
 );
+
 
 function getCoords(elem) {
     var box = elem.getBoundingClientRect();
@@ -26,8 +27,6 @@ function getCoords(elem) {
         width: elem.offsetWidth,
     };
 }
-
-console.log(user, setOwner);
 
 function relativeCoords(e) {
     var bounds = e.target.getBoundingClientRect();
@@ -50,27 +49,54 @@ if (user == setOwner) {
                 ((e.y - relcoor.y - backdropPos.top) / backdropPos.height) * 100;
 
             if (left >= 0 && left <= 90 && top >= 0 && top <= 90) {
-                var termin = card.querySelector(".backdropPage-card-termin").innerHTML;
-                var definition = card.querySelector(
-                    ".backdropPage-card-definition"
-                ).innerHTML;
-                var form = document.createElement("form");
-                form.method = "post";
-                form.draggable = "true";
-                form.className = "card-onBackdrop";
-                form.innerHTML = `
+                addCardToBackdrop(card, left, top);
+            }
+
+        });
+
+        card.addEventListener('touchmove', function (e) {
+
+            disableScroll();
+            var touchLocation = e.targetTouches[0];
+            card.classList.add('touchable');
+            card.style.left = touchLocation.pageX + 'px';
+            card.style.top = touchLocation.pageY + 'px';
+        })
+
+        card.addEventListener('touchend', function (e) {
+            var backdropPos = getCoords(backdrop);
+            enableScroll();
+            var left =
+                ((card.style.left.substring(0, card.style.left.length - 2) - backdropPos.left) / backdropPos.width) * 100;
+            var top =
+                ((card.style.top.substring(0, card.style.top.length - 2) - backdropPos.top) / backdropPos.height) * 100;
+
+
+            card.classList.remove('touchable');
+            addCardToBackdrop(card, left, top)
+        })
+    });
+}
+
+function addCardToBackdrop(card, left, top) {
+    var termin = card.querySelector(".backdropPage-card-termin").innerHTML;
+    var definition = card.querySelector(
+        ".backdropPage-card-definition"
+    ).innerHTML;
+    var form = document.createElement("form");
+    form.method = "post";
+    form.draggable = "true";
+    form.className = "card-onBackdrop";
+    form.innerHTML = `
         <div class="backdropPage-card-termin">${termin}</div>
         <input type="text" style="display: none" name="termin" value="${termin}">
         <input type="text" style="display: none" name="definition" value="${definition}">
         <input type="text" style="display: none" name="x_coordinate" value="${left}">
         <input type="text" style="display: none" name="y_coordinate" value="${top}">
         <button name="addCardToBackdrop" class="addCardToBackdrop">Save card position</button>`;
-                form.style.left = left + "%";
-                form.style.top = top + "%";
-                backdrop.append(form);
-            }
-        });
-    });
+    form.style.left = left + "%";
+    form.style.top = top + "%";
+    backdrop.append(form);
 }
 
 document.querySelectorAll(".card-onBackdrop").forEach((card) => {
@@ -110,9 +136,26 @@ cardInfoClose.addEventListener("click", () => {
     cardInfoTermin.innerHTML = "";
     cardInfoDefinition.innerHTML = "";
 });
-cardInfoRemove.addEventListener("click", () => {
-    cardsList.style.display = "grid";
-    cardInfo.style.display = "none";
-    cardInfoTermin.innerHTML = "";
-    cardInfoDefinition.innerHTML = "";
-});
+
+if (cardInfoRemove.length !== 0) {
+    cardInfoRemove[0].addEventListener("click", () => {
+        cardsList.style.display = "grid";
+        cardInfo.style.display = "none";
+        cardInfoTermin.innerHTML = "";
+        cardInfoDefinition.innerHTML = "";
+    });
+}
+
+function disableScroll() {
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+    window.onscroll = function () {
+        window.scrollTo(scrollLeft, scrollTop);
+    };
+}
+
+function enableScroll() {
+    window.onscroll = function () {
+    };
+}

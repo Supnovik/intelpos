@@ -100,3 +100,22 @@
     background-repeat: no-repeat;
     margin-bottom: 20px;
 }
+
+@media (max-width: 1000px) {
+
+    .page_of_backdrops-modal .modal {
+        width: 60%;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .page_of_backdrops-modal .modal {
+        width: 85%;
+    }
+
+    .page_of_backdrops-modal .modal form {
+        margin: 40px 20px;
+    }
+}
+

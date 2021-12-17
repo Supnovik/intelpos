@@ -24,7 +24,6 @@
 
 .login-block {
     width: 400px;
-    height: 358px;
     background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.12);
     box-sizing: border-box;
@@ -34,8 +33,7 @@
 
 .login-container {
     position: relative;
-    width: 340px;
-    margin: 40px 30px 0;
+    padding: 40px 30px;
 }
 
 .textField {
@@ -47,4 +45,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media (max-width: 700px) {
+    .login-block {
+        width: 70%;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .login-block {
+        width: 90%;
+    }
+
+    .login-container {
+        padding: 20px 15px;
+    }
+
 }

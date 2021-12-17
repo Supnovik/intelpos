@@ -17,6 +17,14 @@ class BackdropsListPage extends Controller
         $this->model = new Model\BackdropsList();
         $this->view = new View();
 
+        $isOwner = false;
+        if ($GLOBALS['isLogin']) {
+            $isOwner = false;
+            if ($GLOBALS['uri'][2] == $GLOBALS['user']['nickname']) {
+                $isOwner = true;
+            }
+        }
+
         if (isset($_FILES['file'])) {
             $check = $this->can_upload($_FILES['file']);
             if ($check === true) {
@@ -25,7 +33,7 @@ class BackdropsListPage extends Controller
                 echo $check;
             }
         }
-        if (array_key_exists('delete-backdrop', $_POST)) {
+        if (array_key_exists('delete-backdrop', $_POST) && $isOwner) {
             unlink(filter_var(trim($_POST['imagePath']), FILTER_SANITIZE_STRING));
             $this->model->deleteBackdrop(filter_var(trim($_POST['id']), FILTER_SANITIZE_STRING));
         }

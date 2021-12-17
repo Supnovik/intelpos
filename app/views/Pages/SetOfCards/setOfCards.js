@@ -5,7 +5,7 @@ var sidebarButtonSaveDelete = document.querySelector(".save-delete-card");
 var sidebarButtonCreate = document.querySelector(".create-card");
 var openSidebarButton = document.querySelector('.setofcards-sidebar-open');
 var sidebar = document.querySelector('.setofcards-sidebar');
-
+var cardsTable = document.querySelector('.setofcards-table');
 var sidebarInputTermin = document.querySelector(
     ".setofcards-sidebar-input-termin"
 );
@@ -15,6 +15,28 @@ var sidebarInputOldId = document.querySelector(
 var sidebarInputDefinition = document.querySelector(
     ".setofcards-sidebar-input-definition"
 );
+
+function setTableSize() {
+    var columnCount = 4;
+    var cardsHeight = 10;
+
+    if (window.innerWidth < 800) {
+        columnCount = 3;
+        cardsHeight = 15;
+    }
+    if (window.innerWidth < 600) {
+        columnCount = 2;
+        cardsHeight = 20;
+    }
+    if (window.innerWidth < 450) {
+        columnCount = 1;
+        cardsHeight = 40;
+    }
+
+    cardsTable.style.gridTemplateRows = `repeat(${Math.ceil(data.cards.length / columnCount)}, ${cardsHeight}vw)`;
+}
+
+setTableSize();
 
 function allDisplayNone() {
     sidebarButtons.style.display = "none";
@@ -63,15 +85,27 @@ document.querySelector(".setofcards-sidebar-buttons-comments")
 
 openSidebarButton.addEventListener('click', setSidebar)
 
-function setSidebar(){
+
+function setSidebar() {
     if (openSidebarButton.classList.contains('change')) {
         openSidebarButton.classList.remove("change");
     } else
         openSidebarButton.classList.add("change");
 
     if (sidebar.style.marginLeft === '0px') {
+
         sidebar.style.marginLeft = '-30%';
-    } else
+        if (window.innerWidth < 500)
+            sidebar.style.marginLeft = '-70%';
+
+    } else {
         sidebar.style.marginLeft = '0';
+
+        if (window.innerWidth < 500)
+            sidebar.style.width = '70%';
+
+    }
+
+
 }
 

@@ -27,7 +27,7 @@
 .user-content-list-block {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    margin-bottom: 10px;
+    margin: 10px;
     height: 44px;
     width: 100%;
     border: 1px solid rgba(31, 32, 65, 0.25);
@@ -139,9 +139,15 @@
     margin: 40px;
 }
 
+.user-content-modal .modal form .input-box {
+    margin-top: 20px;
+
+}
+
 .user-content-modal .close {
-    float: right;
-    margin: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
     font-family: sans-serif;
     font-size: 34px;
     font-weight: 700;
@@ -160,6 +166,10 @@
     text-decoration: none;
     cursor: pointer;
     opacity: 0.75;
+}
+
+button.modal-button-create {
+    margin-top: 20px;
 }
 
 .noEvents {
@@ -213,12 +223,18 @@
     .user-content-list {
         width: 80%;
     }
+
     .user-content-modal .modal {
         width: 60%;
     }
 }
+
 @media (max-width: 500px) {
     .user-content-modal .modal {
         width: 85%;
+    }
+
+    .user-content-modal .modal form {
+        margin: 40px 20px;
     }
 }

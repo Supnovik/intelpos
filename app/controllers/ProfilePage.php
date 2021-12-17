@@ -14,7 +14,7 @@ class ProfilePage extends Controller
         $this->model = new Model\Profile();
 
         $isOwner = false;
-        if ($GLOBALS['isLogin']){
+        if ($GLOBALS['isLogin']) {
             $isOwner = false;
             if ($GLOBALS['uri'][2] == $GLOBALS['user']['nickname']) {
                 $isOwner = true;
@@ -22,7 +22,6 @@ class ProfilePage extends Controller
         }
 
         if (array_key_exists('create-setofcards', $_POST) && $isOwner) {
-
             $this->model->createSetOfCard(
                 $GLOBALS['user']['id'],
                 filter_var(trim($_POST['setofcardsName']), FILTER_SANITIZE_STRING)

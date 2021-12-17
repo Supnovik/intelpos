@@ -1,5 +1,5 @@
 <div class="login-page">
-    <form class="registration-block" method="post">
+    <form class="login-block" method="post">
         <div class="login-container">
             <h1>Welcome</h1>
             <div class="textField">
@@ -11,14 +11,15 @@
             </div>
 
             <div class="textField">
-                <input required type="password" name=password placeholder="Password" class="input-box">
+                <input required type="password" name=password placeholder="Password" class="user-password input-box">
             </div>
 
             <div class="textField">
-                <input required type="password" name=password1 placeholder="Password" class="input-box">
+                <input required type="password" name=password-repeate placeholder="Password"
+                       class="user-password-repeate input-box">
             </div>
 
-            <input type="submit" name="createUser" class="button-long" value="create"/>
+            <input type="submit" name="createUser" class="registration-create-user button-long" value="create"/>
 
             <div class="login-footer">
                 <p>Already have account on Intelpos?</p>

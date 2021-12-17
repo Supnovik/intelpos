@@ -1,5 +1,5 @@
+
 .setofcards {
-    height: 90vh;
     position: relative;
 }
 
@@ -12,6 +12,7 @@
     padding: 0 20px;
     border-right: 1px solid rgb(0, 0, 0, 0.4);
     z-index: 10;
+    transition: 0.4s;
 }
 
 .setofcards-sidebar-content {
@@ -20,6 +21,7 @@
     padding-right: 30px;
     display: flex;
     flex-direction: column;
+
 }
 
 .setofcards-sidebar-open {
@@ -39,8 +41,8 @@
 }
 
 .change .bar1 {
-    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
-    transform: rotate(-45deg) translate(-9px, 6px) ;
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-8px, 7px);
 }
 
 .change .bar2 {
@@ -48,8 +50,8 @@
 }
 
 .change .bar3 {
-    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
-    transform: rotate(45deg) translate(-8px, -8px) ;
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
 }
 
 .setofcards-sidebar-input {
@@ -68,7 +70,7 @@
     display: flex;
     flex-direction: column;
     padding: 40px 60px;
-    overflow-y: scroll;
+    height: calc(90vh - 80px);
 }
 
 .setofcards-header {
@@ -77,12 +79,13 @@
 
 .setofcards-table {
     margin-top: 40px;
+    padding: 10px;
     width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: repeat(100, 10vw);
     grid-gap: 2vw;
+    overflow-y: scroll;
 }
 
 .setofcards-table .setofcards-table-card {
@@ -150,22 +153,25 @@
 
 @media (max-width: 800px) {
     .setofcards-content {
-        padding: 20px 40px;
+        padding: 20px 40px 20px 60px;
+        height: calc(90vh - 40px);
+
     }
 
     .setofcards-table {
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: repeat(100, 15vw);
-
     }
 }
 
 @media (max-width: 600px) {
-    .setofcards-sidebar{
-        margin-left: -50%;
+    .setofcards-sidebar {
+        margin-left: -30%;
     }
+
     .setofcards-content {
-        padding: 10px 20px;
+        padding: 10px 20px 10px 60px;
+        height: calc(90vh - 20px);
+
     }
 
     .setofcards-search {
@@ -179,7 +185,6 @@
 
     .setofcards-table {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(100, 20vw);
     }
 
     .setofcards-table .setofcards-table-card {
@@ -190,7 +195,6 @@
 @media (max-width: 450px) {
     .setofcards-table {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(100, 40vw);
     }
 
     .setofcards-table .setofcards-table-card {

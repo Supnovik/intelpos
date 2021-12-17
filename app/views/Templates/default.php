@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="/styles/home.css">
     <link rel="stylesheet" type="text/css" href="/styles/login.css">
     <link rel="stylesheet" type="text/css" href="/styles/profile.css">
-    <link rel="stylesheet" type="text/css" href="/styles/registration.css">
     <link rel="stylesheet" type="text/css" href="/styles/listOfUsers.css">
     <link rel="stylesheet" type="text/css" href="/styles/setofcards.css">
     <link rel="stylesheet" type="text/css" href="/styles/backdropsList.css">
@@ -35,7 +34,7 @@ foreach ($scripts as $script): ?>
     <script>
         var data = <?=json_encode($data);?>;
     </script>
-    <script src="/app/views/<?=$script?>"></script>
+    <script src="/app/views/<?= $script ?>"></script>
 
 <?php
 endforeach; ?>

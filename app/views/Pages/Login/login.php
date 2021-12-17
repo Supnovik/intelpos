@@ -10,7 +10,7 @@
                 <input required type="password" name="password" placeholder="Пароль" class="input-box">
             </div>
 
-            <input type="submit" name="login" class="button-long" value="sign in"/>
+            <input type="submit" name="login" class="login-sign-in button-long" value="sign in"/>
 
             <div class="login-footer">
                 <p>No account on Intelpos?</p>

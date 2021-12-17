@@ -22,7 +22,13 @@
                     <input style="display: none" type="text" name="id" value="<?= $value['id'] ?>"/>
                     <input style="display: none" type="text" name="imagePath" value="<?= $value['imagePath'] ?>"/>
                     <h2><?= $value['name'] ?></h2>
-                    <button type="submit" name="delete-backdrop" class="button-short">Delete</button>
+                    <?php
+                    if ($GLOBALS["isLogin"]) {
+                        if ($GLOBALS['user']['nickname'] == $GLOBALS['uri'][2]): ?>
+                            <button type="submit" name="delete-backdrop" class="button-short">Delete</button>
+                        <?php
+                        endif;
+                    } ?>
                 </form>
 
                 <a href='/users/<?= $GLOBALS['uri'][2] ?>/backdropsList/<?= $GLOBALS['uri'][4] ?>/backdrop/<?= $value['name'] ?>'
@@ -42,12 +48,13 @@
             <input required maxlength="12" name="BackdropName" class="page_of_backdrops-modal-input input-box"
                    autocomplete="off"
                    placeholder="Backdrop name"/>
-            <div style="display: flex">
-                <label for="backdrop-img" class="button-short">Upload file</label>
-                <input required style="display: none" type="file" name="file" id="backdrop-img">
-                <button type="submit" name="createBackdrop" class="button-long page_of_backdrops-close-modal">Create
-                </button>
-            </div>
+
+            <label for="backdrop-img" class="button-short">Upload file</label>
+            <input required style="display: none" type="file" name="file" id="backdrop-img">
+            <button type="submit" name="createBackdrop"
+                    class="button-long modal-button-create page_of_backdrops-close-modal">Create
+            </button>
+
         </form>
     </div>
 </div>

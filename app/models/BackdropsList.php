@@ -17,7 +17,7 @@ class BackdropsList
 
     public function deleteBackdrop($backdropId)
     {
-        $db = new Model\DbConstructor();
+        $db = new DbConstructor();
         $db->deleteContent('backdrops', $backdropId);
     }
 }

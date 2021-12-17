@@ -61,17 +61,24 @@
     text-decoration: none;
     color: #fff;
     border: none;
-    margin-right: 20px;
+}
+
+.learnCards-statistic-button,
+.learnCards-right-button,
+.learnCards-next-button {
+    margin: 20px 10px;
 }
 
 .learnCards-check-wrong {
     cursor: auto;
     background-color: red;
+
 }
 
 .learnCards-check-right {
     cursor: auto;
     background-color: green;
+
 }
 
 .learnCards-modal-content {
@@ -82,6 +89,10 @@
     flex-direction: column;
 }
 
+.learnCards-modal-content p {
+    margin-top: 10px;
+}
+
 .learnCards-check-buttons {
     display: flex;
 }
@@ -89,4 +100,23 @@
 .learnCards-userAnswer {
     display: none;
     margin-top: 30px;
+}
+
+@media (max-width: 700px) {
+    .learnCards-check-button,
+    .learnCards-next-button,
+    .learnCards-statistic-button,
+    .learnCards-save-button,
+    .learnCards-right-button,
+    .learnCards-check-wrong,
+    .learnCards-check-right {
+        font-size: 7vw;
+        width: 35vw;
+        height: 20vw;
+    }
+
+    .learnCards-termin {
+        height: 30%;
+    }
+
 }
