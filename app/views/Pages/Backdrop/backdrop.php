@@ -4,7 +4,7 @@
             <?php
             foreach ($data['allCards'] as $value):?>
                 <div class="backdropPage-card" draggable="true">
-                    <div class="backdropPage-card-termin"><?= $value['termin'] ?></div>
+                    <div class="backdropPage-card-termin text"><?= $value['termin'] ?></div>
                     <div style="display: none" class="backdropPage-card-definition"><?= $value['definition'] ?></div>
                     <div style="display: none" class="backdropPage-card-id"><?= $value['id'] ?></div>
                 </div>
@@ -45,7 +45,7 @@
                 <form method="post" draggable="true"
                       style="top: <?= $value['y_coordinate'] ?>%;left: <?= $value['x_coordinate'] ?>%;"
                       class="card-onBackdrop">
-                    <div class="backdropPage-card-termin"><?= $value['termin'] ?></div>
+                    <div class="backdropPage-card-termin text"><?= $value['termin'] ?></div>
                     <input type="text" style="display: none" id="id" name="id" value="<?= $value['id'] ?>">
                     <input type="text" style="display: none" id="termin" name="termin" value="<?= $value['termin'] ?>">
                     <input type="text" style="display: none" id="definition" name="definition"

@@ -49,6 +49,14 @@ p {
     margin: 0 15% 0 15%;
 }
 
+.text {
+    text-overflow: ellipsis;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    padding: 0 5px;
+}
 
 .button-long {
     display: flex;
@@ -75,7 +83,6 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #fff;
     width: 99px;
     color: rgb(0, 197, 199);
     background-color: initial;

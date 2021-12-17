@@ -98,7 +98,7 @@
             <?php
             foreach ($data['cards'] as $value):?>
                 <button class="setofcards-table-card">
-                    <div class="setofcards-table-card-termin"><?= $value['termin'] ?></div>
+                    <div class="setofcards-table-card-termin text"><?= $value['termin'] ?></div>
                     <div class="setofcards-table-card-definition"><?= $value['definition'] ?></div>
                     <div style="display: none" class="setofcards-table-card-id"><?= $value['id'] ?></div>
                 </button>
