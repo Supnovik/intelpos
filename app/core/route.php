@@ -44,10 +44,15 @@ class Route
                 $controller = new Controller\HomePage;
                 $controller->actionIndex();
             },
+
             'login' => function () {
                 $GLOBALS['title'] = 'Login';
                 $controller = new Controller\LoginPage;
                 $controller->actionIndex();
+            },
+            'authorization' => function () {
+                $controller = new Controller\Authentication();
+                $controller->processRequest();
             },
             'registration' => function () {
                 $GLOBALS['title'] = 'Registration';
@@ -167,6 +172,7 @@ class Route
                         }
                     },
                 ],
+
             ],
         ];
 

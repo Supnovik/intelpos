@@ -1,5 +1,6 @@
 <div class="login-page">
-    <form class="login-block" method="post">
+
+    <form action="/authorization" class="login-block" method="post">
         <div class="login-container">
             <h1>Welcome</h1>
             <div class="textField">
@@ -10,7 +11,7 @@
                 <input required type="password" name="password" placeholder="Пароль" class="input-box">
             </div>
 
-            <input type="submit" name="login" class="login-sign-in button-long" value="sign in"/>
+            <button type="submit" name="login" class="login-sign-in button-long">sign in</button>
 
             <div class="login-footer">
                 <p>No account on Intelpos?</p>

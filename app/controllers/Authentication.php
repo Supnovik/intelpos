@@ -6,12 +6,29 @@ use Intelpos\Model;
 
 class Authentication
 {
-    function signOut()
+
+    function processRequest()
     {
         if (array_key_exists('sign-out', $_POST)) {
-            setcookie('user', $GLOBALS['user']['nickname'], time() - 3600, '/');
-            header('Location: '.$_SERVER['HTTP_REFERER']);
+            $this->signOut();
         }
+        if (array_key_exists('login', $_POST)) {
+            $nickname = filter_var(trim($_POST['nickname']), FILTER_SANITIZE_STRING);
+            $password = md5(filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING).'sol');
+            $this->login($nickname, $password);
+        }
+        if (array_key_exists('createUser', $_POST)) {
+            $nickname = filter_var(trim($_POST['nickname']), FILTER_SANITIZE_STRING);
+            $mail = filter_var(trim($_POST['mail']), FILTER_SANITIZE_STRING);
+            $password = md5(filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING).'sol');
+            $this->registration($nickname, $mail, $password);
+        }
+    }
+
+    function signOut()
+    {
+        setcookie('user', $GLOBALS['user']['nickname'], time() - 3600, '/');
+        header('Location: '.$_SERVER['HTTP_REFERER']);
     }
 
     function login($nickname, $password)
@@ -52,9 +69,6 @@ class Authentication
         setcookie('user', $nickname, time() + 120, '/');
         header('Location: /users/'.$nickname);
     }
-}
 
-if (array_key_exists('sign-out', $_POST)) {
-    setcookie('user', $GLOBALS['user']['nickname'], time() - 3600, '/');
-    header('Location: '.$_SERVER['HTTP_REFERER']);
+
 }

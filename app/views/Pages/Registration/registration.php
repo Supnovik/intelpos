@@ -1,5 +1,5 @@
 <div class="login-page">
-    <form class="login-block" method="post">
+    <form action="/authorization" class="login-block" method="post">
         <div class="login-container">
             <h1>Welcome</h1>
             <div class="textField">
@@ -19,7 +19,7 @@
                        class="user-password-repeate input-box">
             </div>
 
-            <input type="submit" name="createUser" class="registration-create-user button-long" value="create"/>
+            <button type="submit" name="createUser" class="registration-create-user button-long">create</button>
 
             <div class="login-footer">
                 <p>Already have account on Intelpos?</p>

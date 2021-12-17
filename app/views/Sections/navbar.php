@@ -14,7 +14,7 @@
                     <img src="http://user-life.com/uploads/posts/2018-08/1535608847_kak-udalit-avatarku-ubrat-postavit-sdelat-zagruzit-dobavit-foto-vkontakte-dlya-telegramma-skaypa-vayber-diskorda.jpg"/>
                 </div>
                 <a class="my-profile" href='/users/<?= $GLOBALS['user']['nickname']; ?>'>My profile</a>
-                <form action="/app/controllers/Authentication.php" method="post">
+                <form action="/authorization" method="post">
                     <button type="submit" class="sign-out" name="sign-out">Sign out</button>
                 </form>
             </div>
