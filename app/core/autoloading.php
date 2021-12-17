@@ -15,7 +15,10 @@ spl_autoload_register(function ($class) {
     if (strncmp($prefixController, $class, $lenController) == 0) {
         $relative_class = substr($class, $lenController);
         $file = $base_dir.'controllers/'.str_replace('\\', '/', $relative_class).'.php';
-
+        if (file_exists($file)) {
+            require $file;
+        }
+        $file = $base_dir.'controllers/Controllers of pages/'.str_replace('\\', '/', $relative_class).'.php';
         if (file_exists($file)) {
             require $file;
         }
