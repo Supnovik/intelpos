@@ -106,3 +106,29 @@
     width: 20%;
     height: 10%;
 }
+
+@media (max-width: 700px) {
+    .backdropPage {
+        display: flex;
+        flex-direction: column-reverse;
+        height: 90vh;
+        width: 100%;
+
+    }
+
+    .backdropPage-sidebar {
+        height: 40vh;
+        overflow-x: scroll;
+
+    }
+
+    .backdropPage-sidebar-cardsList {
+        grid-template-rows: 15vh;
+        grid-template-columns: repeat(50, 15vh);
+    }
+
+    .backdropPage-content {
+        height: 50%;
+        padding: 20px;
+    }
+}

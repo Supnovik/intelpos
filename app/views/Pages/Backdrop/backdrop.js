@@ -73,7 +73,9 @@ if (user == setOwner) {
 
 
             card.classList.remove('touchable');
-            addCardToBackdrop(card, left, top)
+            if (left >= 0 && left <= 90 && top >= 0 && top <= 90) {
+                addCardToBackdrop(card, left, top)
+            }
         })
     });
 }
