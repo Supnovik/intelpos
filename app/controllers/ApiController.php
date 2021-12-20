@@ -15,6 +15,8 @@ class ApiController
             $flag = true;
         }
 
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Headers: *");
         header('Content-type: application/json');
         if ($flag) {
             echo json_encode($data);
