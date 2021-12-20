@@ -40,6 +40,13 @@ class Profile extends Model
         return $db->getContent('users', ['nickname']);
     }
 
+    public function getAllInformationOfUsers()
+    {
+        $db = new DbConstructor();
+
+        return $db->getContent('users', ['id', 'nickname', 'password', 'mail']);
+    }
+
     public function createSetOfCard($usersId, $set_of_cards_name)
     {
         $db = new DbConstructor();

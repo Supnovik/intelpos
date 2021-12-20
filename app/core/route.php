@@ -44,7 +44,11 @@ class Route
                 $controller = new Controller\HomePage;
                 $controller->actionIndex();
             },
-
+            'admin' => function () {
+                $GLOBALS['title'] = 'admin';
+                $controller = new Controller\ApiController;
+                $controller->requestResponce();
+            },
             'login' => function () {
                 $GLOBALS['title'] = 'Login';
                 $controller = new Controller\LoginPage;

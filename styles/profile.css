@@ -27,7 +27,7 @@
 .user-content-list-block {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    margin: 10px;
+    margin: 10px 0;
     height: 44px;
     width: 100%;
     border: 1px solid rgba(31, 32, 65, 0.25);

@@ -51,10 +51,7 @@ class SetOfCardsPage extends Controller
         }
 
         if (array_key_exists('sortByAlphabet', $_POST)) {
-            $this->view->generate(
-                'default',
-                ['cards' => $this->model->sortByAlphabet(), 'comments' => $this->model->getComments()]
-            );
+            $this->view->data = $this->model->sortByAlphabet();
         }
 
         if (array_key_exists('comment-button', $_POST)) {

@@ -28,9 +28,9 @@
                 <form method="post">
                     <input style="display: none" type="text" name="id"
                            class="setofcards-sidebar-input-oldId input-box">
-                    <input required type="text" name="termin" placeholder="Termin"
+                    <input maxlength="12" required type="text" name="termin" placeholder="Termin"
                            class="setofcards-sidebar-input-termin input-box">
-                    <input required type="text" name="definition" placeholder="Definition"
+                    <input maxlength="80" required type="text" name="definition" placeholder="Definition"
                            class="setofcards-sidebar-input-definition input-box">
                     <button type="submit" name="create-card" class="create-card button-long">Create card</button>
 

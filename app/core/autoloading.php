@@ -22,15 +22,12 @@ spl_autoload_register(function ($class) {
         if (file_exists($file)) {
             require $file;
         }
-    } else {
-        if (strncmp($prefixModel, $class, $lenModel) == 0) {
-            $relative_class = substr($class, $lenModel);
-            $file = $base_dir.'models/'.str_replace('\\', '/', $relative_class).'.php';
-            if (file_exists($file)) {
-                require $file;
-            }
-        } else {
-            return;
+    }
+    if (strncmp($prefixModel, $class, $lenModel) == 0) {
+        $relative_class = substr($class, $lenModel);
+        $file = $base_dir.'models/'.str_replace('\\', '/', $relative_class).'.php';
+        if (file_exists($file)) {
+            require $file;
         }
     }
 });
