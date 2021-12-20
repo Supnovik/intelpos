@@ -27,7 +27,7 @@ class Route
         $GLOBALS['uri'] = explode('/', $_SERVER['REQUEST_URI']);
         foreach ($GLOBALS['uri'] as &$uri) {
             if (strripos($uri, '?')) {
-                $uri = mb_strcut($uri, 0, strripos($uri, '?'));
+                $uri = mb_substr($uri, 0, strripos($uri, '?'));
             }
         }
         $GLOBALS['isLogin'] = false;
