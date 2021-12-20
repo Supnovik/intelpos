@@ -25,6 +25,11 @@ class Route
     static function start()
     {
         $GLOBALS['uri'] = explode('/', $_SERVER['REQUEST_URI']);
+        foreach ($GLOBALS['uri'] as &$uri) {
+            if (strripos($uri, '?')) {
+                $uri = mb_strcut($uri, 0, strripos($uri, '?'));
+            }
+        }
         $GLOBALS['isLogin'] = false;
         if (isset($_COOKIE['user'])) {
             $GLOBALS['isLogin'] = true;
@@ -179,7 +184,6 @@ class Route
 
             ],
         ];
-
         if (array_key_exists($GLOBALS['uri'][1], $path) && !isset($GLOBALS['uri'][2])) {
             $func = $path[$GLOBALS['uri'][1]];
             $func();
@@ -214,7 +218,6 @@ class Route
                 }
 
                 return;
-            } else {
             }
             Error_404();
         }
