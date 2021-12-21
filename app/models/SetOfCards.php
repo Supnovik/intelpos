@@ -84,25 +84,4 @@ class SetOfCards
         $db->deleteContent('cards', $id);
     }
 
-
-    public function deleteSetOfCards()
-    {
-    }
-
-    public function createBackdrop($backdrop, $imagePath)
-    {
-    }
-
-    public function getBackdropImage($backdrop)
-    {
-    }
-
-
-    public function deleteBackdrop($backdrop)
-    {
-    }
-
-    public function deleteAllBackdrops()
-    {
-    }
 }

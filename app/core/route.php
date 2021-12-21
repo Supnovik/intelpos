@@ -49,8 +49,8 @@ class Route
                 $controller = new Controller\HomePage;
                 $controller->actionIndex();
             },
-            'admin' => function () {
-                $GLOBALS['title'] = 'admin';
+            'api' => function () {
+                $GLOBALS['title'] = 'api';
                 $controller = new Controller\ApiController;
                 $controller->requestResponce();
             },
