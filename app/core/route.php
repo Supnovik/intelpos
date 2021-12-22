@@ -49,6 +49,9 @@ class Route
                 $controller = new Controller\HomePage;
                 $controller->actionIndex();
             },
+            'admin' => function () {
+                header('Location: http://159.223.167.52:8080/');
+            },
             'api' => function () {
                 $GLOBALS['title'] = 'api';
                 $controller = new Controller\ApiController;
