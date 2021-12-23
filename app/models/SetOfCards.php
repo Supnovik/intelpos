@@ -46,10 +46,11 @@ class SetOfCards
         $db->addContent('cards', [['setofcardsId', $setofcardsId], ['termin', $termin], ['definition', $definition]]);
     }
 
-    public function addComment($nickname, $text)
+    public function addComment($nickname, $comment)
     {
+        $setofcardsId = $this->setofcards['id'];
         $db = new DbConstructor();
-        $db->addContent('cards', [['user', $nickname], ['text', $text]]);
+        $db->addContent('comments', [['setofcardsId', $setofcardsId], ['userName', $nickname], ['comment', $comment]]);
     }
 
     public function sortByAlphabet()

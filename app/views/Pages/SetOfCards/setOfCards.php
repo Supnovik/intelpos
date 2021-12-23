@@ -59,8 +59,8 @@
                     <?php
                     foreach ($data['comments'] as $value): ?>
                         <div class="setofcards-sidebar-comment">
-                            <a class="setofcards-sidebar-comment-nickname"><?= $value['nickname'] ?></a>
-                            <div class="setofcards-sidebar-comment-text"><?= $value['text'] ?></div>
+                            <a class="setofcards-sidebar-comment-nickname"><?= $value['userName'] ?></a>
+                            <div class="setofcards-sidebar-comment-text"><?= $value['comment'] ?></div>
                         </div>
                     <?php
                     endforeach; ?>

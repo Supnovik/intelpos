@@ -40,28 +40,22 @@ class Profile extends Model
         return $db->getContent('users', ['nickname']);
     }
 
-    public function getAllInformationOfUsers()
+
+    public function createSetOfCard($usersId, $setOfCardsName)
     {
         $db = new DbConstructor();
-
-        return $db->getContent('users', ['id', 'nickname', 'password', 'mail']);
+        $db->addContent('setofcards', [['usersId', $usersId], ['name', $setOfCardsName]]);
     }
 
-    public function createSetOfCard($usersId, $set_of_cards_name)
+    public function deleteSetOfCard($setOfCardsId)
     {
         $db = new DbConstructor();
-        $db->addContent('setofcards', [['usersId', $usersId], ['name', $set_of_cards_name]]);
+        $db->deleteContent('setofcards', $setOfCardsId);
     }
 
-    public function deleteSetOfCard($set_of_cards_id)
+    public function deleteUser($userId)
     {
         $db = new DbConstructor();
-        $db->deleteContent('setofcards', $set_of_cards_id);
-    }
-
-    public function deleteUser($user)
-    {
-        $db = new DbConstructor();
-        $db->deleteContent('users', $user);
+        $db->deleteContent('users', $userId);
     }
 }
