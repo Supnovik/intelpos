@@ -94,8 +94,6 @@ class ApiController
         }
         $qw = json_decode(file_get_contents('php://input'), true);
         if (isset($qw['type'])) {
-            $flag = true;
-            $d = file_get_contents('php://input');
             $data = $qw;
             switch ($qw['type']) {
                 case ('delete'):
@@ -122,55 +120,47 @@ class ApiController
         header('Access-Control-Allow-Origin: *');
         header("Access-Control-Allow-Headers: *");
         header('Content-type: application/json');
-        switch ($content['type']) {
-            case ('users'):
-                if (isset($content['obj']['id'])) {
+        if (isset($content['obj']['id'])) {
+            switch ($content['type']) {
+                case ('users'):
                     $model = new Model\Profile();
                     $model->deleteUser($content['obj']['id']);
 
                     return true;
-                }
-            case ('setOfCards'):
-                if (isset($content['obj']['id'])) {
+
+                case ('setOfCards'):
                     $model = new Model\Profile();
                     $model->deleteSetOfCard($content['obj']['id']);
 
                     return true;
-                }
-            case ('backdrop'):
-                if (isset($content['obj']['id'])) {
+
+                case ('backdrop'):
                     $model = new Model\BackdropsList();
                     $model->deleteBackdrop($content['obj']['id']);
 
                     return true;
-                }
-            case ('cards'):
-                if (isset($content['obj']['setOfCardsId'])) {
-                    $model = new Model\SetOfCards($content['obj']['setOfCardsId']);
-                    $model->deleteCard($content->obj->id);
+
+                case ('cards'):
+                    $model = new Model\SetOfCards();
+                    $model->deleteCard($content['obj']['id']);
 
                     return true;
-                }
-            case ('cardsOnBackdrop'):
-                if (isset($content['obj']['setOfCardsId']) && isset($content['obj']['backdropsId'])) {
-                    $model = new Model\Backdrop($content['obj']['setOfCardsId'], $content['obj']['backdropsId']);
+
+                case ('cardsOnBackdrop'):
+                    $model = new Model\Backdrop();
                     $model->removeCard($content['obj']['id']);
 
                     return true;
-                }
-            case ('comments'):
-                if (isset($content['obj']['id'])) {
+
+                case ('comments'):
                     $model = new Model\DbConstructor();
                     $model->deleteContent('comments', $content['obj']['id']);
 
                     return true;
-                }
+            }
         }
 
         return false;
     }
 
-    function edit()
-    {
-    }
 }
