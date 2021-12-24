@@ -103,6 +103,13 @@ class ApiController
                             'status' => '200',
                         ];
                     }
+                case ('edit'):
+                    if ($this->edit($qw['content'])) {
+                        $flag = true;
+                        $data = [
+                            'status' => '200',
+                        ];
+                    }
             }
         }
         header('Access-Control-Allow-Origin: *');
@@ -117,11 +124,8 @@ class ApiController
 
     function delete($content)
     {
-        header('Access-Control-Allow-Origin: *');
-        header("Access-Control-Allow-Headers: *");
-        header('Content-type: application/json');
         if (isset($content['obj']['id'])) {
-            switch ($content['type']) {
+            switch ($content['table']) {
                 case ('users'):
                     $model = new Model\Profile();
                     $model->deleteUser($content['obj']['id']);
@@ -163,4 +167,16 @@ class ApiController
         return false;
     }
 
+    function edit($content)
+    {
+        if (isset($content['table']) && isset($content['obj']['id'])) {
+            $db = new Model\DbConstructor();
+            $pattern = array_keys($content['obj']);
+            $db->updateContent($content['table'], $content['obj']['id'], $pattern, $content['obj']);
+
+            return true;
+        }
+
+        return false;
+    }
 }
