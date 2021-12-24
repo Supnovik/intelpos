@@ -97,12 +97,12 @@ class Route
                     }
                 },
                 'setofcards' => [
-                    '' => function ($userNickname, $setofcards) {
+                    '' => function ($userNickname, $setofcardsId) {
                         $db = new Model\DbConstructor();
                         $setofcards = $db->getContent(
                             'setofcards',
                             ['id', 'name'],
-                            [['type' => 'name', 'content' => $setofcards]],
+                            [['type' => 'id', 'content' => $setofcardsId]],
                             true
                         )[0];
                         if (count($setofcards) !== 0) {
@@ -117,12 +117,12 @@ class Route
                     },
                 ],
                 'backdropsList' => [
-                    '' => function ($userNickname, $setofcards) {
+                    '' => function ($userNickname, $setofcardsId) {
                         $db = new Model\DbConstructor();
                         $setofcards = $db->getContent(
                             'setofcards',
                             ['id', 'name'],
-                            [['type' => 'name', 'content' => $setofcards]],
+                            [['type' => 'id', 'content' => $setofcardsId]],
                             true
                         )[0];
                         if (count($setofcards) !== 0) {
@@ -136,19 +136,19 @@ class Route
                             return false;
                         }
                     },
-                    'backdrop' => function ($userNickname, $setofcards, $backdrop) {
+                    'backdrop' => function ($userNickname, $setofcardsId, $backdropId) {
                         $db = new Model\DbConstructor();
                         $setofcards = $db->getContent(
                             'setofcards',
                             ['id', 'name'],
-                            [['type' => 'name', 'content' => $setofcards]],
+                            [['type' => 'id', 'content' => $setofcardsId]],
                             true
                         )[0];
                         $backdrop = $db->getContent(
                             'backdrops',
                             ['id', 'name', 'imagePath'],
                             [
-                                ['type' => 'name', 'content' => $backdrop],
+                                ['type' => 'id', 'content' => $backdropId],
                                 ['type' => 'setofcardsId', 'content' => $setofcards['id']],
                             ],
                             true

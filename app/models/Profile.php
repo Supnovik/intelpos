@@ -51,11 +51,32 @@ class Profile extends Model
     {
         $db = new DbConstructor();
         $db->deleteContent('setofcards', $setOfCardsId);
+
+        $setsCards = $db->getContent('cards', ['id'], [['type' => 'setofcardsId', 'content' => $setOfCardsId]]);
+        $setsComments = $db->getContent('comments', ['id'], [['type' => 'setofcardsId', 'content' => $setOfCardsId]]);
+        $setOfCardsModel = new SetOfCards();
+        foreach ($setsCards as $element) {
+            $setOfCardsModel->deleteCard($element['id']);
+        }
+        foreach ($setsComments as $element) {
+            $setOfCardsModel->deleteComment($element['id']);
+        }
+
+        $backdropsListModel = new BackdropsList();
+        $backdrops = $db->getContent('backdrops', ['id'], [['type' => 'setofcardsId', 'content' => $setOfCardsId]]);
+        foreach ($backdrops as $backdrop) {
+            $backdropsListModel->deleteBackdrop($backdrop['id']);
+        }
     }
 
     public function deleteUser($userId)
     {
         $db = new DbConstructor();
         $db->deleteContent('users', $userId);
+        $setsOfCards = $db->getContent('setofcards', ['id'], [['type' => 'usersId', 'content' => $userId]]);
+
+        foreach ($setsOfCards as $set) {
+            $this->deleteSetOfCard($set['id']);
+        }
     }
 }

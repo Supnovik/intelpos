@@ -19,5 +19,10 @@ class BackdropsList
     {
         $db = new DbConstructor();
         $db->deleteContent('backdrops', $backdropId);
+        $cards = $db->getContent('cardsOnBackdrop', ['id'], [['type' => 'backdropsId', 'content' => $backdropId]]);
+        $backdropModel = new Backdrop();
+        foreach ($cards as $card) {
+            $backdropModel->removeCard($card['id']);
+        }
     }
 }

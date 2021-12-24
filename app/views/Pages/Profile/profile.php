@@ -26,9 +26,9 @@
                 <input type="text" style="display: none" name="id"
                        value="<?= $value['id'] ?>"> </input>
                 <div>
-                    <a href="/users/<?= $GLOBALS['uri'][2] ?>/setofcards/<?= $value['name'] ?>"
+                    <a href="/users/<?= $GLOBALS['uri'][2] ?>/setofcards/<?= $value['id'] ?>"
                        class="user-content-list-block-setofcards">Set</a>
-                    <a href="/users/<?= $GLOBALS['uri'][2] ?>/backdropsList/<?= $value['name'] ?>"
+                    <a href="/users/<?= $GLOBALS['uri'][2] ?>/backdropsList/<?= $value['id'] ?>"
                        class="user-content-list-block-backdrop">
                         Backdrops
                     </a>

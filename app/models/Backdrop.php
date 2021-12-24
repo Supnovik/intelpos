@@ -9,7 +9,7 @@ class Backdrop
     public $setofcards;
     public $backdrop;
 
-    public function __construct($setofcards, $backdrop)
+    public function __construct($setofcards = null, $backdrop = null)
     {
         $this->setofcards = $setofcards;
         $this->backdrop = $backdrop;

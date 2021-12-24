@@ -6,70 +6,79 @@ use PDOException;
 
 class SetOfCards
 {
-    public $setofcards;
-
-    function __construct($setofcards)
+    public function getData($setofcards)
     {
-        $this->setofcards = $setofcards;
-    }
-
-    public function getData($user = null, $data = null)
-    {
-        $cards = $this->getCards();
-        $comments = $this->getComments();
+        $cards = $this->getCards($setofcards);
+        $comments = $this->getComments($setofcards);
 
         return ['cards' => $cards, 'comments' => $comments];
     }
 
-    public function getCards()
+    public function getCards($setofcards)
     {
         $db = new DbConstructor();
 
         return $db->getContent(
             'cards',
             ['id', 'setofcardsId', 'termin', 'definition'],
-            [['type' => 'setofcardsId', 'content' => $this->setofcards['id']]]
+            [['type' => 'setofcardsId', 'content' => $setofcards['id']]]
         );
     }
 
-    public function getComments()
+    public function getComments($setofcards)
     {
         $db = new DbConstructor();
 
-        return $db->getContent('comments', ['id', 'setofcardsId', 'userName', 'comment']);
+        return $db->getContent(
+            'comments',
+            ['id', 'setofcardsId', 'userName', 'comment'],
+            [['type' => 'setofcardsId', 'content' => $setofcards['id']]]
+        );
     }
 
-    public function addCard($termin, $definition)
+    public function addCard($setofcards, $termin, $definition)
     {
-        $setofcardsId = $this->setofcards['id'];
+        $setofcardsId = $setofcards['id'];
         $db = new DbConstructor();
         $db->addContent('cards', [['setofcardsId', $setofcardsId], ['termin', $termin], ['definition', $definition]]);
     }
 
-    public function addComment($nickname, $comment)
+    public function addComment($setofcards, $nickname, $comment)
     {
-        $setofcardsId = $this->setofcards['id'];
+        $setofcardsId = $setofcards['id'];
         $db = new DbConstructor();
         $db->addContent('comments', [['setofcardsId', $setofcardsId], ['userName', $nickname], ['comment', $comment]]);
     }
 
-    public function sortByAlphabet()
+    public function deleteComment($commentId)
+    {
+        $db = new DbConstructor();
+        $db->deleteContent('comments', $commentId);
+    }
+
+    public function sortByAlphabet($setofcards)
     {
         $db = new DbConstructor();
         $sortObj = 'termin';
         $pattern = ['id', 'setofcardsId', 'termin', 'definition'];
+        $where = ['type' => 'setofcardsId', 'content' => $setofcards['id']];
 
-        return $db->getSortedContent('cards', $pattern, $sortObj);
+        return $db->getSortedContent(
+            'cards',
+            $pattern,
+            $sortObj,
+            $where
+        );
     }
 
-    public function searchCards($setofcardsId, $termin)
+    public function searchCards($setofcards, $termin)
     {
         $db = new DbConstructor();
 
         return $db->getContent(
             'cards',
             ['setofcardsId', 'termin', 'definition'],
-            [['type' => 'termin', 'content' => $termin], ['type' => 'setofcardsId', 'content' => $setofcardsId]]
+            [['type' => 'termin', 'content' => $termin], ['type' => 'setofcardsId', 'content' => $setofcards['id']]]
         );
     }
 

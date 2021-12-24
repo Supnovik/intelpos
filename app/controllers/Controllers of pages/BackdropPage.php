@@ -44,8 +44,8 @@ class BackdropPage extends Controller
 
     function actionIndex()
     {
-        $db = new Model\SetOfCards($this->setofcards);
-        $cards = $db->getCards();
+        $db = new Model\SetOfCards();
+        $cards = $db->getCards($this->setofcards);
 
         $this->view->generate(
             'default',

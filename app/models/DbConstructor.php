@@ -114,9 +114,12 @@ class DbConstructor
         return $this->get($pattern, $sql);
     }
 
-    public function getSortedContent($tableName, $pattern, $sortObj)
+    public function getSortedContent($tableName, $pattern, $sortObj, $search = null)
     {
-        $sql = "SELECT * FROM $tableName ORDER BY $sortObj";
+        $sql = "SELECT * FROM $tableName ORDER BY $sortObj ";
+        if (!$search == null) {
+            $sql = "SELECT * FROM $tableName WHERE ".$search['type']." like '".$search['content']."' ORDER BY $sortObj ";
+        }
 
         return $this->get($pattern, $sql);
     }

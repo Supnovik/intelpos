@@ -31,7 +31,7 @@
                     } ?>
                 </form>
 
-                <a href='/users/<?= $GLOBALS['uri'][2] ?>/backdropsList/<?= $GLOBALS['uri'][4] ?>/backdrop/<?= $value['name'] ?>'
+                <a href='/users/<?= $GLOBALS['uri'][2] ?>/backdropsList/<?= $GLOBALS['uri'][4] ?>/backdrop/<?= $value['id'] ?>'
                    class="backdrops-list-backdrop-img" style="background-image: url(/<?= $value['imagePath'] ?>)">
 
                 </a>

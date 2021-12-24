@@ -10,6 +10,7 @@ class SetOfCardsPage extends Controller
 {
     public $user;
     public $setofcards;
+    public $isGenerated = false;
 
     function __construct($userNickname, $setofcards)
     {
@@ -17,9 +18,10 @@ class SetOfCardsPage extends Controller
         $this->setofcards = $setofcards;
 
         $this->view = new View();
-        $this->model = new Model\SetOfCards($this->setofcards);
+        $this->model = new Model\SetOfCards();
         if (array_key_exists('create-card', $_POST)) {
             $this->model->addCard(
+                $this->setofcards,
                 filter_var(trim($_POST['termin']), FILTER_SANITIZE_STRING),
                 filter_var(trim($_POST['definition']), FILTER_SANITIZE_STRING)
             );
@@ -38,24 +40,32 @@ class SetOfCardsPage extends Controller
         }
 
         if (array_key_exists('search-card-button', $_POST)) {
+            $this->isGenerated = true;
             $this->view->generate(
                 'default',
                 [
                     'cards' => $this->model->searchCards(
-                        $setofcards['id'],
+                        $setofcards,
                         filter_var(trim($_POST['search-card']), FILTER_SANITIZE_STRING)
                     ),
-                    'comments' => $this->model->getComments(),
+                    'comments' => $this->model->getComments($this->setofcards),
                 ]
             );
         }
 
         if (array_key_exists('sortByAlphabet', $_POST)) {
-            $this->view->data = $this->model->sortByAlphabet();
+            $this->isGenerated = true;
+            $this->view->generate(
+                'default', [
+                    'cards' => $this->model->sortByAlphabet($this->setofcards),
+                    'comments' => $this->model->getComments($this->setofcards),
+                ]
+            );
         }
 
         if (array_key_exists('comment-button', $_POST)) {
             $this->model->addComment(
+                $this->setofcards,
                 filter_var(trim($_POST['comment-nickname']), FILTER_SANITIZE_STRING),
                 filter_var(trim($_POST['comment-text']), FILTER_SANITIZE_STRING)
             );
@@ -64,9 +74,11 @@ class SetOfCardsPage extends Controller
 
     function actionIndex()
     {
-        $this->view->generate(
-            'default',
-            $this->model->getData()
-        );
+        if (!$this->isGenerated) {
+            $this->view->generate(
+                'default',
+                $this->model->getData($this->setofcards)
+            );
+        }
     }
 }
