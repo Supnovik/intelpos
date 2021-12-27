@@ -11,7 +11,7 @@ class ApiController
         $flag = false;
         if (isset($_GET['users'])) {
             $db = new Model\DbConstructor();
-            $pattern = ['id', 'mail', 'nickname', 'password'];
+            $pattern = ['id', 'mail', 'nickname', 'password', 'role'];
             $data = [
                 'status' => '200',
                 'content' => $db->getContent(
