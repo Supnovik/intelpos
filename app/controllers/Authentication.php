@@ -27,7 +27,7 @@ class Authentication
 
     function signOut()
     {
-        setcookie('user', $GLOBALS['user']['nickname'], time() - 3600, '/');
+        setcookie('user', $GLOBALS['user']['nickname'], time() - 60 * 60 * 24 * 365, '/');
         header('Location: '.$_SERVER['HTTP_REFERER']);
     }
 
@@ -49,7 +49,7 @@ class Authentication
             true
         );
         if ($len != 0) {
-            setcookie('user', $nickname, time() + 1200, '/');
+            setcookie('user', $nickname, time() + 60 * 60 * 24 * 365, '/');
             header('Location: /users/'.$nickname);
         }
     }
@@ -66,7 +66,7 @@ class Authentication
         $db = new Model\DbConstructor();
         $db->addContent('users', [['nickname', $nickname], ['mail', $mail], ['password', $password]]);
 
-        setcookie('user', $nickname, time() + 120, '/');
+        setcookie('user', $nickname, time() + 60 * 60 * 24 * 365, '/');
         header('Location: /users/'.$nickname);
     }
 

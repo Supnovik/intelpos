@@ -165,12 +165,12 @@ class Route
                     },
                 ],
                 'learn' => [
-                    '' => function ($userNickname, $setofcards) {
+                    '' => function ($userNickname, $setofcardsId) {
                         $db = new Model\DbConstructor();
                         $setofcards = $db->getContent(
                             'setofcards',
                             ['id', 'name'],
-                            [['type' => 'name', 'content' => $setofcards]],
+                            [['type' => 'id', 'content' => $setofcardsId]],
                             true
                         )[0];
                         if (count($setofcards) !== 0) {

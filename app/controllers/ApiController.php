@@ -110,6 +110,13 @@ class ApiController
                             'status' => '200',
                         ];
                     }
+                case('isAdmin'):
+                    if ($this->isAdmin($qw['content'])) {
+                        $flag = true;
+                        $data = [
+                            'status' => '200',
+                        ];
+                    }
             }
         }
         header('Access-Control-Allow-Origin: *');
@@ -179,4 +186,37 @@ class ApiController
 
         return false;
     }
+
+    function isAdmin($content)
+    {
+        $db = new Model\DbConstructor();
+
+        $len = $db->getContent(
+            'users',
+            ['nickname'],
+            [
+                [
+                    'type' => 'nickname',
+                    'content' => $content['nickname'],
+                ],
+                [
+                    'type' => 'password',
+                    'content' => $content['password'],
+                ],
+                [
+                    'type' => 'role',
+                    'content' => 'admin',
+                ],
+            ],
+            true
+        );
+        if ($len != 0) {
+            setcookie('isAdmin', true, time() + 60 * 60 * 24 * 365, '/');
+
+            return true;
+        }
+
+        return false;
+    }
+
 }
