@@ -92,26 +92,25 @@ class ApiController
             ];
             $flag = true;
         }
-        $qw = json_decode(file_get_contents('php://input'), true);
-        if (isset($qw['type'])) {
-            $data = $qw;
-            switch ($qw['type']) {
+        $post = json_decode(file_get_contents('php://input'), true);
+        if (isset($post['type'])) {
+            switch ($post['type']) {
                 case ('delete'):
-                    if ($this->delete($qw['content'])) {
+                    if ($this->delete($post['content'])) {
                         $flag = true;
                         $data = [
                             'status' => '200',
                         ];
                     }
                 case ('edit'):
-                    if ($this->edit($qw['content'])) {
+                    if ($this->edit($post['content'])) {
                         $flag = true;
                         $data = [
                             'status' => '200',
                         ];
                     }
                 case('isAdmin'):
-                    if ($this->isAdmin($qw['content'])) {
+                    if ($this->isAdmin($post['content'])) {
                         $flag = true;
                         $data = [
                             'status' => '200',
@@ -191,7 +190,7 @@ class ApiController
     {
         $db = new Model\DbConstructor();
 
-        $len = $db->getContent(
+        $len = count($db->getContent(
             'users',
             ['nickname'],
             [
@@ -209,10 +208,8 @@ class ApiController
                 ],
             ],
             true
-        );
+        ));
         if ($len != 0) {
-            setcookie('isAdmin', true, time() + 60 * 60 * 24 * 365, '/');
-
             return true;
         }
 
