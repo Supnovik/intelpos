@@ -4,123 +4,134 @@ namespace Intelpos\Controller;
 
 use Intelpos\Model;
 
+
 class ApiController
 {
     public function requestResponce()
     {
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Headers: *");
+        header('Content-type: application/json');;
+
+        global $db;
+        $db = new Model\DbConstructor();
+        $data = [];
         $flag = false;
-        if (isset($_GET['users'])) {
-            $db = new Model\DbConstructor();
-            $pattern = ['id', 'mail', 'nickname', 'password', 'role'];
-            $data = [
-                'status' => '200',
-                'content' => $db->getContent(
-                    'users',
-                    $pattern
-                ),
-                'pattern' => $pattern,
-            ];
-            $flag = true;
-        }
-        if (isset($_GET['cards'])) {
-            $db = new Model\DbConstructor();
-            $pattern = ['id', 'termin', 'definition', 'setofcardsId'];
 
-            $data = [
-                'status' => '200',
-                'content' => $db->getContent(
-                    'cards',
-                    $pattern
-                ),
-                'pattern' => $pattern,
-            ];
-            $flag = true;
-        }
-        if (isset($_GET['setOfCards'])) {
-            $db = new Model\DbConstructor();
-            $pattern = ['id', 'name', 'usersId'];
+        $get = [
+            'users' => function () {
+                $pattern = ['id', 'mail', 'nickname', 'password', 'hash', 'role'];
 
-            $data = [
-                'status' => '200',
-                'content' => $db->getContent(
-                    'setofcards',
-                    $pattern
-                ),
-                'pattern' => $pattern,
-            ];
-            $flag = true;
-        }
-        if (isset($_GET['backdrops'])) {
-            $db = new Model\DbConstructor();
-            $pattern = ['id', 'name', 'setofcardsId', 'imagePath'];
+                return [
+                    'status' => '200',
+                    'content' => $GLOBALS['db']->getContent(
+                        'users',
+                        $pattern
+                    ),
+                    'pattern' => $pattern,
+                ];
+            },
+            'cards' => function () {
+                $pattern = ['id', 'termin', 'definition', 'setofcardsId'];
 
-            $data = [
-                'status' => '200',
-                'content' => $db->getContent(
-                    'backdrops',
-                    $pattern
-                ),
-                'pattern' => $pattern,
-            ];
-            $flag = true;
-        }
-        if (isset($_GET['cardsOnBackdrop'])) {
-            $db = new Model\DbConstructor();
-            $pattern = ['id', 'termin', 'definition', 'backdropsId', 'x_coordinate', 'y_coordinate'];
+                return [
+                    'status' => '200',
+                    'content' => $GLOBALS['db']->getContent(
+                        'cards',
+                        $pattern
+                    ),
+                    'pattern' => $pattern,
+                ];
+            },
+            'setOfCards' => function () {
+                $pattern = ['id', 'name', 'usersId'];
 
-            $data = [
-                'status' => '200',
-                'content' => $db->getContent(
-                    'cardsOnBackdrop',
-                    $pattern
-                ),
-                'pattern' => $pattern,
-            ];
-            $flag = true;
-        }
-        if (isset($_GET['comments'])) {
-            $db = new Model\DbConstructor();
-            $pattern = ['id', 'setofcardsId', 'userName', 'comment'];
+                return [
+                    'status' => '200',
+                    'content' => $GLOBALS['db']->getContent(
+                        'setofcards',
+                        $pattern
+                    ),
+                    'pattern' => $pattern,
+                ];
+            },
+            'backdrops' => function () {
+                $pattern = ['id', 'name', 'setofcardsId', 'imagePath'];
 
-            $data = [
-                'status' => '200',
-                'content' => $db->getContent(
-                    'comments',
-                    $pattern
-                ),
-                'pattern' => $pattern,
-            ];
-            $flag = true;
+                return [
+                    'status' => '200',
+                    'content' => $GLOBALS['db']->getContent(
+                        'backdrops',
+                        $pattern
+                    ),
+                    'pattern' => $pattern,
+                ];
+            },
+            'cardsOnBackdrop' => function () {
+                $pattern = ['id', 'termin', 'definition', 'backdropsId', 'x_coordinate', 'y_coordinate'];
+
+                return [
+                    'status' => '200',
+                    'content' => $GLOBALS['db']->getContent(
+                        'cardsOnBackdrop',
+                        $pattern
+                    ),
+                    'pattern' => $pattern,
+                ];
+            },
+            'comments' => function () {
+                $pattern = ['id', 'setofcardsId', 'userName', 'comment'];
+
+                return [
+                    'status' => '200',
+                    'content' => $GLOBALS['db']->getContent(
+                        'comments',
+                        $pattern
+                    ),
+                    'pattern' => $pattern,
+                ];
+            },
+        ];
+        if (isset($_GET['token'])) {
+            if ($this->tokenIsValid($_GET['token'])) {
+                foreach (array_keys($get) as $path) {
+                    if (isset($_GET[$path])) {
+                        $data = $get[$path]();
+                        $flag = true;
+                    }
+                }
+            }
         }
+
         $post = json_decode(file_get_contents('php://input'), true);
         if (isset($post['type'])) {
             switch ($post['type']) {
                 case ('delete'):
-                    if ($this->delete($post['content'])) {
+                    if ($this->delete($post['content'], $post['token'])) {
                         $flag = true;
                         $data = [
                             'status' => '200',
                         ];
                     }
                 case ('edit'):
-                    if ($this->edit($post['content'])) {
+                    if ($this->edit($post['content'], $post['token'])) {
                         $flag = true;
                         $data = [
                             'status' => '200',
                         ];
                     }
                 case('isAdmin'):
-                    if ($this->isAdmin($post['content'])) {
+                    $isAdmin = $this->isAdmin($post['content']);
+                    if ($isAdmin) {
                         $flag = true;
                         $data = [
                             'status' => '200',
+                            'token' => bin2hex($isAdmin),
                         ];
                     }
             }
         }
-        header('Access-Control-Allow-Origin: *');
-        header("Access-Control-Allow-Headers: *");
-        header('Content-type: application/json');;
+
         if ($flag) {
             echo json_encode($data);
         } else {
@@ -128,8 +139,11 @@ class ApiController
         }
     }
 
-    function delete($content)
+    function delete($content, $token)
     {
+        if (!$this->tokenIsValid($token)) {
+            return false;
+        }
         if (isset($content['obj']['id'])) {
             switch ($content['table']) {
                 case ('users'):
@@ -173,8 +187,11 @@ class ApiController
         return false;
     }
 
-    function edit($content)
+    function edit($content, $token)
     {
+        if (!$this->tokenIsValid($token)) {
+            return false;
+        }
         if (isset($content['table']) && isset($content['obj']['id'])) {
             $db = new Model\DbConstructor();
             $pattern = array_keys($content['obj']);
@@ -190,30 +207,56 @@ class ApiController
     {
         $db = new Model\DbConstructor();
 
-        $len = count($db->getContent(
-            'users',
-            ['nickname'],
-            [
+        $user =
+            $db->getContent(
+                'users',
+                ['id', 'nickname'],
                 [
-                    'type' => 'nickname',
-                    'content' => $content['nickname'],
+                    [
+                        'type' => 'nickname',
+                        'content' => $content['nickname'],
+                    ],
+                    [
+                        'type' => 'password',
+                        'content' => $content['password'],
+                    ],
+                    [
+                        'type' => 'role',
+                        'content' => 'admin',
+                    ],
                 ],
-                [
-                    'type' => 'password',
-                    'content' => $content['password'],
-                ],
-                [
-                    'type' => 'role',
-                    'content' => 'admin',
-                ],
-            ],
-            true
-        ));
-        if ($len != 0) {
-            return true;
+                true
+            );
+        if (count($user) != 0) {
+            $token = random_bytes(5);
+
+            $db->updateContent('users', $user[0]['id'], ['hash'], ['hash' => bin2hex($token)]);
+
+            return $token;
         }
 
         return false;
     }
 
+    function tokenIsValid($token)
+    {
+        $db = new Model\DbConstructor();
+        $user =
+            $db->getContent(
+                'users',
+                ['hash'],
+                [
+                    [
+                        'type' => 'hash',
+                        'content' => $token,
+                    ],
+                ],
+                true
+            );
+        if (count($user) != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
