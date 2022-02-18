@@ -7,24 +7,43 @@ use Intelpos\Model;
 
 class ApiController
 {
+    private $flag = false;
+    private $data = [];
+    private $db;
+
     public function requestResponce()
     {
         header('Access-Control-Allow-Origin: *');
         header("Access-Control-Allow-Headers: *");
         header('Content-type: application/json');;
 
-        global $db;
-        $db = new Model\DbConstructor();
-        $data = [];
-        $flag = false;
+        $this->db = new Model\DbConstructor();
 
+        $post = json_decode(file_get_contents('php://input'), true);
+
+        if (count($_GET) != 0) {
+            $this->getRequest();
+        }
+        if ($post) {
+            $this->postRequest($post);
+        }
+
+        if ($this->flag) {
+            echo json_encode($this->data);
+        } else {
+            echo json_encode(['status' => '404']);
+        }
+    }
+
+    function getRequest()
+    {
         $get = [
             'users' => function () {
                 $pattern = ['id', 'mail', 'nickname', 'password', 'hash', 'role'];
 
                 return [
                     'status' => '200',
-                    'content' => $GLOBALS['db']->getContent(
+                    'content' => $this->db->getContent(
                         'users',
                         $pattern
                     ),
@@ -36,7 +55,7 @@ class ApiController
 
                 return [
                     'status' => '200',
-                    'content' => $GLOBALS['db']->getContent(
+                    'content' => $this->db->getContent(
                         'cards',
                         $pattern
                     ),
@@ -48,7 +67,7 @@ class ApiController
 
                 return [
                     'status' => '200',
-                    'content' => $GLOBALS['db']->getContent(
+                    'content' => $this->db->getContent(
                         'setofcards',
                         $pattern
                     ),
@@ -60,7 +79,7 @@ class ApiController
 
                 return [
                     'status' => '200',
-                    'content' => $GLOBALS['db']->getContent(
+                    'content' => $this->db->getContent(
                         'backdrops',
                         $pattern
                     ),
@@ -72,7 +91,7 @@ class ApiController
 
                 return [
                     'status' => '200',
-                    'content' => $GLOBALS['db']->getContent(
+                    'content' => $this->db->getContent(
                         'cardsOnBackdrop',
                         $pattern
                     ),
@@ -84,7 +103,7 @@ class ApiController
 
                 return [
                     'status' => '200',
-                    'content' => $GLOBALS['db']->getContent(
+                    'content' => $this->db->getContent(
                         'comments',
                         $pattern
                     ),
@@ -96,46 +115,55 @@ class ApiController
             if ($this->tokenIsValid($_GET['token'])) {
                 foreach (array_keys($get) as $path) {
                     if (isset($_GET[$path])) {
-                        $data = $get[$path]();
-                        $flag = true;
+                        $this->data = $get[$path]();
+                        $this->flag = true;
                     }
                 }
             }
         }
+    }
 
-        $post = json_decode(file_get_contents('php://input'), true);
+    function postRequest($post)
+    {
         if (isset($post['type'])) {
             switch ($post['type']) {
                 case ('delete'):
+                    if (!(isset($post['content']) || isset($post['token']))) {
+                        return;
+                    }
                     if ($this->delete($post['content'], $post['token'])) {
-                        $flag = true;
-                        $data = [
+                        $this->flag = true;
+                        $this->data = [
                             'status' => '200',
                         ];
                     }
+
                 case ('edit'):
+                    if (!(isset($post['content']) || isset($post['token']))) {
+                        return;
+                    }
                     if ($this->edit($post['content'], $post['token'])) {
-                        $flag = true;
-                        $data = [
+                        $this->flag = true;
+                        $this->data = [
                             'status' => '200',
                         ];
                     }
+
+
                 case('isAdmin'):
+                    if (!isset($post['content'])) {
+                        return;
+                    }
                     $isAdmin = $this->isAdmin($post['content']);
+
                     if ($isAdmin) {
-                        $flag = true;
-                        $data = [
+                        $this->flag = true;
+                        $this->data = [
                             'status' => '200',
                             'token' => bin2hex($isAdmin),
                         ];
                     }
             }
-        }
-
-        if ($flag) {
-            echo json_encode($data);
-        } else {
-            echo json_encode(['status' => '404']);
         }
     }
 
@@ -205,32 +233,33 @@ class ApiController
 
     function isAdmin($content)
     {
-        $db = new Model\DbConstructor();
-
-        $user =
-            $db->getContent(
-                'users',
-                ['id', 'nickname'],
-                [
+        $users = [];
+        if (isset($content['nickname']) && isset($content['password'])) {
+            $users =
+                $this->db->getContent(
+                    'users',
+                    ['id', 'nickname'],
                     [
-                        'type' => 'nickname',
-                        'content' => $content['nickname'],
+                        [
+                            'type' => 'nickname',
+                            'content' => $content['nickname'],
+                        ],
+                        [
+                            'type' => 'password',
+                            'content' => $content['password'],
+                        ],
+                        [
+                            'type' => 'role',
+                            'content' => 'admin',
+                        ],
                     ],
-                    [
-                        'type' => 'password',
-                        'content' => $content['password'],
-                    ],
-                    [
-                        'type' => 'role',
-                        'content' => 'admin',
-                    ],
-                ],
-                true
-            );
-        if (count($user) != 0) {
+                    true
+                );
+        }
+        if (count($users) != 0) {
             $token = random_bytes(5);
 
-            $db->updateContent('users', $user[0]['id'], ['hash'], ['hash' => bin2hex($token)]);
+            $this->db->updateContent('users', $users[0]['id'], ['hash'], ['hash' => bin2hex($token)]);
 
             return $token;
         }
@@ -240,9 +269,8 @@ class ApiController
 
     function tokenIsValid($token)
     {
-        $db = new Model\DbConstructor();
         $user =
-            $db->getContent(
+            $this->db->getContent(
                 'users',
                 ['hash'],
                 [
